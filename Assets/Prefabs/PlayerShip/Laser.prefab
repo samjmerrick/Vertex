@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212448491379086262}
   - component: {fileID: 70207984372612794}
   - component: {fileID: 50723395599965816}
-  - component: {fileID: 114450521129856722}
+  - component: {fileID: 114034271850448460}
   m_Layer: 0
   m_Name: Laser
   m_TagString: PlayerFire
@@ -78,7 +78,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.09, y: 0.56999993}
   m_Direction: 0
---- !u!114 &114450521129856722
+--- !u!114 &114034271850448460
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -86,14 +86,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1990526946275252}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae3c2e38041304f908a02dc8df2421a8, type: 3}
+  m_Script: {fileID: 11500000, guid: 06ee76bf3a3ee544fbf93c83e80783ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DestroyEffect: {fileID: 1000010355441670, guid: 02a509a7fa70ed740ba4197e20c5d32d,
-    type: 2}
-  IsInvincible: 1
-  MoveSpeed: 0
-  CollisionTag: Enemy
 --- !u!212 &212448491379086262
 SpriteRenderer:
   m_ObjectHideFlags: 1
