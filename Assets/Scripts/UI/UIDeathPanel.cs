@@ -15,5 +15,8 @@ public class UIDeathPanel : MonoBehaviour {
 
         Text scoreText = transform.Find("Score").gameObject.GetComponent<Text>();
         scoreText.text = "Score: " + GameController.score;
+
+        Text stats = transform.Find("Stats").gameObject.GetComponent<Text>();
+        stats.text = "You killed " + GameController.instance.EnemiesKilled;
     }
 }

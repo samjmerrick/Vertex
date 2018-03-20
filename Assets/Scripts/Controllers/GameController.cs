@@ -40,7 +40,7 @@ public class GameController : MonoBehaviour
     private float comboCount;
 
     private float lastComboDecrease;
-    public int EnemiesKilled;
+    public int EnemiesDestroyed;
 
     public delegate void gameBegin();
     public static event gameBegin GameBegin;
@@ -54,14 +54,14 @@ public class GameController : MonoBehaviour
     {
         SaveManager.Load();
         Ship.Death += EndGame;
-        Enemy.Death += CountDeaths;
+        Enemy.Death += CountDestroys;
     }
 
     void OnDisable()
     {
         SaveManager.Save();
         Ship.Death -= EndGame;
-        Enemy.Death -= CountDeaths;
+        Enemy.Death -= CountDestroys;
     }
 
     public void BeginGame()
@@ -74,7 +74,7 @@ public class GameController : MonoBehaviour
         canvas.GetComponent<PanelManager>().ShowMenu(deathMenu);
 
         score = 0;
-        EnemiesKilled = 0;
+        EnemiesDestroyed = 0;
         combo = 1; 
         comboCount = 0;
 
@@ -140,9 +140,9 @@ public class GameController : MonoBehaviour
         PlayerPrefs.SetInt("Coins", 10000);
     }
 
-    private void CountDeaths(string name, Vector3 pos)
+    private void CountDestroys(string name, Vector3 pos)
     {
-        EnemiesKilled++;
+        EnemiesDestroyed++;
     }
 
     public void Pause()
