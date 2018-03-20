@@ -22,6 +22,8 @@ public class Ship : MonoBehaviour
     private Vector3 moveStartInput;
     private Vector3 moveStartPos;
     private bool moving;
+
+    // Camera movement
     private Vector2 velocity = Vector2.zero;
     private Camera gamecamera;
 
@@ -37,7 +39,7 @@ public class Ship : MonoBehaviour
     {
         ClearBuffs();
         target = transform.position;
-        gamecamera = Camera.FindObjectOfType<Camera>();
+        gamecamera = FindObjectOfType<Camera>();
 
         if (!stats.ContainsKey("Laser"))
             stats.Add("Laser", 1);
@@ -50,9 +52,11 @@ public class Ship : MonoBehaviour
     }
 
     void Move() {
-        // Get mouse location
+
+
         if (Input.GetMouseButton(0))
         {
+            // If we're not already moving, initialise movement
             if (moving == false)
             {
                 moveStartInput = Input.mousePosition;
@@ -60,11 +64,18 @@ public class Ship : MonoBehaviour
                 moving = true;
             }
 
+            // Calculate difference and move
             target = Camera.main.ScreenToWorldPoint((Input.mousePosition - moveStartInput) + moveStartPos);
+            Vector3 to = Vector3.Lerp(transform.position, target, speed * Time.deltaTime);
+            transform.position = to;
 
-            transform.position = Vector3.Lerp(transform.position, target, speed * Time.deltaTime);
+            // Keep on screen
+            Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
+            pos.x = Mathf.Clamp(pos.x, 0.1f, 0.9f);
+            pos.y = Mathf.Clamp(pos.y, 0.1f, 0.9f);
+            transform.position = Camera.main.ViewportToWorldPoint(pos);
 
-            // move the camera
+            // Camera Movement
             Transform thisTransform = gamecamera.transform; 
 
             float diff = target.x - transform.position.x;
