@@ -13,7 +13,7 @@ public class Health : MonoBehaviour {
     public void DecreaseHealth()
     {
         maxHealth -= 1;
-        GameController.IncrementScore(1);
+        GameController.instance.IncrementScore(1);
 
 
 

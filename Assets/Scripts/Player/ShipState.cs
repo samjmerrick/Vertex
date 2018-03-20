@@ -29,7 +29,7 @@ public class ShipState : MonoBehaviour {
     {
         if (!GameController.GameRunning)
         {
-            GameController.BeginGame();
+            GameController.instance.BeginGame();
             enabled = false;
         }
            

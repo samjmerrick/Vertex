@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class UIControl : MonoBehaviour {
 
-    public static UIControl instance = null;
+
 
     public Text bestText;
     public Text scoreText;
@@ -27,6 +27,7 @@ public class UIControl : MonoBehaviour {
     public GameObject RadialSlider;
 
     #region SINGLETON PATTERN
+    public static UIControl instance = null;
     public static UIControl _instance;
     public static UIControl Instance
     {

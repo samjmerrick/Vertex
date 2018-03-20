@@ -54,7 +54,7 @@ public class Enemy : MonoBehaviour {
         if (Health <= 0 && !collided)
         {
             collided = true;
-            GameController.IncrementScore(1);
+            GameController.instance.IncrementScore(1);
 
             if (Death != null)
                 Death(gameObject.name, transform.position);

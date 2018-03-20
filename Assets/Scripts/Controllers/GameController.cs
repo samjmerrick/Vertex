@@ -6,15 +6,42 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
+    #region SINGLETON PATTERN
+    public static GameController instance = null;
+    public static GameController _instance;
+    public static GameController Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = GameObject.FindObjectOfType<GameController>();
+
+                if (_instance == null)
+                {
+                    Debug.Log("no instance");
+                }
+            }
+
+            return _instance;
+        }
+    }
+    void Awake()
+    {
+        instance = this;
+    }
+    #endregion
+
     public GameObject background;
 
     public static int score;
-    private static float lastScored;
-    private static int combo;
-    private static float comboCount;
+    private float lastScored;
+    private int combo;
+    private float comboCount;
 
     private float lastComboDecrease;
-    
+    public int EnemiesKilled;
+
     public delegate void gameBegin();
     public static event gameBegin GameBegin;
 
@@ -27,15 +54,17 @@ public class GameController : MonoBehaviour
     {
         SaveManager.Load();
         Ship.Death += EndGame;
+        Enemy.Death += CountDeaths;
     }
 
     void OnDisable()
     {
-        Ship.Death -= EndGame;
         SaveManager.Save();
+        Ship.Death -= EndGame;
+        Enemy.Death -= CountDeaths;
     }
 
-    public static void BeginGame()
+    public void BeginGame()
     {
         GameRunning = true;
 
@@ -45,6 +74,7 @@ public class GameController : MonoBehaviour
         canvas.GetComponent<PanelManager>().ShowMenu(deathMenu);
 
         score = 0;
+        EnemiesKilled = 0;
         combo = 1; 
         comboCount = 0;
 
@@ -64,7 +94,7 @@ public class GameController : MonoBehaviour
         GameEnd();
     }
 
-    public static void IncrementScore(int x)
+    public void IncrementScore(int x)
     {
         lastScored = Time.time;
         score += x * combo;
@@ -110,6 +140,11 @@ public class GameController : MonoBehaviour
         PlayerPrefs.SetInt("Coins", 10000);
     }
 
+    private void CountDeaths(string name, Vector3 pos)
+    {
+        EnemiesKilled++;
+    }
+
     public void Pause()
     {
         Time.timeScale = 0;
@@ -119,6 +154,4 @@ public class GameController : MonoBehaviour
     {
         Time.timeScale = 1;
     }
-
-    
 }
