@@ -41,7 +41,7 @@ public class SpawnController : MonoBehaviour {
         PickupList.Clear();
 
         GameController.GameBegin -= StartGame;
-        GameController.GameEnd += EndGame;
+        GameController.GameEnd -= EndGame;
         Enemy.Death -= SpawnPickup;
     }
 
@@ -58,6 +58,8 @@ public class SpawnController : MonoBehaviour {
 
         foreach (GameObject enemy in enemies)
             Destroy(enemy.gameObject);
+
+        CancelInvoke();
     }
 
     void Spawn()
