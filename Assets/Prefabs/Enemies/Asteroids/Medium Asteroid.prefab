@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 212417878138492884}
   - component: {fileID: 50295127899101990}
   - component: {fileID: 60552725046364180}
-  - component: {fileID: 114532561073317366}
   - component: {fileID: 114692343215691522}
   m_Layer: 8
   m_Name: Medium Asteroid
@@ -192,17 +191,6 @@ PolygonCollider2D:
       - {x: 0.59999996, y: -1.4549999}
       - {x: 0.32, y: -1.745}
       - {x: 0.25, y: -1.735}
---- !u!114 &114532561073317366
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1088714843249752}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6027fd0dfcc78bf49b9a6b2fc7dd03f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114692343215691522
 MonoBehaviour:
   m_ObjectHideFlags: 1
