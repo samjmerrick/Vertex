@@ -49,6 +49,7 @@ public class GameController : MonoBehaviour
     public static event gameEnd GameEnd;
 
     public static bool GameRunning = false;
+    public static bool isQuitting = false;
 
     void OnEnable()
     {
@@ -85,13 +86,17 @@ public class GameController : MonoBehaviour
     {
         GameRunning = false;
 
-        GameObject canvas = GameObject.Find("Canvas");
-        Panel deathMenu = canvas.transform.Find("Death Menu").GetComponent<Panel>();
+        if (!isQuitting)
+        {
+            GameObject canvas = GameObject.Find("Canvas");
+            Panel deathMenu = canvas.transform.Find("Death Menu").GetComponent<Panel>();
 
-        canvas.GetComponent<PanelManager>().ShowMenu(deathMenu);
+            canvas.GetComponent<PanelManager>().ShowMenu(deathMenu);
 
-        CancelInvoke();
-        GameEnd();
+            CancelInvoke();
+            GameEnd();
+        }
+    
     }
 
     public void IncrementScore(int x)
@@ -153,5 +158,10 @@ public class GameController : MonoBehaviour
     public void Resume()
     {
         Time.timeScale = 1;
+    }
+
+    private void OnApplicationQuit()
+    {
+        isQuitting = true;
     }
 }
