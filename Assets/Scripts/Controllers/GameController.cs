@@ -41,6 +41,7 @@ public class GameController : MonoBehaviour
 
     private float lastComboDecrease;
     public int EnemiesDestroyed;
+    public float timeElapsed;
 
     public delegate void gameBegin();
     public static event gameBegin GameBegin;
@@ -49,6 +50,7 @@ public class GameController : MonoBehaviour
     public static event gameEnd GameEnd;
 
     public static bool GameRunning = false;
+    public static bool isQuitting = false;
 
     void OnEnable()
     {
@@ -78,6 +80,8 @@ public class GameController : MonoBehaviour
         combo = 1; 
         comboCount = 0;
 
+        timeElapsed = Time.time;
+
         GameBegin();
     }
 
@@ -85,13 +89,18 @@ public class GameController : MonoBehaviour
     {
         GameRunning = false;
 
-        GameObject canvas = GameObject.Find("Canvas");
-        Panel deathMenu = canvas.transform.Find("Death Menu").GetComponent<Panel>();
+        if (!isQuitting)
+        {
+            GameObject canvas = GameObject.Find("Canvas");
+            Panel deathMenu = canvas.transform.Find("Death Menu").GetComponent<Panel>();
 
-        canvas.GetComponent<PanelManager>().ShowMenu(deathMenu);
+            canvas.GetComponent<PanelManager>().ShowMenu(deathMenu);
 
-        CancelInvoke();
-        GameEnd();
+            CancelInvoke();
+            GameEnd();
+        }
+
+        timeElapsed = Time.time - timeElapsed;
     }
 
     public void IncrementScore(int x)
@@ -135,7 +144,7 @@ public class GameController : MonoBehaviour
     public void DeleteHighScore()
     {
         PlayerPrefs.DeleteAll();
-        Mission.missionList.Clear();
+        Mission.LoadMissions(new List<Mission>()); // Loads 0 Missions
         Ship.stats.Clear();
         PlayerPrefs.SetInt("Coins", 10000);
     }
@@ -153,5 +162,10 @@ public class GameController : MonoBehaviour
     public void Resume()
     {
         Time.timeScale = 1;
+    }
+
+    private void OnApplicationQuit()
+    {
+        isQuitting = true;
     }
 }

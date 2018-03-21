@@ -47,10 +47,8 @@ public class SaveManager
 
         // Load our data
         Ship.stats = saveData.stats;
-        Mission.missionList = saveData.missions;
+        Mission.LoadMissions(saveData.missions);
 
-        foreach (Mission mission in Mission.missionList)
-            mission.StartListener();
 
         saveFile.Close();
 

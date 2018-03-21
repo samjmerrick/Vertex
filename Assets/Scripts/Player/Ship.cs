@@ -26,6 +26,8 @@ public class Ship : MonoBehaviour
     // Camera movement
     private Vector2 velocity = Vector2.zero;
     private Camera gamecamera;
+    private Vector3 bounds;
+    public float exSpace = 0.5f;
 
     // Statics
     public static Dictionary<string, int> stats = new Dictionary<string, int>();
@@ -37,6 +39,9 @@ public class Ship : MonoBehaviour
 
     void Start()
     {
+        bounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height));
+        bounds.x += exSpace;
+
         ClearBuffs();
         target = transform.position;
         gamecamera = FindObjectOfType<Camera>();
@@ -51,9 +56,8 @@ public class Ship : MonoBehaviour
         CheckIfShooting();
     }
 
-    void Move() {
-
-
+    void Move()
+    {
         if (Input.GetMouseButton(0))
         {
             // If we're not already moving, initialise movement
@@ -64,32 +68,20 @@ public class Ship : MonoBehaviour
                 moving = true;
             }
 
-            // Calculate difference and move
             target = Camera.main.ScreenToWorldPoint((Input.mousePosition - moveStartInput) + moveStartPos);
-            Vector3 to = Vector3.Lerp(transform.position, target, speed * Time.deltaTime);
-            transform.position = to;
+            target.x = Mathf.Clamp(target.x, -bounds.x, bounds.x);
+            target.y = Mathf.Clamp(target.y, -bounds.y, bounds.y);
 
-            // Keep on screen
-            Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
-            pos.x = Mathf.Clamp(pos.x, 0.1f, 0.9f);
-            pos.y = Mathf.Clamp(pos.y, 0.1f, 0.9f);
-            transform.position = Camera.main.ViewportToWorldPoint(pos);
+            transform.position = Vector3.Lerp(transform.position, target, speed * Time.deltaTime);
 
             // Camera Movement
-            Transform thisTransform = gamecamera.transform; 
-
             float diff = target.x - transform.position.x;
+            Vector3 gcPos = gamecamera.transform.position;
 
-            Vector3 vec = thisTransform.position;
-            vec.x = Mathf.SmoothDamp(thisTransform.position.x,
-                thisTransform.position.x + diff, ref velocity.x, 0.4f);
+            gcPos.x = Mathf.SmoothDamp(gcPos.x, gcPos.x + diff, ref velocity.x, 0.4f);
+            gcPos.x = Mathf.Clamp(gcPos.x, -bounds.x, bounds.x);
 
-            float maxDist = 0.5f;
-
-            if (vec.x > maxDist) vec.x = maxDist;
-            if (vec.x < -maxDist) vec.x = -maxDist;
-
-            thisTransform.position = vec;
+            gamecamera.transform.position = gcPos;
         }
         else
             moving = false;
@@ -106,7 +98,6 @@ public class Ship : MonoBehaviour
                 if (Time.time - lastFired > FireRate)
                     Shoot();
         }
-        
 
         // Laser
         if (Input.GetMouseButtonDown(0))

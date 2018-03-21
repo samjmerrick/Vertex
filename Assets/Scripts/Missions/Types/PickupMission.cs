@@ -40,7 +40,6 @@ public class PickupMission : Mission {
         mission.objective = _objective;
         mission.toComplete = _toComplete;
         mission.NameOfObject = _nameOfObject;
-        mission.expireTimeTicks = DateTime.Now.AddHours(2).Ticks;
     }
 
     // Counts down enemies
