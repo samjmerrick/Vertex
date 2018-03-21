@@ -8,7 +8,6 @@ public class UIDeathPanel : MonoBehaviour {
 	// Use this for initialization
 	void OnEnable ()
     {
-
         Text bestText = transform.Find("Best").gameObject.GetComponent<Text>();
         int best = PlayerPrefs.GetInt("best");
         bestText.text = "Best: " + best;
@@ -17,6 +16,8 @@ public class UIDeathPanel : MonoBehaviour {
         scoreText.text = "Score: " + GameController.score;
 
         Text stats = transform.Find("Stats").gameObject.GetComponent<Text>();
-        stats.text = "You killed " + GameController.instance.EnemiesDestroyed;
+
+        if (GameController.instance != null)
+            stats.text = "You killed 1" + GameController.instance.EnemiesDestroyed;
     }
 }
