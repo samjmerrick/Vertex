@@ -10,7 +10,7 @@ public class RandomMissionGiver : MonoBehaviour {
 	
 	public static void RandomMission()
     {
-        if (Mission.GetMissions().Count <= 3)
+        if (Mission.GetMissions().Count <= 2)
         {
             int rand = Random.Range(0, 2);
 

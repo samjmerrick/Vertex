@@ -6,7 +6,7 @@ using UnityEngine;
 [System.Serializable]
 public abstract class Mission {
 
-    public static List<Mission> missionList = new List<Mission>();
+    protected static List<Mission> missionList = new List<Mission>();
     public static List<Mission> GetMissions() { return new List<Mission>(missionList); }
 
     public string NameOfObject;
@@ -15,7 +15,6 @@ public abstract class Mission {
     public string objective;
     public int reward;
 
-    //gives the rewards
     public virtual void FinishMission()
     {
         missionList.Remove(this);
@@ -44,5 +43,13 @@ public abstract class Mission {
     public abstract void StartListener();
     public abstract void StopListener();
 
+    public static void LoadMissions(List<Mission> missions)
+    {
+        missionList.Clear();
+        missionList = missions;
+
+        foreach (Mission mission in missionList)
+            mission.StartListener();
+    }
 }
 
