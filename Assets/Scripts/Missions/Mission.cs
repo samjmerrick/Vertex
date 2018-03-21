@@ -14,7 +14,6 @@ public abstract class Mission {
     public int remaining = 0;
     public string objective;
     public int reward;
-    public long expireTimeTicks;
 
     //gives the rewards
     public virtual void FinishMission()
