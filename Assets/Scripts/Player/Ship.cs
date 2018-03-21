@@ -79,7 +79,7 @@ public class Ship : MonoBehaviour
             Vector3 gcPos = gamecamera.transform.position;
 
             gcPos.x = Mathf.SmoothDamp(gcPos.x, gcPos.x + diff, ref velocity.x, 0.4f);
-            gcPos.x = Mathf.Clamp(gcPos.x, -bounds.x, );
+            gcPos.x = Mathf.Clamp(gcPos.x, -bounds.x, bounds.x);
 
             gamecamera.transform.position = gcPos;
         }
