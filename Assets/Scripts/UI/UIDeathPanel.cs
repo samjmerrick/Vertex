@@ -18,6 +18,7 @@ public class UIDeathPanel : MonoBehaviour {
         Text stats = transform.Find("Stats").gameObject.GetComponent<Text>();
 
         if (GameController.instance != null)
-            stats.text = "You killed 1" + GameController.instance.EnemiesDestroyed;
+            stats.text = "You destroyed " + GameController.instance.EnemiesDestroyed + " Enemies \n" +
+                         "You lasted " + (int)GameController.instance.timeElapsed + " Seconds";
     }
 }

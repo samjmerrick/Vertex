@@ -41,6 +41,7 @@ public class GameController : MonoBehaviour
 
     private float lastComboDecrease;
     public int EnemiesDestroyed;
+    public float timeElapsed;
 
     public delegate void gameBegin();
     public static event gameBegin GameBegin;
@@ -79,6 +80,8 @@ public class GameController : MonoBehaviour
         combo = 1; 
         comboCount = 0;
 
+        timeElapsed = Time.time;
+
         GameBegin();
     }
 
@@ -96,7 +99,8 @@ public class GameController : MonoBehaviour
             CancelInvoke();
             GameEnd();
         }
-    
+
+        timeElapsed = Time.time - timeElapsed;
     }
 
     public void IncrementScore(int x)
