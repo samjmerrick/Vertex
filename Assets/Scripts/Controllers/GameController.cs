@@ -32,15 +32,14 @@ public class GameController : MonoBehaviour
     }
     #endregion
 
-    public GameObject background;
+    public StatManager statmanager;
 
     public static int score;
     private float lastScored;
     private int combo;
     private float comboCount;
-
     private float lastComboDecrease;
-    public int EnemiesDestroyed;
+
     public float timeElapsed;
 
     public delegate void gameBegin();
@@ -49,8 +48,8 @@ public class GameController : MonoBehaviour
     public delegate void gameEnd();
     public static event gameEnd GameEnd;
 
-    public static bool GameRunning = false;
-    public static bool isQuitting = false;
+    public bool GameRunning = false;
+    public bool isQuitting = false;
 
     void OnEnable()
     {
@@ -68,19 +67,19 @@ public class GameController : MonoBehaviour
 
     public void BeginGame()
     {
-        GameRunning = true;
-
+        statmanager = new StatManager();
+   
         GameObject canvas = GameObject.Find("Canvas");
         Panel gameMenu = canvas.transform.Find("Game Menu").GetComponent<Panel>();
         PanelManager.ShowMenu(gameMenu);
 
         score = 0;
-        EnemiesDestroyed = 0;
         combo = 1; 
         comboCount = 0;
 
         timeElapsed = Time.time;
 
+        GameRunning = true;
         GameBegin();
     }
 
@@ -148,7 +147,7 @@ public class GameController : MonoBehaviour
 
     private void CountDestroys(string name, Vector3 pos)
     {
-        EnemiesDestroyed++;
+        statmanager.ChangeStat("Destroyed", 1);
     }
 
     public void Pause()
