@@ -71,9 +71,8 @@ public class GameController : MonoBehaviour
         GameRunning = true;
 
         GameObject canvas = GameObject.Find("Canvas");
-        Panel deathMenu = canvas.transform.Find("Game Menu").GetComponent<Panel>();
-
-        canvas.GetComponent<PanelManager>().ShowMenu(deathMenu);
+        Panel gameMenu = canvas.transform.Find("Game Menu").GetComponent<Panel>();
+        canvas.GetComponent<PanelManager>().ShowMenu(gameMenu);
 
         score = 0;
         EnemiesDestroyed = 0;
@@ -88,19 +87,17 @@ public class GameController : MonoBehaviour
     public void EndGame()
     {
         GameRunning = false;
+        timeElapsed = Time.time - timeElapsed;
 
         if (!isQuitting)
         {
             GameObject canvas = GameObject.Find("Canvas");
             Panel deathMenu = canvas.transform.Find("Death Menu").GetComponent<Panel>();
-
             canvas.GetComponent<PanelManager>().ShowMenu(deathMenu);
 
             CancelInvoke();
             GameEnd();
         }
-
-        timeElapsed = Time.time - timeElapsed;
     }
 
     public void IncrementScore(int x)
