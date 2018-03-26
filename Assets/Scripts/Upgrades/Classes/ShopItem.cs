@@ -12,6 +12,8 @@ public abstract class ShopItem : MonoBehaviour {
 
     private UIShopController shopController;
 
+    protected abstract void SetUpgradeInfo();
+
     void OnEnable()
     {
         transform.Find("Header").GetComponent<Text>().text = upgradeName;
@@ -29,9 +31,7 @@ public abstract class ShopItem : MonoBehaviour {
     private void OnMouseDown()
     {
         if (shopController.active != this)
-        {
             shopController.ChangeActive(this);
-        }
     }
 
     public void UpgradeBuff()
@@ -54,16 +54,8 @@ public abstract class ShopItem : MonoBehaviour {
     public void SetActive(bool active) 
     {
         if (active)
-        {
             GetComponent<Image>().color += new Color(0, 0, 0.5f);
-        }
         else
-        {
             GetComponent<Image>().color -= new Color(0, 0, 0.5f);
-    
-        }
     }
-
-    protected abstract void SetUpgradeInfo();
-  
 }
