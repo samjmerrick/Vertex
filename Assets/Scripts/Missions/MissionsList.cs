@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIMission : MonoBehaviour
+public class MissionsList : MonoBehaviour
 {
     public GameObject MissionPrefab;
     private List<GameObject> activeMissions = new List<GameObject>();
@@ -15,7 +15,7 @@ public class UIMission : MonoBehaviour
         {
             GameObject m =
                 Instantiate(MissionPrefab,
-                new Vector3(transform.position.x, transform.position.y + (-1.4f * i) + 1.5f),
+                new Vector3(transform.position.x, transform.position.y + (-1.1f * i) + 1.5f),
                 transform.rotation,
                 transform);
             m.GetComponent<UIMissionPrefab>().mission = missionList[i];
