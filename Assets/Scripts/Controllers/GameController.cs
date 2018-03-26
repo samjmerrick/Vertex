@@ -72,7 +72,7 @@ public class GameController : MonoBehaviour
 
         GameObject canvas = GameObject.Find("Canvas");
         Panel gameMenu = canvas.transform.Find("Game Menu").GetComponent<Panel>();
-        canvas.GetComponent<PanelManager>().ShowMenu(gameMenu);
+        PanelManager.ShowMenu(gameMenu);
 
         score = 0;
         EnemiesDestroyed = 0;
@@ -93,7 +93,7 @@ public class GameController : MonoBehaviour
         {
             GameObject canvas = GameObject.Find("Canvas");
             Panel deathMenu = canvas.transform.Find("Death Menu").GetComponent<Panel>();
-            canvas.GetComponent<PanelManager>().ShowMenu(deathMenu);
+            PanelManager.ShowMenu(deathMenu);
 
             CancelInvoke();
             GameEnd();

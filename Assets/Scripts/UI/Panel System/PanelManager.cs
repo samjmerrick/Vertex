@@ -5,14 +5,15 @@ using UnityEngine.UI;
 
 public class PanelManager : MonoBehaviour {
 
-    public Panel CurrentPanel;
+    public static Panel CurrentPanel;
 
 	// Use this for initialization
 	void Start () {
+        CurrentPanel = transform.Find("Start Menu").GetComponent<Panel>();
         ShowMenu(CurrentPanel);
 	}
 	
-	public void ShowMenu(Panel panel)
+	public static void ShowMenu(Panel panel)
     {
         if (CurrentPanel != null)
         {
@@ -24,6 +25,5 @@ public class PanelManager : MonoBehaviour {
         CurrentPanel.gameObject.SetActive(true);
 
         CurrentPanel.isOpen = true;
- 
     }
 }
