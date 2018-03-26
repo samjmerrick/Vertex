@@ -27,7 +27,7 @@ public class ShipState : MonoBehaviour {
 
     private void OnMouseDown()
     {
-        if (!GameController.GameRunning)
+        if (!GameController.instance.GameRunning)
         {
             GameController.instance.BeginGame();
             enabled = false;
