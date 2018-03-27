@@ -1,8 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -32,15 +30,11 @@ public class GameController : MonoBehaviour
     }
     #endregion
 
-    public StatManager gameStats;
-    public StatManager overallStats;
+    public static Dictionary<string, int> gameStats = new Dictionary<string, int>();
 
     public PanelManager panelManager;
 
-    public int score;
     public int bestScore;
-
-    public float timeElapsed;
 
     public delegate void gameBegin();
     public static event gameBegin GameBegin;
@@ -67,11 +61,12 @@ public class GameController : MonoBehaviour
 
     public void BeginGame()
     {
-      
-        gameStats = new StatManager();
+        gameStats.Clear();
+        gameStats.Add("Score", 0);
+        gameStats.Add("Destroyed", 0);
+        gameStats.Add("Time Elapsed", (int)Time.time);
+
         bestScore = PlayerPrefs.GetInt("Best");
-        timeElapsed = Time.time;
-        score = 0;
 
         GameObject canvas = GameObject.Find("Canvas");
         Panel gameMenu = canvas.transform.Find("Game Menu").GetComponent<Panel>();
@@ -84,7 +79,7 @@ public class GameController : MonoBehaviour
     public void EndGame()
     {
         GameRunning = false;
-        timeElapsed = Time.time - timeElapsed;
+        gameStats["Time Elapsed"] = (int)Time.time - gameStats["Time Elapsed"];
 
         if (!isQuitting)
         {
@@ -99,7 +94,10 @@ public class GameController : MonoBehaviour
 
     public void IncrementScore(int x)
     {
-        score += x;
+        gameStats["Score"] += x;
+
+        int score = (int)gameStats["Score"];
+
         UIControl.instance.UpdateScore(score);
 
         if (score % 25 == 0)
@@ -107,7 +105,6 @@ public class GameController : MonoBehaviour
 
         if (score > bestScore)
             PlayerPrefs.SetInt("Best", score);
-
     }
 
     public void DeleteHighScore()
@@ -120,7 +117,7 @@ public class GameController : MonoBehaviour
 
     private void CountDestroys(string name, Vector3 pos)
     {
-        gameStats.ChangeStat("Destroyed", 1);
+        gameStats["Destroyed"] += 1;
     }
 
     public void Pause()
