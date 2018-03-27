@@ -6,22 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class UIControl : MonoBehaviour {
 
-    public Text bestText;
     public Text scoreText;
     public Text comboText;
     public Slider comboSlider;
 
-    private int best;
-    private int score;
-    private float buffTime;
     private Transform GameMenu;
 
     public GameObject uiMessage;
-
     public GameObject missionText;
-
     public GameObject coinupdate;
-
     public GameObject RadialSlider;
 
     #region SINGLETON PATTERN
@@ -62,16 +55,10 @@ public class UIControl : MonoBehaviour {
 
     public void BeginGame()
     {
-        // Prepare the HUD
-        best = PlayerPrefs.GetInt("best");
-        bestText.text = "BEST: " + best;
-
         scoreText.text = "" + 0;
-
         GameMenu = transform.Find("Game Menu");
 
         StartCoroutine(CreateMissionText());
-
     }
 
     IEnumerator CreateMissionText()
@@ -103,12 +90,6 @@ public class UIControl : MonoBehaviour {
 
     public void UpdateScore(int score)
     {
-        if (score > best)
-        {
-            bestText.text = "BEST: " + score;
-            PlayerPrefs.SetInt("best", score);
-        }
-
         scoreText.text = "" + score;
     }
     

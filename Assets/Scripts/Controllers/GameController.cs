@@ -32,10 +32,13 @@ public class GameController : MonoBehaviour
     }
     #endregion
 
-    public StatManager statmanager;
+    public StatManager gameStats;
+    public StatManager overallStats;
+
     public PanelManager panelManager;
 
-    public static int score;
+    public int score;
+    public int bestScore;
 
     public float timeElapsed;
 
@@ -64,15 +67,15 @@ public class GameController : MonoBehaviour
 
     public void BeginGame()
     {
-        statmanager = new StatManager();
-   
+      
+        gameStats = new StatManager();
+        bestScore = PlayerPrefs.GetInt("Best");
+        timeElapsed = Time.time;
+        score = 0;
+
         GameObject canvas = GameObject.Find("Canvas");
         Panel gameMenu = canvas.transform.Find("Game Menu").GetComponent<Panel>();
         panelManager.ShowMenu(gameMenu);
-
-        score = 0;
-
-        timeElapsed = Time.time;
 
         GameRunning = true;
         GameBegin();
@@ -99,8 +102,12 @@ public class GameController : MonoBehaviour
         score += x;
         UIControl.instance.UpdateScore(score);
 
-        if (score % 50 == 0)
+        if (score % 25 == 0)
             SpawnController.toSpawn += 1;
+
+        if (score > bestScore)
+            PlayerPrefs.SetInt("Best", score);
+
     }
 
     public void DeleteHighScore()
@@ -113,7 +120,7 @@ public class GameController : MonoBehaviour
 
     private void CountDestroys(string name, Vector3 pos)
     {
-        statmanager.ChangeStat("Destroyed", 1);
+        gameStats.ChangeStat("Destroyed", 1);
     }
 
     public void Pause()

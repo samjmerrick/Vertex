@@ -6,19 +6,19 @@ using UnityEngine.UI;
 public class UIDeathPanel : MonoBehaviour {
 
 	// Use this for initialization
-	void OnEnable ()
+	void Start ()
     {
         Text bestText = transform.Find("Best").gameObject.GetComponent<Text>();
-        int best = PlayerPrefs.GetInt("best");
+        int best = PlayerPrefs.GetInt("Best");
         bestText.text = "Best: " + best;
 
         Text scoreText = transform.Find("Score").gameObject.GetComponent<Text>();
-        scoreText.text = "Score: " + GameController.score;
+        scoreText.text = "Score: " + GameController.instance.score;
 
         Text stats = transform.Find("Stats").gameObject.GetComponent<Text>();
 
         if (GameController.instance != null)
-            stats.text = "You destroyed " + GameController.instance.statmanager.GetStat("Destroyed") + " Enemies \n" +
+            stats.text = "You destroyed " + GameController.instance.gameStats.GetStat("Destroyed") + " Enemies \n" +
                          "You lasted " + (int)GameController.instance.timeElapsed + " Seconds";
     }
 }
