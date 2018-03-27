@@ -12,7 +12,6 @@ public class KillMission : Mission {
     public KillMission()
     {
         Enemy.Death += EnemyCount;
-        GameController.GameEnd += StopListener;
         missionList.Add(this);
     }
 

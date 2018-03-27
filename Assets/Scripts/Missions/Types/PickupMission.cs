@@ -12,7 +12,6 @@ public class PickupMission : Mission {
     public PickupMission()
     {
         Pickup.Got += PickupCount;
-        GameController.GameEnd += StopListener;
         missionList.Add(this);
     }
 

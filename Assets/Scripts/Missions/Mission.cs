@@ -20,6 +20,9 @@ public abstract class Mission {
 
     public virtual void FinishMission()
     {
+        if (!missionList.Contains(this))
+            throw new ArgumentException("Finished Mission is not in the MissionList");
+
         MissionComplete(this);
         missionList.Remove(this);
 
@@ -49,6 +52,9 @@ public abstract class Mission {
 
     public static void LoadMissions(List<Mission> missions)
     {
+        foreach (Mission mission in missionList)
+            mission.StopListener();
+
         missionList.Clear();
         missionList = missions;
 
