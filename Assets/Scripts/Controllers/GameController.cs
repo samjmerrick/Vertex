@@ -36,10 +36,6 @@ public class GameController : MonoBehaviour
     public PanelManager panelManager;
 
     public static int score;
-    private float lastScored;
-    private int combo;
-    private float comboCount;
-    private float lastComboDecrease;
 
     public float timeElapsed;
 
@@ -75,8 +71,6 @@ public class GameController : MonoBehaviour
         panelManager.ShowMenu(gameMenu);
 
         score = 0;
-        combo = 1; 
-        comboCount = 0;
 
         timeElapsed = Time.time;
 
@@ -102,40 +96,11 @@ public class GameController : MonoBehaviour
 
     public void IncrementScore(int x)
     {
-        lastScored = Time.time;
-        score += x * combo;
+        score += x;
         UIControl.instance.UpdateScore(score);
-
-        if (comboCount >= 0 && comboCount <= 5) combo = 1;
-        if (comboCount >= 5 && comboCount <= 10) combo = 2;
-        if (comboCount >= 10) combo = 4;
-
-        if (comboCount >= 10 && comboCount<= 15) comboCount += 0.2f;
-        if (comboCount >= 5 && comboCount <= 10) comboCount += 0.4f;
-        if (comboCount >= 0 && comboCount <= 5) comboCount += 0.5f;
-
-
-        UIControl.Instance.SetCombo(comboCount);
 
         if (score % 50 == 0)
             SpawnController.toSpawn += 1;
-    }
-
-    private void Update()
-    {
-        if (lastComboDecrease <= Time.time)
-        {
-            if (Time.time - lastScored > 0.5f && comboCount >= 0)
-            {
-                comboCount -= 0.005f * comboCount;
-                UIControl.Instance.SetCombo(comboCount);
-            }
-            if (comboCount >= 0 && comboCount <= 5) combo = 1;
-            if (comboCount >= 5 && comboCount <= 10) combo = 2;
-            if (comboCount >= 10) combo = 4;
-
-            lastComboDecrease = Time.time;
-        }  
     }
 
     public void DeleteHighScore()

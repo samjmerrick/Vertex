@@ -6,8 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class UIControl : MonoBehaviour {
 
-
-
     public Text bestText;
     public Text scoreText;
     public Text comboText;
@@ -128,30 +126,6 @@ public class UIControl : MonoBehaviour {
         go.GetComponent<BuffRadialSlider>().time = secs;
         go.GetComponent<BuffRadialSlider>().buff = buff;
         go.transform.position += new Vector3(0, active.Length * -0.75f);
-    }
-
-    public void SetCombo(string message) {
-        comboText.text = message;
-	}
-
-    public void SetCombo(float i) {
-
-        if (i >= 10) {
-            comboSlider.fillRect.GetComponent<Image>().color = new Color(0, 0, 255, 0.5F);
-            comboSlider.value = i - 10;
-            SetCombo("x4");
-        }
-        
-        if (i >= 5 && i <= 10) {
-            comboSlider.fillRect.GetComponent<Image>().color = new Color(0, 255, 0, 0.5F);
-            comboSlider.value = i - 5;
-            SetCombo("x2");
-        }
-        if (i >= 0 && i <= 5) {
-            comboSlider.fillRect.GetComponent<Image>().color = new Color(255, 0, 0, 0.5F);
-            comboSlider.value = i;
-            SetCombo("");
-        }
     }
 
     public void CoinUpdate(int coins)
