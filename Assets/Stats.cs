@@ -17,4 +17,10 @@ public class Stats : MonoBehaviour {
                 go.transform.Find("Score").GetComponent<Text>().text = entry.Value.ToString();
             }
     }
+
+    private void OnDisable()
+    {
+        foreach (Transform child in transform)
+            Destroy(child.gameObject);
+    }
 }
