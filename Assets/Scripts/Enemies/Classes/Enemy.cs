@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour {
     {
         SpawnController.EnemiesRemaining += 1;
         rend = GetComponent<Renderer>();
-        Speed += (GameController.score * 0.005f);
+        Speed += (GameController.instance.score * 0.005f);
     }
 
     private void OnDestroy()
