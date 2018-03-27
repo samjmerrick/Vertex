@@ -76,13 +76,6 @@ public class UIControl : MonoBehaviour {
         }
     }
 
-    public void FinishMission(Mission mission)
-    {
-        GameObject go = Instantiate(missionText, GameMenu);
-        go.GetComponent<Text>().text = "COMPLETED: " + mission.objective;
-        Destroy(go, 5);
-    }
-
     public void RestartScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
