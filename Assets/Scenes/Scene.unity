@@ -3102,6 +3102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9018bb7ed2e85224583965de15e6705e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurrentPanel: {fileID: 1320750737}
 --- !u!1 &771350958
 GameObject:
   m_ObjectHideFlags: 0
@@ -6852,6 +6853,11 @@ Prefab:
       propertyPath: SpawnRate
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114643698302607590, guid: db32724e76ad374448189e4c5338bf0f,
+        type: 2}
+      propertyPath: panelManager
+      value: 
+      objectReference: {fileID: 771079715}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: db32724e76ad374448189e4c5338bf0f, type: 2}
   m_IsPrefabParent: 0
@@ -7351,6 +7357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ebd41d95f53a85408acf4ae087ec913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  panelManager: {fileID: 771079715}
   timeElapsed: 0
   GameRunning: 0
   isQuitting: 0

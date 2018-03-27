@@ -33,6 +33,7 @@ public class GameController : MonoBehaviour
     #endregion
 
     public StatManager statmanager;
+    public PanelManager panelManager;
 
     public static int score;
     private float lastScored;
@@ -71,7 +72,7 @@ public class GameController : MonoBehaviour
    
         GameObject canvas = GameObject.Find("Canvas");
         Panel gameMenu = canvas.transform.Find("Game Menu").GetComponent<Panel>();
-        PanelManager.ShowMenu(gameMenu);
+        panelManager.ShowMenu(gameMenu);
 
         score = 0;
         combo = 1; 
@@ -92,7 +93,7 @@ public class GameController : MonoBehaviour
         {
             GameObject canvas = GameObject.Find("Canvas");
             Panel deathMenu = canvas.transform.Find("Death Menu").GetComponent<Panel>();
-            PanelManager.ShowMenu(deathMenu);
+            panelManager.ShowMenu(deathMenu);
 
             CancelInvoke();
             GameEnd();

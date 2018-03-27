@@ -1,19 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 public class PanelManager : MonoBehaviour {
 
-    public static Panel CurrentPanel;
+    public Panel CurrentPanel;
 
 	// Use this for initialization
-	void Start () {
-        CurrentPanel = transform.Find("Start Menu").GetComponent<Panel>();
+	void Start ()
+    {
         ShowMenu(CurrentPanel);
 	}
 	
-	public static void ShowMenu(Panel panel)
+	public void ShowMenu(Panel panel)
     {
         if (CurrentPanel != null)
         {
