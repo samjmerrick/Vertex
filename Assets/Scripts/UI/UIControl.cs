@@ -101,12 +101,9 @@ public class UIControl : MonoBehaviour {
 
     public void PickupTimer (string buff, int secs)
     {
-        GameObject[] active = GameObject.FindGameObjectsWithTag("UIRadialBuff");
-
-        GameObject go = Instantiate(RadialSlider, transform);
+        GameObject go = Instantiate(RadialSlider, GameMenu.transform.Find("BuffTimers"));
         go.GetComponent<BuffRadialSlider>().time = secs;
         go.GetComponent<BuffRadialSlider>().buff = buff;
-        go.transform.position += new Vector3(0, active.Length * -0.75f);
     }
 
     public void CoinUpdate(int coins)

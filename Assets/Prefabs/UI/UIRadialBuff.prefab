@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114583629727515088}
   m_Layer: 5
   m_Name: UIRadialBuff
-  m_TagString: UIRadialBuff
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

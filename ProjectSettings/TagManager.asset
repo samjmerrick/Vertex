@@ -9,7 +9,6 @@ TagManager:
   - EnemyFire
   - Pickup
   - Enemy
-  - UIRadialBuff
   layers:
   - Default
   - TransparentFX
