@@ -23,7 +23,6 @@ GameObject:
   - component: {fileID: 50774318201590324}
   - component: {fileID: 95553011445045658}
   - component: {fileID: 114106492932914022}
-  - component: {fileID: 114520084247720664}
   - component: {fileID: 60986300427347344}
   m_Layer: 9
   m_Name: SnakeBody
@@ -131,20 +130,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 1
   Health: 1
---- !u!114 &114520084247720664
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1002491204307926}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8db156da4b9395e48a08dd4dab2fd7fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bullet: {fileID: 1379781562596922, guid: e12dea5cd1e84a947a6dc66626212396, type: 2}
-  frequency: 2
-  shootChance: 5
 --- !u!212 &212713188935209828
 SpriteRenderer:
   m_ObjectHideFlags: 1
