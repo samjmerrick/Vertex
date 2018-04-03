@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class FbController : MonoBehaviour {
 
-	public RawImage PlayerImage;
+	public GameObject FacebookIcon;
 	List<string> perms = new List<string>(){"public_profile", "email"};
 
 	public void LogIn(){
@@ -52,28 +52,33 @@ public class FbController : MonoBehaviour {
 		}
 	}
 
-	private void AuthCallback (ILoginResult result) {
-		if (FB.IsLoggedIn) {
+	private void AuthCallback (ILoginResult result)
+    {
+		if (FB.IsLoggedIn)
+        {
 			// AccessToken class will have session details
 			var aToken = Facebook.Unity.AccessToken.CurrentAccessToken;
+
 			// Print current access token's User ID
 			Debug.Log(aToken.UserId);
+
 			// Print current access token's granted permissions
 			foreach (string perm in aToken.Permissions) {
 				Debug.Log(perm);
 			}
-		
-		} else {
+
+            FacebookIcon.GetComponent<Button>().enabled = false;
+		}
+
+        else {
 			Debug.Log("User cancelled login");
 		}
 	}
-	private void GetPicture(IGraphResult result){
-
-		Debug.Log("Getting profile picture..");
-		if (result.Error == null && result.Texture != null) {
-			Debug.Log("Found profile picture..");
-			PlayerImage.texture = result.Texture;
+	private void GetPicture(IGraphResult result)
+    {
+		if (result.Error == null && result.Texture != null)
+        {
+			FacebookIcon.GetComponentInChildren<RawImage>().texture = result.Texture;
 		}
-
 	}
 }
