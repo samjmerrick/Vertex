@@ -3142,7 +3142,6 @@ GameObject:
   - component: {fileID: 771079710}
   - component: {fileID: 771079714}
   - component: {fileID: 771079715}
-  - component: {fileID: 771079709}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -3150,18 +3149,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &771079709
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 771079708}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68922a599a9014e448d8f5a6efb70359, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FacebookIcon: {fileID: 0}
 --- !u!114 &771079710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4503,7 +4490,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 771079709}
+      - m_Target: {fileID: 0}
         m_MethodName: LogIn
         m_Mode: 1
         m_Arguments:
@@ -7310,7 +7297,7 @@ GameObject:
   - component: {fileID: 2077938220}
   - component: {fileID: 2077938219}
   - component: {fileID: 2077938221}
-  - component: {fileID: 2077938223}
+  - component: {fileID: 2077938222}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -7435,7 +7422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15d03840751f2974dbf70e45a6201859, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2077938223
+--- !u!114 &2077938222
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -7443,9 +7430,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2077938214}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1f2d5d134a0c40d6926f8945c860b61, type: 3}
+  m_Script: {fileID: 11500000, guid: 68922a599a9014e448d8f5a6efb70359, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FacebookIcon: {fileID: 1255034046}
 --- !u!1 &2118286773
 GameObject:
   m_ObjectHideFlags: 0
