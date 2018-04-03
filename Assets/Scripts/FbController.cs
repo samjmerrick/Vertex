@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using Facebook.Unity;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class FbController : MonoBehaviour {
-
-	public GameObject FacebookIcon;
+    
 	List<string> perms = new List<string>(){"public_profile", "email"};
 
 	public void LogIn(){
@@ -34,11 +34,7 @@ public class FbController : MonoBehaviour {
 			// ...
 		} else {
 			Debug.Log("Failed to Initialize the Facebook SDK");
-		}
-
-		if (FB.IsLoggedIn){
-			FB.API( "/me/picture?type=square&height=128&width=128", HttpMethod.GET, GetPicture);
-		}
+		}	
 	}
 
 	private void OnHideUnity (bool isGameShown)
@@ -47,9 +43,9 @@ public class FbController : MonoBehaviour {
 			// Pause the game - we will need to hide
 			Time.timeScale = 0;
 		} else {
-			// Resume the game - we're getting focus again
-			Time.timeScale = 1;
-		}
+            // Resume the game - we're getting focus again
+            Time.timeScale = 1;
+        }
 	}
 
 	private void AuthCallback (ILoginResult result)
@@ -67,18 +63,13 @@ public class FbController : MonoBehaviour {
 				Debug.Log(perm);
 			}
 
-            FacebookIcon.GetComponent<Button>().enabled = false;
-		}
+            // Restart the scene
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
 
         else {
 			Debug.Log("User cancelled login");
 		}
 	}
-	private void GetPicture(IGraphResult result)
-    {
-		if (result.Error == null && result.Texture != null)
-        {
-			FacebookIcon.GetComponentInChildren<RawImage>().texture = result.Texture;
-		}
-	}
+	
 }
