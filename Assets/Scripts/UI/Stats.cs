@@ -21,6 +21,10 @@ public class Stats : MonoBehaviour {
     private void OnDisable()
     {
         foreach (Transform child in transform)
-            Destroy(child.gameObject);
+        {
+            if (child.gameObject.name != "Header")
+                Destroy(child.gameObject);
+        }
+            
     }
 }
