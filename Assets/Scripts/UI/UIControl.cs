@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class UIControl : MonoBehaviour {
 
@@ -74,11 +73,6 @@ public class UIControl : MonoBehaviour {
             yield return new WaitForSeconds(0.4f);
             i++;
         }
-    }
-
-    public void RestartScene()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void UpdateScore(int score)

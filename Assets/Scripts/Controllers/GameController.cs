@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -128,6 +129,11 @@ public class GameController : MonoBehaviour
     public void Resume()
     {
         Time.timeScale = 1;
+    }
+
+    public void RestartScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     private void OnApplicationQuit()

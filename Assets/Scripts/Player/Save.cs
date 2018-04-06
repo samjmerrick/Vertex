@@ -16,8 +16,8 @@ public class SaveManager
     {
         Save saveData;
 
-        // if (!Directory.Exists("Saves"))
-        //     Directory.CreateDirectory("Saves");
+        if (!Directory.Exists("Saves"))
+            Directory.CreateDirectory("Saves");
 
         BinaryFormatter formatter = new BinaryFormatter();
         FileStream saveFile = File.Create(CreateDirectory() + "/save.binary");
@@ -36,8 +36,6 @@ public class SaveManager
     public static void Load()
     {
         if (File.Exists(CreateDirectory() + "/save.binary")) {
-
-             
         Save saveData;
 
         BinaryFormatter formatter = new BinaryFormatter();
@@ -49,11 +47,8 @@ public class SaveManager
         Ship.stats = saveData.stats;
         Mission.LoadMissions(saveData.missions);
 
-
         saveFile.Close();
-
         }
-      
     }
 
 
