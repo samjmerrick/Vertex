@@ -1,14 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 public class PanelManager : MonoBehaviour {
 
     public Panel CurrentPanel;
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
         ShowMenu(CurrentPanel);
 	}
 	
@@ -24,6 +22,5 @@ public class PanelManager : MonoBehaviour {
         CurrentPanel.gameObject.SetActive(true);
 
         CurrentPanel.isOpen = true;
- 
     }
 }

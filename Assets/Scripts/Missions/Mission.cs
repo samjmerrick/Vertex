@@ -9,6 +9,9 @@ public abstract class Mission {
     protected static List<Mission> missionList = new List<Mission>();
     public static List<Mission> GetMissions() { return new List<Mission>(missionList); }
 
+    public delegate void Complete(Mission mission);
+    public static event Complete MissionComplete;
+
     public string NameOfObject;
     public int toComplete = 0;
     public int remaining = 0;
@@ -17,8 +20,12 @@ public abstract class Mission {
 
     public virtual void FinishMission()
     {
+        if (!missionList.Contains(this))
+            throw new ArgumentException("Finished Mission is not in the MissionList");
+
+        MissionComplete(this);
         missionList.Remove(this);
-        UIControl.instance.FinishMission(this);
+
         PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + 100);
         UIControl.Instance.CoinUpdate(PlayerPrefs.GetInt("Coins"));
 
@@ -45,6 +52,9 @@ public abstract class Mission {
 
     public static void LoadMissions(List<Mission> missions)
     {
+        foreach (Mission mission in missionList)
+            mission.StopListener();
+
         missionList.Clear();
         missionList = missions;
 

@@ -23,7 +23,7 @@ public class Snake : Enemy {
     {
         _Angle = Random.Range(_Angle, _Angle - 20);
 
-        beginsize += (int)(GameController.score * 0.02f);
+        beginsize += (int)(GameController.gameStats["Score"] * 0.02f);
 
         Transform firstpart = (Instantiate(bodyprefab, transform.position, transform.rotation, transform) as GameObject).transform;
         firstpart.GetComponent<SpriteRenderer>().sprite = head;

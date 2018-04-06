@@ -21,7 +21,7 @@ public class BuffRadialSlider: MonoBehaviour
 		GetComponent<Image>().fillAmount = angle;
 		GetComponent<Image>().color = Color.Lerp(Color.red, Color.green, angle);
 
-        if (angle <= 0 || !GameController.GameRunning) {
+        if (angle <= 0 || !GameController.instance.GameRunning) {
             Destroy(gameObject);
 
         }

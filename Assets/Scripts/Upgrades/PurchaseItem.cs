@@ -9,5 +9,6 @@ public class PurchaseItem : ShopItem {
 		NextLevelDesc = "Buy one " + upgradeName;
 		NextLevelCost = 500;
 		transform.Find("Header").GetComponent<Text>().text = upgradeName + " (" + upgradeLevel + ")";
-	}
+        transform.Find("Cost").GetComponent<Text>().text = NextLevelCost.ToString();
+    }
 }

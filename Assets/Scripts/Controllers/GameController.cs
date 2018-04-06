@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
@@ -32,16 +31,11 @@ public class GameController : MonoBehaviour
     }
     #endregion
 
-    public GameObject background;
+    public static Dictionary<string, int> gameStats = new Dictionary<string, int>();
 
-    public static int score;
-    private float lastScored;
-    private int combo;
-    private float comboCount;
+    public PanelManager panelManager;
 
-    private float lastComboDecrease;
-    public int EnemiesDestroyed;
-    public float timeElapsed;
+    public int bestScore;
 
     public delegate void gameBegin();
     public static event gameBegin GameBegin;
@@ -49,8 +43,8 @@ public class GameController : MonoBehaviour
     public delegate void gameEnd();
     public static event gameEnd GameEnd;
 
-    public static bool GameRunning = false;
-    public static bool isQuitting = false;
+    public bool GameRunning = false;
+    public bool isQuitting = false;
 
     void OnEnable()
     {
@@ -68,77 +62,50 @@ public class GameController : MonoBehaviour
 
     public void BeginGame()
     {
-        GameRunning = true;
+        gameStats.Clear();
+        gameStats.Add("Score", 0);
+        gameStats.Add("Destroyed", 0);
+        gameStats.Add("Time Elapsed", (int)Time.time);
+
+        bestScore = PlayerPrefs.GetInt("Best");
 
         GameObject canvas = GameObject.Find("Canvas");
-        Panel deathMenu = canvas.transform.Find("Game Menu").GetComponent<Panel>();
+        Panel gameMenu = canvas.transform.Find("Game Menu").GetComponent<Panel>();
+        panelManager.ShowMenu(gameMenu);
 
-        canvas.GetComponent<PanelManager>().ShowMenu(deathMenu);
-
-        score = 0;
-        EnemiesDestroyed = 0;
-        combo = 1; 
-        comboCount = 0;
-
-        timeElapsed = Time.time;
-
+        GameRunning = true;
         GameBegin();
     }
 
     public void EndGame()
     {
         GameRunning = false;
+        gameStats["Time Elapsed"] = (int)Time.time - gameStats["Time Elapsed"];
 
         if (!isQuitting)
         {
             GameObject canvas = GameObject.Find("Canvas");
             Panel deathMenu = canvas.transform.Find("Death Menu").GetComponent<Panel>();
-
-            canvas.GetComponent<PanelManager>().ShowMenu(deathMenu);
+            panelManager.ShowMenu(deathMenu);
 
             CancelInvoke();
             GameEnd();
         }
-
-        timeElapsed = Time.time - timeElapsed;
     }
 
     public void IncrementScore(int x)
     {
-        lastScored = Time.time;
-        score += x * combo;
+        gameStats["Score"] += x;
+
+        int score = (int)gameStats["Score"];
+
         UIControl.instance.UpdateScore(score);
 
-        if (comboCount >= 0 && comboCount <= 5) combo = 1;
-        if (comboCount >= 5 && comboCount <= 10) combo = 2;
-        if (comboCount >= 10) combo = 4;
-
-        if (comboCount >= 10 && comboCount<= 15) comboCount += 0.2f;
-        if (comboCount >= 5 && comboCount <= 10) comboCount += 0.4f;
-        if (comboCount >= 0 && comboCount <= 5) comboCount += 0.5f;
-
-
-        UIControl.Instance.SetCombo(comboCount);
-
-        if (score % 50 == 0)
+        if (score % 25 == 0)
             SpawnController.toSpawn += 1;
-    }
 
-    private void Update()
-    {
-        if (lastComboDecrease <= Time.time)
-        {
-            if (Time.time - lastScored > 0.5f && comboCount >= 0)
-            {
-                comboCount -= 0.005f * comboCount;
-                UIControl.Instance.SetCombo(comboCount);
-            }
-            if (comboCount >= 0 && comboCount <= 5) combo = 1;
-            if (comboCount >= 5 && comboCount <= 10) combo = 2;
-            if (comboCount >= 10) combo = 4;
-
-            lastComboDecrease = Time.time;
-        }  
+        if (score > bestScore)
+            PlayerPrefs.SetInt("Best", score);
     }
 
     public void DeleteHighScore()
@@ -151,7 +118,7 @@ public class GameController : MonoBehaviour
 
     private void CountDestroys(string name, Vector3 pos)
     {
-        EnemiesDestroyed++;
+        gameStats["Destroyed"] += 1;
     }
 
     public void Pause()
@@ -162,6 +129,11 @@ public class GameController : MonoBehaviour
     public void Resume()
     {
         Time.timeScale = 1;
+    }
+
+    public void RestartScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     private void OnApplicationQuit()

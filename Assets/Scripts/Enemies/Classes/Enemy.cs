@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour {
     {
         SpawnController.EnemiesRemaining += 1;
         rend = GetComponent<Renderer>();
-        Speed += (GameController.score * 0.005f);
+        Speed += (GameController.gameStats["Score"] * 0.005f);
     }
 
     private void OnDestroy()
@@ -30,8 +30,7 @@ public class Enemy : MonoBehaviour {
 
     private void OnBecameInvisible()
     {
-        if (transform.position.y < -3)
-            Destroy(gameObject);
+        Destroy(gameObject);
     }
 
     public void DecreaseHealth()

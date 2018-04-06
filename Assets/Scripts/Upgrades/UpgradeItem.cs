@@ -21,6 +21,7 @@ public class UpgradeItem : ShopItem {
         //Prepare the UI
         transform.Find("Slider").GetComponent<Slider>().value = upgradeLevel;
         transform.Find("Slider").GetComponent<Slider>().maxValue = 6;
+        transform.Find("Cost").GetComponent<Text>().text = NextLevelCost.ToString();
 
 	}	
 }
