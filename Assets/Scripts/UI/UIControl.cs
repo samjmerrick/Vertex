@@ -5,17 +5,6 @@ using UnityEngine.UI;
 
 public class UIControl : MonoBehaviour {
 
-    public Text scoreText;
-    public Text comboText;
-    public Slider comboSlider;
-
-    private Transform GameMenu;
-
-    public GameObject uiMessage;
-    public GameObject missionText;
-    public GameObject coinupdate;
-    public GameObject RadialSlider;
-
     #region SINGLETON PATTERN
     public static UIControl instance = null;
     public static UIControl _instance;
@@ -41,6 +30,14 @@ public class UIControl : MonoBehaviour {
         instance = this;
     }
     #endregion
+
+    public Text scoreText;
+    public GameObject uiMessage;
+    public GameObject missionText;
+    public GameObject coinupdate;
+    public GameObject RadialSlider;
+
+    private Transform GameMenu;
 
     private void OnEnable()
     {
