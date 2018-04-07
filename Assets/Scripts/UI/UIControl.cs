@@ -93,6 +93,6 @@ public class UIControl : MonoBehaviour {
 
     public void CoinUpdate(int coins)
     {
-        coinupdate.transform.GetChild(0).GetComponent<Text>().text = coins.ToString();
+        coinupdate.transform.GetChild(1).GetComponent<Text>().text = coins.ToString();
     }
 }
