@@ -71,5 +71,20 @@ public class FbController : MonoBehaviour {
 			Debug.Log("User cancelled login");
 		}
 	}
+
+    public void FeedShare()
+    {
+        if (FB.IsLoggedIn)
+        {
+            FB.FeedShare(
+              link: new System.Uri("https://www.google.co.uk/search?q=spacey+game"),
+              linkName: "Spacey game"
+            );
+        }
+        else {
+            Debug.Log("Not logged in");
+        }
+        
+    }
 	
 }
