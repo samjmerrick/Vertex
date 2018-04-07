@@ -20,7 +20,7 @@ public class SaveManager
             Directory.CreateDirectory("Saves");
 
         BinaryFormatter formatter = new BinaryFormatter();
-        FileStream saveFile = File.Create(CreateDirectory() + "/save.binary");
+        FileStream saveFile = File.Create(SavePath() + "save.binary");
 
         saveData = new Save
         {
@@ -35,42 +35,61 @@ public class SaveManager
 
     public static void Load()
     {
-        if (File.Exists(CreateDirectory() + "/save.binary")) {
-        Save saveData;
+        if (File.Exists(SavePath() + "save.binary")) {
+            Save saveData;
 
-        BinaryFormatter formatter = new BinaryFormatter();
-        FileStream saveFile = File.Open(CreateDirectory() + "/save.binary", FileMode.Open);
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream saveFile = File.Open(SavePath() + "save.binary", FileMode.Open);
 
-        saveData = (Save)formatter.Deserialize(saveFile);
+            saveData = (Save)formatter.Deserialize(saveFile);
 
-        // Load our data
-        Ship.stats = saveData.stats;
-        Mission.LoadMissions(saveData.missions);
+            // Load our data
+            Ship.stats = saveData.stats;
+            Mission.LoadMissions(saveData.missions);
 
-        saveFile.Close();
+            saveFile.Close();
         }
     }
 
-
-    static public string CreateDirectory()
+    public static string SavePath()
     {
         // Choose the output path according to the build target.
         string outputPath = Path.Combine(GetPathBasedOnOS(), "UFOAST");
+
         if (!Directory.Exists(outputPath))
             Directory.CreateDirectory(outputPath);
 
-        return outputPath;
+        return outputPath + "/";
     }
 
     private static string GetPathBasedOnOS()
     {
         if (Application.isEditor)
             return "" + Application.persistentDataPath + "/";
+
         else if (Application.isMobilePlatform || Application.isConsolePlatform)
             return Application.persistentDataPath;
+
         else // For standalone player.
-            return "file://" +  Application.persistentDataPath + "/";
+            return "file://" + Application.persistentDataPath + "/";
+    }
+
+    public static Texture2D LoadTextureToFile(string file)
+    {
+        byte[] bytes = File.ReadAllBytes(SavePath() + file);
+
+        Texture2D texture = new Texture2D(1, 1);
+        texture.LoadImage(bytes);
+        return texture;
+    }
+
+    public static void SaveTextureToFile(Texture2D texture, string file)
+    {
+        File.WriteAllBytes(SavePath() + file, texture.EncodeToPNG());
+    }
+
+    public static bool FileExists(string file)
+    {
+        return File.Exists(SavePath() + file);
     }
 }
-
-
