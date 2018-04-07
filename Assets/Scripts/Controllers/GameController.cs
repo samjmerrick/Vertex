@@ -34,6 +34,7 @@ public class GameController : MonoBehaviour
     public static Dictionary<string, int> gameStats = new Dictionary<string, int>();
 
     public PanelManager panelManager;
+    public Canvas canvas;
 
     public int bestScore;
 
@@ -68,8 +69,6 @@ public class GameController : MonoBehaviour
         gameStats.Add("Time Elapsed", (int)Time.time);
 
         bestScore = PlayerPrefs.GetInt("Best");
-
-        GameObject canvas = GameObject.Find("Canvas");
         Panel gameMenu = canvas.transform.Find("Game Menu").GetComponent<Panel>();
         panelManager.ShowMenu(gameMenu);
 
@@ -84,7 +83,6 @@ public class GameController : MonoBehaviour
 
         if (!isQuitting)
         {
-            GameObject canvas = GameObject.Find("Canvas");
             Panel deathMenu = canvas.transform.Find("Death Menu").GetComponent<Panel>();
             panelManager.ShowMenu(deathMenu);
 
