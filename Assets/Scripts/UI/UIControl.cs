@@ -51,7 +51,8 @@ public class UIControl : MonoBehaviour {
 
     public void BeginGame()
     {
-        scoreText.text = "" + 0;
+        UpdateScore(0);
+        CoinUpdate(PlayerPrefs.GetInt("Coins"));
         GameMenu = transform.Find("Game Menu");
 
         StartCoroutine(CreateMissionText());
@@ -74,7 +75,7 @@ public class UIControl : MonoBehaviour {
 
     public void UpdateScore(int score)
     {
-        scoreText.text = "" + score;
+        scoreText.text = score.ToString();
     }
     
     public void UIMessage(string message)
@@ -92,7 +93,6 @@ public class UIControl : MonoBehaviour {
 
     public void CoinUpdate(int coins)
     {
-        coinupdate.transform.GetChild(0).GetComponent<Text>().text = coins + "";
-        coinupdate.GetComponent<Animation>().Play("MoveRight");
+        coinupdate.transform.GetChild(0).GetComponent<Text>().text = coins.ToString();
     }
 }
