@@ -27,7 +27,7 @@ public abstract class Mission {
         missionList.Remove(this);
 
         PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + 100);
-        UIControl.Instance.CoinUpdate(PlayerPrefs.GetInt("Coins"));
+        UIControl.Instance.UpdateCounter("Coins", PlayerPrefs.GetInt("Coins"));
 
         RandomMissionGiver.RandomMission();
     }

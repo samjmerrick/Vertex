@@ -110,6 +110,7 @@ public class Ship : MonoBehaviour
                     shooting = false;
                     StartCoroutine(removeBuff("Laser", 5));
                     upgrades["Laser"] -= 1;
+                    UIControl.instance.UpdateCounter("Laser", upgrades["Laser"]);
                 }
                 else
                     UIControl.instance.UIMessage("Not enough lasers");

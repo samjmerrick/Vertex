@@ -31,11 +31,11 @@ public class UIControl : MonoBehaviour {
     }
     #endregion
 
-    public Text scoreText;
     public GameObject uiMessage;
     public GameObject missionText;
-    public GameObject coinupdate;
     public GameObject RadialSlider;
+
+    public Text[] gameCounters;
 
     private Transform GameMenu;
 
@@ -51,8 +51,9 @@ public class UIControl : MonoBehaviour {
 
     public void BeginGame()
     {
-        UpdateScore(0);
-        CoinUpdate(PlayerPrefs.GetInt("Coins"));
+        UpdateCounter("Score", 0);
+        UpdateCounter("Coins", PlayerPrefs.GetInt("Coins"));
+        UpdateCounter("Laser", Ship.upgrades["Laser"]);
         GameMenu = transform.Find("Game Menu");
 
         StartCoroutine(CreateMissionText());
@@ -72,11 +73,6 @@ public class UIControl : MonoBehaviour {
             i++;
         }
     }
-
-    public void UpdateScore(int score)
-    {
-        scoreText.text = score.ToString();
-    }
     
     public void UIMessage(string message)
     {
@@ -91,8 +87,12 @@ public class UIControl : MonoBehaviour {
         go.GetComponent<BuffRadialSlider>().buff = buff;
     }
 
-    public void CoinUpdate(int coins)
+    public void UpdateCounter(string counter, int count)
     {
-        coinupdate.transform.GetChild(1).GetComponent<Text>().text = coins.ToString();
+        foreach (Text text in gameCounters)
+        {
+            if (text.name == counter)
+                text.text = count.ToString();
+        }
     }
 }

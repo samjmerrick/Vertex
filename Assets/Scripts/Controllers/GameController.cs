@@ -97,7 +97,7 @@ public class GameController : MonoBehaviour
 
         int score = (int)gameStats["Score"];
 
-        UIControl.instance.UpdateScore(score);
+        UIControl.instance.UpdateCounter("Score", score);
 
         if (score % 25 == 0)
             SpawnController.toSpawn += 1;

@@ -15,7 +15,7 @@ public class Coin : MonoBehaviour {
         {
             PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + 1);
             Destroy(gameObject);
-            UIControl.Instance.CoinUpdate(PlayerPrefs.GetInt("Coins"));
+            UIControl.Instance.UpdateCounter("Coins", PlayerPrefs.GetInt("Coins"));
         }
     }
 }
