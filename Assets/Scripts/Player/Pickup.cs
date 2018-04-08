@@ -16,7 +16,7 @@ public class Pickup : MonoBehaviour {
         thisName = name.Replace("(Clone)", "");
         int level;
 
-        if (!Ship.stats.TryGetValue(thisName, out level)) level = 0;
+        if (!Ship.upgrades.TryGetValue(thisName, out level)) level = 0;
         Time += (level * 2);
     }
 

@@ -7,7 +7,7 @@ using System.IO;
 public class Save
 {
     public List<Mission> missions = new List<Mission>();
-    public Dictionary<string, int> stats = new Dictionary<string, int>();
+    public Dictionary<string, int> upgrades = new Dictionary<string, int>();
 }
 
 public class SaveManager
@@ -25,7 +25,7 @@ public class SaveManager
         saveData = new Save
         {
             missions = Mission.GetMissions(),
-            stats = Ship.stats
+            upgrades = Ship.upgrades
         };
 
         formatter.Serialize(saveFile, saveData);
@@ -44,7 +44,7 @@ public class SaveManager
             saveData = (Save)formatter.Deserialize(saveFile);
 
             // Load our data
-            Ship.stats = saveData.stats;
+            Ship.upgrades = saveData.upgrades;
             Mission.LoadMissions(saveData.missions);
 
             saveFile.Close();

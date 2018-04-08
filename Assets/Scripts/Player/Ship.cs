@@ -30,7 +30,7 @@ public class Ship : MonoBehaviour
     public float exSpace = 0.5f;
 
     // Statics
-    public static Dictionary<string, int> stats = new Dictionary<string, int>();
+    public static Dictionary<string, int> upgrades = new Dictionary<string, int>();
     public static List<string> ActiveBuffs = new List<string>();
     
     // Events
@@ -46,8 +46,8 @@ public class Ship : MonoBehaviour
         target = transform.position;
         gamecamera = FindObjectOfType<Camera>();
 
-        if (!stats.ContainsKey("Laser"))
-            stats.Add("Laser", 1);
+        if (!upgrades.ContainsKey("Laser"))
+            upgrades.Add("Laser", 1);
     }
 
     void Update()
@@ -104,12 +104,12 @@ public class Ship : MonoBehaviour
         {
             if (Time.time-lastClickTime < catchTime && !transform.Find("Laser(Clone)"))
             {
-                if (stats["Laser"] > 0)
+                if (upgrades["Laser"] > 0)
                 {
                     Instantiate(laser, transform);
                     shooting = false;
                     StartCoroutine(removeBuff("Laser", 5));
-                    stats["Laser"] -= 1;
+                    upgrades["Laser"] -= 1;
                 }
                 else
                     UIControl.instance.UIMessage("Not enough lasers");

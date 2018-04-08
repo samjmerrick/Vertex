@@ -110,7 +110,7 @@ public class GameController : MonoBehaviour
     {
         PlayerPrefs.DeleteAll();
         Mission.LoadMissions(new List<Mission>()); // Loads 0 Missions
-        Ship.stats.Clear();
+        Ship.upgrades.Clear();
         PlayerPrefs.SetInt("Coins", 10000);
     }
 
