@@ -26,9 +26,6 @@ public class Bullet : MonoBehaviour
                 }
             }
 
-            if (c.gameObject.tag == "Player")
-                c.GetComponent<Health>().DecreaseHealth();
-
             Destroy(gameObject);
 
             GameObject effect = Instantiate(DestroyEffect, transform.position, transform.rotation);

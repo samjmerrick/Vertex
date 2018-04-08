@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 212482073968956572}
   - component: {fileID: 50366503413412068}
   - component: {fileID: 114383360051720664}
-  - component: {fileID: 114622637054957038}
   - component: {fileID: 60985412309480930}
   m_Layer: 8
   m_Name: ship
@@ -144,18 +143,6 @@ MonoBehaviour:
   FireRate: 0.3
   speed: 10
   exSpace: 0.5
---- !u!114 &114622637054957038
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1706091801136994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35ac41d023e1c8b4f9e6f7c769bedefe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 1
 --- !u!212 &212482073968956572
 SpriteRenderer:
   m_ObjectHideFlags: 1
