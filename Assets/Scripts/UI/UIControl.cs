@@ -53,7 +53,9 @@ public class UIControl : MonoBehaviour {
     {
         UpdateCounter("Score", 0);
         UpdateCounter("Coins", PlayerPrefs.GetInt("Coins"));
-        UpdateCounter("Laser", Ship.upgrades["Laser"]);
+        
+        if (Ship.upgrades.ContainsKey("Laser"))
+            UpdateCounter("Laser", Ship.upgrades["Laser"]);
         GameMenu = transform.Find("Game Menu");
 
         StartCoroutine(CreateMissionText());

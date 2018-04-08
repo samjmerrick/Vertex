@@ -16,9 +16,6 @@ public class SaveManager
     {
         Save saveData;
 
-        if (!Directory.Exists("Saves"))
-            Directory.CreateDirectory("Saves");
-
         BinaryFormatter formatter = new BinaryFormatter();
         FileStream saveFile = File.Create(SavePath() + "save.binary");
 
@@ -49,6 +46,16 @@ public class SaveManager
 
             saveFile.Close();
         }
+    }
+
+    public static void ClearSave()
+    {
+        if (File.Exists(SavePath() + "save.binary")){
+             File.Delete(SavePath() + "save.binary");
+             Debug.Log ("Deleted data");
+        }
+        else
+            Debug.Log ("Failed!");
     }
 
     public static string SavePath()

@@ -112,6 +112,7 @@ public class GameController : MonoBehaviour
         Mission.LoadMissions(new List<Mission>()); // Loads 0 Missions
         Ship.upgrades.Clear();
         PlayerPrefs.SetInt("Coins", 10000);
+        SaveManager.ClearSave();
     }
 
     private void CountDestroys(string name, Vector3 pos)
