@@ -32,6 +32,7 @@ public class GameController : MonoBehaviour
     #endregion
 
     public static Dictionary<string, int> gameStats = new Dictionary<string, int>();
+    public static Dictionary<string, int> bestStats = new Dictionary<string, int>();
 
     public PanelManager panelManager;
     public Canvas canvas;
@@ -81,6 +82,23 @@ public class GameController : MonoBehaviour
         GameRunning = false;
         gameStats["Time Elapsed"] = (int)Time.time - gameStats["Time Elapsed"];
 
+        foreach (KeyValuePair<string, int> stat in gameStats)
+        {
+            if (bestStats.ContainsKey(stat.Key))
+            {
+                if (bestStats[stat.Key] < stat.Value)
+                {
+                    bestStats[stat.Key] = stat.Value;
+                    Stats.newBest.Add(stat.Key);
+                }
+            }
+            else
+            {
+                bestStats.Add(stat.Key, stat.Value);
+                Stats.newBest.Add(stat.Key);
+            }
+        }
+            
         if (!isQuitting)
         {
             Panel deathMenu = canvas.transform.Find("Death Menu").GetComponent<Panel>();

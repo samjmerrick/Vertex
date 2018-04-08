@@ -8,6 +8,7 @@ public class Save
 {
     public List<Mission> missions = new List<Mission>();
     public Dictionary<string, int> upgrades = new Dictionary<string, int>();
+    public Dictionary<string, int> bestStats = new Dictionary<string, int>();
 }
 
 public class SaveManager
@@ -22,7 +23,8 @@ public class SaveManager
         saveData = new Save
         {
             missions = Mission.GetMissions(),
-            upgrades = Ship.upgrades
+            upgrades = Ship.upgrades,
+            bestStats = GameController.bestStats
         };
 
         formatter.Serialize(saveFile, saveData);
@@ -43,6 +45,9 @@ public class SaveManager
             // Load our data
             Ship.upgrades = saveData.upgrades;
             Mission.LoadMissions(saveData.missions);
+
+            if (saveData.bestStats != null)
+                GameController.bestStats = saveData.bestStats;
 
             saveFile.Close();
         }
