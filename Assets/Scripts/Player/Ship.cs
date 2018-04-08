@@ -100,7 +100,7 @@ public class Ship : MonoBehaviour
         }
 
         // Laser
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && Time.timeScale != 0)
         {
             if (Time.time-lastClickTime < catchTime && !transform.Find("Laser(Clone)"))
             {
@@ -113,13 +113,13 @@ public class Ship : MonoBehaviour
                     UIControl.instance.UpdateCounter("Laser", upgrades["Laser"]);
                 }
                 else
-                    UIControl.instance.UIMessage("Not enough lasers");
-                
-            } else {
-                //normal click
-                
+                    UIControl.instance.UIMessage("Not enough lasers");   
             }
-            lastClickTime=Time.time;
+            else
+            {
+                //normal click  
+            }
+            lastClickTime = Time.time;
         }
     }
 
