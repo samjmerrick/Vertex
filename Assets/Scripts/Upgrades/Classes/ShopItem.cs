@@ -6,8 +6,12 @@ using UnityEngine.UI;
 public abstract class ShopItem : MonoBehaviour {
 
     public string upgradeName;
+
+    [HideInInspector]
     protected int upgradeLevel = 0;
+    [HideInInspector]
     public string NextLevelDesc;
+    [HideInInspector]
     public int NextLevelCost;
 
     private UIShopController shopController;

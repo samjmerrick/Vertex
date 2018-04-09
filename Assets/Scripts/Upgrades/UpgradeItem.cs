@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class UpgradeItem : ShopItem {
 
+    public Slider slider;
+    public Text cost;
+
 	protected override void SetUpgradeInfo(){
 
 		if (upgradeLevel < 6) 
@@ -19,9 +22,9 @@ public class UpgradeItem : ShopItem {
         }
 
         //Prepare the UI
-        transform.Find("Slider").GetComponent<Slider>().value = upgradeLevel;
-        transform.Find("Slider").GetComponent<Slider>().maxValue = 6;
-        transform.Find("Cost").GetComponent<Text>().text = NextLevelCost.ToString();
+        slider.value = upgradeLevel;
+        slider.maxValue = 6;
+        cost.text = NextLevelCost.ToString();
 
 	}	
 }
