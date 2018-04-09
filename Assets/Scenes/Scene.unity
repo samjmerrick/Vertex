@@ -1561,74 +1561,6 @@ RectTransform:
   m_PrefabParentObject: {fileID: 224626279469796938, guid: ff2137849ce1ec348a4fd635ede253dd,
     type: 2}
   m_PrefabInternal: {fileID: 655464034}
---- !u!1 &269780238
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 269780239}
-  - component: {fileID: 269780241}
-  - component: {fileID: 269780240}
-  m_Layer: 0
-  m_Name: Image
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &269780239
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 269780238}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.000030517578, y: 322, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1320750740}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000045776, y: 322}
-  m_SizeDelta: {x: 789.3, y: 342.9}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &269780240
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 269780238}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 1c8950fa41114f049bdfe3197bae012e, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 1
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
---- !u!222 &269780241
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 269780238}
 --- !u!1001 &270169794
 Prefab:
   m_ObjectHideFlags: 0
@@ -1748,7 +1680,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1160856545179892, guid: ff2137849ce1ec348a4fd635ede253dd, type: 2}
       propertyPath: m_Name
-      value: Score
+      value: Destroyed
       objectReference: {fileID: 0}
     - target: {fileID: 114583127706338576, guid: ff2137849ce1ec348a4fd635ede253dd,
         type: 2}
@@ -1758,7 +1690,7 @@ Prefab:
         type: 3}
     - target: {fileID: 1104496505569516, guid: ff2137849ce1ec348a4fd635ede253dd, type: 2}
       propertyPath: m_Name
-      value: Score
+      value: Destroyed
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ff2137849ce1ec348a4fd635ede253dd, type: 2}
@@ -4964,7 +4896,6 @@ RectTransform:
   - {fileID: 1432297474}
   - {fileID: 628880300}
   - {fileID: 1954059719}
-  - {fileID: 269780239}
   m_Father: {fileID: 771079713}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7079,7 +7010,7 @@ Prefab:
     - target: {fileID: 114248041358844358, guid: db32724e76ad374448189e4c5338bf0f,
         type: 2}
       propertyPath: Enemies.Array.size
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 114248041358844358, guid: db32724e76ad374448189e4c5338bf0f,
         type: 2}
@@ -7132,7 +7063,7 @@ Prefab:
         type: 2}
       propertyPath: Enemies.Array.data[1]
       value: 
-      objectReference: {fileID: 1285395057115632, guid: b4610b1a6be1b9645aa9a839ebef08f2,
+      objectReference: {fileID: 1760036113392306, guid: 9deb39e00d09820408ce0a3a209766dd,
         type: 2}
     - target: {fileID: 114248041358844358, guid: db32724e76ad374448189e4c5338bf0f,
         type: 2}
@@ -7150,7 +7081,7 @@ Prefab:
         type: 2}
       propertyPath: Enemies.Array.data[0]
       value: 
-      objectReference: {fileID: 1355180781126912, guid: b5a285d32773431428187f567ca35ac1,
+      objectReference: {fileID: 1515099094015720, guid: ae5ef249c9f7f1041a540417e05edf12,
         type: 2}
     - target: {fileID: 114248041358844358, guid: db32724e76ad374448189e4c5338bf0f,
         type: 2}
@@ -8173,10 +8104,12 @@ MonoBehaviour:
   SwitchTime: 2
   PickupChance: 50
   Enemies:
-  - {fileID: 1355180781126912, guid: b5a285d32773431428187f567ca35ac1, type: 2}
-  - {fileID: 1285395057115632, guid: b4610b1a6be1b9645aa9a839ebef08f2, type: 2}
+  - {fileID: 1515099094015720, guid: ae5ef249c9f7f1041a540417e05edf12, type: 2}
+  - {fileID: 1760036113392306, guid: 9deb39e00d09820408ce0a3a209766dd, type: 2}
   - {fileID: 1088714843249752, guid: 381f173d4fefc424588c09564dce9d22, type: 2}
   - {fileID: 1056368737187912, guid: 1cda2af5229c470449f519c7335d3862, type: 2}
+  - {fileID: 1355180781126912, guid: b5a285d32773431428187f567ca35ac1, type: 2}
+  - {fileID: 1285395057115632, guid: b4610b1a6be1b9645aa9a839ebef08f2, type: 2}
   Pickups:
   - {fileID: 1872577680506486, guid: f5daccb349568fc4b9b3ea2a3c72c428, type: 2}
   - {fileID: 1325272548664274, guid: 263d3c32ff629d04786dcb8c460a2b59, type: 2}

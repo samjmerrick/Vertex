@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour {
     {
         SpawnController.EnemiesRemaining += 1;
         rend = GetComponent<Renderer>();
-        Speed += (GameController.gameStats["Score"] * 0.005f);
+        Speed += (GameController.gameStats["Destroyed"] * 0.005f);
     }
 
     private void OnDestroy()
@@ -53,7 +53,6 @@ public class Enemy : MonoBehaviour {
         if (Health <= 0 && !collided)
         {
             collided = true;
-            GameController.instance.IncrementScore(1);
 
             if (Death != null)
                 Death(gameObject.name, transform.position);
@@ -64,14 +63,10 @@ public class Enemy : MonoBehaviour {
 
     IEnumerator Flash()
     {
-        if (name == "Enemy Ship(Clone)")
-            rend.material.SetFloat("_FlashAmount", 0.75f);
-
+        rend.material.SetFloat("_FlashAmount", 0.75f);
         yield return new WaitForSeconds(0.075f);
-
         rend.material.SetFloat("_FlashAmount", 0);
     }
-
 
     private void OnTriggerEnter2D(Collider2D c)
     {

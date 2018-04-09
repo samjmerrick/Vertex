@@ -65,7 +65,6 @@ public class GameController : MonoBehaviour
     public void BeginGame()
     {
         gameStats.Clear();
-        gameStats.Add("Score", 0);
         gameStats.Add("Destroyed", 0);
         gameStats.Add("Time Elapsed", (int)Time.time);
 
@@ -109,21 +108,6 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void IncrementScore(int x)
-    {
-        gameStats["Score"] += x;
-
-        int score = (int)gameStats["Score"];
-
-        UIControl.instance.UpdateCounter("Score", score);
-
-        if (score % 25 == 0)
-            SpawnController.toSpawn += 1;
-
-        if (score > bestScore)
-            PlayerPrefs.SetInt("Best", score);
-    }
-
     public void DeleteHighScore()
     {
         PlayerPrefs.DeleteAll();
@@ -136,6 +120,13 @@ public class GameController : MonoBehaviour
     private void CountDestroys(string name, Vector3 pos)
     {
         gameStats["Destroyed"] += 1;
+
+        int destroyed = gameStats["Destroyed"];
+
+        UIControl.instance.UpdateCounter("Destroyed", destroyed);
+
+        if (destroyed % 25 == 0)
+            SpawnController.toSpawn += 1;
     }
 
     public void Pause()
