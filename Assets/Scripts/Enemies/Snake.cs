@@ -71,8 +71,8 @@ public class Snake : Enemy {
 
             float T = Time.deltaTime * dis / mindistance * Speed;
 
-            if (T > 1f)
-                T = 1f;
+            //if (T > 0.5f)
+            //    T = 0.5f;
 
             CurBodyPart.position = Vector3.Slerp(CurBodyPart.position, newpos, T);
             CurBodyPart.rotation = Quaternion.Slerp(CurBodyPart.rotation, PrevBodyPart.rotation, T);
@@ -88,6 +88,6 @@ public class Snake : Enemy {
             parent: transform) 
             as GameObject).transform;
 
-        newpart.gameObject.name = "Snake(Clone)";
+        newpart.gameObject.name = gameObject.name;
     }
 }

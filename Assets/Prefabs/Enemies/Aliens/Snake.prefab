@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 3
-  Health: 1
+  Health: 2
   mindistance: 0.55
   beginsize: 4
   _Angle: 40
