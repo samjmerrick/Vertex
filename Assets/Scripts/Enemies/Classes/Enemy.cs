@@ -33,6 +33,15 @@ public class Enemy : MonoBehaviour {
         Destroy(gameObject);
     }
 
+    private void OnTriggerEnter2D(Collider2D c)
+    {
+        if (c.gameObject.tag == "Player")
+            Destroy(gameObject);
+
+        if (c.gameObject.tag == "PlayerFire" && GetComponent<Renderer>().isVisible)
+            DecreaseHealth();
+    }
+
     public void DecreaseHealth()
     {
         Health -= 1;
@@ -66,14 +75,5 @@ public class Enemy : MonoBehaviour {
         rend.material.SetFloat("_FlashAmount", 0.75f);
         yield return new WaitForSeconds(0.075f);
         rend.material.SetFloat("_FlashAmount", 0);
-    }
-
-    private void OnTriggerEnter2D(Collider2D c)
-    {
-        if (c.gameObject.tag == "Player")
-            Destroy(gameObject);
-
-        if (c.gameObject.tag == "PlayerFire")
-            DecreaseHealth();
     }
 }
