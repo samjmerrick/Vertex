@@ -32,8 +32,10 @@ public class GameController : MonoBehaviour
     #endregion
 
     public static Dictionary<string, int> gameStats = new Dictionary<string, int>();
+    public static Dictionary<string, int> bestStats = new Dictionary<string, int>();
 
     public PanelManager panelManager;
+    public Canvas canvas;
 
     public int bestScore;
 
@@ -68,8 +70,6 @@ public class GameController : MonoBehaviour
         gameStats.Add("Time Elapsed", (int)Time.time);
 
         bestScore = PlayerPrefs.GetInt("Best");
-
-        GameObject canvas = GameObject.Find("Canvas");
         Panel gameMenu = canvas.transform.Find("Game Menu").GetComponent<Panel>();
         panelManager.ShowMenu(gameMenu);
 
@@ -82,9 +82,25 @@ public class GameController : MonoBehaviour
         GameRunning = false;
         gameStats["Time Elapsed"] = (int)Time.time - gameStats["Time Elapsed"];
 
+        foreach (KeyValuePair<string, int> stat in gameStats)
+        {
+            if (bestStats.ContainsKey(stat.Key))
+            {
+                if (bestStats[stat.Key] < stat.Value)
+                {
+                    bestStats[stat.Key] = stat.Value;
+                    Stats.newBest.Add(stat.Key);
+                }
+            }
+            else
+            {
+                bestStats.Add(stat.Key, stat.Value);
+                Stats.newBest.Add(stat.Key);
+            }
+        }
+            
         if (!isQuitting)
         {
-            GameObject canvas = GameObject.Find("Canvas");
             Panel deathMenu = canvas.transform.Find("Death Menu").GetComponent<Panel>();
             panelManager.ShowMenu(deathMenu);
 
@@ -99,7 +115,7 @@ public class GameController : MonoBehaviour
 
         int score = (int)gameStats["Score"];
 
-        UIControl.instance.UpdateScore(score);
+        UIControl.instance.UpdateCounter("Score", score);
 
         if (score % 25 == 0)
             SpawnController.toSpawn += 1;
@@ -112,8 +128,9 @@ public class GameController : MonoBehaviour
     {
         PlayerPrefs.DeleteAll();
         Mission.LoadMissions(new List<Mission>()); // Loads 0 Missions
-        Ship.stats.Clear();
+        Ship.upgrades.Clear();
         PlayerPrefs.SetInt("Coins", 10000);
+        SaveManager.ClearSave();
     }
 
     private void CountDestroys(string name, Vector3 pos)

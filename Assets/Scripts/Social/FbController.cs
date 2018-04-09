@@ -71,5 +71,25 @@ public class FbController : MonoBehaviour {
 			Debug.Log("User cancelled login");
 		}
 	}
+
+    public void FeedShare()
+    {
+        if (FB.IsLoggedIn)
+        {
+            FB.FeedShare(
+              link: new System.Uri("https://www.spaceygame.co.uk/"),
+              linkName: "Spacey Game",
+              linkCaption: "I destroyed " + GameController.gameStats["Destroyed"] + " aliens! Can you beat it?",
+              linkDescription: "Spacey Game is a free mobile game",
+              mediaSource: Application.persistentDataPath + "record.gif"
+            );
+
+            Debug.Log(Application.persistentDataPath + "record.gif");
+        }
+        else {
+            Debug.Log("Not logged in");
+        }
+        
+    }
 	
 }

@@ -21,10 +21,8 @@ GameObject:
   - component: {fileID: 4107870614069708}
   - component: {fileID: 212482073968956572}
   - component: {fileID: 50366503413412068}
-  - component: {fileID: 114478481759281428}
   - component: {fileID: 114383360051720664}
-  - component: {fileID: 114622637054957038}
-  - component: {fileID: 60508234842681450}
+  - component: {fileID: 60985412309480930}
   m_Layer: 8
   m_Name: ship
   m_TagString: Player
@@ -65,7 +63,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!60 &60508234842681450
+--- !u!60 &60985412309480930
 PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -128,40 +126,6 @@ PolygonCollider2D:
       - {x: 0.03, y: -0.905}
       - {x: 0.099999994, y: -0.815}
       - {x: 0.35999998, y: -0.475}
-    - - {x: -0.02, y: -0.765}
-      - {x: -0.28, y: -0.435}
-      - {x: -0.34, y: -0.345}
-      - {x: -0.42999998, y: -0.255}
-      - {x: -0.48, y: -0.255}
-      - {x: -0.51, y: -0.265}
-      - {x: -0.61, y: -0.355}
-      - {x: -0.63, y: -0.355}
-      - {x: -0.69, y: -0.275}
-      - {x: -0.75, y: -0.21499999}
-      - {x: -0.71999997, y: -0.145}
-      - {x: -0.59, y: 0.015}
-      - {x: -0.39999998, y: 0.275}
-      - {x: -0.37, y: 0.305}
-      - {x: -0.31, y: 0.385}
-      - {x: -0.26999998, y: 0.435}
-      - {x: -0.08, y: 0.685}
-      - {x: -0.02, y: 0.765}
-      - {x: 0.01, y: 0.775}
-      - {x: 0.07, y: 0.685}
-      - {x: 0.19999999, y: 0.525}
-      - {x: 0.26, y: 0.435}
-      - {x: 0.39, y: 0.275}
-      - {x: 0.61, y: -0.015}
-      - {x: 0.65, y: -0.074999996}
-      - {x: 0.74, y: -0.175}
-      - {x: 0.71, y: -0.24499999}
-      - {x: 0.68, y: -0.285}
-      - {x: 0.63, y: -0.355}
-      - {x: 0.47, y: -0.255}
-      - {x: 0.42, y: -0.255}
-      - {x: 0.32999998, y: -0.345}
-      - {x: 0.17, y: -0.565}
-      - {x: 0.01, y: -0.765}
 --- !u!114 &114383360051720664
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -173,34 +137,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ac2cf42086c1a4cb995dfd14b04fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
   bullet: {fileID: 1242718240314216, guid: 18b9f064c42571a478f4420c1d5256b9, type: 2}
   shield: {fileID: 1644133065064688, guid: d243e0883e8841348a99d5997c62233b, type: 2}
   laser: {fileID: 1990526946275252, guid: 0f745a71080b2744b85c2a39afd52253, type: 2}
   FireRate: 0.3
---- !u!114 &114478481759281428
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1706091801136994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac1f0125c84a7f74e8224897e3764186, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114622637054957038
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1706091801136994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35ac41d023e1c8b4f9e6f7c769bedefe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 1
+  speed: 10
+  exSpace: 0.5
 --- !u!212 &212482073968956572
 SpriteRenderer:
   m_ObjectHideFlags: 1

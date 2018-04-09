@@ -5,17 +5,6 @@ using UnityEngine.UI;
 
 public class UIControl : MonoBehaviour {
 
-    public Text scoreText;
-    public Text comboText;
-    public Slider comboSlider;
-
-    private Transform GameMenu;
-
-    public GameObject uiMessage;
-    public GameObject missionText;
-    public GameObject coinupdate;
-    public GameObject RadialSlider;
-
     #region SINGLETON PATTERN
     public static UIControl instance = null;
     public static UIControl _instance;
@@ -42,6 +31,14 @@ public class UIControl : MonoBehaviour {
     }
     #endregion
 
+    public GameObject uiMessage;
+    public GameObject missionText;
+    public GameObject RadialSlider;
+
+    public Text[] gameCounters;
+
+    private Transform GameMenu;
+
     private void OnEnable()
     {
         GameController.GameBegin += BeginGame;
@@ -54,7 +51,11 @@ public class UIControl : MonoBehaviour {
 
     public void BeginGame()
     {
-        scoreText.text = "" + 0;
+        UpdateCounter("Score", 0);
+        UpdateCounter("Coins", PlayerPrefs.GetInt("Coins"));
+        
+        if (Ship.upgrades.ContainsKey("Laser"))
+            UpdateCounter("Laser", Ship.upgrades["Laser"]);
         GameMenu = transform.Find("Game Menu");
 
         StartCoroutine(CreateMissionText());
@@ -74,11 +75,6 @@ public class UIControl : MonoBehaviour {
             i++;
         }
     }
-
-    public void UpdateScore(int score)
-    {
-        scoreText.text = "" + score;
-    }
     
     public void UIMessage(string message)
     {
@@ -93,9 +89,12 @@ public class UIControl : MonoBehaviour {
         go.GetComponent<BuffRadialSlider>().buff = buff;
     }
 
-    public void CoinUpdate(int coins)
+    public void UpdateCounter(string counter, int count)
     {
-        coinupdate.transform.GetChild(0).GetComponent<Text>().text = coins + "";
-        coinupdate.GetComponent<Animation>().Play("MoveRight");
+        foreach (Text text in gameCounters)
+        {
+            if (text.name == counter)
+                text.text = count.ToString();
+        }
     }
 }

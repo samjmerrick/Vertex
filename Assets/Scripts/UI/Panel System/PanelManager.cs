@@ -9,8 +9,8 @@ public class PanelManager : MonoBehaviour {
     {
         ShowMenu(CurrentPanel);
 	}
-	
-	public void ShowMenu(Panel panel)
+
+    public void ShowMenu(Panel panel)
     {
         if (CurrentPanel != null)
         {

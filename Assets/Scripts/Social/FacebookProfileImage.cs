@@ -3,11 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using Facebook.Unity;
 using UnityEngine.UI;
+using System.IO;
 
-public class FacebookProfileImage : MonoBehaviour {
-
+public class FacebookProfileImage : MonoBehaviour
+{
     private void OnEnable()
     {
+        if (SaveManager.FileExists("ProfileImage.png"))
+        {
+            GetComponentInChildren<RawImage>().texture = SaveManager.LoadTextureToFile("ProfileImage.png");
+        }
+
         if (FB.IsLoggedIn)
         {
             FB.API("/me/picture?type=square&height=128&width=128", HttpMethod.GET, GetPicture);
@@ -20,11 +26,8 @@ public class FacebookProfileImage : MonoBehaviour {
         {
             GetComponentInChildren<RawImage>().texture = result.Texture;
             GetComponent<Button>().enabled = false;
-        }
-    }
 
-    private void OnDisable()
-    {
-        
+            SaveManager.SaveTextureToFile(result.Texture, "ProfileImage.png");
+        }
     }
 }

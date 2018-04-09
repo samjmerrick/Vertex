@@ -6,8 +6,12 @@ using UnityEngine.UI;
 public abstract class ShopItem : MonoBehaviour {
 
     public string upgradeName;
+
+    [HideInInspector]
     protected int upgradeLevel = 0;
+    [HideInInspector]
     public string NextLevelDesc;
+    [HideInInspector]
     public int NextLevelCost;
 
     private UIShopController shopController;
@@ -20,7 +24,7 @@ public abstract class ShopItem : MonoBehaviour {
         transform.Find("Image").GetComponent<Image>().sprite = (Sprite)Resources.Load("Buff_NoGlow/" + upgradeName, typeof(Sprite));
 
         // Find the current level, and set our variables
-        if (!Ship.stats.TryGetValue(upgradeName, out upgradeLevel)) upgradeLevel = 0;
+        if (!Ship.upgrades.TryGetValue(upgradeName, out upgradeLevel)) upgradeLevel = 0;
 
         SetUpgradeInfo();
 
@@ -43,7 +47,7 @@ public abstract class ShopItem : MonoBehaviour {
             // Upgrade and set preferences
             upgradeLevel++;
             PlayerPrefs.SetInt("Coins", coins - NextLevelCost);
-            Ship.stats[upgradeName] = upgradeLevel;
+            Ship.upgrades[upgradeName] = upgradeLevel;
 
             SetUpgradeInfo();
         }
