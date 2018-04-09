@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114020771720887958}
   m_Layer: 0
   m_Name: invaderFire
-  m_TagString: EnemyFire
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -104,7 +104,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DestroyEffect: {fileID: 1000010355441670, guid: 02a509a7fa70ed740ba4197e20c5d32d,
     type: 2}
-  IsInvincible: 0
   MoveSpeed: 200
   CollisionTag: Player
 --- !u!212 &212255417009612002
