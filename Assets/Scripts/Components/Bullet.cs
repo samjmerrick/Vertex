@@ -17,7 +17,17 @@ public class Bullet : MonoBehaviour
     {
         if (c.gameObject.tag == CollisionTag)
         {
+            if (c.gameObject.tag == "Enemy")
+            {
+                Enemy enemy = c.GetComponent<Enemy>();
+                if (enemy)
+                {
+                    enemy.DecreaseHealth();
+                }
+            }
+
             Destroy(gameObject);
+
             GameObject effect = Instantiate(DestroyEffect, transform.position, transform.rotation);
             Destroy(effect, 0.5f); 
         }
