@@ -53,6 +53,7 @@ public class GameController : MonoBehaviour
         SaveManager.Load();
         Ship.Death += EndGame;
         Enemy.Death += CountDestroys;
+        Pickup.Got += CountPickups;
     }
 
     void OnDisable()
@@ -60,12 +61,14 @@ public class GameController : MonoBehaviour
         SaveManager.Save();
         Ship.Death -= EndGame;
         Enemy.Death -= CountDestroys;
+        Pickup.Got -= CountPickups;
     }
 
     public void BeginGame()
     {
         gameStats.Clear();
         gameStats.Add("Destroyed", 0);
+        gameStats.Add("Pickups", 0);
         gameStats.Add("Time Elapsed", (int)Time.time);
 
         bestScore = PlayerPrefs.GetInt("Best");
@@ -127,6 +130,11 @@ public class GameController : MonoBehaviour
 
         if (destroyed % 25 == 0)
             SpawnController.toSpawn += 1;
+    }
+
+    private void CountPickups(string name, int time)
+    {
+        gameStats["Pickups"] += 1;
     }
 
     public void Pause()
