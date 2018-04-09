@@ -40,17 +40,20 @@ public class Asteroid : Enemy
             transform.rotation = Quaternion.Euler(0, 0, transform.rotation.z + Random.Range(20.0f, -20.0f));
             // Push the asteroid in the direction it is facing
             GetComponent<Rigidbody2D>().AddForce(transform.up * Random.Range(-150.0f, -200f));
-
         }
-
-        
 
         // Give a random angular velocity/rotation
         GetComponent<Rigidbody2D>().angularVelocity = Random.Range(-0.0f, 90.0f);
     }
 
-    private void OnTriggerEnter2D()
+    private void OnTriggerEnter2D(Collider2D c)
     {
+        if (c.gameObject.tag == "Player")
+            Destroy(gameObject);
+
+        if (c.gameObject.tag == "PlayerFire")
+            DecreaseHealth();
+
         if (Health == 0 && SplittableObjects.Length > 0)
         {
             float angle = 180 / SplittableObjects.Length;
@@ -69,7 +72,5 @@ public class Asteroid : Enemy
             }
         }
     }
-
-
 }
 

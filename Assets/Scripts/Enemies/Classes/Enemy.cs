@@ -71,8 +71,9 @@ public class Enemy : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D c)
     {
         if (c.gameObject.tag == "Player")
-        {
             Destroy(gameObject);
-        }
+
+        if (c.gameObject.tag == "PlayerFire")
+            DecreaseHealth();
     }
 }
