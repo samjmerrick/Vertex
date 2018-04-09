@@ -37,8 +37,6 @@ public class GameController : MonoBehaviour
     public PanelManager panelManager;
     public Canvas canvas;
 
-    public int bestScore;
-
     public delegate void gameBegin();
     public static event gameBegin GameBegin;
 
@@ -71,7 +69,6 @@ public class GameController : MonoBehaviour
         gameStats.Add("Pickups", 0);
         gameStats.Add("Time Elapsed", (int)Time.time);
 
-        bestScore = PlayerPrefs.GetInt("Best");
         Panel gameMenu = canvas.transform.Find("Game Menu").GetComponent<Panel>();
         panelManager.ShowMenu(gameMenu);
 
