@@ -57,7 +57,6 @@ public class SaveManager
     {
         if (File.Exists(SavePath() + "save.binary")){
              File.Delete(SavePath() + "save.binary");
-             Debug.Log ("Deleted data");
         }
         else
             Debug.Log ("Failed!");
