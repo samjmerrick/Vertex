@@ -91,3 +91,6 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+#Gif
+*.gif
