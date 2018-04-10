@@ -120,6 +120,7 @@ MonoBehaviour:
   Speed: 1.75
   Health: 3
   ShootFrequency: 2
+  ShootSpeed: 200
   bullet: {fileID: 1379781562596922, guid: e12dea5cd1e84a947a6dc66626212396, type: 2}
   dodge: 2
   smoothing: 7.5
