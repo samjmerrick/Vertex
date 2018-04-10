@@ -127,7 +127,7 @@ Prefab:
     - target: {fileID: 224585250102227834, guid: 44bdc7916d7440340bd84fe48a7b5d80,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.00030517578
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224585250102227834, guid: 44bdc7916d7440340bd84fe48a7b5d80,
         type: 2}
@@ -227,7 +227,7 @@ Prefab:
     - target: {fileID: 224907777771984726, guid: 44bdc7916d7440340bd84fe48a7b5d80,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: -871.64746
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 1303948664936490, guid: 44bdc7916d7440340bd84fe48a7b5d80, type: 2}
       propertyPath: m_Name
@@ -458,6 +458,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Ship: {fileID: 1706091801136994, guid: 7c7b8b44e0751994f85ec2698c3a26ec, type: 2}
+  panelManager: {fileID: 771079715}
 --- !u!50 &64722769
 Rigidbody2D:
   serializedVersion: 4
@@ -553,7 +554,7 @@ Prefab:
     - target: {fileID: 224233734512391466, guid: 8d28e36c98c3e480291f9fe6917b6d96,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 9.349915
+      value: -174.7
       objectReference: {fileID: 0}
     - target: {fileID: 224233734512391466, guid: 8d28e36c98c3e480291f9fe6917b6d96,
         type: 2}
@@ -658,7 +659,7 @@ Prefab:
     - target: {fileID: 224281359260815880, guid: 8d28e36c98c3e480291f9fe6917b6d96,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 48
+      value: 84.05
       objectReference: {fileID: 0}
     - target: {fileID: 224106828157945080, guid: 8d28e36c98c3e480291f9fe6917b6d96,
         type: 2}
@@ -668,7 +669,7 @@ Prefab:
     - target: {fileID: 224106828157945080, guid: 8d28e36c98c3e480291f9fe6917b6d96,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.049934387
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224342180344512042, guid: 8d28e36c98c3e480291f9fe6917b6d96,
         type: 2}
@@ -678,7 +679,7 @@ Prefab:
     - target: {fileID: 224342180344512042, guid: 8d28e36c98c3e480291f9fe6917b6d96,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.9998856
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224440965612290710, guid: 8d28e36c98c3e480291f9fe6917b6d96,
         type: 2}
@@ -1586,7 +1587,7 @@ Prefab:
     - target: {fileID: 224626279469796938, guid: ff2137849ce1ec348a4fd635ede253dd,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: -2017.7002
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224626279469796938, guid: ff2137849ce1ec348a4fd635ede253dd,
         type: 2}
@@ -5578,7 +5579,7 @@ Prefab:
     - target: {fileID: 224626279469796938, guid: ff2137849ce1ec348a4fd635ede253dd,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 986.34955
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224626279469796938, guid: ff2137849ce1ec348a4fd635ede253dd,
         type: 2}
@@ -7044,6 +7045,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 114248041358844358, guid: db32724e76ad374448189e4c5338bf0f,
         type: 2}
+      propertyPath: Bosses.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114248041358844358, guid: db32724e76ad374448189e4c5338bf0f,
+        type: 2}
       propertyPath: Enemies.Array.size
       value: 5
       objectReference: {fileID: 0}
@@ -7530,6 +7536,17 @@ Prefab:
         type: 2}
       propertyPath: NewEnemyTime
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114248041358844358, guid: db32724e76ad374448189e4c5338bf0f,
+        type: 2}
+      propertyPath: Bosses.Array.data[0]
+      value: 
+      objectReference: {fileID: 1568084031844398, guid: 7ebf0e97f6739704eaab523292c79d75,
+        type: 2}
+    - target: {fileID: 114248041358844358, guid: db32724e76ad374448189e4c5338bf0f,
+        type: 2}
+      propertyPath: BossTime
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: db32724e76ad374448189e4c5338bf0f, type: 2}
@@ -8168,6 +8185,7 @@ MonoBehaviour:
   SpawnRate: 1
   SwitchTime: 2
   NewEnemyTime: 5
+  BossTime: 30
   PickupChance: 50
   toSpawn: 3
   Enemies:
@@ -8176,6 +8194,8 @@ MonoBehaviour:
   - {fileID: 1355180781126912, guid: b5a285d32773431428187f567ca35ac1, type: 2}
   - {fileID: 1285395057115632, guid: b4610b1a6be1b9645aa9a839ebef08f2, type: 2}
   - {fileID: 1515099094015720, guid: ae5ef249c9f7f1041a540417e05edf12, type: 2}
+  Bosses:
+  - {fileID: 1568084031844398, guid: 7ebf0e97f6739704eaab523292c79d75, type: 2}
   Pickups:
   - {fileID: 1872577680506486, guid: f5daccb349568fc4b9b3ea2a3c72c428, type: 2}
   - {fileID: 1325272548664274, guid: 263d3c32ff629d04786dcb8c460a2b59, type: 2}

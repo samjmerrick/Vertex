@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnController : MonoBehaviour {
 
     public static int EnemiesRemaining;
-    public float SpawnRate, SwitchTime, NewEnemyTime;
+    public float SpawnRate, SwitchTime, NewEnemyTime, BossTime;
     public int PickupChance;
     [HideInInspector]
     public int toSpawn = 3;
@@ -16,6 +16,9 @@ public class SpawnController : MonoBehaviour {
     // Enemies
     public GameObject[] Enemies;
     public static List<string> EnemyList = new List<string>();
+
+    // Bosses
+    public GameObject[] Bosses;
 
     // Pickups
     public GameObject[] Pickups;
@@ -55,13 +58,12 @@ public class SpawnController : MonoBehaviour {
         InvokeRepeating("ChangeSpawn", 0, SwitchTime);
         InvokeRepeating("Spawn", 3, SpawnRate);
         InvokeRepeating("AddNewEnemy", NewEnemyTime, NewEnemyTime);
+        StartCoroutine(SpawnBoss());
     }
 
     void EndGame()
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-
-        foreach (GameObject enemy in enemies)
+        foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
             Destroy(enemy.gameObject);
 
         CancelInvoke();
@@ -78,6 +80,14 @@ public class SpawnController : MonoBehaviour {
             Instantiate(Enemies[spawnChoice], location, Quaternion.identity);
             EnemiesRemaining++;
         }
+    }
+
+    IEnumerator SpawnBoss()
+    {
+        yield return new WaitForSeconds(BossTime);
+
+        int choice = Random.Range(0, Bosses.Length);
+        Instantiate(Bosses[choice], new Vector2(0, bounds.y), Quaternion.identity);
     }
 
     void ChangeSpawn()
@@ -107,5 +117,8 @@ public class SpawnController : MonoBehaviour {
 
             pickup.GetComponent<Rigidbody2D>().velocity = new Vector3(0, -2, 0);
         }
+
+        if (name.Contains("Boss"))
+            StartCoroutine(SpawnBoss());   
     }
 }

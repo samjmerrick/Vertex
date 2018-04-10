@@ -68,6 +68,7 @@ public class GameController : MonoBehaviour
         gameStats.Add("Destroyed", 0);
         gameStats.Add("Pickups", 0);
         gameStats.Add("Time Elapsed", (int)Time.time);
+        gameStats.Add("Bosses Destroyed", 0);
 
         Panel gameMenu = canvas.transform.Find("Game Menu").GetComponent<Panel>();
         panelManager.ShowMenu(gameMenu);
@@ -119,8 +120,16 @@ public class GameController : MonoBehaviour
 
     private void CountDestroys(string name, Vector3 pos)
     {
-        gameStats["Destroyed"] += 1;
+        if (name.Contains("Boss"))
+        {
+            gameStats["Bosses Destroyed"] += 1;
+        }
 
+        else
+        {
+            gameStats["Destroyed"] += 1;
+        }
+        
         int destroyed = gameStats["Destroyed"];
 
         UIControl.instance.UpdateCounter("Destroyed", destroyed);
