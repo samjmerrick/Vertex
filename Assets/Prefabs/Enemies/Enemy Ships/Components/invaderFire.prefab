@@ -22,9 +22,10 @@ GameObject:
   - component: {fileID: 212255417009612002}
   - component: {fileID: 50899850553835654}
   - component: {fileID: 60656701521402542}
+  - component: {fileID: 114925413979605308}
   m_Layer: 0
   m_Name: invaderFire
-  m_TagString: Enemy
+  m_TagString: EnemyFire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -90,6 +91,17 @@ PolygonCollider2D:
       - {x: -0.185, y: -0.17999999}
       - {x: 0.185, y: -0.17999999}
       - {x: 0.185, y: 0.17999999}
+--- !u!114 &114925413979605308
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1379781562596922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccbee863189f9214b9ce63ab061327fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212255417009612002
 SpriteRenderer:
   m_ObjectHideFlags: 1
