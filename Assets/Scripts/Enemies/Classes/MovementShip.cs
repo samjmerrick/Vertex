@@ -5,6 +5,7 @@ using UnityEngine;
 public class MovementShip : Enemy
 {
     public int ShootFrequency;
+    public int ShootSpeed;
     public GameObject bullet;
 
     public float dodge;
@@ -37,7 +38,8 @@ public class MovementShip : Enemy
 
     void Shoot()
     {
-        Instantiate(bullet, new Vector3(transform.position.x, transform.position.y - 0.5f), Quaternion.Euler(0,0,180));
+        GameObject go = Instantiate(bullet, new Vector3(transform.position.x, transform.position.y - 0.5f), Quaternion.Euler(0,0,180));
+        go.GetComponent<Rigidbody2D>().AddForce(transform.up * -ShootSpeed);
     }
 
     IEnumerator Evade()

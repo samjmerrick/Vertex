@@ -5,7 +5,6 @@ public class PlayerBullet : MonoBehaviour
 {
     public GameObject DestroyEffect;
     public int MoveSpeed;
-    public string CollisionTag;
     private Vector3 firePos;
 
     void Start()
@@ -17,10 +16,10 @@ public class PlayerBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D c)
     {
-        if (c.gameObject.tag == CollisionTag)
+        if (c.gameObject.tag == "Enemy")
         {
             // Only calculate difference for enemies without 
-            if (!c.gameObject.tag.Contains("_") && c.gameObject.GetComponent<Enemy>().Health == 0)
+            if (!c.gameObject.name.Contains("_"))
             {
                 float diff = Vector2.Distance(Camera.main.WorldToViewportPoint(firePos), Camera.main.WorldToViewportPoint(transform.position)) * 100;
 
