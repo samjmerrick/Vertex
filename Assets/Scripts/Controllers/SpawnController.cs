@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class SpawnController : MonoBehaviour {
 
-    public float SpawnRate;
-    public float SwitchTime;
-    public int PickupChance;
-    public static int toSpawn = 3;
     public static int EnemiesRemaining;
-    private int spawnChoice;
+    public float SpawnRate, SwitchTime, NewEnemyTime;
+    public int PickupChance;
+    [HideInInspector]
+    public int toSpawn = 3;
+
+    private Vector3 bounds;
+    private int spawnChoice, availableEnemies;
 
     // Enemies
     public GameObject[] Enemies;
@@ -18,7 +20,6 @@ public class SpawnController : MonoBehaviour {
     // Pickups
     public GameObject[] Pickups;
     public static List <string> PickupList= new List<string>();
-
 
     void OnEnable()
     {
@@ -32,7 +33,10 @@ public class SpawnController : MonoBehaviour {
 
         GameController.GameBegin += StartGame;
         GameController.GameEnd += EndGame;
-        Enemy.Death += SpawnPickup;
+        Enemy.Death += EnemyDied;
+
+        bounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height));
+        bounds.x += .5f;
     }
 
     void OnDisable()
@@ -42,7 +46,7 @@ public class SpawnController : MonoBehaviour {
 
         GameController.GameBegin -= StartGame;
         GameController.GameEnd -= EndGame;
-        Enemy.Death -= SpawnPickup;
+        Enemy.Death -= EnemyDied;
     }
 
     void StartGame()
@@ -50,6 +54,7 @@ public class SpawnController : MonoBehaviour {
         EnemiesRemaining = 0;
         InvokeRepeating("ChangeSpawn", 0, SwitchTime);
         InvokeRepeating("Spawn", 3, SpawnRate);
+        InvokeRepeating("AddNewEnemy", NewEnemyTime, NewEnemyTime);
     }
 
     void EndGame()
@@ -67,20 +72,30 @@ public class SpawnController : MonoBehaviour {
         if (EnemiesRemaining < toSpawn)
         {
             Vector3 location = new Vector3(
-                x: Random.Range(-2.5f, 2.5f),
-                y: 5f);
+                x: Random.Range(-bounds.x, bounds.x),
+                y: bounds.y);
 
-            Instantiate(Enemies[spawnChoice], location, Quaternion.identity); 
+            Instantiate(Enemies[spawnChoice], location, Quaternion.identity);
+            EnemiesRemaining++;
         }
     }
 
     void ChangeSpawn()
     {
-        spawnChoice = Random.Range(0, Enemies.Length);
+        spawnChoice = Random.Range(0, availableEnemies);
     }
 
-    void SpawnPickup(string name, Vector3 pos)
+    void AddNewEnemy()
     {
+        availableEnemies++;
+
+        if (availableEnemies == Enemies.Length)
+            CancelInvoke("AddNewEnemy");
+    }
+
+    void EnemyDied(string name, Vector3 pos)
+    {
+        EnemiesRemaining--;
         int Chance = Random.Range(0, PickupChance);
 
         if (Chance < Pickups.Length)
@@ -88,7 +103,7 @@ public class SpawnController : MonoBehaviour {
             GameObject pickup = Instantiate(
                 Pickups[Chance],
                 pos,
-                Quaternion.Euler(0, 0, 0));
+                Quaternion.identity);
 
             pickup.GetComponent<Rigidbody2D>().velocity = new Vector3(0, -2, 0);
         }

@@ -126,7 +126,7 @@ public class GameController : MonoBehaviour
         UIControl.instance.UpdateCounter("Destroyed", destroyed);
 
         if (destroyed % 25 == 0)
-            SpawnController.toSpawn += 1;
+            GetComponent<SpawnController>().toSpawn++;
     }
 
     private void CountPickups(string name, int time)

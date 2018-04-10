@@ -18,7 +18,6 @@ public class Enemy : MonoBehaviour {
 
     private void Awake()
     {
-        SpawnController.EnemiesRemaining += 1;
         rend = GetComponent<Renderer>();
         Speed += (GameController.gameStats["Destroyed"] * 0.005f);
     }
