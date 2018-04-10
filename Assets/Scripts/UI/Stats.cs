@@ -21,7 +21,8 @@ public class Stats : MonoBehaviour {
 
                 if (newBest.Contains(entry.Key))
                 {
-                    go.transform.Find("Best").GetComponent<Text>().color = new Color(255, 0, 0);
+                    Debug.Log("Found" + entry.Key);
+                    go.transform.Find("Best").GetComponent<Text>().color = new Color32(50, 205, 50, 255);
                 }
             }
         }
