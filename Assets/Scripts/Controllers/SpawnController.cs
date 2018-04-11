@@ -67,6 +67,7 @@ public class SpawnController : MonoBehaviour {
             Destroy(enemy.gameObject);
 
         CancelInvoke();
+        StopAllCoroutines();
     }
 
     void Spawn()
