@@ -5,7 +5,8 @@ using UnityEngine;
 public class SpawnController : MonoBehaviour {
 
     public static int EnemiesRemaining;
-    public float SpawnRate, SwitchTime, NewEnemyTime, BossTime;
+    public float SpawnRate, SwitchTime, NewEnemyTime;
+    public Vector2 BossTime;
     public int PickupChance;
     [HideInInspector]
     public int toSpawn = 3;
@@ -85,7 +86,8 @@ public class SpawnController : MonoBehaviour {
 
     IEnumerator SpawnBoss()
     {
-        yield return new WaitForSeconds(BossTime);
+        float WaitTime = Random.Range(BossTime.x, BossTime.y);
+        yield return new WaitForSeconds(WaitTime);
 
         int choice = Random.Range(0, Bosses.Length);
         Instantiate(Bosses[choice], new Vector2(0, bounds.y), Quaternion.identity);
