@@ -66,9 +66,9 @@ public class GameController : MonoBehaviour
     {
         gameStats.Clear();
         gameStats.Add("Destroyed", 0);
+        gameStats.Add("Bosses", 0);
         gameStats.Add("Pickups", 0);
         gameStats.Add("Time Elapsed", (int)Time.time);
-        gameStats.Add("Bosses Destroyed", 0);
 
         Panel gameMenu = canvas.transform.Find("Game Menu").GetComponent<Panel>();
         panelManager.ShowMenu(gameMenu);
@@ -122,7 +122,7 @@ public class GameController : MonoBehaviour
     {
         if (name.Contains("Boss"))
         {
-            gameStats["Bosses Destroyed"] += 1;
+            gameStats["Bosses"] += 1;
         }
 
         else
