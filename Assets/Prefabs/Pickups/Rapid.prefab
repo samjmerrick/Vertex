@@ -21,9 +21,9 @@ GameObject:
   - component: {fileID: 4146234114199750}
   - component: {fileID: 212050353203026526}
   - component: {fileID: 50396549034671602}
-  - component: {fileID: 114078283153949084}
   - component: {fileID: 60756381037667966}
   - component: {fileID: 114808895709638044}
+  - component: {fileID: 114201140761515088}
   m_Layer: 0
   m_Name: Rapid
   m_TagString: Pickup
@@ -110,7 +110,7 @@ PolygonCollider2D:
       - {x: 0.125, y: -0.625}
       - {x: 0.305, y: -0.475}
       - {x: 0.45499998, y: -0.33499998}
---- !u!114 &114078283153949084
+--- !u!114 &114201140761515088
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1325272548664274}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 490267893350d544fa552ba8129f2bb2, type: 3}
+  m_Script: {fileID: 11500000, guid: ccbee863189f9214b9ce63ab061327fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114808895709638044
@@ -132,7 +132,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 944cb76b1143bf3458e228bc44695c2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Buff: Rapid
   Time: 3
 --- !u!212 &212050353203026526
 SpriteRenderer:
