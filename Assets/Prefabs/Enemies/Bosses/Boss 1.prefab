@@ -11,6 +11,21 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1568084031844398}
   m_IsPrefabParent: 1
+--- !u!1 &1070488783284306
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4468436611433294}
+  m_Layer: 0
+  m_Name: ShootPoint_1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1077101659079398
 GameObject:
   m_ObjectHideFlags: 0
@@ -20,7 +35,22 @@ GameObject:
   m_Component:
   - component: {fileID: 4301256445046056}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: ShootPoint_3 (Mid)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1141165882557958
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4718292401582226}
+  m_Layer: 0
+  m_Name: ShootPoint_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36,8 +66,8 @@ GameObject:
   - component: {fileID: 4563960375591666}
   - component: {fileID: 212139917771233926}
   - component: {fileID: 50377246403406052}
-  - component: {fileID: 114474497216422356}
   - component: {fileID: 60011093027543738}
+  - component: {fileID: 114474497216422356}
   m_Layer: 0
   m_Name: Boss 1
   m_TagString: Enemy
@@ -54,7 +84,22 @@ GameObject:
   m_Component:
   - component: {fileID: 4020830128386658}
   m_Layer: 0
-  m_Name: GameObject (1)
+  m_Name: ShootPoint_5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1897515580236082
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4608541182591334}
+  m_Layer: 0
+  m_Name: ShootPoint_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,26 +111,39 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1632893390143518}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.287, y: -0.489, z: 0}
+  m_LocalRotation: {x: 0, y: -0, z: 0.9961947, w: -0.08715578}
+  m_LocalPosition: {x: 0.713, y: -0.7320001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4563960375591666}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 190}
 --- !u!4 &4301256445046056
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1077101659079398}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.279, y: -0.505, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
+  m_LocalPosition: {x: 0, y: -0.269, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4563960375591666}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+--- !u!4 &4468436611433294
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1070488783284306}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalPosition: {x: -0.279, y: -0.5049999, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4563960375591666}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!4 &4563960375591666
 Transform:
   m_ObjectHideFlags: 1
@@ -93,14 +151,43 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1568084031844398}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.05, y: 5.885, z: 0}
+  m_LocalPosition: {x: 0.05, y: 3.607, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 4468436611433294}
+  - {fileID: 4608541182591334}
   - {fileID: 4301256445046056}
+  - {fileID: 4718292401582226}
   - {fileID: 4020830128386658}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4608541182591334
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1897515580236082}
+  m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
+  m_LocalPosition: {x: 0.287, y: -0.48900008, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4563960375591666}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+--- !u!4 &4718292401582226
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1141165882557958}
+  m_LocalRotation: {x: 0, y: 0, z: 0.9961947, w: 0.08715588}
+  m_LocalPosition: {x: -0.742, y: -0.7320001, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4563960375591666}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 170}
 --- !u!50 &50377246403406052
 Rigidbody2D:
   serializedVersion: 4
@@ -206,14 +293,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 2
   Health: 50
-  ShootPoints:
-  - {fileID: 4301256445046056}
-  - {fileID: 4020830128386658}
-  ShootFrequency: 0.3
-  ShootSpeed: 150
-  clipSize: 6
+  Attacks:
+  - ShootPoints:
+    - {fileID: 4468436611433294}
+    - {fileID: 4608541182591334}
+    Bullet: {fileID: 1379781562596922, guid: e12dea5cd1e84a947a6dc66626212396, type: 2}
+    ShootFrequency: 0.2
+    ShootSpeed: 250
+    clipSize: 4
+  - ShootPoints:
+    - {fileID: 4301256445046056}
+    Bullet: {fileID: 1974600054867500, guid: 429c7a381e4292d4084bd4c896dccbad, type: 2}
+    ShootFrequency: 0.01
+    ShootSpeed: 250
+    clipSize: 100
+  - ShootPoints:
+    - {fileID: 4718292401582226}
+    - {fileID: 4020830128386658}
+    - {fileID: 4468436611433294}
+    - {fileID: 4608541182591334}
+    Bullet: {fileID: 1640968606894348, guid: 535e146a88613b148b56ec4eee95868a, type: 2}
+    ShootFrequency: 0.1
+    ShootSpeed: 250
+    clipSize: 20
   reloadTime: 2
-  dodge: 2
   smoothing: 7.5
   maneuverTime: {x: 1, y: 2}
   maneuverWait: {x: 1, y: 2}
