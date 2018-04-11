@@ -300,13 +300,13 @@ MonoBehaviour:
     Bullet: {fileID: 1379781562596922, guid: e12dea5cd1e84a947a6dc66626212396, type: 2}
     ShootFrequency: 0.2
     ShootSpeed: 250
-    clipSize: 4
+    clipSize: 8
   - ShootPoints:
     - {fileID: 4301256445046056}
-    Bullet: {fileID: 1974600054867500, guid: 429c7a381e4292d4084bd4c896dccbad, type: 2}
-    ShootFrequency: 0.01
-    ShootSpeed: 250
-    clipSize: 100
+    Bullet: {fileID: 1088012845086010, guid: 34b7d201dbac55d4cb3fd4aec6184ef1, type: 2}
+    ShootFrequency: 2
+    ShootSpeed: 0
+    clipSize: 1
   - ShootPoints:
     - {fileID: 4718292401582226}
     - {fileID: 4020830128386658}
@@ -317,10 +317,6 @@ MonoBehaviour:
     ShootSpeed: 250
     clipSize: 20
   reloadTime: 2
-  smoothing: 7.5
-  maneuverTime: {x: 1, y: 2}
-  maneuverWait: {x: 1, y: 2}
-  bullet: {fileID: 1379781562596922, guid: e12dea5cd1e84a947a6dc66626212396, type: 2}
 --- !u!212 &212139917771233926
 SpriteRenderer:
   m_ObjectHideFlags: 1
