@@ -67,6 +67,9 @@ public class SpawnController : MonoBehaviour {
         foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
             Destroy(enemy.gameObject);
 
+        foreach (GameObject enemyFire in GameObject.FindGameObjectsWithTag("EnemyFire"))
+            Destroy(enemyFire.gameObject);
+
         CancelInvoke();
         StopAllCoroutines();
     }
