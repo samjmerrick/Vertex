@@ -127,7 +127,7 @@ Prefab:
     - target: {fileID: 224585250102227834, guid: 44bdc7916d7440340bd84fe48a7b5d80,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.00030517578
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224585250102227834, guid: 44bdc7916d7440340bd84fe48a7b5d80,
         type: 2}
@@ -8308,7 +8308,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 0.4
   speed: 20
-  magnitude: 1
+  magnitude: 5
   damper:
     serializedVersion: 2
     m_Curve:

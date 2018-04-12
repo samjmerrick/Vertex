@@ -11,6 +11,8 @@ public class CameraShake : MonoBehaviour {
     public bool testRotation = false;
     public bool testProjection = false;
 
+    private Transform ship;
+
     Vector3 originalPos;
     Quaternion originalRot;
 
@@ -28,7 +30,12 @@ public class CameraShake : MonoBehaviour {
 
     void StartShake(string name, Vector3 pos)
     {
-        StartCoroutine(ShakeRotation(transform, originalRot, duration, speed, magnitude, damper));
+        if (ship == null)
+            ship = GameObject.FindGameObjectWithTag("Player").transform;
+
+        float diff = Vector2.Distance(ship.position, pos);
+
+        StartCoroutine(ShakeRotation(transform, originalRot, duration, speed, magnitude / diff, damper));
     }
 
 
