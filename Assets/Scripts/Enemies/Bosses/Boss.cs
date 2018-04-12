@@ -57,4 +57,9 @@ public class Boss : Enemy {
         target.x = ship.transform.position.x;
 
     }
+
+    private void OnBecameInvisible()
+    {
+        // Override Enemy class (Do nothing).
+    }
 }
