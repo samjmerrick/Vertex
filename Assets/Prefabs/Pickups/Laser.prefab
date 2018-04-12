@@ -21,9 +21,9 @@ GameObject:
   - component: {fileID: 4763436381945898}
   - component: {fileID: 212401574691252592}
   - component: {fileID: 50077759032932938}
-  - component: {fileID: 114898398608663058}
   - component: {fileID: 60923824465849676}
   - component: {fileID: 114268200422069468}
+  - component: {fileID: 114399433970716892}
   m_Layer: 0
   m_Name: Laser
   m_TagString: Pickup
@@ -129,9 +129,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 944cb76b1143bf3458e228bc44695c2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Buff: Laser
   Time: 3
---- !u!114 &114898398608663058
+--- !u!114 &114399433970716892
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -139,7 +138,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1917350091652468}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 490267893350d544fa552ba8129f2bb2, type: 3}
+  m_Script: {fileID: 11500000, guid: ccbee863189f9214b9ce63ab061327fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &212401574691252592

@@ -9,48 +9,47 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1325272548664274}
+  m_RootGameObject: {fileID: 1355180781126912}
   m_IsPrefabParent: 1
---- !u!1 &1325272548664274
+--- !u!1 &1355180781126912
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4146234114199750}
-  - component: {fileID: 212050353203026526}
-  - component: {fileID: 50396549034671602}
-  - component: {fileID: 60756381037667966}
-  - component: {fileID: 114808895709638044}
-  - component: {fileID: 114201140761515088}
+  - component: {fileID: 4752934280926436}
+  - component: {fileID: 212223916220654574}
+  - component: {fileID: 114757111139745310}
+  - component: {fileID: 50768946534001424}
+  - component: {fileID: 60832478922699548}
   m_Layer: 0
-  m_Name: Rapid
-  m_TagString: Pickup
+  m_Name: Evading Ship
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4146234114199750
+--- !u!4 &4752934280926436
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1325272548664274}
+  m_GameObject: {fileID: 1355180781126912}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.76, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalPosition: {x: 0.05, y: 4.56, z: 0}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50396549034671602
+--- !u!50 &50768946534001424
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1325272548664274}
+  m_GameObject: {fileID: 1355180781126912}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -64,12 +63,12 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!60 &60756381037667966
+--- !u!60 &60832478922699548
 PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1325272548664274}
+  m_GameObject: {fileID: 1355180781126912}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -80,65 +79,60 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.37, y: 5.39}
-    newSize: {x: 0.85, y: 0.79}
+    oldSize: {x: 1.06, y: 0.8}
+    newSize: {x: 1.06, y: 0.8}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.545, y: -0.185}
-      - {x: 0.555, y: -0.085}
-      - {x: 0.555, y: 0.095}
-      - {x: 0.53499997, y: 0.155}
-      - {x: 0.49499997, y: 0.36499998}
-      - {x: 0.385, y: 0.515}
-      - {x: 0.285, y: 0.555}
-      - {x: -0.095, y: 0.555}
-      - {x: -0.345, y: 0.545}
-      - {x: -0.45499998, y: 0.49499997}
-      - {x: -0.545, y: 0.415}
-      - {x: -0.565, y: 0.36499998}
-      - {x: -0.565, y: -0.035}
-      - {x: -0.555, y: -0.145}
-      - {x: -0.475, y: -0.305}
-      - {x: -0.255, y: -0.565}
-      - {x: -0.155, y: -0.655}
-      - {x: -0.105, y: -0.675}
-      - {x: 0.035, y: -0.675}
-      - {x: 0.125, y: -0.625}
-      - {x: 0.305, y: -0.475}
-      - {x: 0.45499998, y: -0.33499998}
---- !u!114 &114201140761515088
+    - - {x: 0.16, y: -0.07}
+      - {x: 0.19, y: -0.37}
+      - {x: 0.22999999, y: -0.39999998}
+      - {x: 0.32, y: -0.39999998}
+      - {x: 0.53, y: -0.19}
+      - {x: 0.53, y: -0.049999997}
+      - {x: 0.42999998, y: 0.29999998}
+      - {x: 0.39, y: 0.32999998}
+      - {x: 0.26999998, y: 0.39999998}
+      - {x: -0.32999998, y: 0.39999998}
+      - {x: -0.41, y: 0.34}
+      - {x: -0.52, y: 0.08}
+      - {x: -0.53, y: 0.03}
+      - {x: -0.53, y: -0.21}
+      - {x: -0.34, y: -0.39999998}
+      - {x: -0.19999999, y: -0.39999998}
+      - {x: -0.14, y: -0.25}
+      - {x: -0.089999996, y: -0.28}
+      - {x: 0.13, y: -0.25}
+--- !u!114 &114757111139745310
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1325272548664274}
+  m_GameObject: {fileID: 1355180781126912}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccbee863189f9214b9ce63ab061327fa, type: 3}
+  m_Script: {fileID: 11500000, guid: 90d16de8d4325ba498d2fed8bf477ca3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114808895709638044
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1325272548664274}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 944cb76b1143bf3458e228bc44695c2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Time: 3
---- !u!212 &212050353203026526
+  Speed: 1.75
+  Health: 3
+  ShootFrequency: 2
+  ShootSpeed: 200
+  bullet: {fileID: 1379781562596922, guid: e12dea5cd1e84a947a6dc66626212396, type: 2}
+  dodge: 2
+  smoothing: 7.5
+  startWait: {x: 1, y: 1.5}
+  maneuverTime: {x: 1, y: 2}
+  maneuverWait: {x: 1, y: 2}
+--- !u!212 &212223916220654574
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1325272548664274}
+  m_GameObject: {fileID: 1355180781126912}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -147,7 +141,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: d6b019c69c0985c4e85ba982dc5c5dbe, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -167,12 +161,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0a2ebabd713b390448ce26887b43ce2f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fb1d18b995e2d4c4ea872e6247cb9456, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.85, y: 0.79}
+  m_Size: {x: 1.06, y: 0.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

@@ -21,9 +21,9 @@ GameObject:
   - component: {fileID: 4911122587896860}
   - component: {fileID: 212479139553074982}
   - component: {fileID: 50120416943047628}
-  - component: {fileID: 114922156327527432}
   - component: {fileID: 60434355767884502}
   - component: {fileID: 114297078947751474}
+  - component: {fileID: 114271626087829968}
   m_Layer: 0
   m_Name: Shield
   m_TagString: Pickup
@@ -112,6 +112,17 @@ PolygonCollider2D:
       - {x: 0.12507994, y: -0.6522349}
       - {x: 0.25239626, y: -0.5693085}
       - {x: 0.4309332, y: -0.37361738}
+--- !u!114 &114271626087829968
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1312994979593096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccbee863189f9214b9ce63ab061327fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114297078947751474
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -123,19 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 944cb76b1143bf3458e228bc44695c2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Buff: Shield
   Time: 3
---- !u!114 &114922156327527432
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1312994979593096}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 490267893350d544fa552ba8129f2bb2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &212479139553074982
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -149,7 +149,7 @@ public class Ship : MonoBehaviour
                 Instantiate(shield, transform); 
         }
 
-        if (c.gameObject.tag == "Enemy")
+        if (c.gameObject.tag == "Enemy" || c.gameObject.tag == "EnemyFire")
         {
             Destroy(gameObject);
         }

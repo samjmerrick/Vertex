@@ -35,6 +35,8 @@ public class UIControl : MonoBehaviour {
     public GameObject missionText;
     public GameObject RadialSlider;
 
+    public Messages messages;
+
     public Text[] gameCounters;
 
     private Transform GameMenu;
@@ -74,6 +76,11 @@ public class UIControl : MonoBehaviour {
             yield return new WaitForSeconds(0.4f);
             i++;
         }
+    }
+
+    public void GameMessage(string message)
+    {
+        messages.Message(message);
     }
     
     public void UIMessage(string message)
