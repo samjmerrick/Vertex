@@ -83,7 +83,6 @@ public class SpawnController : MonoBehaviour {
                 y: bounds.y);
 
             Instantiate(Enemies[spawnChoice], location, Quaternion.identity);
-            EnemiesRemaining++;
         }
     }
 
@@ -111,7 +110,6 @@ public class SpawnController : MonoBehaviour {
 
     void EnemyDied(string name, Vector3 pos)
     {
-        EnemiesRemaining--;
         int Chance = Random.Range(0, PickupChance);
 
         if (Chance < Pickups.Length)

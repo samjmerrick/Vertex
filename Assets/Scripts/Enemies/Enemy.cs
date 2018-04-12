@@ -4,7 +4,8 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour {
 
-    public float Speed = 1;
+    public float Speed = 4;
+    public float RotSpeed = 200;
     public int Health;
 
     private Canvas healthBar;
@@ -18,13 +19,14 @@ public class Enemy : MonoBehaviour {
 
     private void Awake()
     {
+        SpawnController.EnemiesRemaining++;
         rend = GetComponent<Renderer>();
         //Speed += (GameController.gameStats["Destroyed"] * 0.005f);
     }
 
     private void OnDestroy()
     {
-        SpawnController.EnemiesRemaining -= 1;
+        SpawnController.EnemiesRemaining--;
     }
 
     private void OnBecameInvisible()
