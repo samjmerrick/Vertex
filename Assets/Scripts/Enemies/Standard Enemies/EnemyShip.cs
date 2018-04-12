@@ -7,10 +7,9 @@ public class EnemyShip : Enemy {
     public int followingShips;
     public float spacing;
 
-    public EnemyMove[] movement;
+    public bool randMovement;
+    public Transform[] wayPoints;
 
-    private float speed;
-    private float rotSpeed;
     private Rigidbody2D rb;
 
     private Vector2 target;
@@ -47,9 +46,9 @@ public class EnemyShip : Enemy {
 
         float rotateAmount = Vector3.Cross(direction, transform.up).z;
 
-        rb.angularVelocity = -rotateAmount * rotSpeed;
+        rb.angularVelocity = -rotateAmount * RotSpeed;
 
-        rb.velocity = transform.up * speed;
+        rb.velocity = transform.up * Speed;
 
         //transform.position = Vector2.MoveTowards(transform.position, target, Speed * Time.deltaTime);
 
@@ -61,18 +60,19 @@ public class EnemyShip : Enemy {
 
     void Move()
     {
-        rotSpeed = movement[mov].rotSpeed;
-        speed = movement[mov].Speed;
-        target = movement[mov].waypoint.position;
+        target = wayPoints[mov].position;
 
-        if (mov + 1 < movement.Length)
+        if (mov + 1 < wayPoints.Length)
         {
             mov++;
         }
         else
         {
             mov = 0;
-        }    
+        }
+
+        if (randMovement)
+            mov = Random.Range(0, wayPoints.Length);
     }
 
     private void OnBecameInvisible()
