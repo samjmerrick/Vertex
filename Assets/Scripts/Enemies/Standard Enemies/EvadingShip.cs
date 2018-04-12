@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovementShip : Enemy
+public class EvadingShip : Enemy
 {
     public int ShootFrequency;
     public int ShootSpeed;

@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour {
     private void Awake()
     {
         rend = GetComponent<Renderer>();
-        Speed += (GameController.gameStats["Destroyed"] * 0.005f);
+        //Speed += (GameController.gameStats["Destroyed"] * 0.005f);
     }
 
     private void OnDestroy()
