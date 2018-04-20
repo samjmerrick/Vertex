@@ -116,7 +116,7 @@ public class GameController : MonoBehaviour
         while (GameRunning)
         {
             gameStats["Distance"] += 1;
-            UIControl.instance.UpdateCounter("Distance", gameStats["Distance"]);
+            UIControl.instance.Distance.text = gameStats["Distance"].ToString();
             yield return new WaitForSeconds(0.2f);
         }
     }
@@ -144,7 +144,7 @@ public class GameController : MonoBehaviour
         
         int destroyed = gameStats["Destroyed"];
 
-        UIControl.instance.UpdateCounter("Destroyed", destroyed);
+        UIControl.instance.Destroyed.text = destroyed.ToString();
 
         if (destroyed % 25 == 0)
             GetComponent<SpawnController>().toSpawn++;

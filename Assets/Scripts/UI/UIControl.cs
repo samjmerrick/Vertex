@@ -37,7 +37,10 @@ public class UIControl : MonoBehaviour {
 
     public Messages messages;
 
-    public Text[] gameCounters;
+    public Text Distance;
+    public Text Destroyed;
+    public Text Laser;
+    public Text Coins;
 
     private Transform GameMenu;
 
@@ -53,11 +56,14 @@ public class UIControl : MonoBehaviour {
 
     public void BeginGame()
     {
-        UpdateCounter("Score", 0);
-        UpdateCounter("Coins", PlayerPrefs.GetInt("Coins"));
+        Distance.text = "0";
+        Destroyed.text = "0";
         
+        Coins.text = PlayerPrefs.GetInt("Coins").ToString();
+      
         if (Ship.upgrades.ContainsKey("Laser"))
-            UpdateCounter("Laser", Ship.upgrades["Laser"]);
+            Laser.text = Ship.upgrades["Laser"].ToString();
+
         GameMenu = transform.Find("Game Menu");
 
         StartCoroutine(CreateMissionText());
@@ -94,14 +100,5 @@ public class UIControl : MonoBehaviour {
         GameObject go = Instantiate(RadialSlider, GameMenu.transform.Find("BuffTimers"));
         go.GetComponent<BuffRadialSlider>().time = secs;
         go.GetComponent<BuffRadialSlider>().buff = buff;
-    }
-
-    public void UpdateCounter(string counter, int count)
-    {
-        foreach (Text text in gameCounters)
-        {
-            if (text.name == counter)
-                text.text = count.ToString();
-        }
     }
 }

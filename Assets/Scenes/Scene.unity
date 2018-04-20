@@ -2418,7 +2418,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: 40
+  m_Spacing: 20
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -3599,7 +3599,6 @@ GameObject:
   - component: {fileID: 771079712}
   - component: {fileID: 771079711}
   - component: {fileID: 771079710}
-  - component: {fileID: 771079714}
   - component: {fileID: 771079715}
   m_Layer: 0
   m_Name: Canvas
@@ -3695,29 +3694,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &771079714
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114929174476363600, guid: d8fce0512d25bad408822c865de760b4,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 771079708}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2dead050902a5d4da1fd5fd61279ccb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  uiMessage: {fileID: 163435253}
-  missionText: {fileID: 1852399592284910, guid: 167c470daa2ea4c448ef3e72d461c1c3,
-    type: 2}
-  RadialSlider: {fileID: 1525349944042714, guid: e5a4f7f4a6b1925479bfb612e9b89c12,
-    type: 2}
-  messages: {fileID: 389035270}
-  gameCounters:
-  - {fileID: 1818918601}
-  - {fileID: 1171690051}
-  - {fileID: 1121916430}
-  - {fileID: 1072313326}
 --- !u!114 &771079715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3741,6 +3717,7 @@ GameObject:
   - component: {fileID: 771350962}
   - component: {fileID: 771350961}
   - component: {fileID: 771350960}
+  - component: {fileID: 771350963}
   m_Layer: 0
   m_Name: Game Menu
   m_TagString: Untagged
@@ -3811,6 +3788,27 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &771350963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 771350958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2dead050902a5d4da1fd5fd61279ccb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiMessage: {fileID: 163435253}
+  missionText: {fileID: 1852399592284910, guid: 167c470daa2ea4c448ef3e72d461c1c3,
+    type: 2}
+  RadialSlider: {fileID: 1525349944042714, guid: e5a4f7f4a6b1925479bfb612e9b89c12,
+    type: 2}
+  messages: {fileID: 389035270}
+  Distance: {fileID: 1072313326}
+  Destroyed: {fileID: 1171690051}
+  Laser: {fileID: 1121916430}
+  Coins: {fileID: 1818918601}
 --- !u!1001 &771491682
 Prefab:
   m_ObjectHideFlags: 0
