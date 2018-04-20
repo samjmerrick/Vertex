@@ -69,11 +69,13 @@ public class GameController : MonoBehaviour
         gameStats.Add("Bosses", 0);
         gameStats.Add("Pickups", 0);
         gameStats.Add("Time Elapsed", (int)Time.time);
+        gameStats.Add("Distance", 0);
 
         Panel gameMenu = canvas.transform.Find("Game Menu").GetComponent<Panel>();
         panelManager.ShowMenu(gameMenu);
 
         GameRunning = true;
+        StartCoroutine(AddDistance());
         GameBegin();
     }
 
@@ -106,6 +108,16 @@ public class GameController : MonoBehaviour
 
             CancelInvoke();
             GameEnd();
+        }
+    }
+
+    IEnumerator AddDistance()
+    {
+        while (GameRunning)
+        {
+            gameStats["Distance"] += 1;
+            UIControl.instance.UpdateCounter("Distance", gameStats["Distance"]);
+            yield return new WaitForSeconds(0.2f);
         }
     }
 
