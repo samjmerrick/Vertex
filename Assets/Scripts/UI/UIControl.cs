@@ -42,7 +42,6 @@ public class UIControl : MonoBehaviour {
     public Text Laser;
     public Text Coins;
 
-    private Transform GameMenu;
 
     private void OnEnable()
     {
@@ -64,7 +63,7 @@ public class UIControl : MonoBehaviour {
         if (Ship.upgrades.ContainsKey("Laser"))
             Laser.text = Ship.upgrades["Laser"].ToString();
 
-        GameMenu = transform.Find("Game Menu");
+        
 
         StartCoroutine(CreateMissionText());
     }
@@ -75,7 +74,7 @@ public class UIControl : MonoBehaviour {
 
         foreach (Mission mission in Mission.GetMissions())
         {
-            GameObject go = Instantiate(missionText, GameMenu);
+            GameObject go = Instantiate(missionText, transform);
             go.transform.position += new Vector3(0, -i * 0.6f);
             go.GetComponent<Text>().text = mission.objective;
             Destroy(go, 5);
@@ -97,7 +96,7 @@ public class UIControl : MonoBehaviour {
 
     public void PickupTimer (string buff, int secs)
     {
-        GameObject go = Instantiate(RadialSlider, GameMenu.transform.Find("BuffTimers"));
+        GameObject go = Instantiate(RadialSlider, transform.Find("BuffTimers"));
         go.GetComponent<BuffRadialSlider>().time = secs;
         go.GetComponent<BuffRadialSlider>().buff = buff;
     }
