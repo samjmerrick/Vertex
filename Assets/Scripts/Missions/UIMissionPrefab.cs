@@ -13,12 +13,12 @@ public class UIMissionPrefab : MonoBehaviour {
     {
         if (mission != null)
         {
-            int remaining = mission.ReturnRemaining();
+            int progress = mission.ReturnProgress();
             int toComplete = mission.ReturntoComplete();
 
             // Update Objective
             Text objective = transform.Find("Objective").gameObject.GetComponent<Text>();
-            objective.text = mission.GetObjective() + " (" + remaining + "/" + toComplete + ")";   
+            objective.text = mission.GetObjective() + " (" + progress + "/" + toComplete + ")";   
 
             // Update image
             Image image = transform.Find("MissionImage").gameObject.GetComponent<Image>();

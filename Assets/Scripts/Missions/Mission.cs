@@ -14,9 +14,10 @@ public abstract class Mission {
 
     public string NameOfObject;
     public int toComplete = 0;
-    public int remaining = 0;
+    public int progress = 0;
     public string objective;
     public int reward;
+    public bool perGame;
 
     public virtual void FinishMission()
     {
@@ -34,9 +35,9 @@ public abstract class Mission {
         return toComplete;
     }
 
-    public virtual int ReturnRemaining()
+    public virtual int ReturnProgress()
     {
-        return remaining;
+        return progress;
     }
 
     public virtual string GetObjective()
@@ -56,7 +57,15 @@ public abstract class Mission {
         missionList = missions;
 
         foreach (Mission mission in missionList)
+        {
             mission.StartListener();
+
+            // If this is a Per-Game Mission, progress = 0
+            if (mission.perGame)
+            {
+                mission.progress = 0;
+            }  
+        }   
     }
 
     public static List<Mission> ClearMissions()
@@ -65,7 +74,7 @@ public abstract class Mission {
 
         foreach (Mission mission in missionList)
         {
-            if (mission.remaining == mission.toComplete)
+            if (mission.progress == mission.toComplete)
             {
                 missionList.Remove(mission);
                 clearedMissions.Add(mission);

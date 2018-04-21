@@ -46,9 +46,9 @@ public class PickupMission : Mission {
     {
         if (NameOfObject == PickedupName)
         {
-            remaining++;
+            progress++;
 
-            if (toComplete == remaining)
+            if (toComplete == progress)
             {
                 FinishMission();
                 Pickup.Got -= PickupCount;

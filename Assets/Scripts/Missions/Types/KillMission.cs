@@ -46,9 +46,9 @@ public class KillMission : Mission {
     {
         if (NameOfObject == EnemyDiedName)
         {
-            remaining++;
+            progress++;
 
-            if (toComplete == remaining)
+            if (toComplete == progress)
             {
                 FinishMission();
                 Enemy.Death -= EnemyCount;
