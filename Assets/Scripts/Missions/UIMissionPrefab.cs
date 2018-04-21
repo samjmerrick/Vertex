@@ -18,7 +18,10 @@ public class UIMissionPrefab : MonoBehaviour {
 
             // Update Objective
             Text objective = transform.Find("Objective").gameObject.GetComponent<Text>();
-            objective.text = mission.GetObjective() + " (" + progress + "/" + toComplete + ")";   
+            objective.text = mission.GetObjective() + " (" + progress + "/" + toComplete + ")";
+
+            Text reward = transform.Find("Reward").gameObject.GetComponent<Text>();
+            reward.text = mission.reward.ToString();
 
             // Update image
             Image image = transform.Find("MissionImage").gameObject.GetComponent<Image>();

@@ -26,7 +26,7 @@ public abstract class Mission {
 
         MissionComplete(this);
 
-        PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + 100);
+        PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + reward);
         UIControl.Instance.Coins.text = PlayerPrefs.GetInt("Coins").ToString();
     }
 

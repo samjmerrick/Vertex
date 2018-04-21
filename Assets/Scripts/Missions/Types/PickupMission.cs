@@ -9,8 +9,10 @@ public class PickupMission : Mission {
 
     public PickupMission()
     {
-        int rand = Random.Range(0, PickupNames.Count);
         toComplete = 3;
+        reward = 100;
+
+        int rand = Random.Range(0, PickupNames.Count);
         NameOfObject = PickupNames[rand];
         objective = "PICKUP " + toComplete + " " + PickupNames[rand];
     }

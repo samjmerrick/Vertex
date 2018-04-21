@@ -6,11 +6,13 @@ using UnityEngine;
 public class KillMission : Mission {
 
     private static List<string> EnemyNames = SpawnController.EnemyList;
-  
+
     public KillMission()
     {
-        int rand = Random.Range(0, EnemyNames.Count);
         toComplete = 20;
+        reward = 200;
+            
+        int rand = Random.Range(0, EnemyNames.Count);
         NameOfObject = EnemyNames[rand] + "(Clone)";
         objective = "DESTROY " + toComplete + " " + EnemyNames[rand];
     }
