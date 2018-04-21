@@ -6,11 +6,13 @@ using UnityEngine;
 public class PickupMission : Mission {
 
     private static List<string> PickupNames = SpawnController.PickupList;
+    private List<int> missionOptions = new List<int> {2, 3, 5};
 
     public PickupMission()
     {
-        toComplete = 3;
-        reward = 100;
+        int missionChoice = Random.Range(0, missionOptions.Count);
+        toComplete = missionOptions[missionChoice];
+        reward = (missionChoice + 1) * 100;
 
         int rand = Random.Range(0, PickupNames.Count);
         NameOfObject = PickupNames[rand];
