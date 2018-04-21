@@ -19,18 +19,45 @@ public class RandomMissionGiver : MonoBehaviour {
             RandomMission();
     }
 	
-	public static void RandomMission()
+	public void RandomMission()
     {
         if (Mission.GetMissions().Count <= 2)
         {
-            int rand = Random.Range(0, 2);
+            Mission newMission = null;
 
-            if (rand == 0)
-                PickupMission.RandomPickupMission(3);
+            switch (Random.Range(0, 2))
+            {
+                case 0:
+                    newMission = new KillMission();
+                    break;
+ 
+                case 1:
+                    newMission = new PickupMission();
+                    break;
+            }
 
-            if (rand == 1)
-                KillMission.KillRandom(20);
+            if (MissionExists(newMission.NameOfObject))
+            {
+                RandomMission();
+                return;
+            }
+
+            Mission.missionList.Add(newMission);
+            newMission.StartListener();
         }
+    }
+
+    bool MissionExists(string nameOfObject)
+    {
+        foreach (Mission missioninfo in Mission.GetMissions())
+        {
+            if (missioninfo.NameOfObject == nameOfObject)
+            {
+                Debug.Log("Found a mission!");
+                return true;
+            }
+        }
+        return false;
     }
 
     void EndGame()

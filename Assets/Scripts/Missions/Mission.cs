@@ -6,7 +6,7 @@ using UnityEngine;
 [System.Serializable]
 public abstract class Mission {
 
-    protected static List<Mission> missionList = new List<Mission>();
+    public static List<Mission> missionList = new List<Mission>();
     public static List<Mission> GetMissions() { return new List<Mission>(missionList); }
 
     public delegate void Complete(Mission mission);
@@ -84,4 +84,5 @@ public abstract class Mission {
         return clearedMissions;
     }
 }
+
 
