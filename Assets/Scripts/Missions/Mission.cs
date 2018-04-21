@@ -21,11 +21,13 @@ public abstract class Mission {
 
     public virtual void FinishMission()
     {
+        StopListener();
+
         if (!missionList.Contains(this))
             throw new ArgumentException("Finished Mission is not in the MissionList");
 
         MissionComplete(this);
-
+     
         PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + reward);
         UIControl.Instance.Coins.text = PlayerPrefs.GetInt("Coins").ToString();
     }

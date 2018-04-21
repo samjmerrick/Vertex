@@ -29,7 +29,6 @@ public class PickupMission : Mission {
             if (toComplete == progress)
             {
                 FinishMission();
-                Pickup.Got -= PickupCount;
             }
         }
     }

@@ -27,7 +27,6 @@ public class KillMission : Mission {
             if (toComplete == progress)
             {
                 FinishMission();
-                Enemy.Death -= EnemyCount;
             }
         }
     }
