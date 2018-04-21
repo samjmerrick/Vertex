@@ -25,13 +25,17 @@ public class RandomMissionGiver : MonoBehaviour {
         {
             Mission newMission = null;
 
-            switch (Random.Range(0, 2))
+            switch (Random.Range(0, 3))
             {
                 case 0:
+                    newMission = new DistanceMission();
+                    break;
+
+                case 1:
                     newMission = new KillMission();
                     break;
  
-                case 1:
+                case 2:
                     newMission = new PickupMission();
                     break;
             }

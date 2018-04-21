@@ -43,6 +43,9 @@ public class GameController : MonoBehaviour
     public delegate void gameEnd();
     public static event gameEnd GameEnd;
 
+    public delegate void distance(int dist);
+    public static event distance Distance;
+
     public bool GameRunning = false;
     public bool isQuitting = false;
 
@@ -116,6 +119,7 @@ public class GameController : MonoBehaviour
         while (GameRunning)
         {
             gameStats["Distance"] += 1;
+            Distance(1);
             UIControl.instance.Distance.text = gameStats["Distance"].ToString();
             yield return new WaitForSeconds(0.2f);
         }
