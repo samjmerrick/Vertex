@@ -1,6 +1,17 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 public class RandomMissionGiver : MonoBehaviour {
+
+    private void OnEnable()
+    {
+        GameController.GameEnd += EndGame;
+    }
+
+    private void OnDisable()
+    {
+        GameController.GameEnd -= EndGame;
+    }
 
     void Start ()
     {
@@ -20,5 +31,15 @@ public class RandomMissionGiver : MonoBehaviour {
             if (rand == 1)
                 KillMission.KillRandom(20);
         }
+    }
+
+    void EndGame()
+    {
+        MissionsList missionsList = FindObjectOfType<MissionsList>();
+
+        List<Mission> clearedMissions = Mission.ClearMissions();
+        foreach (Mission mission in clearedMissions)
+            Debug.Log(mission.GetObjective());
+
     }
 }

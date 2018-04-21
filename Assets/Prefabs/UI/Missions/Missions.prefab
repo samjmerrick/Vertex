@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 222139869007617246}
   - component: {fileID: 114270212939412110}
   - component: {fileID: 114182167182345034}
+  - component: {fileID: 114859640900175174}
   m_Layer: 5
   m_Name: Missions
   m_TagString: Untagged
@@ -119,6 +120,28 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: MISSIONs
+--- !u!114 &114859640900175174
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1584091220178758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1297475563, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 0
 --- !u!222 &222139869007617246
 CanvasRenderer:
   m_ObjectHideFlags: 1

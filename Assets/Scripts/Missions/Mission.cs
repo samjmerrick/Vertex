@@ -24,12 +24,9 @@ public abstract class Mission {
             throw new ArgumentException("Finished Mission is not in the MissionList");
 
         MissionComplete(this);
-        missionList.Remove(this);
 
         PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + 100);
         UIControl.Instance.Coins.text = PlayerPrefs.GetInt("Coins").ToString();
-
-        RandomMissionGiver.RandomMission();
     }
 
     public virtual int ReturntoComplete()
@@ -60,6 +57,22 @@ public abstract class Mission {
 
         foreach (Mission mission in missionList)
             mission.StartListener();
+    }
+
+    public static List<Mission> ClearMissions()
+    {
+        List<Mission> clearedMissions = new List<Mission>();
+
+        foreach (Mission mission in missionList)
+        {
+            if (mission.remaining == mission.toComplete)
+            {
+                missionList.Remove(mission);
+                clearedMissions.Add(mission);
+            }
+        }
+
+        return clearedMissions;
     }
 }
 
