@@ -27,4 +27,10 @@ public class MissionsList : MonoBehaviour
             Destroy(Mission.gameObject);
         }
     }
+
+    public void RefreshList()
+    {
+        OnDisable();
+        OnEnable();
+    }
 }

@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class UIMissionPrefab : MonoBehaviour {
 
     public Mission mission;
-    private Text expireTime;
 
     void Start()
     {
@@ -29,8 +28,13 @@ public class UIMissionPrefab : MonoBehaviour {
         }
     }
 
-    public void ChangeMission()
+    public void SkipMission()
     {
-        Start();
+        RandomMissionGiver randomMissionGiver = FindObjectOfType<RandomMissionGiver>();
+        randomMissionGiver.SkipMission(mission);
+
+        transform.parent.GetComponent<MissionsList>().RefreshList();
+       
     }
+
 }
