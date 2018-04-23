@@ -40,6 +40,15 @@ public class RandomMissionGiver : MonoBehaviour {
                     break;
             }
 
+            // Chance to be a per-game mission
+            if (Random.Range(0,2) == 0)
+            {
+                newMission.perGame = true;
+                newMission.objective += " in one game";
+                newMission.reward *= 2;
+            }
+
+            // If we already have a mission for this objective, return and create another
             if (MissionExists(newMission.NameOfObject))
             {
                 RandomMission();
@@ -57,7 +66,6 @@ public class RandomMissionGiver : MonoBehaviour {
         {
             if (missioninfo.NameOfObject == nameOfObject)
             {
-                Debug.Log("Found a mission!");
                 return true;
             }
         }
@@ -66,7 +74,7 @@ public class RandomMissionGiver : MonoBehaviour {
 
     void EndGame()
     {
-        MissionsList missionsList = FindObjectOfType<MissionsList>();
+        //MissionsList missionsList = FindObjectOfType<MissionsList>();
 
         List<Mission> clearedMissions = Mission.ClearMissions();
         foreach (Mission mission in clearedMissions)
