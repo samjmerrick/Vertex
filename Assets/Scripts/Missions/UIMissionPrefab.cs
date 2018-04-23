@@ -24,7 +24,10 @@ public class UIMissionPrefab : MonoBehaviour {
 
             // Update image
             Image image = transform.Find("MissionImage").gameObject.GetComponent<Image>();
-            image.sprite = (Sprite)Resources.Load("Buff_NoGlow/" + mission.NameOfObject, typeof(Sprite));
+
+            if (Resources.Load("Buff_NoGlow/" + mission.NameOfObject) != null)
+                image.sprite = (Sprite)Resources.Load("Buff_NoGlow/" + mission.NameOfObject, typeof(Sprite));
+   
         }
     }
 
