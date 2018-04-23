@@ -85,6 +85,7 @@ public class GameController : MonoBehaviour
     public void EndGame()
     {
         GameRunning = false;
+        PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + gameStats["Destroyed"]);
         gameStats["Time Elapsed"] = (int)Time.time - gameStats["Time Elapsed"];
 
         foreach (KeyValuePair<string, int> stat in gameStats)
@@ -119,7 +120,10 @@ public class GameController : MonoBehaviour
         while (GameRunning)
         {
             gameStats["Distance"] += 1;
-            Distance(1);
+
+            if (Distance != null)
+                Distance(1);
+
             UIControl.instance.Distance.text = gameStats["Distance"].ToString();
             yield return new WaitForSeconds(0.2f);
         }
