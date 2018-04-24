@@ -73,6 +73,7 @@ public class RandomMissionGiver : MonoBehaviour {
     void StartMission(Mission mission, int i)
     {
         Mission.missionList.Insert(i, mission);
+        mission.StartListener();
     }
 
     void StopMission(Mission mission)
