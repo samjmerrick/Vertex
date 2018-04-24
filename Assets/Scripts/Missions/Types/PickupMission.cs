@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class PickupMission : Mission {
 
-    private static List<string> PickupNames = SpawnController.PickupList;
+    private List<string> PickupNames = SpawnController.PickupList;
     private List<int> missionOptions = new List<int> {2, 3, 5};
 
     public PickupMission()

@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class KillMission : Mission {
 
-    private static List<string> EnemyNames = SpawnController.EnemyList;
+    private List<string> EnemyNames = SpawnController.EnemyList;
 
     public KillMission()
     {
