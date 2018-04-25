@@ -11,16 +11,21 @@ public class KillMission : Mission {
     {
         toComplete = 20;
         reward = 200;
+
+        EnemyNames.Add("Boss");
             
+
         int rand = Random.Range(0, EnemyNames.Count);
-        NameOfObject = EnemyNames[rand] + "(Clone)";
+        NameOfObject = EnemyNames[rand];
         objective = "DESTROY " + toComplete + " " + EnemyNames[rand];
+
+       
     }
 
     // Counts down enemies
     private void EnemyCount(string EnemyDiedName, Vector3 pos)
     {
-        if (NameOfObject == EnemyDiedName)
+        if (EnemyDiedName.Contains(NameOfObject))
         {
             progress++;
 

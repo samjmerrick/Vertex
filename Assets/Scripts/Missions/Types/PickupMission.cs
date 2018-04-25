@@ -22,7 +22,7 @@ public class PickupMission : Mission {
     // Counts down enemies
     private void PickupCount(string PickedupName, int time)
     {
-        if (NameOfObject == PickedupName)
+        if (PickedupName.Contains(NameOfObject))
         {
             progress++;
 
