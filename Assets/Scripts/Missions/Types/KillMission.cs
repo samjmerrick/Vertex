@@ -1,57 +1,42 @@
-﻿using System;
-using System.Collections;
-using Random = UnityEngine.Random;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
 public class KillMission : Mission {
 
-    public static List<string> EnemyNames = SpawnController.EnemyList;
+    private List<int> missionOptions = new List<int> { 10, 20, 50 };
 
     public KillMission()
     {
-        Enemy.Death += EnemyCount;
-        missionList.Add(this);
-    }
+        // Find SpawnController, choose our target
+        GameObject[] Enemies = Object.FindObjectOfType<SpawnController>().Enemies;
+        Enemy target = Enemies[Random.Range(0, Enemies.Length)].GetComponent<Enemy>();
 
-    // Can be called from anywhere
-    public static void KillRandom(int _toComplete)
-    {
-        int rand = Random.Range(0, EnemyNames.Count);
-        string _nameOfObject = EnemyNames[rand] + "(Clone)";
+        // This int should be a reference to missionOptions
+        int missionChoice = Random.Range(0, missionOptions.Count);
 
-        foreach (Mission missioninfo in GetMissions())
-        {
-            string currentName = missioninfo.NameOfObject;
+        NameOfObject = target.name;
+        toComplete = missionOptions[missionChoice];
+        reward = 50 * (missionChoice + 1) * target.Health;
 
-            if (currentName == _nameOfObject)
-            {
-                RandomMissionGiver.RandomMission();
-                return;
-            }
-        }
+        objective = "DESTROY " + toComplete + " " + NameOfObject;
 
-        string _objective = "DESTROY " + _toComplete + " " + EnemyNames[rand];
 
-        KillMission mission = new KillMission();
-
-        mission.objective = _objective;
-        mission.toComplete = _toComplete;
-        mission.NameOfObject = _nameOfObject;
+        if (missionChoice == 0)
+            CheckOneTime();
     }
 
     // Counts down enemies
     private void EnemyCount(string EnemyDiedName, Vector3 pos)
     {
-        if (NameOfObject == EnemyDiedName)
+        if (EnemyDiedName.Contains(NameOfObject))
         {
-            remaining++;
+            progress++;
 
-            if (toComplete == remaining)
+            if (toComplete == progress)
             {
                 FinishMission();
-                Enemy.Death -= EnemyCount;
             }
         }
     }

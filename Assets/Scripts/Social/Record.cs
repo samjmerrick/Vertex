@@ -5,9 +5,9 @@ using Moments;
 public class Record : MonoBehaviour
 {
 	Recorder m_Recorder;
-	float m_Progress = 0f;
-	string m_LastFile = "";
-	bool m_IsSaving = false;
+	//float m_Progress = 0f;
+	//string m_LastFile = "";
+	//bool m_IsSaving = false;
 
     void OnEnable()
     {
@@ -45,22 +45,22 @@ public class Record : MonoBehaviour
 		// Pre-processing is done in the main thread, but frame compression & file saving
 		// has its own thread, so you can save multiple gif at once.
 
-		m_IsSaving = true;
+		//m_IsSaving = true;
 	}
 
 	void OnFileSaveProgress(int id, float percent)
 	{
 		// This callback is probably not thread safe so use it at your own risks.
 		// Percent is in range [0;1] (0 being 0%, 1 being 100%).
-		m_Progress = percent * 100f;
+		//m_Progress = percent * 100f;
 	}
 
 	void OnFileSaved(int id, string filepath)
 	{
 		// Our file has successfully been compressed & written to disk !
-		m_LastFile = filepath;
+		//m_LastFile = filepath;
 
-		m_IsSaving = false;
+		//m_IsSaving = false;
 
 		// Let's start recording again (note that we could do that as soon as pre-processing
 		// is done and actually save multiple gifs at once, see OnProcessingDone().
@@ -81,7 +81,7 @@ public class Record : MonoBehaviour
         // you'll see a warning in the console if you try saving while the Recorder is
         // processing another gif.
         m_Recorder.Save("record");
-        m_Progress = 0f;
+        //m_Progress = 0f;
     }
 
     /* GUI INFO */

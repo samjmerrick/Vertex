@@ -7,27 +7,37 @@ using UnityEngine.UI;
 public class UIMissionPrefab : MonoBehaviour {
 
     public Mission mission;
-    private Text expireTime;
 
     void Start()
     {
         if (mission != null)
         {
-            int remaining = mission.ReturnRemaining();
+            int progress = mission.ReturnProgress();
             int toComplete = mission.ReturntoComplete();
 
             // Update Objective
             Text objective = transform.Find("Objective").gameObject.GetComponent<Text>();
-            objective.text = mission.GetObjective() + " (" + remaining + "/" + toComplete + ")";   
+            objective.text = mission.GetObjective() + " (" + progress + "/" + toComplete + ")";
+
+            Text reward = transform.Find("Reward").gameObject.GetComponent<Text>();
+            reward.text = mission.reward.ToString();
 
             // Update image
             Image image = transform.Find("MissionImage").gameObject.GetComponent<Image>();
-            image.sprite = (Sprite)Resources.Load("Buff_NoGlow/" + mission.NameOfObject, typeof(Sprite));
+
+            if (Resources.Load("Missions/" + mission.NameOfObject) != null)
+                image.sprite = (Sprite)Resources.Load("Missions/" + mission.NameOfObject, typeof(Sprite));
+   
         }
     }
 
-    public void ChangeMission()
+    public void SkipMission()
     {
-        Start();
+        RandomMissionGiver randomMissionGiver = FindObjectOfType<RandomMissionGiver>();
+        randomMissionGiver.SkipMission(mission);
+
+        transform.parent.GetComponent<MissionsList>().RefreshList();
+       
     }
+
 }

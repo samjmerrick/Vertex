@@ -9,7 +9,7 @@ public class FacebookProfileImage : MonoBehaviour
 {
     private void OnEnable()
     {
-        if (SaveManager.FileExists("ProfileImage.png"))
+        if (SaveManager.FileExists("ProfileImage.png") && FB.IsLoggedIn)
         {
             GetComponentInChildren<RawImage>().texture = SaveManager.LoadTextureToFile("ProfileImage.png");
         }

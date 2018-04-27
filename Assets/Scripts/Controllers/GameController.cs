@@ -43,6 +43,9 @@ public class GameController : MonoBehaviour
     public delegate void gameEnd();
     public static event gameEnd GameEnd;
 
+    public delegate void distance(int dist);
+    public static event distance Distance;
+
     public bool GameRunning = false;
     public bool isQuitting = false;
 
@@ -69,17 +72,20 @@ public class GameController : MonoBehaviour
         gameStats.Add("Bosses", 0);
         gameStats.Add("Pickups", 0);
         gameStats.Add("Time Elapsed", (int)Time.time);
+        gameStats.Add("Distance", 0);
 
         Panel gameMenu = canvas.transform.Find("Game Menu").GetComponent<Panel>();
         panelManager.ShowMenu(gameMenu);
 
         GameRunning = true;
+        StartCoroutine(AddDistance());
         GameBegin();
     }
 
     public void EndGame()
     {
         GameRunning = false;
+        PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + gameStats["Destroyed"]);
         gameStats["Time Elapsed"] = (int)Time.time - gameStats["Time Elapsed"];
 
         foreach (KeyValuePair<string, int> stat in gameStats)
@@ -109,6 +115,20 @@ public class GameController : MonoBehaviour
         }
     }
 
+    IEnumerator AddDistance()
+    {
+        while (GameRunning)
+        {
+            gameStats["Distance"] += 1;
+
+            if (Distance != null)
+                Distance(1);
+
+            UIControl.instance.Distance.text = gameStats["Distance"].ToString();
+            yield return new WaitForSeconds(0.2f);
+        }
+    }
+
     public void DeleteHighScore()
     {
         PlayerPrefs.DeleteAll();
@@ -132,7 +152,7 @@ public class GameController : MonoBehaviour
         
         int destroyed = gameStats["Destroyed"];
 
-        UIControl.instance.UpdateCounter("Destroyed", destroyed);
+        UIControl.instance.Destroyed.text = destroyed.ToString();
 
         if (destroyed % 25 == 0)
             GetComponent<SpawnController>().toSpawn++;

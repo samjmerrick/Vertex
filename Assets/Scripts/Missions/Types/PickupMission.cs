@@ -1,57 +1,38 @@
-﻿using System;
-using Random = UnityEngine.Random;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class PickupMission : Mission { 
+public class PickupMission : Mission {
 
-    public static List<string> PickupNames = SpawnController.PickupList;
+    private List<int> missionOptions = new List<int> {2, 3, 5};
 
     public PickupMission()
     {
-        Pickup.Got += PickupCount;
-        missionList.Add(this);
-    }
+        GameObject[] Pickups = Object.FindObjectOfType<SpawnController>().Pickups;
+        Pickup target = Pickups[Random.Range(0, Pickups.Length)].GetComponent<Pickup>();
 
-    // Can be called from anywhere
-    public static void RandomPickupMission(int _toComplete)
-    {
-        int rand = Random.Range(0, PickupNames.Count);
-        string _nameOfObject = PickupNames[rand];
+        int missionChoice = Random.Range(0, missionOptions.Count);
+        toComplete = missionOptions[missionChoice];
+        reward = (missionChoice + 1) * 100;
 
-        foreach (Mission missioninfo in GetMissions())
-        {
-            string currentName = missioninfo.NameOfObject;
+        NameOfObject = target.name;
+        objective = "PICKUP " + toComplete + " " + NameOfObject;
 
-            if (currentName == _nameOfObject)
-            {
-                RandomMissionGiver.RandomMission();
-                return;
-            }
-        }
-
-        string _objective = "PICKUP " + _toComplete + " " + PickupNames[rand];
-
-        PickupMission mission = new PickupMission();
-
-        mission.objective = _objective;
-        mission.toComplete = _toComplete;
-        mission.NameOfObject = _nameOfObject;
+        if (missionChoice == 0)
+            CheckOneTime();
     }
 
     // Counts down enemies
     private void PickupCount(string PickedupName, int time)
     {
-        if (NameOfObject == PickedupName)
+        if (PickedupName.Contains(NameOfObject))
         {
-            remaining++;
+            progress++;
 
-            if (toComplete == remaining)
+            if (toComplete == progress)
             {
                 FinishMission();
-                Pickup.Got -= PickupCount;
             }
         }
     }
@@ -65,5 +46,4 @@ public class PickupMission : Mission {
     {
         Pickup.Got -= PickupCount;
     }
-
 }

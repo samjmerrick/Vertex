@@ -7,18 +7,14 @@ public class MissionsList : MonoBehaviour
     public GameObject MissionPrefab;
     private List<GameObject> activeMissions = new List<GameObject>();
 
+
+
     private void OnEnable()
     {
-        List<Mission> missionList = Mission.GetMissions();
-
-        for (int i = 0; i < missionList.Count; i++)
+        foreach (Mission mission in Mission.GetMissions())
         {
-            GameObject m =
-                Instantiate(MissionPrefab,
-                new Vector3(transform.position.x, transform.position.y + (-1.1f * i) + 1.5f),
-                transform.rotation,
-                transform);
-            m.GetComponent<UIMissionPrefab>().mission = missionList[i];
+            GameObject m = Instantiate(MissionPrefab, transform);
+            m.GetComponent<UIMissionPrefab>().mission = mission;
 
             activeMissions.Add(m);
         }
@@ -30,5 +26,11 @@ public class MissionsList : MonoBehaviour
         {
             Destroy(Mission.gameObject);
         }
+    }
+
+    public void RefreshList()
+    {
+        OnDisable();
+        OnEnable();
     }
 }

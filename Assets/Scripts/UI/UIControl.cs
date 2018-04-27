@@ -37,9 +37,11 @@ public class UIControl : MonoBehaviour {
 
     public Messages messages;
 
-    public Text[] gameCounters;
+    public Text Distance;
+    public Text Destroyed;
+    public Text Laser;
+    public Text Coins;
 
-    private Transform GameMenu;
 
     private void OnEnable()
     {
@@ -53,12 +55,15 @@ public class UIControl : MonoBehaviour {
 
     public void BeginGame()
     {
-        UpdateCounter("Score", 0);
-        UpdateCounter("Coins", PlayerPrefs.GetInt("Coins"));
+        Distance.text = "0";
+        Destroyed.text = "0";
         
+        Coins.text = PlayerPrefs.GetInt("Coins").ToString();
+      
         if (Ship.upgrades.ContainsKey("Laser"))
-            UpdateCounter("Laser", Ship.upgrades["Laser"]);
-        GameMenu = transform.Find("Game Menu");
+            Laser.text = Ship.upgrades["Laser"].ToString();
+
+        
 
         StartCoroutine(CreateMissionText());
     }
@@ -69,7 +74,7 @@ public class UIControl : MonoBehaviour {
 
         foreach (Mission mission in Mission.GetMissions())
         {
-            GameObject go = Instantiate(missionText, GameMenu);
+            GameObject go = Instantiate(missionText, transform);
             go.transform.position += new Vector3(0, -i * 0.6f);
             go.GetComponent<Text>().text = mission.objective;
             Destroy(go, 5);
@@ -91,17 +96,8 @@ public class UIControl : MonoBehaviour {
 
     public void PickupTimer (string buff, int secs)
     {
-        GameObject go = Instantiate(RadialSlider, GameMenu.transform.Find("BuffTimers"));
+        GameObject go = Instantiate(RadialSlider, transform.Find("BuffTimers"));
         go.GetComponent<BuffRadialSlider>().time = secs;
         go.GetComponent<BuffRadialSlider>().buff = buff;
-    }
-
-    public void UpdateCounter(string counter, int count)
-    {
-        foreach (Text text in gameCounters)
-        {
-            if (text.name == counter)
-                text.text = count.ToString();
-        }
     }
 }
