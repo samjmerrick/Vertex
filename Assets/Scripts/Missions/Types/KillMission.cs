@@ -5,15 +5,21 @@ using UnityEngine;
 [System.Serializable]
 public class KillMission : Mission {
 
+    private List<int> missionOptions = new List<int> { 5, 10, 20 };
+
     public KillMission()
     {
+        // Find SpawnController, choose our target
         GameObject[] Enemies = Object.FindObjectOfType<SpawnController>().Enemies;
-
         Enemy target = Enemies[Random.Range(0, Enemies.Length)].GetComponent<Enemy>();
 
-        toComplete = 20;
-        reward = 200;
+        // This int should be a reference to missionOptions
+        int missionChoice = Random.Range(0, missionOptions.Count);
+
         NameOfObject = target.name;
+        toComplete = missionOptions[missionChoice];
+        reward = 50 * (missionChoice + 1) * target.difficulty;
+   
         objective = "DESTROY " + toComplete + " " + NameOfObject;
     }
 
