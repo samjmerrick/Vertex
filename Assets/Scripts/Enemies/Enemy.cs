@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour {
 
-    public int difficulty = 1;
     public float Speed = 4;
     public float RotSpeed = 200;
     public int Health;
