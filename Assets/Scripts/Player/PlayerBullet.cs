@@ -26,7 +26,8 @@ public class PlayerBullet : MonoBehaviour
             {
                 float diff = Vector2.Distance(Camera.main.WorldToViewportPoint(firePos), Camera.main.WorldToViewportPoint(transform.position)) * 100;
 
-                Collided(diff);
+                if (Collided != null)
+                    Collided(diff);
 
                 if (diff < 10)
                     UIControl.instance.GameMessage("Close call! (" + (int)diff + "m)");
