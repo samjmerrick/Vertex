@@ -18,6 +18,9 @@ public class PickupMission : Mission {
 
         NameOfObject = target.name;
         objective = "PICKUP " + toComplete + " " + NameOfObject;
+
+        if (missionChoice == 0)
+            CheckOneTime();
     }
 
     // Counts down enemies

@@ -52,14 +52,6 @@ public class RandomMissionGiver : MonoBehaviour {
                 }
             }
 
-            // Chance to be a per-game mission
-            if (Random.Range(0, 2) == 0)
-            {
-                newMission.perGame = true;
-                newMission.objective += " in one game";
-                newMission.reward *= 2;
-            }
-
             return newMission;
         }
 

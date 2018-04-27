@@ -19,6 +19,13 @@ public abstract class Mission {
     public int reward;
     public bool perGame;
 
+    public virtual int ReturntoComplete() { return toComplete; }
+    public virtual int ReturnProgress() { return progress; }
+    public virtual string GetObjective() { return objective; }
+
+    public abstract void StartListener();
+    public abstract void StopListener();
+
     public virtual void FinishMission()
     {
         StopListener();
@@ -27,28 +34,10 @@ public abstract class Mission {
             throw new ArgumentException("Finished Mission is not in the MissionList");
 
         MissionComplete(this);
-     
+
         PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + reward);
         UIControl.Instance.Coins.text = PlayerPrefs.GetInt("Coins").ToString();
     }
-
-    public virtual int ReturntoComplete()
-    {
-        return toComplete;
-    }
-
-    public virtual int ReturnProgress()
-    {
-        return progress;
-    }
-
-    public virtual string GetObjective()
-    {
-        return objective;
-    }
-
-    public abstract void StartListener();
-    public abstract void StopListener();
 
     public static void LoadMissions(List<Mission> missions)
     {
@@ -84,6 +73,17 @@ public abstract class Mission {
         }
 
         return clearedMissions;
+    }
+
+    public void CheckOneTime()
+    {
+        // Chance to be a per-game mission
+        if (UnityEngine.Random.Range(0, 2) == 0)
+        {
+            perGame = true;
+            objective += " in one game";
+            reward *= 2;
+        }
     }
 }
 

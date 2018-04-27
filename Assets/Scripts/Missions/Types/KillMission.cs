@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class KillMission : Mission {
 
-    private List<int> missionOptions = new List<int> { 5, 10, 20 };
+    private List<int> missionOptions = new List<int> { 10, 20, 50 };
 
     public KillMission()
     {
@@ -18,9 +18,13 @@ public class KillMission : Mission {
 
         NameOfObject = target.name;
         toComplete = missionOptions[missionChoice];
-        reward = 50 * (missionChoice + 1) * target.difficulty;
-   
+        reward = 50 * (missionChoice + 1) * target.Health;
+
         objective = "DESTROY " + toComplete + " " + NameOfObject;
+
+
+        if (missionChoice == 0)
+            CheckOneTime();
     }
 
     // Counts down enemies
