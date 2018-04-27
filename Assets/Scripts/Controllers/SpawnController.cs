@@ -15,26 +15,10 @@ public class SpawnController : MonoBehaviour {
     private int spawnChoice, availableEnemies;
 
     // Enemies
-    public GameObject[] Enemies;
-    public static List<string> EnemyList = new List<string>();
-
-    // Bosses
-    public GameObject[] Bosses;
-
-    // Pickups
-    public GameObject[] Pickups;
-    public static List <string> PickupList= new List<string>();
+    public GameObject[] Enemies, Bosses, Pickups;
 
     void OnEnable()
     {
-        foreach (GameObject Enemy in Enemies)
-            if (!Enemy.name.Contains("_"))
-                EnemyList.Add(Enemy.name);
-
-        foreach (GameObject Pickup in Pickups)
-            if (!Pickup.name.Contains("_"))
-                PickupList.Add(Pickup.name);
-
         GameController.GameBegin += StartGame;
         GameController.GameEnd += EndGame;
         Enemy.Death += EnemyDied;
@@ -45,9 +29,6 @@ public class SpawnController : MonoBehaviour {
 
     void OnDisable()
     {
-        EnemyList.Clear();
-        PickupList.Clear();
-
         GameController.GameBegin -= StartGame;
         GameController.GameEnd -= EndGame;
         Enemy.Death -= EnemyDied;

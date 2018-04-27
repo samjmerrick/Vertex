@@ -5,21 +5,16 @@ using UnityEngine;
 [System.Serializable]
 public class KillMission : Mission {
 
-    private List<string> EnemyNames = SpawnController.EnemyList;
-
     public KillMission()
     {
+        GameObject[] Enemies = Object.FindObjectOfType<SpawnController>().Enemies;
+
+        Enemy target = Enemies[Random.Range(0, Enemies.Length)].GetComponent<Enemy>();
+
         toComplete = 20;
         reward = 200;
-
-        EnemyNames.Add("Boss");
-            
-
-        int rand = Random.Range(0, EnemyNames.Count);
-        NameOfObject = EnemyNames[rand];
-        objective = "DESTROY " + toComplete + " " + EnemyNames[rand];
-
-       
+        NameOfObject = target.name;
+        objective = "DESTROY " + toComplete + " " + NameOfObject;
     }
 
     // Counts down enemies
