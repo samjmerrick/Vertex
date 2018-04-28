@@ -63,9 +63,9 @@ public abstract class Mission {
     {
         List<Mission> clearedMissions = new List<Mission>();
 
-        foreach (Mission mission in missionList)
+        foreach (Mission mission in GetMissions())
         {
-            if (mission.progress == mission.toComplete)
+            if (mission.progress >= mission.toComplete)
             {
                 missionList.Remove(mission);
                 clearedMissions.Add(mission);
