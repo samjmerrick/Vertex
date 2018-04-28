@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114131479846396722}
   - component: {fileID: 60861298927260394}
   m_Layer: 0
-  m_Name: Enemy Formation
+  m_Name: Enemy Ship
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1018871003086724}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: 0.01, y: 2.31, z: 0}
+  m_LocalPosition: {x: -0, y: 6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -87,13 +87,15 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.005, y: 0.57}
-      - {x: -0.015, y: 0.57}
-      - {x: -0.6172998, y: -0.026203632}
-      - {x: -0.625, y: -0.575}
-      - {x: 0.62, y: -0.575}
-      - {x: 0.62, y: -0.04}
-      - {x: 0.32368928, y: 0.25168276}
+    - - {x: -0.0039502485, y: 0.56403303}
+      - {x: -0.012016586, y: 0.55359113}
+      - {x: -0.61133295, y: -0.048579454}
+      - {x: -0.61604977, y: -0.56903315}
+      - {x: -0.005088955, y: 0.04275751}
+      - {x: 0.6110498, y: -0.56903315}
+      - {x: 0.6110498, y: -0.048950195}
+      - {x: 0.60955805, y: -0.05044198}
+      - {x: 0.3177225, y: 0.24422419}
     - - {x: -0.58, y: -0.06}
       - {x: -0.005, y: 0.515}
       - {x: -0.015, y: 0.074999996}
@@ -113,8 +115,6 @@ MonoBehaviour:
   Speed: 4
   RotSpeed: 400
   Health: 2
-  followingShips: 3
-  spacing: 1.25
   randMovement: 0
   wayPoints:
   - {fileID: 4513112206385254, guid: 898d770c5db211b4c9f82bb0029bbec4, type: 2}
