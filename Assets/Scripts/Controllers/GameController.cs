@@ -71,7 +71,6 @@ public class GameController : MonoBehaviour
         gameStats.Add("Destroyed", 0);
         gameStats.Add("Bosses", 0);
         gameStats.Add("Pickups", 0);
-        gameStats.Add("Time Elapsed", (int)Time.time);
         gameStats.Add("Distance", 0);
 
         Panel gameMenu = canvas.transform.Find("Game Menu").GetComponent<Panel>();
@@ -86,7 +85,6 @@ public class GameController : MonoBehaviour
     {
         GameRunning = false;
         PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + gameStats["Destroyed"]);
-        gameStats["Time Elapsed"] = (int)Time.time - gameStats["Time Elapsed"];
 
         foreach (KeyValuePair<string, int> stat in gameStats)
         {
