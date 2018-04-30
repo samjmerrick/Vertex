@@ -5212,6 +5212,48 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.05
+--- !u!1001 &1076196537
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4870484340191252, guid: 064aebd8dc1867c479e99a7bd57b38f3, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1.611
+      objectReference: {fileID: 0}
+    - target: {fileID: 4870484340191252, guid: 064aebd8dc1867c479e99a7bd57b38f3, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.066
+      objectReference: {fileID: 0}
+    - target: {fileID: 4870484340191252, guid: 064aebd8dc1867c479e99a7bd57b38f3, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4870484340191252, guid: 064aebd8dc1867c479e99a7bd57b38f3, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4870484340191252, guid: 064aebd8dc1867c479e99a7bd57b38f3, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4870484340191252, guid: 064aebd8dc1867c479e99a7bd57b38f3, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4870484340191252, guid: 064aebd8dc1867c479e99a7bd57b38f3, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4870484340191252, guid: 064aebd8dc1867c479e99a7bd57b38f3, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 064aebd8dc1867c479e99a7bd57b38f3, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1092064658
 GameObject:
   m_ObjectHideFlags: 0
@@ -8588,7 +8630,7 @@ Prefab:
     - target: {fileID: 114248041358844358, guid: db32724e76ad374448189e4c5338bf0f,
         type: 2}
       propertyPath: Pickups.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 114248041358844358, guid: db32724e76ad374448189e4c5338bf0f,
         type: 2}
@@ -8678,7 +8720,7 @@ Prefab:
         type: 2}
       propertyPath: Pickups.Array.data[3]
       value: 
-      objectReference: {fileID: 1872577680506486, guid: f5daccb349568fc4b9b3ea2a3c72c428,
+      objectReference: {fileID: 1954383317692696, guid: 064aebd8dc1867c479e99a7bd57b38f3,
         type: 2}
     - target: {fileID: 114248041358844358, guid: db32724e76ad374448189e4c5338bf0f,
         type: 2}
@@ -9783,6 +9825,7 @@ MonoBehaviour:
   - {fileID: 1872577680506486, guid: f5daccb349568fc4b9b3ea2a3c72c428, type: 2}
   - {fileID: 1325272548664274, guid: 263d3c32ff629d04786dcb8c460a2b59, type: 2}
   - {fileID: 1312994979593096, guid: 2bad3cec17e34ef49b1f2a0fcb623977, type: 2}
+  - {fileID: 1954383317692696, guid: 064aebd8dc1867c479e99a7bd57b38f3, type: 2}
 --- !u!114 &2077938220
 MonoBehaviour:
   m_ObjectHideFlags: 0
