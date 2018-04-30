@@ -115,7 +115,7 @@ MonoBehaviour:
   Speed: 4
   RotSpeed: 400
   Health: 2
-  randMovement: 0
+  randMovement: 1
   wayPoints:
   - {fileID: 4513112206385254, guid: 898d770c5db211b4c9f82bb0029bbec4, type: 2}
   - {fileID: 4101066704789254, guid: 898d770c5db211b4c9f82bb0029bbec4, type: 2}

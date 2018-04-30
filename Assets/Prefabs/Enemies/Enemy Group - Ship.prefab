@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4271609469919960}
   - component: {fileID: 114439975826970344}
+  - component: {fileID: 114238594162788772}
   m_Layer: 0
   m_Name: Enemy Group - Ship
   m_TagString: Untagged
@@ -40,6 +41,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114238594162788772
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1099491751471712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbaf2ae5309f48b44a4fd823c90a3228, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 4
+  RotSpeed: 200
+  Health: 0
 --- !u!114 &114439975826970344
 MonoBehaviour:
   m_ObjectHideFlags: 1

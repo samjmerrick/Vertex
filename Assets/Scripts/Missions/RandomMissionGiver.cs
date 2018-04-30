@@ -91,7 +91,7 @@ public class RandomMissionGiver : MonoBehaviour {
 
         List<Mission> clearedMissions = Mission.ClearMissions();
         foreach (Mission mission in clearedMissions)
-            Debug.Log(mission.GetObjective());
+            Debug.Log("FINISHED: " + mission.GetObjective());
 
     }
 

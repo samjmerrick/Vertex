@@ -12,7 +12,7 @@ public class EnemyGroup : MonoBehaviour
     {
         for (int i = 0; i < GroupSize; i++)
         {
-            GameObject go = Instantiate(Enemy,
+            Instantiate(Enemy,
                         transform.position + new Vector3(0, (i + 1) * spacing),
                         transform.rotation,
                         transform);
