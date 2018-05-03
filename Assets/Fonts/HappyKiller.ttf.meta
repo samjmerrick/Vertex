@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: c0071f876d97d914e8f74706d3f3adc5
-timeCreated: 1512677226
+guid: fb91297cf48b2c447ac1e215b4b870f9
+timeCreated: 1525196597
 licenseType: Free
 TrueTypeFontImporter:
   externalObjects: {}
@@ -10,9 +10,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Gravedigger
+  fontName: HappyKiller
   fontNames:
-  - Gravedigger
+  - HappyKiller
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
