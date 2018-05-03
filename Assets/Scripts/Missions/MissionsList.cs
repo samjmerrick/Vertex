@@ -7,9 +7,17 @@ public class MissionsList : MonoBehaviour
     public GameObject MissionPrefab;
     private List<GameObject> activeMissions = new List<GameObject>();
 
-
-
     private void OnEnable()
+    {
+        PanelManager.ChangePanel += CheckIfActive;
+    }
+
+    private void OnDisable()
+    {
+        PanelManager.ChangePanel -= CheckIfActive;
+    }
+
+    void ShowMissions()
     {
         foreach (Mission mission in Mission.GetMissions())
         {
@@ -20,7 +28,7 @@ public class MissionsList : MonoBehaviour
         }
     }
 
-    private void OnDisable()
+    void DeleteMissions()
     {
         foreach (GameObject Mission in activeMissions)
         {
@@ -28,9 +36,22 @@ public class MissionsList : MonoBehaviour
         }
     }
 
+    void CheckIfActive(Panel panel)
+    {
+        if (transform.parent.GetComponent<Panel>() == panel)
+        {
+            RefreshList();
+        }
+            
+        else
+        {
+            DeleteMissions();
+        }
+    }
+
     public void RefreshList()
     {
-        OnDisable();
-        OnEnable();
+        DeleteMissions();
+        ShowMissions();
     }
 }

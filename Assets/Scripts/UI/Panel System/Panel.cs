@@ -22,12 +22,6 @@ public class Panel : MonoBehaviour {
         rect.offsetMax = rect.offsetMin = new Vector2(0, 0);
     }
 
-    private void Start()
-    {
-        if (isOpen == false)
-            gameObject.SetActive(false);
-    }
-
     public void Update()
     {
         if (!_animator.GetCurrentAnimatorStateInfo(0).IsName("Open"))
