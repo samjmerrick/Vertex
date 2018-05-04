@@ -19,6 +19,8 @@ public class MissionsList : MonoBehaviour
 
     void ShowMissions()
     {
+        DeleteMissions();
+
         foreach (Mission mission in Mission.GetMissions())
         {
             GameObject m = Instantiate(MissionPrefab, transform);
@@ -38,20 +40,14 @@ public class MissionsList : MonoBehaviour
 
     void CheckIfActive(Panel panel)
     {
-        if (transform.parent.GetComponent<Panel>() == panel)
+        if (transform.parent.parent.GetComponent<Panel>() == panel)
         {
             RefreshList();
-        }
-            
-        else
-        {
-            DeleteMissions();
-        }
+        } 
     }
 
     public void RefreshList()
     {
-        DeleteMissions();
         ShowMissions();
     }
 }
