@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212949065323553098}
   - component: {fileID: 50327620345982616}
   - component: {fileID: 114131479846396722}
-  - component: {fileID: 60861298927260394}
+  - component: {fileID: 60066674156151092}
   m_Layer: 0
   m_Name: Enemy Ship
   m_TagString: Enemy
@@ -38,7 +38,7 @@ Transform:
   m_GameObject: {fileID: 1018871003086724}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: -0, y: 6, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -63,7 +63,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!60 &60861298927260394
+--- !u!60 &60066674156151092
 PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -79,7 +79,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.28, y: 1.28}
+    oldSize: {x: 0.48, y: 0.4}
     newSize: {x: 1.28, y: 1.28}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -87,20 +87,14 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.0039502485, y: 0.56403303}
-      - {x: -0.012016586, y: 0.55359113}
-      - {x: -0.61133295, y: -0.048579454}
-      - {x: -0.61604977, y: -0.56903315}
-      - {x: -0.005088955, y: 0.04275751}
-      - {x: 0.6110498, y: -0.56903315}
-      - {x: 0.6110498, y: -0.048950195}
-      - {x: 0.60955805, y: -0.05044198}
-      - {x: 0.3177225, y: 0.24422419}
-    - - {x: -0.58, y: -0.06}
-      - {x: -0.005, y: 0.515}
-      - {x: -0.015, y: 0.074999996}
-      - {x: -0.585, y: -0.49499997}
-      - {x: -0.58, y: -0.49499997}
+    - - {x: -0.07, y: 0.19999999}
+      - {x: -0.24, y: -0.049999997}
+      - {x: -0.24, y: -0.16}
+      - {x: -0.12, y: -0.19999999}
+      - {x: 0.11, y: -0.19999999}
+      - {x: 0.24, y: -0.14}
+      - {x: 0.24, y: -0.049999997}
+      - {x: 0.06, y: 0.19999999}
 --- !u!114 &114131479846396722
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -154,7 +148,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a0117ad04f69dbe479d7a0dce04b537a, type: 3}
+  m_Sprite: {fileID: 21300220, guid: 39bc31404c3d02942b8b012b438f33d1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
