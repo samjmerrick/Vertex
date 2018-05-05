@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DecalDestroyer : MonoBehaviour {
+public class DestroyAfterTime : MonoBehaviour {
 
 	public float lifeTime = 5.0f;
 

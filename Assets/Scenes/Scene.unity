@@ -227,7 +227,7 @@ Prefab:
     - target: {fileID: 224907777771984726, guid: 44bdc7916d7440340bd84fe48a7b5d80,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: -50
+      value: -871.64746
       objectReference: {fileID: 0}
     - target: {fileID: 1303948664936490, guid: 44bdc7916d7440340bd84fe48a7b5d80, type: 2}
       propertyPath: m_Name
@@ -4129,7 +4129,6 @@ MonoBehaviour:
   Destroyed: {fileID: 1171690051}
   Laser: {fileID: 1121916430}
   Coins: {fileID: 1818918601}
-  skull: {fileID: 0}
 --- !u!224 &786935355 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224213656060036970, guid: bcb3afba94355864b93ac398970b1d59,
