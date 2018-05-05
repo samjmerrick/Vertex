@@ -5,16 +5,14 @@ using UnityEngine.UI;
 
 public class UIShopController : MonoBehaviour {
 
+    [HideInInspector]
     public ShopItem active;
-    private Text description;
-    private Button upgradeButton;
-    private Text cost;
+    public Text description;
+    public Button upgradeButton;
+    public Text cost;
 
     private void OnEnable()
     {
-        description = transform.Find("Description").GetComponent<Text>();
-        upgradeButton = transform.Find("Upgrade Button").GetComponent<Button>();
-        cost = transform.Find("Upgrade Button").GetComponentInChildren<Text>();
         description.text = "Select an upgrade";
         active = null;
         upgradeButton.enabled = false;
