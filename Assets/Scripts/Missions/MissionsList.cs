@@ -5,49 +5,33 @@ using UnityEngine;
 public class MissionsList : MonoBehaviour
 {
     public GameObject MissionPrefab;
-    private List<GameObject> activeMissions = new List<GameObject>();
 
     private void OnEnable()
     {
-        PanelManager.ChangePanel += CheckIfActive;
+        ShowMissions();
     }
 
     private void OnDisable()
     {
-        PanelManager.ChangePanel -= CheckIfActive;
+        DeleteChildren();
     }
 
-    void ShowMissions()
+    public void ShowMissions()
     {
-        DeleteMissions();
+        DeleteChildren();
 
         foreach (Mission mission in Mission.GetMissions())
         {
             GameObject m = Instantiate(MissionPrefab, transform);
             m.GetComponent<UIMissionPrefab>().mission = mission;
-
-            activeMissions.Add(m);
         }
     }
 
-    void DeleteMissions()
+    void DeleteChildren()
     {
-        foreach (GameObject Mission in activeMissions)
+        foreach (Transform child in transform)
         {
-            Destroy(Mission.gameObject);
+            Destroy(child.gameObject);
         }
-    }
-
-    void CheckIfActive(Panel panel)
-    {
-        if (transform.parent.parent.GetComponent<Panel>() == panel)
-        {
-            RefreshList();
-        } 
-    }
-
-    public void RefreshList()
-    {
-        ShowMissions();
     }
 }
