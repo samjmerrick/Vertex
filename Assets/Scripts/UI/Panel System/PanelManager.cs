@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class PanelManager : MonoBehaviour {
 
@@ -12,7 +13,7 @@ public class PanelManager : MonoBehaviour {
     {
         ShowMenu(CurrentPanel);
 	}
-
+     
     public void ShowMenu(Panel panel)
     {
         // If there is a current panel, set current panel isOpen to false
@@ -20,8 +21,24 @@ public class PanelManager : MonoBehaviour {
             CurrentPanel.isOpen = false;
 
         CurrentPanel = panel;
-        CurrentPanel.isOpen = true;
 
-        ChangePanel(CurrentPanel);
+        if (CurrentPanel.ShowBeforeLoading.Length != 0)
+        {
+            StartCoroutine(ShowMenusInSequence(CurrentPanel.ShowBeforeLoading));
+        }
+        else
+        {
+            CurrentPanel.isOpen = true;
+            ChangePanel(CurrentPanel);
+        }
+    }
+
+    IEnumerator ShowMenusInSequence(Panel[] Panels)
+    {
+        foreach (Panel panel in Panels)
+        {
+            ShowMenu(panel);
+            yield return new WaitForSeconds(2.5f);
+        }
     }
 }
