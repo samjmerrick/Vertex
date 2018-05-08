@@ -67,14 +67,14 @@ public class GameController : MonoBehaviour
 
     public void BeginGame()
     {
+        Panel gameMenu = canvas.transform.Find("Game Menu").GetComponent<Panel>();
+        panelManager.ShowMenu(gameMenu);
+
         gameStats.Clear();
         gameStats.Add("Destroyed", 0);
         gameStats.Add("Bosses", 0);
         gameStats.Add("Pickups", 0);
         gameStats.Add("Distance", 0);
-
-        Panel gameMenu = canvas.transform.Find("Game Menu").GetComponent<Panel>();
-        panelManager.ShowMenu(gameMenu);
 
         GameRunning = true;
         StartCoroutine(AddDistance());
@@ -83,6 +83,9 @@ public class GameController : MonoBehaviour
 
     public void EndGame()
     {
+        Panel deathMenu = canvas.transform.Find("Death Menu").GetComponent<Panel>();
+        panelManager.ShowMenu(deathMenu);
+
         GameRunning = false;
         PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + gameStats["Destroyed"]);
 
@@ -105,9 +108,6 @@ public class GameController : MonoBehaviour
             
         if (!isQuitting)
         {
-            Panel deathMenu = canvas.transform.Find("Death Menu").GetComponent<Panel>();
-            panelManager.ShowMenu(deathMenu);
-
             CancelInvoke();
             GameEnd();
         }

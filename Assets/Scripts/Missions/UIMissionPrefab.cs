@@ -36,7 +36,7 @@ public class UIMissionPrefab : MonoBehaviour {
         RandomMissionGiver randomMissionGiver = FindObjectOfType<RandomMissionGiver>();
         randomMissionGiver.SkipMission(mission);
 
-        transform.parent.GetComponent<MissionsList>().RefreshList();
+        transform.parent.GetComponent<MissionsList>().ShowMissions();
        
     }
 
