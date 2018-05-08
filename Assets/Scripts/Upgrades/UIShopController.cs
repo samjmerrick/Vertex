@@ -10,10 +10,12 @@ public class UIShopController : MonoBehaviour {
     public Text description;
     public Button upgradeButton;
     public Text cost;
+    public Text coins;
 
     private void OnEnable()
     {
         description.text = "Select an upgrade";
+        coins.text = PlayerPrefs.GetInt("Coins").ToString();
         active = null;
         upgradeButton.enabled = false;
     }
@@ -51,5 +53,6 @@ public class UIShopController : MonoBehaviour {
     {
         active.UpgradeBuff();
         ChangeActive(active);
+        coins.text = PlayerPrefs.GetInt("Coins").ToString();
     }
 }
