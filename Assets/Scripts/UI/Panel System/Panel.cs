@@ -7,8 +7,6 @@ using UnityEngine;
 
 public class Panel : MonoBehaviour {
 
-    public Panel[] ShowBeforeLoading;
-
     private Animator _animator;
     private CanvasGroup _canvasGroup;
 
