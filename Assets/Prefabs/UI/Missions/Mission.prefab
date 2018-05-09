@@ -229,6 +229,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fa493f31b9fd5047b12f65f2aaba4ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objective: {fileID: 114010586380789876}
+  reward: {fileID: 114677159234506306}
+  image: {fileID: 114460859344010286}
 --- !u!114 &114896727890680228
 MonoBehaviour:
   m_ObjectHideFlags: 1
