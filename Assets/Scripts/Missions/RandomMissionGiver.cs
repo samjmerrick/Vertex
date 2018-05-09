@@ -1,17 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections.Generic;
 
 public class RandomMissionGiver : MonoBehaviour {
-
-    private void OnEnable()
-    {
-        GameController.GameEnd += EndGame;
-    }
-
-    private void OnDisable()
-    {
-        GameController.GameEnd -= EndGame;
-    }
 
     void Start()
     {
@@ -58,7 +47,6 @@ public class RandomMissionGiver : MonoBehaviour {
         throw new System.Exception("There are 3 or more missions already in the MissionList!");
     }
 
-
     void StartMission(Mission mission)
     {
         Mission.missionList.Add(mission);
@@ -83,16 +71,6 @@ public class RandomMissionGiver : MonoBehaviour {
         StopMission(mission);
 
         StartMission(RandomMission(), originalPos);
-    }
-
-    void EndGame()
-    {
-        //MissionsList missionsList = FindObjectOfType<MissionsList>();
-
-        List<Mission> clearedMissions = Mission.ClearMissions();
-        foreach (Mission mission in clearedMissions)
-            Debug.Log("FINISHED: " + mission.GetObjective());
-
     }
 
     bool MissionExists(string nameOfObject)
