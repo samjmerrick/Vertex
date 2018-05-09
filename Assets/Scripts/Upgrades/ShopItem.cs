@@ -28,7 +28,7 @@ public abstract class ShopItem : MonoBehaviour {
 
         SetUpgradeInfo();
 
-        shopController = transform.parent.GetComponent<UIShopController>();
+        shopController = GetComponentInParent<UIShopController>();
     }
 
 
