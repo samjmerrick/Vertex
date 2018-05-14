@@ -130,7 +130,7 @@ public class GameController : MonoBehaviour
     public void DeleteHighScore()
     {
         PlayerPrefs.DeleteAll();
-        Mission.LoadMissions(new List<Mission>()); // Loads 0 Missions
+        Missions.LoadMissions(new List<Mission>()); // Loads 0 Missions
         Ship.upgrades.Clear();
         PlayerPrefs.SetInt("Coins", 10000);
         SaveManager.ClearSave();

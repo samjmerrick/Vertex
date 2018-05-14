@@ -20,7 +20,7 @@ public class MissionsList : MonoBehaviour
     {
         DeleteChildren();
 
-        foreach (Mission mission in Mission.GetMissions())
+        foreach (Mission mission in Missions.GetMissions())
         {
             GameObject m = Instantiate(MissionPrefab, transform);
             m.GetComponent<UIMissionPrefab>().mission = mission;

@@ -66,12 +66,12 @@ public class UIControl : MonoBehaviour {
 
     IEnumerator CreateMissionText()
     {
-        List<Mission> missions = Mission.GetMissions();
+        List<Mission> missions = Missions.GetMissions();
 
         for (int i = 0; i < missions.Count; i++)
         {
             yield return new WaitForSeconds(0.2f);
-            messages.NewMessage("Mission: " + missions[i].GetObjective(), new Color32(255, 127, 80, 1));  
+            messages.NewMessage("Mission: " + missions[i].objective, new Color32(255, 127, 80, 1));  
         }
     }
 

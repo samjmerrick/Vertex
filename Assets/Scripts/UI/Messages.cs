@@ -36,6 +36,6 @@ public class Messages : MonoBehaviour {
 
     void MissionMessage(Mission mission)
     {
-        NewMessage("Completed: " + mission.GetObjective(), new Color(255, 140, 0));
+        NewMessage("Completed: " + mission.objective, new Color(255, 140, 0));
     }
 }

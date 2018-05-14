@@ -17,10 +17,10 @@ public class UIMissionPrefab : MonoBehaviour {
     {
         if (mission != null)
         {
-            int progress = mission.ReturnProgress();
-            int toComplete = mission.ReturntoComplete();
+            int progress = mission.progress;
+            int toComplete = mission.toComplete;
 
-            objective.text = mission.GetObjective() + " (" + progress + "/" + toComplete + ")";
+            objective.text = mission.objective + " (" + progress + "/" + toComplete + ")";
             reward.text = mission.reward.ToString();
 
             if (Resources.Load("Missions/" + mission.NameOfObject) != null)

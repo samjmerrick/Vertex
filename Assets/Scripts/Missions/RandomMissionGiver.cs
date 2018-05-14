@@ -4,13 +4,13 @@ public class RandomMissionGiver : MonoBehaviour {
 
     void Start()
     {
-        while (Mission.GetMissions().Count < 3)
+        while (Missions.GetMissions().Count < 3)
             StartMission(RandomMission());
     }
 
     public Mission RandomMission()
     {
-        if (Mission.GetMissions().Count <= 2)
+        if (Missions.GetMissions().Count <= 2)
         {
             Mission newMission = null;
 
@@ -49,25 +49,25 @@ public class RandomMissionGiver : MonoBehaviour {
 
     void StartMission(Mission mission)
     {
-        Mission.missionList.Add(mission);
+        Missions.missionList.Add(mission);
         mission.StartListener();
     }
 
     void StartMission(Mission mission, int i)
     {
-        Mission.missionList.Insert(i, mission);
+        Missions.missionList.Insert(i, mission);
         mission.StartListener();
     }
 
     void StopMission(Mission mission)
     {
-        Mission.missionList.Remove(mission);
+        Missions.missionList.Remove(mission);
         mission.StopListener();
     }
 
     public void SkipMission (Mission mission)
     {
-        int originalPos = Mission.missionList.IndexOf(mission);
+        int originalPos = Missions.missionList.IndexOf(mission);
         StopMission(mission);
 
         StartMission(RandomMission(), originalPos);
@@ -75,7 +75,7 @@ public class RandomMissionGiver : MonoBehaviour {
 
     bool MissionExists(string nameOfObject)
     {
-        foreach (Mission missioninfo in Mission.GetMissions())
+        foreach (Mission missioninfo in Missions.GetMissions())
         {
             if (missioninfo.NameOfObject == nameOfObject)
             {
