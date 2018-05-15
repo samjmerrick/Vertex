@@ -13,8 +13,23 @@ public class UIMissionPrefab : MonoBehaviour {
     public Text reward;
     public Image image;
 
-    void Start()
+    private Animator anim;
+
+    void OnEnable()
     {
+        anim = GetComponent<Animator>();
+        
+    }
+
+    private void Start()
+    {
+        SetMission();
+    }
+
+    void SetMission()
+    {
+        mission = Missions.missionList[transform.GetSiblingIndex()];
+
         if (mission != null)
         {
             int progress = mission.progress;
@@ -25,15 +40,28 @@ public class UIMissionPrefab : MonoBehaviour {
 
             if (Resources.Load("Missions/" + mission.NameOfObject) != null)
                 image.sprite = (Sprite)Resources.Load("Missions/" + mission.NameOfObject, typeof(Sprite));
-   
+
+            if (progress >= toComplete && !GameController.instance.GameRunning)
+            {
+                StartCoroutine(SetNewMission());
+            }
         }
+    }
+
+    public IEnumerator SetNewMission()
+    {
+        anim.SetTrigger("NewMission");
+
+        RandomMissionGiver randMissionGiver = FindObjectOfType<RandomMissionGiver>();
+        randMissionGiver.ReplaceMission(mission);
+
+        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
+
+        SetMission();        
     }
 
     public void SkipMission()
     {
-        RandomMissionGiver randomMissionGiver = FindObjectOfType<RandomMissionGiver>();
-        randomMissionGiver.SkipMission(mission);
-
-        GetComponentInParent<MissionsList>().ShowMissions();
+        StartCoroutine(SetNewMission());
     }
 }

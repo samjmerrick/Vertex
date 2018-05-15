@@ -65,7 +65,7 @@ public class RandomMissionGiver : MonoBehaviour {
         mission.StopListener();
     }
 
-    public void SkipMission (Mission mission)
+    public void ReplaceMission (Mission mission)
     {
         int originalPos = Missions.missionList.IndexOf(mission);
         StopMission(mission);
