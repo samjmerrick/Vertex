@@ -39,7 +39,14 @@ public class UIMissionPrefab : MonoBehaviour {
             reward.text = mission.reward.ToString();
 
             if (Resources.Load("Missions/" + mission.NameOfObject) != null)
+            {
                 image.sprite = (Sprite)Resources.Load("Missions/" + mission.NameOfObject, typeof(Sprite));
+            }
+            else
+            {
+                image.sprite = (Sprite)Resources.Load("Missions/Question_mark", typeof(Sprite));
+            }
+                
 
             if (progress >= toComplete && !GameController.instance.GameRunning)
             {
