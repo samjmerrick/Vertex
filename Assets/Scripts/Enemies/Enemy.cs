@@ -67,7 +67,7 @@ public class Enemy : MonoBehaviour {
             if (Death != null)
                 Death(gameObject.name, transform.position);
 
-            Destroy(gameObject);
+            Destroy(gameObject, 0.05f);
         }
     }
 

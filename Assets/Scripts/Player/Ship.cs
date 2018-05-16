@@ -6,6 +6,7 @@ public class Ship : MonoBehaviour
 {
     // Buff Variables
     public GameObject bullet;
+    public GameObject bigBullet;
     public GameObject shield;
     public GameObject laser;
 
@@ -125,12 +126,17 @@ public class Ship : MonoBehaviour
 
     void Shoot()
     {
-        Instantiate(bullet, new Vector3(transform.position.x, transform.position.y + 0.6f, 0), transform.rotation);
+        GameObject toShoot = bullet;
+
+        if (ActiveBuffs.Contains("Big"))
+            toShoot = bigBullet;
+
+        Instantiate(toShoot, new Vector3(transform.position.x, transform.position.y + 0.6f, 0), transform.rotation);
 
         if (ActiveBuffs.Contains("Triple")) 
         {
-            Instantiate(bullet, new Vector3(transform.position.x + 0.2f, transform.position.y + 0.6f), Quaternion.Euler(0, 0, -5));
-            Instantiate(bullet, new Vector3(transform.position.x - 0.2f, transform.position.y + 0.6f), Quaternion.Euler(0, 0, 5));
+            Instantiate(toShoot, new Vector3(transform.position.x + 0.2f, transform.position.y + 0.6f), Quaternion.Euler(0, 0, -5));
+            Instantiate(toShoot, new Vector3(transform.position.x - 0.2f, transform.position.y + 0.6f), Quaternion.Euler(0, 0, 5));
         }
 
         lastFired = Time.time;

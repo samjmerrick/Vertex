@@ -22,7 +22,7 @@ public class Pickup : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D c)
     {
-        if (c.gameObject.tag == "Player")
+        if (c.gameObject.tag == "Player" && c.gameObject.name != ("Shield(Clone)"))
         {
             Destroy(gameObject);
 

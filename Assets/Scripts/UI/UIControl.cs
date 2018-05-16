@@ -32,7 +32,6 @@ public class UIControl : MonoBehaviour {
     #endregion
 
     public GameObject uiMessage;
-    public GameObject missionText;
     public GameObject RadialSlider;
 
     public Messages messages;
@@ -41,7 +40,6 @@ public class UIControl : MonoBehaviour {
     public Text Destroyed;
     public Text Laser;
     public Text Coins;
-
 
     private void OnEnable()
     {
@@ -63,29 +61,23 @@ public class UIControl : MonoBehaviour {
         if (Ship.upgrades.ContainsKey("Laser"))
             Laser.text = Ship.upgrades["Laser"].ToString();
 
-        
-
         StartCoroutine(CreateMissionText());
     }
 
     IEnumerator CreateMissionText()
     {
-        int i = 0;
+        List<Mission> missions = Missions.GetMissions();
 
-        foreach (Mission mission in Mission.GetMissions())
+        for (int i = 0; i < missions.Count; i++)
         {
-            GameObject go = Instantiate(missionText, transform);
-            go.transform.position += new Vector3(0, -i * 0.6f);
-            go.GetComponent<Text>().text = mission.objective;
-            Destroy(go, 5);
-            yield return new WaitForSeconds(0.4f);
-            i++;
+            yield return new WaitForSeconds(0.2f);
+            messages.NewMessage("Mission: " + missions[i].objective, new Color32(255, 127, 80, 1));  
         }
     }
 
     public void GameMessage(string message)
     {
-        messages.Message(message);
+        messages.NewMessage(message);
     }
     
     public void UIMessage(string message)

@@ -1,27 +1,16 @@
 ﻿using UnityEngine;
-using System.Collections.Generic;
 
 public class RandomMissionGiver : MonoBehaviour {
 
-    private void OnEnable()
-    {
-        GameController.GameEnd += EndGame;
-    }
-
-    private void OnDisable()
-    {
-        GameController.GameEnd -= EndGame;
-    }
-
     void Start()
     {
-        while (Mission.GetMissions().Count < 3)
+        while (Missions.GetMissions().Count < 3)
             StartMission(RandomMission());
     }
 
     public Mission RandomMission()
     {
-        if (Mission.GetMissions().Count <= 2)
+        if (Missions.GetMissions().Count <= 2)
         {
             Mission newMission = null;
 
@@ -58,46 +47,35 @@ public class RandomMissionGiver : MonoBehaviour {
         throw new System.Exception("There are 3 or more missions already in the MissionList!");
     }
 
-
     void StartMission(Mission mission)
     {
-        Mission.missionList.Add(mission);
+        Missions.missionList.Add(mission);
         mission.StartListener();
     }
 
     void StartMission(Mission mission, int i)
     {
-        Mission.missionList.Insert(i, mission);
+        Missions.missionList.Insert(i, mission);
         mission.StartListener();
     }
 
     void StopMission(Mission mission)
     {
-        Mission.missionList.Remove(mission);
+        Missions.missionList.Remove(mission);
         mission.StopListener();
     }
 
-    public void SkipMission (Mission mission)
+    public void ReplaceMission (Mission mission)
     {
-        int originalPos = Mission.missionList.IndexOf(mission);
+        int originalPos = Missions.missionList.IndexOf(mission);
         StopMission(mission);
 
         StartMission(RandomMission(), originalPos);
     }
 
-    void EndGame()
-    {
-        //MissionsList missionsList = FindObjectOfType<MissionsList>();
-
-        List<Mission> clearedMissions = Mission.ClearMissions();
-        foreach (Mission mission in clearedMissions)
-            Debug.Log(mission.GetObjective());
-
-    }
-
     bool MissionExists(string nameOfObject)
     {
-        foreach (Mission missioninfo in Mission.GetMissions())
+        foreach (Mission missioninfo in Missions.GetMissions())
         {
             if (missioninfo.NameOfObject == nameOfObject)
             {

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Messages : MonoBehaviour {
 
-    public GameObject message;
+    public Text MessageText;
 
     private void OnEnable()
     {
@@ -17,22 +17,25 @@ public class Messages : MonoBehaviour {
         Mission.MissionComplete -= MissionMessage;
     }
 
-    public void Message(string m)
+    public Text NewMessage(string message)
     {
-        GameObject go = Instantiate(message, transform);
-        go.GetComponent<Text>().text = m;
+        Text newMessage = Instantiate(MessageText, transform);
+        newMessage.text = message;
 
         // Destroy when animation finishes
-        Destroy(go, go.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
+        Destroy(newMessage.gameObject, newMessage.gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
+
+        return newMessage;
+    }
+
+    public void NewMessage(string message, Color32 color)
+    {
+        Text newMessage = NewMessage(message);
+        newMessage.color = color;
     }
 
     void MissionMessage(Mission mission)
     {
-        GameObject go = Instantiate(message, transform);
-        go.GetComponent<Text>().text = "Completed: " + mission.GetObjective();
-        go.GetComponent<Text>().color = new Color(255,140,0);
-
-        // Destroy when animation finishes
-        Destroy(go, go.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
+        NewMessage("Completed: " + mission.objective, new Color(255, 140, 0));
     }
 }

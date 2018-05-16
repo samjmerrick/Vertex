@@ -28,7 +28,7 @@ public abstract class ShopItem : MonoBehaviour {
 
         SetUpgradeInfo();
 
-        shopController = transform.parent.GetComponent<UIShopController>();
+        shopController = GetComponentInParent<UIShopController>();
     }
 
 
@@ -58,8 +58,8 @@ public abstract class ShopItem : MonoBehaviour {
     public void SetActive(bool active) 
     {
         if (active)
-            GetComponent<Image>().color += new Color(0, 0, 0.5f);
+            GetComponent<Image>().color += new Color32(0, 0, 0, 200);
         else
-            GetComponent<Image>().color -= new Color(0, 0, 0.5f);
+            GetComponent<Image>().color -= new Color32(0, 0, 0, 200);
     }
 }

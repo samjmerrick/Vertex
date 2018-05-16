@@ -67,15 +67,14 @@ public class GameController : MonoBehaviour
 
     public void BeginGame()
     {
+        Panel gameMenu = canvas.transform.Find("Game Menu").GetComponent<Panel>();
+        panelManager.ShowMenu(gameMenu);
+
         gameStats.Clear();
         gameStats.Add("Destroyed", 0);
         gameStats.Add("Bosses", 0);
         gameStats.Add("Pickups", 0);
-        gameStats.Add("Time Elapsed", (int)Time.time);
         gameStats.Add("Distance", 0);
-
-        Panel gameMenu = canvas.transform.Find("Game Menu").GetComponent<Panel>();
-        panelManager.ShowMenu(gameMenu);
 
         GameRunning = true;
         StartCoroutine(AddDistance());
@@ -84,9 +83,11 @@ public class GameController : MonoBehaviour
 
     public void EndGame()
     {
+        Panel deathMenu = canvas.transform.Find("Death Menu").GetComponent<Panel>();
+        panelManager.ShowMenu(deathMenu);
+
         GameRunning = false;
         PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + gameStats["Destroyed"]);
-        gameStats["Time Elapsed"] = (int)Time.time - gameStats["Time Elapsed"];
 
         foreach (KeyValuePair<string, int> stat in gameStats)
         {
@@ -107,9 +108,6 @@ public class GameController : MonoBehaviour
             
         if (!isQuitting)
         {
-            Panel deathMenu = canvas.transform.Find("Death Menu").GetComponent<Panel>();
-            panelManager.ShowMenu(deathMenu);
-
             CancelInvoke();
             GameEnd();
         }
@@ -132,7 +130,7 @@ public class GameController : MonoBehaviour
     public void DeleteHighScore()
     {
         PlayerPrefs.DeleteAll();
-        Mission.LoadMissions(new List<Mission>()); // Loads 0 Missions
+        Missions.LoadMissions(new List<Mission>()); // Loads 0 Missions
         Ship.upgrades.Clear();
         PlayerPrefs.SetInt("Coins", 10000);
         SaveManager.ClearSave();

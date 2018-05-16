@@ -2,10 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(CanvasGroup))]
+[RequireComponent(typeof(Animator))]
+
 public class Panel : MonoBehaviour {
 
     private Animator _animator;
     private CanvasGroup _canvasGroup;
+
+    private void OnEnable()
+    {
+        PanelManager.ChangePanel += CheckIfOpen;
+    }
+
+    private void OnDisable()
+    {
+        PanelManager.ChangePanel -= CheckIfOpen;
+    }
 
     public bool isOpen
     {
@@ -22,21 +35,25 @@ public class Panel : MonoBehaviour {
         rect.offsetMax = rect.offsetMin = new Vector2(0, 0);
     }
 
-    private void Start()
+    void CheckIfOpen(Panel panel)
     {
-        if (isOpen == false)
-            gameObject.SetActive(false);
-    }
-
-    public void Update()
-    {
-        if (!_animator.GetCurrentAnimatorStateInfo(0).IsName("Open"))
-        {
-            _canvasGroup.blocksRaycasts = _canvasGroup.interactable = false;
-        }
-        else
+        if (panel == this)
         {
             _canvasGroup.blocksRaycasts = _canvasGroup.interactable = true;
+            SetChildActiveState(true);
         }
+
+        else
+        {
+            _canvasGroup.blocksRaycasts = _canvasGroup.interactable = false;
+            SetChildActiveState(false);
+        }   
     }
+
+    void SetChildActiveState(bool isActive)
+    {
+        foreach (Transform child in transform)
+            child.gameObject.SetActive(isActive);
+    }
+
 }

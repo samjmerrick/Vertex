@@ -39,7 +39,7 @@ public class Asteroid : Enemy
         {
             transform.rotation = Quaternion.Euler(0, 0, transform.rotation.z + Random.Range(20.0f, -20.0f));
             // Push the asteroid in the direction it is facing
-            GetComponent<Rigidbody2D>().AddForce(transform.up * Random.Range(-150.0f, -200f));
+            GetComponent<Rigidbody2D>().AddForce(transform.up * Random.Range(-100.0f, -200f));
         }
 
         // Give a random angular velocity/rotation

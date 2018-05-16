@@ -5,8 +5,8 @@ using UnityEngine;
 public class SpawnController : MonoBehaviour {
 
     public static int EnemiesRemaining;
-    public float SpawnRate, SwitchTime, NewEnemyTime;
-    public Vector2 BossTime;
+    public float SwitchTime, NewEnemyTime;
+    public Vector2 BossTime, SpawnTime;
     public int PickupChance;
     [HideInInspector]
     public int toSpawn = 3;
@@ -38,8 +38,8 @@ public class SpawnController : MonoBehaviour {
     {
         EnemiesRemaining = 0;
         InvokeRepeating("ChangeSpawn", 0, SwitchTime);
-        InvokeRepeating("Spawn", 3, SpawnRate);
         InvokeRepeating("AddNewEnemy", NewEnemyTime, NewEnemyTime);
+        StartCoroutine(Spawn());
         StartCoroutine(SpawnBoss());
     }
 
@@ -55,15 +55,20 @@ public class SpawnController : MonoBehaviour {
         StopAllCoroutines();
     }
 
-    void Spawn()
+    IEnumerator Spawn()
     {
-        if (EnemiesRemaining < toSpawn)
+        while (true)
         {
-            Vector3 location = new Vector3(
-                x: Random.Range(-bounds.x, bounds.x),
-                y: bounds.y);
+            yield return new WaitForSeconds(Random.Range(SpawnTime.x, SpawnTime.y));
 
-            Instantiate(Enemies[spawnChoice], location, Quaternion.identity);
+            if (EnemiesRemaining < toSpawn)
+            {
+                Vector3 location = new Vector3(
+                    x: Random.Range(-bounds.x, bounds.x),
+                    y: bounds.y);
+
+                Instantiate(Enemies[spawnChoice], location, Quaternion.identity);
+            }
         }
     }
 

@@ -38,7 +38,7 @@ Transform:
   m_GameObject: {fileID: 1706091801136994}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -1, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -80,7 +80,7 @@ PolygonCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 2.64, y: 2.05}
-    newSize: {x: 0.75, y: 0.75}
+    newSize: {x: 4.25, y: 4.57}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -138,6 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 1242718240314216, guid: 18b9f064c42571a478f4420c1d5256b9, type: 2}
+  bigBullet: {fileID: 1436040500835166, guid: 40cfc583d4d8adc4e86c5d7a7b444379, type: 2}
   shield: {fileID: 1644133065064688, guid: d243e0883e8841348a99d5997c62233b, type: 2}
   laser: {fileID: 1990526946275252, guid: 0f745a71080b2744b85c2a39afd52253, type: 2}
   FireRate: 0.3
@@ -182,7 +183,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.75, y: 0.75}
+  m_Size: {x: 4.25, y: 4.57}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

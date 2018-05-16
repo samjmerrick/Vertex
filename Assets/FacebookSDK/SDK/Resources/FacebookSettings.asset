@@ -15,14 +15,15 @@ MonoBehaviour:
   clientTokens:
   - 
   appIds:
-  - 157578437735213
+  - 1799206843708967
   appLabels:
   - Spacey Game
   cookie: 1
-  logging: 0
+  logging: 1
   status: 1
   xfbml: 0
   frictionlessRequests: 1
   iosURLSuffix: 
   appLinkSchemes:
   - list: []
+  uploadAccessToken: 

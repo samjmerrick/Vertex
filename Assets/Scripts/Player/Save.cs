@@ -22,7 +22,7 @@ public class SaveManager
 
         saveData = new Save
         {
-            missions = Mission.GetMissions(),
+            missions = Missions.GetMissions(),
             upgrades = Ship.upgrades,
             bestStats = GameController.bestStats
         };
@@ -44,7 +44,7 @@ public class SaveManager
 
             // Load our data
             Ship.upgrades = saveData.upgrades;
-            Mission.LoadMissions(saveData.missions);
+            Missions.LoadMissions(saveData.missions);
 
             if (saveData.bestStats != null)
                 GameController.bestStats = saveData.bestStats;

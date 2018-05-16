@@ -5,6 +5,8 @@ public class PlayerBullet : MonoBehaviour
 {
     public GameObject DestroyEffect;
     public int MoveSpeed;
+    public bool bigShot = false;
+
     private Vector3 firePos;
 
     public delegate void collided(float distance);
@@ -36,10 +38,13 @@ public class PlayerBullet : MonoBehaviour
                     UIControl.instance.GameMessage("Long shot! (" + (int)diff + "m)");
             }
             
-
-            Destroy(gameObject);
-            GameObject effect = Instantiate(DestroyEffect, transform.position, transform.rotation);
-            Destroy(effect, 0.5f); 
+            if (!bigShot)
+            {
+                Destroy(gameObject);
+                GameObject effect = Instantiate(DestroyEffect, transform.position, transform.rotation);
+                Destroy(effect, 0.5f);
+            }
+           
         }
     }        
 
