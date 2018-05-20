@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class ContinuePanel : MonoBehaviour {
 
+    public GameObject ship;
     public Text Coins;
     public Text CountText;
     public int CountTime;
@@ -21,12 +22,16 @@ public class ContinuePanel : MonoBehaviour {
 
     void StartCountDown()
     {
-        GetComponentInParent<PanelManager>().ShowMenu(GetComponent<Panel>());
+        
         StartCoroutine(CountDown());
     }
 
     IEnumerator CountDown()
     {
+        yield return new WaitForSeconds(0.8f);
+
+        GetComponentInParent<PanelManager>().ShowMenu(GetComponent<Panel>());
+
         Coins.text = PlayerPrefs.GetInt("Coins").ToString();
         Time.timeScale = 0;
 
@@ -43,6 +48,7 @@ public class ContinuePanel : MonoBehaviour {
     public void GiveLife()
     {
         GetComponentInParent<PanelManager>().ShowMenu(transform.parent.Find("Game Menu").GetComponent<Panel>());
+        ship.SetActive(true);
         Time.timeScale = 1;
         StopAllCoroutines();
     }

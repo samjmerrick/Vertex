@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class Ship : MonoBehaviour
 {
+    public GameObject explosion;
+
     // Movement Variables
     public int speed;
     private Vector3 target;
@@ -86,8 +88,17 @@ public class Ship : MonoBehaviour
     {
         if (c.gameObject.tag == "Enemy" || c.gameObject.tag == "EnemyFire")
         {
+            Instantiate(explosion, transform.position, transform.rotation);
+
             if (Death != null)
                 Death();
+
+
+            foreach (GameObject bullet in GameObject.FindGameObjectsWithTag("PlayerFire"))
+                Destroy(bullet);
+
+            gameObject.SetActive(false);
+            
         }
     }
 
