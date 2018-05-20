@@ -1906,6 +1906,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ac2cf42086c1a4cb995dfd14b04fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosion: {fileID: 1000013462590818, guid: ecdd96beb7f93494880c052dfccf9dc1, type: 2}
   speed: 10
   exSpace: 0.5
 --- !u!50 &349337798
@@ -2596,6 +2597,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 703c75a7a407e3243af0314375aa244d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ship: {fileID: 349337794}
   Coins: {fileID: 1217289080}
   CountText: {fileID: 611081902}
   CountTime: 4
