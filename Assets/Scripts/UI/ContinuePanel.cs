@@ -8,8 +8,6 @@ public class ContinuePanel : MonoBehaviour {
     public Text CountText;
     public int CountTime;
 
-    private RectTransform rect;
-
     private void OnEnable()
     {
         Ship.Death += StartCountDown;
@@ -20,14 +18,10 @@ public class ContinuePanel : MonoBehaviour {
         Ship.Death -= StartCountDown;
     }
 
-    private void Start()
-    {
-        rect = GetComponent<RectTransform>();
-    }
 
     void StartCountDown()
     {
-        rect.anchoredPosition = new Vector2(0, 0);
+        GetComponentInParent<PanelManager>().ShowMenu(GetComponent<Panel>());
         StartCoroutine(CountDown());
     }
 
@@ -48,8 +42,8 @@ public class ContinuePanel : MonoBehaviour {
 
     public void GiveLife()
     {
+        GetComponentInParent<PanelManager>().ShowMenu(transform.parent.Find("Game Menu").GetComponent<Panel>());
         Time.timeScale = 1;
         StopAllCoroutines();
-        rect.anchoredPosition = new Vector2(1000000000, 0);
     }
 }
