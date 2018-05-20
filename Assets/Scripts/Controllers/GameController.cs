@@ -52,7 +52,6 @@ public class GameController : MonoBehaviour
     void OnEnable()
     {
         SaveManager.Load();
-        Ship.Death += EndGame;
         Enemy.Death += CountDestroys;
         Pickup.Got += CountPickups;
     }
@@ -60,7 +59,6 @@ public class GameController : MonoBehaviour
     void OnDisable()
     {
         SaveManager.Save();
-        Ship.Death -= EndGame;
         Enemy.Death -= CountDestroys;
         Pickup.Got -= CountPickups;
     }

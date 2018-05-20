@@ -38,6 +38,16 @@ public class Ship : MonoBehaviour
     public delegate void Died();
     public static event Died Death;
 
+    private void OnEnable()
+    {
+        GameController.GameEnd += Destroy;
+    }
+
+    private void OnDisable()
+    {
+        GameController.GameEnd -= Destroy;
+    }
+
     void Start()
     {
         bounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height));
@@ -157,20 +167,16 @@ public class Ship : MonoBehaviour
 
         if (c.gameObject.tag == "Enemy" || c.gameObject.tag == "EnemyFire")
         {
-            Destroy(gameObject);
+            ClearBuffs();
+
+            if (Death != null)
+                Death();
         }
     }
 
     void ClearBuffs()
     {
         ActiveBuffs.Clear();
-    }
-
-    void OnDestroy()
-    {
-        ClearBuffs();
-        if (Death!= null)
-            Death();
     }
 
     IEnumerator removeBuff (string buff, int time) {
@@ -185,5 +191,10 @@ public class Ship : MonoBehaviour
             Destroy (transform.Find(buff + "(Clone)").gameObject);
             shooting = true;
         }
+    }
+
+    private void Destroy()
+    {
+        Destroy(gameObject);
     }
 }
