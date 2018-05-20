@@ -129,7 +129,7 @@ public class GameController : MonoBehaviour
     {
         PlayerPrefs.DeleteAll();
         Missions.LoadMissions(new List<Mission>()); // Loads 0 Missions
-        Ship.upgrades.Clear();
+        Upgrades.Reset();
         PlayerPrefs.SetInt("Coins", 10000);
         SaveManager.ClearSave();
     }

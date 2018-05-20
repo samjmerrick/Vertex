@@ -23,7 +23,7 @@ public class SaveManager
         saveData = new Save
         {
             missions = Missions.GetMissions(),
-            upgrades = Ship.upgrades,
+            upgrades = Upgrades.Get(),
             bestStats = GameController.bestStats
         };
 
@@ -43,7 +43,7 @@ public class SaveManager
             saveData = (Save)formatter.Deserialize(saveFile);
 
             // Load our data
-            Ship.upgrades = saveData.upgrades;
+            Upgrades.LoadUpgrades(saveData.upgrades);
             Missions.LoadMissions(saveData.missions);
 
             if (saveData.bestStats != null)

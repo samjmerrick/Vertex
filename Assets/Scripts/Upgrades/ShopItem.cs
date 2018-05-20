@@ -23,8 +23,7 @@ public abstract class ShopItem : MonoBehaviour {
         transform.Find("Header").GetComponent<Text>().text = upgradeName;
         transform.Find("Image").GetComponent<Image>().sprite = (Sprite)Resources.Load("Buff_NoGlow/" + upgradeName, typeof(Sprite));
 
-        // Find the current level, and set our variables
-        if (!Ship.upgrades.TryGetValue(upgradeName, out upgradeLevel)) upgradeLevel = 0;
+        upgradeLevel = Upgrades.Get(upgradeName);
 
         SetUpgradeInfo();
 
@@ -47,7 +46,7 @@ public abstract class ShopItem : MonoBehaviour {
             // Upgrade and set preferences
             upgradeLevel++;
             PlayerPrefs.SetInt("Coins", coins - NextLevelCost);
-            Ship.upgrades[upgradeName] = upgradeLevel;
+            Upgrades.Amend(upgradeName, 1);
 
             SetUpgradeInfo();
         }

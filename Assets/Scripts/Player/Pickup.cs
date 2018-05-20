@@ -14,9 +14,9 @@ public class Pickup : MonoBehaviour {
     private void Awake()
     {
         thisName = name.Replace("(Clone)", "");
-        int level;
 
-        if (!Ship.upgrades.TryGetValue(thisName, out level)) level = 0;
+        int level = Upgrades.Get(thisName);
+        
         Time += (level * 2);
     }
 

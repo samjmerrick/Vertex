@@ -55,11 +55,11 @@ public class UIControl : MonoBehaviour {
     {
         Distance.text = "0";
         Destroyed.text = "0";
-        
+        Laser.text = Upgrades.Get("Laser").ToString();
+
+
         Coins.text = PlayerPrefs.GetInt("Coins").ToString();
-      
-        if (Ship.upgrades.ContainsKey("Laser"))
-            Laser.text = Ship.upgrades["Laser"].ToString();
+     
 
         StartCoroutine(CreateMissionText());
     }
