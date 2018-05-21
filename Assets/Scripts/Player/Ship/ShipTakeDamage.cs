@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ShipTakeDamage : MonoBehaviour {
 
+    private bool invincible = false;
+    public int invincibleTime;
     public GameObject explosion;
 
     public delegate void Died();
@@ -12,6 +14,7 @@ public class ShipTakeDamage : MonoBehaviour {
     private void OnEnable()
     {
         GameController.GameEnd += Destroy;
+        StartCoroutine(SetInvincible());
     }
 
     private void OnDisable()
@@ -21,6 +24,8 @@ public class ShipTakeDamage : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D c)
     {
+        if (!enabled || invincible) return;
+
         if (c.gameObject.tag == "Enemy" || c.gameObject.tag == "EnemyFire")
         {
             if (explosion != null)
@@ -35,6 +40,30 @@ public class ShipTakeDamage : MonoBehaviour {
             gameObject.SetActive(false);
         }
     }
+
+    IEnumerator SetInvincible()
+    {
+        if (!GameController.instance.GameRunning) yield break;
+
+        invincible = true;
+        StartCoroutine(Flash());
+
+        yield return new WaitForSeconds(invincibleTime);
+        invincible = false;
+    }
+
+    IEnumerator Flash()
+    {
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+
+        while (invincible)
+        {
+            sr.enabled = !sr.enabled;
+            yield return new WaitForSeconds(.1f);
+        }
+        sr.enabled = true;
+    }
+
 
     private void Destroy()
     {
