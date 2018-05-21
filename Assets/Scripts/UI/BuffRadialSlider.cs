@@ -11,12 +11,12 @@ public class BuffRadialSlider: MonoBehaviour
 
     private void OnEnable()
     {
-        Ship.Death += Destroy;
+        ShipTakeDamage.Death += Destroy;
     }
 
     private void OnDisable()
     {
-        Ship.Death -= Destroy;
+        ShipTakeDamage.Death -= Destroy;
     }
 
     private void Start()

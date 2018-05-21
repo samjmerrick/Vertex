@@ -1,13 +1,11 @@
 ﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 
-public class Ship : MonoBehaviour
+public class ShipMove : MonoBehaviour
 {
-    public GameObject explosion;
-
-    // Movement Variables
+    // public
     public int speed;
+    public float exSpace = 0.5f;
+
     private Vector3 target;
     private Vector3 moveStartInput;
     private Vector3 moveStartPos;
@@ -17,21 +15,6 @@ public class Ship : MonoBehaviour
     private Vector2 velocity = Vector2.zero;
     private Vector3 bounds;
     private Camera gamecamera;
-    public float exSpace = 0.5f;
-
-    // Events
-    public delegate void Died();
-    public static event Died Death;
-
-    private void OnEnable()
-    {
-        GameController.GameEnd += Destroy;
-    }
-
-    private void OnDisable()
-    {
-        GameController.GameEnd -= Destroy;
-    }
 
     void Start()
     {
@@ -45,11 +28,6 @@ public class Ship : MonoBehaviour
 
     void Update()
     {
-        Move();
-    }
-
-    void Move()
-    {
         if (Input.GetMouseButton(0))
         {
             // If we're not already moving, initialise movement
@@ -62,7 +40,7 @@ public class Ship : MonoBehaviour
 
             target = Camera.main.ScreenToWorldPoint((Input.mousePosition - moveStartInput) + moveStartPos);
             target.x = Mathf.Clamp(target.x, -bounds.x, bounds.x);
-            target.y = Mathf.Clamp(target.y, -bounds.y, bounds.y); 
+            target.y = Mathf.Clamp(target.y, -bounds.y, bounds.y);
 
             transform.position = Vector3.Lerp(transform.position, target, speed * Time.deltaTime);
 
@@ -80,30 +58,5 @@ public class Ship : MonoBehaviour
         {
             moving = false;
         }
-            
-    }
-
-   
-    void OnTriggerEnter2D(Collider2D c)
-    {
-        if (c.gameObject.tag == "Enemy" || c.gameObject.tag == "EnemyFire")
-        {
-            Instantiate(explosion, transform.position, transform.rotation);
-
-            if (Death != null)
-                Death();
-
-
-            foreach (GameObject bullet in GameObject.FindGameObjectsWithTag("PlayerFire"))
-                Destroy(bullet);
-
-            gameObject.SetActive(false);
-            
-        }
-    }
-
-    private void Destroy()
-    {
-        Destroy(gameObject);
     }
 }

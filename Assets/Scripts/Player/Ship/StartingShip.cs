@@ -10,7 +10,7 @@ public class StartingShip : MonoBehaviour {
         {
             GameController.instance.BeginGame();
 
-            GetComponent<Ship>().enabled = true;
+            GetComponent<ShipMove>().enabled = true;
             enabled = false;
         }     
     }

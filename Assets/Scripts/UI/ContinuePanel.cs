@@ -11,12 +11,12 @@ public class ContinuePanel : MonoBehaviour {
 
     private void OnEnable()
     {
-        Ship.Death += StartCountDown;
+        ShipTakeDamage.Death += StartCountDown;
     }
 
     private void OnDisable()
     {
-        Ship.Death -= StartCountDown;
+        ShipTakeDamage.Death -= StartCountDown;
     }
 
     void StartCountDown()
