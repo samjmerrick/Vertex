@@ -19,10 +19,8 @@ public class ContinuePanel : MonoBehaviour {
         Ship.Death -= StartCountDown;
     }
 
-
     void StartCountDown()
     {
-        
         StartCoroutine(CountDown());
     }
 
@@ -33,7 +31,7 @@ public class ContinuePanel : MonoBehaviour {
         GetComponentInParent<PanelManager>().ShowMenu(GetComponent<Panel>());
 
         Coins.text = PlayerPrefs.GetInt("Coins").ToString();
-        Time.timeScale = 0;
+        Time.timeScale = 0.25f;
 
         for (int i = CountTime; i > 0; i--)
         {
