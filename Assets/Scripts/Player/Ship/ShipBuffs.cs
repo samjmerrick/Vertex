@@ -8,7 +8,7 @@ public class ShipBuffs : MonoBehaviour
     [HideInInspector]
     public List<string> Active = new List<string>();
 
-    private void Start()
+    private void OnEnable()
     {
         ClearBuffs();
     }
@@ -45,6 +45,9 @@ public class ShipBuffs : MonoBehaviour
     void ClearBuffs()
     {
         Active.Clear();
+
+        foreach (Transform child in transform)
+            Destroy(child.gameObject);
     }
 }
 
