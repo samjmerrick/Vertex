@@ -15,6 +15,10 @@ public class Pickup : MonoBehaviour {
     {
         thisName = name.Replace("(Clone)", "");
 
+        ShipBuffs shipBuffs = FindObjectOfType<ShipBuffs>();
+        if (shipBuffs.Active.Contains(thisName))
+            Destroy(gameObject);
+
         int level = Upgrades.Get(thisName);
         
         Time += (level * 2);
