@@ -56,6 +56,7 @@ public class ContinuePanel : MonoBehaviour {
         if (PlayerPrefs.GetInt("Coins") < value) return;
 
         PlayerPrefs.SetInt("Coins", (PlayerPrefs.GetInt("Coins") -value));
+        UIControl.instance.Coins.text = PlayerPrefs.GetInt("Coins").ToString();
         GiveLife();
     }
 }
