@@ -38,17 +38,23 @@ public class ContinuePanel : MonoBehaviour {
             CountText.text = i.ToString();
             yield return new WaitForSecondsRealtime(1); 
         }
- 
+
+        StopCountdown();  
+    }
+
+    public void StopCountdown()
+    {
+        StopAllCoroutines();
         Time.timeScale = 1;
         FindObjectOfType<GameController>().EndGame();
     }
 
     public void GiveLife()
     {
+        StopAllCoroutines();
+        Time.timeScale = 1;
         GetComponentInParent<PanelManager>().ShowMenu(transform.parent.Find("Game Menu").GetComponent<Panel>());
         ship.SetActive(true);
-        Time.timeScale = 1;
-        StopAllCoroutines();
     }
 
     public void GiveLifeForMoney(int value)
