@@ -14,6 +14,9 @@ public class Missile : MonoBehaviour {
     void Start () {
         rb = GetComponent<Rigidbody2D>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
+
+        if (target = null)
+            Destroy(gameObject);
 	}
 	
 	void FixedUpdate () {
