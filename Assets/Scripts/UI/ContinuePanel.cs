@@ -50,4 +50,12 @@ public class ContinuePanel : MonoBehaviour {
         Time.timeScale = 1;
         StopAllCoroutines();
     }
+
+    public void GiveLifeForMoney(int value)
+    {
+        if (PlayerPrefs.GetInt("Coins") < value) return;
+
+        PlayerPrefs.SetInt("Coins", (PlayerPrefs.GetInt("Coins") -value));
+        GiveLife();
+    }
 }
