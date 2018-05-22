@@ -50,8 +50,6 @@ public abstract class ShopItem : MonoBehaviour {
 
             SetUpgradeInfo();
         }
-        else
-            print("not enough coins");
     }
 
     public void SetActive(bool active) 

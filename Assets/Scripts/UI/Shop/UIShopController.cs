@@ -38,6 +38,13 @@ public class UIShopController : MonoBehaviour {
 
         if (active.NextLevelCost != 0)
         {
+            if (active.NextLevelCost > PlayerPrefs.GetInt("Coins"))
+            {
+                cost.text = "Not enough coins";
+                upgradeButton.enabled = false;
+                return;
+            }
+
             cost.text = active.NextLevelCost.ToString();
             upgradeButton.enabled = true;
         }
