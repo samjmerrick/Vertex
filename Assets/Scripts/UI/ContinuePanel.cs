@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class ContinuePanel : MonoBehaviour {
 
     public GameObject ship;
-    public Text Coins;
+    public Text CoinsText;
     public Text CountText;
     public int CountTime;
 
@@ -30,7 +30,7 @@ public class ContinuePanel : MonoBehaviour {
 
         GetComponentInParent<PanelManager>().ShowMenu(GetComponent<Panel>());
 
-        Coins.text = PlayerPrefs.GetInt("Coins").ToString();
+        CoinsText.text = Coins.Get().ToString();
         Time.timeScale = 0.25f;
 
         for (int i = CountTime; i > 0; i--)
@@ -59,10 +59,12 @@ public class ContinuePanel : MonoBehaviour {
 
     public void GiveLifeForMoney(int value)
     {
-        if (PlayerPrefs.GetInt("Coins") < value) return;
+        bool lifeGiven = Coins.Debit(value);
 
-        PlayerPrefs.SetInt("Coins", (PlayerPrefs.GetInt("Coins") -value));
-        UIControl.instance.Coins.text = PlayerPrefs.GetInt("Coins").ToString();
-        GiveLife();
+        if (lifeGiven)
+        {
+            UIControl.instance.CoinsText.text = Coins.Get().ToString();
+            GiveLife();
+        }
     }
 }

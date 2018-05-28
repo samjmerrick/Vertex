@@ -6,6 +6,7 @@ using System.IO;
 [System.Serializable]
 public class Save
 {
+    public int coins;
     public List<Mission> missions = new List<Mission>();
     public Dictionary<string, int> upgrades = new Dictionary<string, int>();
     public Dictionary<string, int> bestStats = new Dictionary<string, int>();
@@ -22,6 +23,7 @@ public class SaveManager
 
         saveData = new Save
         {
+            coins = Coins.Get(),
             missions = Missions.GetMissions(),
             upgrades = Upgrades.Get(),
             bestStats = GameController.bestStats
@@ -34,7 +36,8 @@ public class SaveManager
 
     public static void Load()
     {
-        if (File.Exists(SavePath() + "save.binary")) {
+        if (File.Exists(SavePath() + "save.binary"))
+        {
             Save saveData;
 
             BinaryFormatter formatter = new BinaryFormatter();
@@ -45,6 +48,7 @@ public class SaveManager
             // Load our data
             Upgrades.LoadUpgrades(saveData.upgrades);
             Missions.LoadMissions(saveData.missions);
+            Coins.Set(saveData.coins);
 
             if (saveData.bestStats != null)
                 GameController.bestStats = saveData.bestStats;

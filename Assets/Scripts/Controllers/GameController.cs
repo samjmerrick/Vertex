@@ -86,7 +86,7 @@ public class GameController : MonoBehaviour
         panelManager.ShowMenu(deathMenu);
 
         GameRunning = false;
-        PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + gameStats["Destroyed"]);
+        Coins.Add(gameStats["Destroyed"]);
 
         foreach (KeyValuePair<string, int> stat in gameStats)
         {
@@ -128,10 +128,9 @@ public class GameController : MonoBehaviour
 
     public void DeleteHighScore()
     {
-        PlayerPrefs.DeleteAll();
         Missions.LoadMissions(new List<Mission>()); // Loads 0 Missions
         Upgrades.Reset();
-        PlayerPrefs.SetInt("Coins", 10000);
+        Coins.Set(10000);
         SaveManager.ClearSave();
     }
 

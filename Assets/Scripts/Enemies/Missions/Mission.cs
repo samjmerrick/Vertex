@@ -23,8 +23,8 @@ public abstract class Mission {
 
         MissionComplete(this);
 
-        PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + reward);
-        UIControl.Instance.Coins.text = PlayerPrefs.GetInt("Coins").ToString();
+        Coins.Add(reward);
+        UIControl.Instance.CoinsText.text = Coins.Get().ToString();
     }
 
     public void CheckOneTime()

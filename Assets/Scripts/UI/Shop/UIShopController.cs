@@ -15,7 +15,7 @@ public class UIShopController : MonoBehaviour {
     private void OnEnable()
     {
         description.text = "Select an upgrade";
-        coins.text = PlayerPrefs.GetInt("Coins").ToString();
+        coins.text = Coins.Get().ToString();
         active = null;
         upgradeButton.enabled = false;
     }
@@ -38,7 +38,7 @@ public class UIShopController : MonoBehaviour {
 
         if (active.NextLevelCost != 0)
         {
-            if (active.NextLevelCost > PlayerPrefs.GetInt("Coins"))
+            if (active.NextLevelCost > Coins.Get())
             {
                 cost.text = "Not enough coins";
                 upgradeButton.enabled = false;
@@ -60,6 +60,6 @@ public class UIShopController : MonoBehaviour {
     {
         active.UpgradeBuff();
         ChangeActive(active);
-        coins.text = PlayerPrefs.GetInt("Coins").ToString();
+        coins.text = Coins.Get().ToString();
     }
 }

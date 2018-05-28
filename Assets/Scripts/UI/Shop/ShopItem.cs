@@ -39,13 +39,11 @@ public abstract class ShopItem : MonoBehaviour {
 
     public void UpgradeBuff()
     {
-        int coins = PlayerPrefs.GetInt("Coins");
-
-        if (NextLevelCost <= coins)
+        if (NextLevelCost <= Coins.Get())
         {
             // Upgrade and set preferences
             upgradeLevel++;
-            PlayerPrefs.SetInt("Coins", coins - NextLevelCost);
+            Coins.Debit(NextLevelCost);
             Upgrades.Amend(upgradeName, 1);
 
             SetUpgradeInfo();
