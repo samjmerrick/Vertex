@@ -9,6 +9,16 @@ public class BuffRadialSlider: MonoBehaviour
     private float angle;
     private float timeRemaining;
 
+    private void OnEnable()
+    {
+        ShipTakeDamage.Death += Destroy;
+    }
+
+    private void OnDisable()
+    {
+        ShipTakeDamage.Death -= Destroy;
+    }
+
     private void Start()
     {
         timeRemaining = Time.time + time;
@@ -22,10 +32,14 @@ public class BuffRadialSlider: MonoBehaviour
 		GetComponent<Image>().color = Color.Lerp(Color.red, Color.green, angle);
 
         if (angle <= 0 || !GameController.instance.GameRunning) {
-            Destroy(gameObject);
-
+            Destroy();
         }
 	}
+
+    private void Destroy()
+    {
+        Destroy(gameObject);
+    }
 }
 
 

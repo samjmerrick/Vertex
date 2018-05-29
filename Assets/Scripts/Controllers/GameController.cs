@@ -28,6 +28,7 @@ public class GameController : MonoBehaviour
     void Awake()
     {
         instance = this;
+        Application.targetFrameRate = 60;
     }
     #endregion
 
@@ -52,7 +53,6 @@ public class GameController : MonoBehaviour
     void OnEnable()
     {
         SaveManager.Load();
-        Ship.Death += EndGame;
         Enemy.Death += CountDestroys;
         Pickup.Got += CountPickups;
     }
@@ -60,7 +60,6 @@ public class GameController : MonoBehaviour
     void OnDisable()
     {
         SaveManager.Save();
-        Ship.Death -= EndGame;
         Enemy.Death -= CountDestroys;
         Pickup.Got -= CountPickups;
     }
@@ -87,7 +86,7 @@ public class GameController : MonoBehaviour
         panelManager.ShowMenu(deathMenu);
 
         GameRunning = false;
-        PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + gameStats["Destroyed"]);
+        Coins.Add(gameStats["Destroyed"]);
 
         foreach (KeyValuePair<string, int> stat in gameStats)
         {
@@ -129,10 +128,9 @@ public class GameController : MonoBehaviour
 
     public void DeleteHighScore()
     {
-        PlayerPrefs.DeleteAll();
         Missions.LoadMissions(new List<Mission>()); // Loads 0 Missions
-        Ship.upgrades.Clear();
-        PlayerPrefs.SetInt("Coins", 10000);
+        Upgrades.Reset();
+        Coins.Set(10000);
         SaveManager.ClearSave();
     }
 

@@ -615,7 +615,7 @@ PlayerSettings:
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
   cloudProjectId: 851be131-f9ff-40e1-90ae-cd73f69751e2
-  projectName: Asteroids
+  projectName: Star Defender
   organizationId: samjmerrick
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0

@@ -14,6 +14,6 @@ public class CoinsUpdate : MonoBehaviour {
 
     private void OnGUI()
     {
-        text.text = PlayerPrefs.GetInt("Coins").ToString();
+        text.text = Coins.Get().ToString();
     }
 }
