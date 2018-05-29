@@ -54,7 +54,7 @@ public class ContinuePanel : MonoBehaviour {
         StopAllCoroutines();
         Time.timeScale = 1;
         GetComponentInParent<PanelManager>().ShowMenu(transform.parent.Find("Game Menu").GetComponent<Panel>());
-        ship.SetActive(true);
+        ship.GetComponent<ShipTakeDamage>().GiveLife();
     }
 
     public void GiveLifeForMoney(int value)

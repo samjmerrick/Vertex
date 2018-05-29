@@ -14,7 +14,6 @@ public class ShipTakeDamage : MonoBehaviour {
     private void OnEnable()
     {
         GameController.GameEnd += Destroy;
-        StartCoroutine(SetInvincible());
     }
 
     private void OnDisable()
@@ -37,14 +36,18 @@ public class ShipTakeDamage : MonoBehaviour {
             foreach (GameObject bullet in GameObject.FindGameObjectsWithTag("PlayerFire"))
                 Destroy(bullet);
 
-            gameObject.SetActive(false);
+            gameObject.SetActive(false);    
         }
+    }
+
+    public void GiveLife()
+    {
+        gameObject.SetActive(true);
+        StartCoroutine(SetInvincible());
     }
 
     IEnumerator SetInvincible()
     {
-        if (!GameController.instance.GameRunning) yield break;
-
         invincible = true;
         StartCoroutine(Flash());
 
