@@ -36,15 +36,14 @@ public class ContinuePanel : MonoBehaviour {
         for (int i = CountTime; i > 0; i--)
         {
             CountText.text = i.ToString();
-            yield return new WaitForSecondsRealtime(1); 
+            yield return new WaitForSecondsRealtime(1);       
         }
 
-        StopCountdown();  
+        EndGame();  
     }
 
-    public void StopCountdown()
+    public void EndGame()
     {
-        StopAllCoroutines();
         Time.timeScale = 1;
         FindObjectOfType<GameController>().EndGame();
     }

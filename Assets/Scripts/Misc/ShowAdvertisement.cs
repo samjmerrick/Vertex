@@ -22,7 +22,6 @@ public class ShowAdvertisement : MonoBehaviour
             case ShowResult.Finished:
                 Debug.Log("The ad was successfully shown.");
                 continuePanel.GiveLife();
-                GetComponent<Button>().interactable = false;
                 break;
             case ShowResult.Skipped:
                 Debug.Log("The ad was skipped before reaching the end.");
