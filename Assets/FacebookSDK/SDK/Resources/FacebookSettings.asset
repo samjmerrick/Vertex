@@ -15,9 +15,9 @@ MonoBehaviour:
   clientTokens:
   - 
   appIds:
-  - 1799206843708967
+  - 380359295705828
   appLabels:
-  - Spacey Game
+  - Star Defender
   cookie: 1
   logging: 1
   status: 1
