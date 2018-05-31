@@ -148,8 +148,8 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.SamJMerrick.SpaceyGame
-    iOS: com.SamJMerrick.UFO-AST
+    Android: com.samjm.stardefender
+    iOS: com.samjm.stardefender
   buildNumber: {}
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 16
