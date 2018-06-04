@@ -1,17 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using Facebook.Unity;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+[RequireComponent(typeof(FirebaseController))]
 public class FbController : MonoBehaviour {
-    
-	List<string> perms = new List<string>(){"public_profile", "email"};
 
-	public void LogIn(){
-		FB.LogInWithReadPermissions(perms, AuthCallback);
-	}
+	List<string> perms = new List<string>(){"public_profile", "email"};
 
 	// Awake function from Unity's MonoBehavior
 	void Awake ()
@@ -25,65 +20,33 @@ public class FbController : MonoBehaviour {
 		}
 	}
 
-	private void InitCallback ()
-	{
-		if (FB.IsInitialized) {
-			// Signal an app activation App Event
-			FB.ActivateApp();
-			// Continue with Facebook SDK
-			// ...
-		} else {
-			Debug.Log("Failed to Initialize the Facebook SDK");
-		}	
-	}
-
-	private void OnHideUnity (bool isGameShown)
-	{
-		if (!isGameShown) {
-			// Pause the game - we will need to hide
-			Time.timeScale = 0;
-		} else {
-            // Resume the game - we're getting focus again
-            Time.timeScale = 1;
+    private void InitCallback()
+    {
+        if (FB.IsInitialized)
+        {
+            // Signal an app activation App Event
+            FB.ActivateApp();
+            // Continue with Facebook SDK
+            // ...
         }
-	}
+        else
+        {
+            Debug.Log("Failed to Initialize the Facebook SDK");
+        }
+    }
 
-
+    public void LogIn()
+    {
+        FB.LogInWithReadPermissions(perms, AuthCallback);
+    }
 
     private void AuthCallback (ILoginResult result)
     {
 		if (FB.IsLoggedIn)
         {
 			// AccessToken class will have session details
-			var aToken = Facebook.Unity.AccessToken.CurrentAccessToken;
-
-            string accessToken = AccessToken.CurrentAccessToken.ToString();
-
-            Firebase.Auth.Credential credential =
-                Firebase.Auth.FacebookAuthProvider.GetCredential(accessToken);
-
-
-            Firebase.Auth.FirebaseAuth auth = Firebase.Auth.FirebaseAuth.DefaultInstance;
-
-            auth.SignInWithCredentialAsync(credential).ContinueWith(task => {
-                if (task.IsCanceled)
-                {
-                    Debug.LogError("SignInWithCredentialAsync was canceled.");
-                    return;
-                }
-                if (task.IsFaulted)
-                {
-                    Debug.LogError("SignInWithCredentialAsync encountered an error: " + task.Exception);
-                    return;
-                }
-
-                Firebase.Auth.FirebaseUser newUser = task.Result;
-                Debug.LogFormat("User signed in successfully: {0} ({1})",
-                    newUser.DisplayName, newUser.UserId);
-            });
-
-
-
+			var aToken = AccessToken.CurrentAccessToken;
+            
             // Print current access token's User ID
             Debug.Log(aToken.UserId);
 
@@ -94,9 +57,13 @@ public class FbController : MonoBehaviour {
 
             // Restart the scene
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+            // Sign into Firebase
+            GetComponent<FirebaseController>().SignInWithFacebook(aToken.TokenString);
         }
 
-        else {
+        else
+        {
 			Debug.Log("User cancelled login");
 		}
 	}
@@ -120,5 +87,18 @@ public class FbController : MonoBehaviour {
         }
         
     }
-	
+
+    private void OnHideUnity(bool isGameShown)
+    {
+        if (!isGameShown)
+        {
+            // Pause the game - we will need to hide
+            Time.timeScale = 0;
+        }
+        else
+        {
+            // Resume the game - we're getting focus again
+            Time.timeScale = 1;
+        }
+    }
 }
