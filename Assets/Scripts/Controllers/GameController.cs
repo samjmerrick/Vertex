@@ -5,9 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    public PanelManager panelManager;
-    public Canvas canvas;
-
     public delegate void gameBegin();
     public static event gameBegin GameBegin;
 
@@ -34,10 +31,6 @@ public class GameController : MonoBehaviour
     {
         GameBegin();
 
-        Panel gameMenu = canvas.transform.Find("Game Menu").GetComponent<Panel>();
-        panelManager.ShowMenu(gameMenu);
-
-
         GameRunning = true;
         StartCoroutine(AddDistance());
         
@@ -45,8 +38,6 @@ public class GameController : MonoBehaviour
 
     public void EndGame()
     {
-        Panel deathMenu = canvas.transform.Find("Death Menu").GetComponent<Panel>();
-        panelManager.ShowMenu(deathMenu);
 
         GameRunning = false;
      

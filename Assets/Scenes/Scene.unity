@@ -819,7 +819,7 @@ GameObject:
   - component: {fileID: 187338316}
   - component: {fileID: 187338315}
   m_Layer: 0
-  m_Name: Button
+  m_Name: SkipWaiting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -883,7 +883,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 392733407}
-        m_MethodName: StopCountdown
+        m_MethodName: EndGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4111,6 +4111,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentPanel: {fileID: 1320750737}
+  GameMenu: {fileID: 771350960}
+  DeathMenu: {fileID: 1764384020}
 --- !u!1 &771350958
 GameObject:
   m_ObjectHideFlags: 0
@@ -13214,8 +13216,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ebd41d95f53a85408acf4ae087ec913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panelManager: {fileID: 771079715}
-  canvas: {fileID: 771079712}
   isQuitting: 0
 --- !u!114 &2077938221
 MonoBehaviour:

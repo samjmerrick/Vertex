@@ -4,10 +4,25 @@ using System.Collections;
 public class PanelManager : MonoBehaviour {
 
     public Panel CurrentPanel;
+    public Panel GameMenu;
+    public Panel DeathMenu;
+
     private bool sequenceRunning;
 
     public delegate void PanelChange(Panel panel);
     public static event PanelChange ChangePanel;
+
+    private void OnEnable()
+    {
+        GameController.GameBegin += StartGame;
+        GameController.GameEnd += EndGame;
+    }
+
+    private void OnDisable()
+    {
+        GameController.GameBegin -= StartGame;
+        GameController.GameEnd -= EndGame;
+    }
 
     // Use this for initialization
     void Start ()
@@ -25,5 +40,15 @@ public class PanelManager : MonoBehaviour {
         CurrentPanel.isOpen = true;
         ChangePanel(CurrentPanel);
 
+    }
+
+    void StartGame()
+    {
+        ShowMenu(GameMenu);
+    }
+
+    void EndGame()
+    {
+        ShowMenu(DeathMenu);
     }
 }
