@@ -26,7 +26,7 @@ public class ShipShoot : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-        if (GameController.instance.GameRunning)
+        if (GameController.GameRunning)
             CheckIfShooting();
     }
 

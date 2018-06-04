@@ -48,7 +48,7 @@ public class UIMissionPrefab : MonoBehaviour {
             }
                 
 
-            if (progress >= toComplete && !GameController.instance.GameRunning)
+            if (progress >= toComplete && !GameController.GameRunning)
             {
                 StartCoroutine(SetNewMission());
             }

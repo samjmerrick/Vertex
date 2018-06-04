@@ -75,7 +75,7 @@ public class FbController : MonoBehaviour {
             FB.FeedShare(
               link: new System.Uri("https://www.spaceygame.co.uk/"),
               linkName: "Spacey Game",
-              linkCaption: "I destroyed " + GameController.gameStats["Destroyed"] + " aliens! Can you beat it?",
+              linkCaption: "I destroyed " + Stats.gameStats["Destroyed"] + " aliens! Can you beat it?",
               linkDescription: "Spacey Game is a free mobile game",
               mediaSource: Application.persistentDataPath + "record.gif"
             );

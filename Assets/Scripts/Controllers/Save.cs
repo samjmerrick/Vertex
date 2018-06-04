@@ -26,7 +26,7 @@ public class SaveManager
             coins = Coins.Get(),
             missions = Missions.GetMissions(),
             upgrades = Upgrades.Get(),
-            bestStats = GameController.bestStats
+            bestStats = Stats.bestStats
         };
 
         formatter.Serialize(saveFile, saveData);
@@ -51,7 +51,7 @@ public class SaveManager
             Coins.Set(saveData.coins);
 
             if (saveData.bestStats != null)
-                GameController.bestStats = saveData.bestStats;
+                Stats.bestStats = saveData.bestStats;
 
             saveFile.Close();
         }

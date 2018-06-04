@@ -5,36 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    #region SINGLETON PATTERN
-    public static GameController instance = null;
-    public static GameController _instance;
-    public static GameController Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                _instance = GameObject.FindObjectOfType<GameController>();
-
-                if (_instance == null)
-                {
-                    Debug.Log("no instance");
-                }
-            }
-
-            return _instance;
-        }
-    }
-    void Awake()
-    {
-        instance = this;
-        Application.targetFrameRate = 60;
-    }
-    #endregion
-
-    public static Dictionary<string, int> gameStats = new Dictionary<string, int>();
-    public static Dictionary<string, int> bestStats = new Dictionary<string, int>();
-
     public PanelManager panelManager;
     public Canvas canvas;
 
@@ -47,37 +17,30 @@ public class GameController : MonoBehaviour
     public delegate void distance(int dist);
     public static event distance Distance;
 
-    public bool GameRunning = false;
+    public static bool GameRunning = false;
     public bool isQuitting = false;
 
     void OnEnable()
     {
         SaveManager.Load();
-        Enemy.Death += CountDestroys;
-        Pickup.Got += CountPickups;
     }
 
     void OnDisable()
     {
         SaveManager.Save();
-        Enemy.Death -= CountDestroys;
-        Pickup.Got -= CountPickups;
     }
 
     public void BeginGame()
     {
+        GameBegin();
+
         Panel gameMenu = canvas.transform.Find("Game Menu").GetComponent<Panel>();
         panelManager.ShowMenu(gameMenu);
 
-        gameStats.Clear();
-        gameStats.Add("Destroyed", 0);
-        gameStats.Add("Bosses", 0);
-        gameStats.Add("Pickups", 0);
-        gameStats.Add("Distance", 0);
 
         GameRunning = true;
         StartCoroutine(AddDistance());
-        GameBegin();
+        
     }
 
     public void EndGame()
@@ -86,25 +49,7 @@ public class GameController : MonoBehaviour
         panelManager.ShowMenu(deathMenu);
 
         GameRunning = false;
-        Coins.Add(gameStats["Destroyed"]);
-
-        foreach (KeyValuePair<string, int> stat in gameStats)
-        {
-            if (bestStats.ContainsKey(stat.Key))
-            {
-                if (bestStats[stat.Key] < stat.Value)
-                {
-                    bestStats[stat.Key] = stat.Value;
-                    Stats.newBest.Add(stat.Key);
-                }
-            }
-            else
-            {
-                bestStats.Add(stat.Key, stat.Value);
-                Stats.newBest.Add(stat.Key);
-            }
-        }
-            
+     
         if (!isQuitting)
         {
             CancelInvoke();
@@ -116,12 +61,12 @@ public class GameController : MonoBehaviour
     {
         while (GameRunning)
         {
-            gameStats["Distance"] += 1;
+            Stats.gameStats["Distance"] += 1;
 
             if (Distance != null)
                 Distance(1);
 
-            UIControl.instance.Distance.text = gameStats["Distance"].ToString();
+            UIControl.instance.Distance.text = Stats.gameStats["Distance"].ToString();
             yield return new WaitForSeconds(0.2f);
         }
     }
@@ -132,31 +77,6 @@ public class GameController : MonoBehaviour
         Upgrades.Reset();
         Coins.Set(10000);
         SaveManager.ClearSave();
-    }
-
-    private void CountDestroys(string name, Vector3 pos)
-    {
-        if (name.Contains("Boss"))
-        {
-            gameStats["Bosses"] += 1;
-        }
-
-        else
-        {
-            gameStats["Destroyed"] += 1;
-        }
-        
-        int destroyed = gameStats["Destroyed"];
-
-        UIControl.instance.Destroyed.text = destroyed.ToString();
-
-        if (destroyed % 25 == 0)
-            GetComponent<SpawnController>().toSpawn++;
-    }
-
-    private void CountPickups(string name, int time)
-    {
-        gameStats["Pickups"] += 1;
     }
 
     public void Pause()
