@@ -33,12 +33,10 @@ public class GameController : MonoBehaviour
 
         GameRunning = true;
         StartCoroutine(AddDistance());
-        
     }
 
     public void EndGame()
     {
-
         GameRunning = false;
      
         if (!isQuitting)
