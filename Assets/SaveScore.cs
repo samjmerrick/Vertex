@@ -30,21 +30,24 @@ public class SaveScore : MonoBehaviour {
 
     void EndGame()
     {
-        if (FirebaseUser.user != null)
+        Firebase.Auth.FirebaseUser user = FirebaseUser.user;
+
+        if (user == null) return;
+
+        writeNewScore(new Score
         {
-            writeNewScore(new Score
-            {
-                userID = FirebaseUser.UserID,
-                score = Stats.gameStats["Destroyed"],
-                name = FirebaseUser.displayName
-            });
-        }
+            userID = user.UserId,
+            name = user.DisplayName,
+            score = Stats.gameStats["Destroyed"],
+        });
     }
 
     private void writeNewScore(Score score)
     {
         string json = JsonUtility.ToJson(score);
         mDatabase.Child("scores").Child(score.userID).SetRawJsonValueAsync(json);
+
+        Debug.Log("Wrote new score" + json);
     }
 
     public class Score
