@@ -37,6 +37,7 @@ public class SaveScore : MonoBehaviour {
         writeNewScore(new Score
         {
             userID = user.UserId,
+            profilePicture = user.PhotoUrl.ToString(),
             name = user.DisplayName,
             score = Stats.gameStats["Destroyed"],
         });
@@ -53,7 +54,10 @@ public class SaveScore : MonoBehaviour {
     public class Score
     {
         public string userID;
+        public string profilePicture;
         public int score;
         public string name;
     }
+
 }
+
