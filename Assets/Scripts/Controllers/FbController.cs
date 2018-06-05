@@ -3,7 +3,7 @@ using UnityEngine;
 using Facebook.Unity;
 using UnityEngine.SceneManagement;
 
-[RequireComponent(typeof(FirebaseController))]
+[RequireComponent(typeof(FirebaseUser))]
 public class FbController : MonoBehaviour {
 
 	List<string> perms = new List<string>(){"public_profile", "email"};
@@ -59,7 +59,7 @@ public class FbController : MonoBehaviour {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
             // Sign into Firebase
-            GetComponent<FirebaseController>().SignInWithFacebook(aToken.TokenString);
+            GetComponent<FirebaseUser>().SignInWithFacebook(aToken.TokenString);
         }
 
         else

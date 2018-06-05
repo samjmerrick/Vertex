@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 using Firebase;
 using Firebase.Database;
 using Firebase.Unity.Editor;
@@ -29,13 +30,21 @@ public class SaveScore : MonoBehaviour {
 
     void EndGame()
     {
-        Firebase.Auth.FirebaseAuth auth = Firebase.Auth.FirebaseAuth.DefaultInstance;
+        if (FirebaseUser.user != null)
+        {
+            writeNewScore(new Score
+            {
+                userID = FirebaseUser.UserID,
+                score = Stats.gameStats["Destroyed"],
+                name = FirebaseUser.displayName
+            });
+        }
+    }
 
-        string userId = "xxxxxxxx";
-        string name = "Sam Merrick";
-        int score = Stats.gameStats["Destroyed"];
-
-        writeNewScore(userId, name, score);
+    private void writeNewScore(Score score)
+    {
+        string json = JsonUtility.ToJson(score);
+        mDatabase.Child("scores").Child(score.userID).SetRawJsonValueAsync(json);
     }
 
     public class Score
@@ -43,21 +52,5 @@ public class SaveScore : MonoBehaviour {
         public string userID;
         public int score;
         public string name;
-    }
-
-    private void writeNewScore(string _userID, string _name, int _score)
-    {
-        Score score = new Score
-        {
-            userID = _userID,
-            name = _name,
-            score = _score
-        };
-
-        string json = JsonUtility.ToJson(score);
-        Debug.Log(json);
-
-        mDatabase.Child("scores").Child(_userID).SetRawJsonValueAsync(json);
-
     }
 }

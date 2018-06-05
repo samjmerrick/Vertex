@@ -11768,7 +11768,7 @@ Animator:
   m_GameObject: {fileID: 1764384018}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: ffe8a8e1dbce0e04bb3baf0aa3f5400c, type: 2}
+  m_Controller: {fileID: 9100000, guid: dce5c05cce5f08b45833a5aa15d4761f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -13098,8 +13098,9 @@ GameObject:
   - component: {fileID: 2077938223}
   - component: {fileID: 2077938219}
   - component: {fileID: 2077938221}
-  - component: {fileID: 2077938222}
   - component: {fileID: 2077938225}
+  - component: {fileID: 2077938222}
+  - component: {fileID: 2077938227}
   - component: {fileID: 2077938226}
   - component: {fileID: 2077938224}
   m_Layer: 0
@@ -13314,6 +13315,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2191d7ed5d23df549b9472473d016cf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2077938227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2077938214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7ea448df2f5a664bbb33760cab3194c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2078114860
 Prefab:
   m_ObjectHideFlags: 0
@@ -13324,12 +13336,12 @@ Prefab:
     - target: {fileID: 224213656060036970, guid: bcb3afba94355864b93ac398970b1d59,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.45489502
+      value: 1139
       objectReference: {fileID: 0}
     - target: {fileID: 224213656060036970, guid: bcb3afba94355864b93ac398970b1d59,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 46
+      value: 272
       objectReference: {fileID: 0}
     - target: {fileID: 224213656060036970, guid: bcb3afba94355864b93ac398970b1d59,
         type: 2}
@@ -13364,12 +13376,12 @@ Prefab:
     - target: {fileID: 224213656060036970, guid: bcb3afba94355864b93ac398970b1d59,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 0.4549
+      value: 1139
       objectReference: {fileID: 0}
     - target: {fileID: 224213656060036970, guid: bcb3afba94355864b93ac398970b1d59,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 46
+      value: 272
       objectReference: {fileID: 0}
     - target: {fileID: 224213656060036970, guid: bcb3afba94355864b93ac398970b1d59,
         type: 2}
