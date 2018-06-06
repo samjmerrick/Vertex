@@ -40,6 +40,11 @@ public class FbController : MonoBehaviour {
         FB.LogInWithReadPermissions(perms, AuthCallback);
     }
 
+    public void LogOut()
+    {
+        FB.LogOut();
+    }
+
     private void AuthCallback (ILoginResult result)
     {
 		if (FB.IsLoggedIn)

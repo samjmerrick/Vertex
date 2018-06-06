@@ -227,7 +227,7 @@ Prefab:
     - target: {fileID: 224907777771984726, guid: 44bdc7916d7440340bd84fe48a7b5d80,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: -50
+      value: -871.64746
       objectReference: {fileID: 0}
     - target: {fileID: 1303948664936490, guid: 44bdc7916d7440340bd84fe48a7b5d80, type: 2}
       propertyPath: m_Name
@@ -1196,6 +1196,7 @@ RectTransform:
   - {fileID: 1870157813}
   - {fileID: 1253827077}
   - {fileID: 750102128}
+  - {fileID: 1255034047}
   m_Father: {fileID: 771079713}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1702,7 +1703,7 @@ RectTransform:
   - {fileID: 1954059719}
   - {fileID: 456078937}
   m_Father: {fileID: 1320750740}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -3439,7 +3440,7 @@ RectTransform:
   m_LocalScale: {x: 1.001472, y: 1.001472, z: 1.001472}
   m_Children: []
   m_Father: {fileID: 1320750740}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -9444,16 +9445,16 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1255034046}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 497.5, y: -708, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -495, y: 932, z: 0}
+  m_LocalScale: {x: 0.999467, y: 0.999467, z: 0.999467}
   m_Children:
   - {fileID: 1049490221}
-  m_Father: {fileID: 1320750740}
-  m_RootOrder: 2
+  m_Father: {fileID: 265817575}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 497.5, y: -708}
+  m_AnchoredPosition: {x: -495, y: 932}
   m_SizeDelta: {x: 125, y: 125}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1255034048
@@ -9633,7 +9634,6 @@ RectTransform:
   m_Children:
   - {fileID: 2141359723}
   - {fileID: 225603668}
-  - {fileID: 1255034047}
   - {fileID: 306550682}
   - {fileID: 661307050}
   m_Father: {fileID: 771079713}
@@ -9758,7 +9758,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1328562843}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.9476318, y: 0.000015258789, z: 0}
+  m_LocalPosition: {x: 20.237854, y: 0.00008392334, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1559240162}
@@ -9766,8 +9766,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.022000002, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -5, y: 0}
-  m_SizeDelta: {x: 10, y: 0}
+  m_AnchoredPosition: {x: 11, y: 0.00006485}
+  m_SizeDelta: {x: -26, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1328562845
 MonoBehaviour:
@@ -9791,7 +9791,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 678eb1ef318c71842913402671e6906c, type: 3}
-    m_FontSize: 40
+    m_FontSize: 42
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -9802,7 +9802,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: FB Login
+  m_Text: cONNECT WITH fACEBOOK
 --- !u!222 &1328562846
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10679,8 +10679,9 @@ GameObject:
   - component: {fileID: 1559240165}
   - component: {fileID: 1559240164}
   - component: {fileID: 1559240163}
+  - component: {fileID: 1559240166}
   m_Layer: 5
-  m_Name: Fb
+  m_Name: FacebookLogin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10694,7 +10695,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1559240161}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.000061035156, y: 248, z: 0}
+  m_LocalPosition: {x: -23.5, y: 364, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children:
   - {fileID: 1328562844}
@@ -10703,8 +10704,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000074387, y: 248}
-  m_SizeDelta: {x: 631.6, y: 150}
+  m_AnchoredPosition: {x: -23.5, y: 364}
+  m_SizeDelta: {x: 839.8, y: 137.9}
   m_Pivot: {x: 0.49999994, y: 0.49999988}
 --- !u!114 &1559240163
 MonoBehaviour:
@@ -10746,8 +10747,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2077938222}
-        m_MethodName: LogIn
+      - m_Target: {fileID: 1559240166}
+        m_MethodName: DoButtonAction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10779,10 +10780,10 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: cc51028991260b44696578d282342920, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 0
+  m_Sprite: {fileID: 21300000, guid: 754c5021372ce93488a6e9a72e1206c1, type: 3}
+  m_Type: 1
+  m_PreserveAspect: 1
+  m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 1
@@ -10794,6 +10795,19 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1559240161}
+--- !u!114 &1559240166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1559240161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8fee57e86700ad47a3cc13b97508ab2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fbController: {fileID: 2077938222}
+  buttonText: {fileID: 1328562845}
 --- !u!1 &1611537474
 GameObject:
   m_ObjectHideFlags: 0
@@ -11598,7 +11612,7 @@ Prefab:
     - target: {fileID: 224342180344512042, guid: 8d28e36c98c3e480291f9fe6917b6d96,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: -124.05
+      value: -122.050125
       objectReference: {fileID: 0}
     - target: {fileID: 224106828157945080, guid: 8d28e36c98c3e480291f9fe6917b6d96,
         type: 2}
@@ -11608,7 +11622,7 @@ Prefab:
     - target: {fileID: 224106828157945080, guid: 8d28e36c98c3e480291f9fe6917b6d96,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: -124.05
+      value: -124.00006
       objectReference: {fileID: 0}
     - target: {fileID: 224281359260815880, guid: 8d28e36c98c3e480291f9fe6917b6d96,
         type: 2}
@@ -11618,7 +11632,7 @@ Prefab:
     - target: {fileID: 224281359260815880, guid: 8d28e36c98c3e480291f9fe6917b6d96,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: -40
+      value: -76.05
       objectReference: {fileID: 0}
     - target: {fileID: 224840413550030590, guid: 8d28e36c98c3e480291f9fe6917b6d96,
         type: 2}
