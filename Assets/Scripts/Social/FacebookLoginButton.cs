@@ -14,8 +14,12 @@ public class FacebookLoginButton : MonoBehaviour {
         if (FB.IsLoggedIn)
         {
             AccessToken aToken = AccessToken.CurrentAccessToken;
+            
+            if (FirebaseUser.user != null)
+                buttonText.text = "Signed in as " + FirebaseUser.user.DisplayName;
 
-            buttonText.text = "Signed in as " + FirebaseUser.user.DisplayName;
+            else
+                buttonText.text = "Signed in as Error 1";
         }
     }
 

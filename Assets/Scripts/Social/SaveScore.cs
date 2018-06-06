@@ -34,10 +34,8 @@ public class SaveScore : MonoBehaviour {
 
         if (user == null) {
             Debug.Log("There is no signed in user");
-
             return;
         }
-            
 
         writeNewScore(new Score
         {
