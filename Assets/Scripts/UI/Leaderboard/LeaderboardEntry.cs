@@ -15,16 +15,11 @@ public class LeaderboardEntry : MonoBehaviour
     public void Init(int rank, string imageUrl, string displayName, string score)
     {
         Rank.text = rank.ToString();
-
-
         Score.text = score.ToString();
-
-
         DisplayName.text = displayName;
 
-
-        StartCoroutine(DisplayImage(imageUrl));
-
+        if (imageUrl != null)
+            StartCoroutine(DisplayImage(imageUrl));
     }
 
     IEnumerator DisplayImage(string url)
@@ -33,5 +28,4 @@ public class LeaderboardEntry : MonoBehaviour
         yield return www;
         ProfileImage.sprite = Sprite.Create(www.texture, new Rect(0, 0, www.texture.width, www.texture.height), new Vector2(0, 0));
     }
-
 }
