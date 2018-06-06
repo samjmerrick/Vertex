@@ -32,7 +32,12 @@ public class SaveScore : MonoBehaviour {
     {
         Firebase.Auth.FirebaseUser user = FirebaseUser.user;
 
-        if (user == null) return;
+        if (user == null) {
+            Debug.Log("There is no signed in user");
+
+            return;
+        }
+            
 
         writeNewScore(new Score
         {
