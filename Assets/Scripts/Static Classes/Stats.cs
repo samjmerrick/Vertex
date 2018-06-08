@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class Stats : MonoBehaviour
 {
     public static Dictionary<string, int> gameStats = new Dictionary<string, int>();
-    public static Dictionary<string, int> bestStats = new Dictionary<string, int>();
+    public static Dictionary<string, object> bestStats = new Dictionary<string, object>();
 
     void OnEnable()
     {
@@ -38,7 +38,7 @@ public class Stats : MonoBehaviour
         {
             if (bestStats.ContainsKey(stat.Key))
             {
-                if (bestStats[stat.Key] < stat.Value)
+                if ((int)bestStats[stat.Key] < stat.Value)
                 {
                     bestStats[stat.Key] = stat.Value;
                     UIStats.newBest.Add(stat.Key);
@@ -53,6 +53,8 @@ public class Stats : MonoBehaviour
                 UIStats.newBest.Add(stat.Key);
             }
         }
+
+        FirebaseDatabaseController.SaveBestStats(bestStats);
 
         Coins.Add(gameStats["Destroyed"]);
     }
