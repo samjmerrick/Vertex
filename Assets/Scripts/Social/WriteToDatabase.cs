@@ -1,18 +1,8 @@
 ﻿using UnityEngine;
 
-public class SaveScore : MonoBehaviour {
+public class WriteToDatabase {
 
-    private void OnEnable()
-    {
-        GameController.GameEnd += EndGame;
-    }
-
-    private void OnDisable()
-    {
-        GameController.GameEnd -= EndGame;
-    }
-
-    void EndGame()
+    public static void NewHiScore(int _score)
     {
         Firebase.Auth.FirebaseUser user = FirebaseUser.user;
 
@@ -27,11 +17,11 @@ public class SaveScore : MonoBehaviour {
             userID = user.UserId,
             profilePicture = user.PhotoUrl.ToString(),
             name = user.DisplayName,
-            score = Stats.gameStats["Destroyed"],
+            score = _score,
         });
     }
 
-    private void writeNewScore(Score score)
+    private static void writeNewScore(Score score)
     {
         string json = JsonUtility.ToJson(score);
         FirebaseDatabaseController.db.Child("scores").Child(score.userID).SetRawJsonValueAsync(json);

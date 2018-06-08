@@ -63,6 +63,7 @@ public class GameController : MonoBehaviour
     public void DeleteHighScore()
     {
         Missions.LoadMissions(new List<Mission>()); // Loads 0 Missions
+        Stats.bestStats.Clear();
         Upgrades.Reset();
         Coins.Set(10000);
         SaveManager.ClearSave();

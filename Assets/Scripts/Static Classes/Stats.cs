@@ -42,6 +42,9 @@ public class Stats : MonoBehaviour
                 {
                     bestStats[stat.Key] = stat.Value;
                     UIStats.newBest.Add(stat.Key);
+
+                    if (stat.Key == "Destroyed")
+                        WriteToDatabase.NewHiScore(stat.Value);
                 }
             }
             else
