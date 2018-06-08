@@ -525,6 +525,7 @@ PlayerSettings:
   platformArchitecture:
     iOS: 0
   scriptingBackend:
+    Android: 1
     iOS: 1
   incrementalIl2cppBuild: {}
   additionalIl2CppArgs: 

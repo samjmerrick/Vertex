@@ -54,6 +54,10 @@ public class FbController : MonoBehaviour {
 
             // Restart the scene
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+            // Sign into Firebase
+            if (FB.IsLoggedIn)
+                GetComponent<FirebaseUser>().SignInWithFacebook(AccessToken.CurrentAccessToken.TokenString);
         }
 
         else

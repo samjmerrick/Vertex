@@ -6,7 +6,7 @@ public class FirebaseUser : MonoBehaviour {
 
     public static Firebase.Auth.FirebaseUser user;
 
-    private void Awake()
+    private void Start()
     {
         CheckDependencies();
     }
@@ -26,7 +26,8 @@ public class FirebaseUser : MonoBehaviour {
             {
                 UnityEngine.Debug.LogError(System.String.Format(
                   "Could not resolve all Firebase dependencies: {0}", dependencyStatus));
-                // Firebase Unity SDK is not safe to use here.
+                Debug.Log(System.String.Format(
+                  "Could not resolve all Firebase dependencies: {0}", dependencyStatus));
             }
         });
     }
