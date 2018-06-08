@@ -14,7 +14,7 @@ public class LeaderboardEntry : MonoBehaviour
 
     public void Init(int rank, string imageUrl, string displayName, string score)
     {
-        Rank.text = rank.ToString();
+        Rank.text = rank + ".";
         Score.text = score.ToString();
         DisplayName.text = displayName;
 
