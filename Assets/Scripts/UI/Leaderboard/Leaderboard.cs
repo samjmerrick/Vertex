@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
-using Firebase;
 using Firebase.Database;
-using Firebase.Unity.Editor;
 using System.Linq;
+using UnityEngine.UI;
 
 public class Leaderboard : MonoBehaviour
 {
     public GameObject LeaderboardEntry;
+
+    public Text info;
 
     void Start()
     {
@@ -39,6 +40,12 @@ public class Leaderboard : MonoBehaviour
                     }
                 }
             });
+
+        string user = "null";
+        if (FirebaseUser.user != null) user = FirebaseUser.user.DisplayName;
+
+        if (info != null)
+            info.text = "Your hi-score is: " + Stats.bestStats["Destroyed"] + ".    Signed in as: " + user;
     }
 }
 
