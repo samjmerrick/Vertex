@@ -8,15 +8,8 @@ public class Leaderboard : MonoBehaviour
 {
     public GameObject LeaderboardEntry;
 
-
     void Start()
     {
-        // Set up the Editor before calling into the realtime database.
-        FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://star-defender.firebaseio.com/");
-
-        // Get the root reference location of the database.
-        DatabaseReference reference = FirebaseDatabase.DefaultInstance.RootReference;
-
         FirebaseDatabase.DefaultInstance
             .GetReference("scores")
             .OrderByChild("score")
