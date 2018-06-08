@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using Facebook.Unity;
 
@@ -13,13 +11,11 @@ public class FacebookLoginButton : MonoBehaviour {
     {
         if (FB.IsLoggedIn)
         {
-            AccessToken aToken = AccessToken.CurrentAccessToken;
-            
             if (FirebaseUser.user != null)
                 buttonText.text = "Signed in as " + FirebaseUser.user.DisplayName;
 
             else
-                buttonText.text = "Signed in as Error 1";
+                buttonText.text = "FB/FBASE Mismatch";
         }
     }
 
@@ -34,5 +30,8 @@ public class FacebookLoginButton : MonoBehaviour {
         {
             fbController.LogIn();
         }
+
+        gameObject.SetActive(false);
+        gameObject.SetActive(true);
     }
 }
