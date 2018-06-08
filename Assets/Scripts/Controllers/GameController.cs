@@ -19,6 +19,7 @@ public class GameController : MonoBehaviour
 
     void OnEnable()
     {
+        Application.targetFrameRate = 60;
         SaveManager.Load();
     }
 
