@@ -26,23 +26,15 @@ public class FbController : MonoBehaviour {
         {
             // Signal an app activation App Event
             FB.ActivateApp();
-            // Continue with Facebook SDK
-            // ...
+
+            // Sign into Firebase
+            if (FB.IsLoggedIn)
+                GetComponent<FirebaseUser>().SignInWithFacebook(AccessToken.CurrentAccessToken.TokenString);
         }
         else
         {
             Debug.Log("Failed to Initialize the Facebook SDK");
         }
-    }
-
-    public void LogIn()
-    {
-        FB.LogInWithReadPermissions(perms, AuthCallback);
-    }
-
-    public void LogOut()
-    {
-        FB.LogOut();
     }
 
     private void AuthCallback (ILoginResult result)
@@ -62,9 +54,6 @@ public class FbController : MonoBehaviour {
 
             // Restart the scene
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
-            // Sign into Firebase
-            GetComponent<FirebaseUser>().SignInWithFacebook(aToken.TokenString);
         }
 
         else
@@ -105,5 +94,15 @@ public class FbController : MonoBehaviour {
             // Resume the game - we're getting focus again
             Time.timeScale = 1;
         }
+    }
+
+    public void LogIn()
+    {
+        FB.LogInWithReadPermissions(perms, AuthCallback);
+    }
+
+    public void LogOut()
+    {
+        FB.LogOut();
     }
 }
