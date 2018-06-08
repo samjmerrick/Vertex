@@ -2,6 +2,7 @@
 using Firebase;
 using Firebase.Database;
 using Firebase.Unity.Editor;
+using System.Linq;
 
 public class Leaderboard : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class Leaderboard : MonoBehaviour
 
         FirebaseDatabase.DefaultInstance
             .GetReference("scores")
+            .OrderByChild("score")
             .GetValueAsync().ContinueWith(task => {
                 if (task.IsFaulted)
                 {
@@ -27,12 +29,11 @@ public class Leaderboard : MonoBehaviour
                 {
                     DataSnapshot snapshot = task.Result;
 
-                    int i = 0;
+                    int i = 1;
 
-                    foreach(var ChildSnapshot in snapshot.Children)
+                    foreach(var ChildSnapshot in snapshot.Children.Reverse())
                     {
                         LeaderboardEntry entry = Instantiate(LeaderboardEntry, transform).GetComponent<LeaderboardEntry>();
-
 
                         entry.Init(
                             rank: i,
@@ -45,9 +46,6 @@ public class Leaderboard : MonoBehaviour
                     }
                 }
             });
-
     }
-
-    
 }
 
