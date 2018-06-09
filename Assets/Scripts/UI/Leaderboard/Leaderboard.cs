@@ -9,7 +9,7 @@ public class Leaderboard : MonoBehaviour
 
     public Text info;
 
-    void Start()
+    void OnEnable()
     {
         FirebaseDatabase.DefaultInstance
             .GetReference("scores")
@@ -44,8 +44,20 @@ public class Leaderboard : MonoBehaviour
         string user = "null";
         if (UserManager.user != null) user = UserManager.user.DisplayName;
 
+		object score = 0;
+		if (Stats.bestStats.ContainsKey ("Destroyed")) score = Stats.bestStats ["Destroyed"];
+
         if (info != null)
-            info.text = "Your hi-score is: " + Stats.bestStats["Destroyed"] + ".    Signed in as: " + user;
+            info.text = "Your hi-score is: " + score + ".    Signed in as: " + user;
     }
+
+	void OnDisable(){
+		foreach (Transform child in transform) {
+			if (child.name.Contains("entry")){
+				Destroy (child.gameObject);
+			}
+				
+		}
+	}
 }
 
