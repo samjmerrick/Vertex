@@ -38,13 +38,10 @@ public class Stats : MonoBehaviour
         {
             if (bestStats.ContainsKey(stat.Key))
             {
-                if ((int)bestStats[stat.Key] < stat.Value)
+				if ((int)bestStats[stat.Key] < stat.Value)
                 {
                     bestStats[stat.Key] = stat.Value;
-                    UIStats.newBest.Add(stat.Key);
-
-                    if (stat.Key == "Destroyed")
-                        FirebaseDatabaseController.WriteNewHiScore(stat.Value);
+                    UIStats.newBest.Add(stat.Key);                       
                 }
             }
             else
@@ -54,6 +51,7 @@ public class Stats : MonoBehaviour
             }
         }
 
+		FirebaseDatabaseController.WriteNewHiScore((int)bestStats["Destroyed"]);
         FirebaseDatabaseController.SaveToDatabase("best-stats", bestStats);
 
         Coins.Add(gameStats["Destroyed"]);

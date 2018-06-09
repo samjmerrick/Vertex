@@ -29,7 +29,7 @@ public class FirebaseDatabaseController : MonoBehaviour {
         Dictionary<string, object> bestStats = new Dictionary<string, object>();
 
         FirebaseDatabase.DefaultInstance
-           .GetReference("stats")
+           .GetReference("best-stats")
            .Child(UserManager.user.UserId)
            .GetValueAsync().ContinueWith(task => {
                if (task.IsFaulted)
@@ -46,6 +46,10 @@ public class FirebaseDatabaseController : MonoBehaviour {
                    }
 
                    Debug.Log("Retrieved stats: " + bestStats);
+				
+					foreach (KeyValuePair<string, object> entry in Stats.bestStats){
+						Debug.Log (entry.Key + ": " + entry.Value);
+					}
                }
            });
 

@@ -70,7 +70,10 @@ public class UserManager : MonoBehaviour {
             }
 
             Firebase.Auth.FirebaseUser newUser = task.Result;
+
             user = auth.CurrentUser;
+
+			Stats.bestStats = FirebaseDatabaseController.GetBestStats();
 
             Debug.LogFormat("User signed in successfully: {0} ({1})",
                 newUser.DisplayName, newUser.UserId);
