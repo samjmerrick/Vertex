@@ -70,7 +70,7 @@ public class FirebaseDatabaseController : MonoBehaviour {
         }
     }
 
-    public static void WriteNewHiScore(int score)
+	public static void WriteNewHiScore(object score)
     {
         Firebase.Auth.FirebaseUser user = UserManager.user;
 

@@ -1,4 +1,5 @@
 ﻿
+using System;
 using UnityEngine;
 using System.Collections.Generic;
 
@@ -37,8 +38,8 @@ public class Stats : MonoBehaviour
         foreach (KeyValuePair<string, int> stat in gameStats)
         {
             if (bestStats.ContainsKey(stat.Key))
-            {
-				if ((int)bestStats[stat.Key] < stat.Value)
+			{
+				if (Convert.ToInt32(bestStats[stat.Key]) < stat.Value)
                 {
                     bestStats[stat.Key] = stat.Value;
                     UIStats.newBest.Add(stat.Key);                       
@@ -51,7 +52,7 @@ public class Stats : MonoBehaviour
             }
         }
 
-		FirebaseDatabaseController.WriteNewHiScore((int)bestStats["Destroyed"]);
+		FirebaseDatabaseController.WriteNewHiScore(bestStats["Destroyed"]);
         FirebaseDatabaseController.SaveToDatabase("best-stats", bestStats);
 
         Coins.Add(gameStats["Destroyed"]);
