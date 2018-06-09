@@ -31,7 +31,6 @@ public class UserManager : MonoBehaviour {
         }
 	}
 	
-
     private void CheckDependencies()
     {
         // Code to check for Google play services - required for Android

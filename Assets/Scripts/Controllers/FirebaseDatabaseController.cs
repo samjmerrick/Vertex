@@ -52,17 +52,34 @@ public class FirebaseDatabaseController : MonoBehaviour {
         return bestStats;
     }
 
-    public static void SaveBestStats(Dictionary<string, object> bestStats)
+    public static void SaveToDatabase(string location, Dictionary<string, object> data)
     {
         if (UserManager.user != null)
         {
-            db.Child("best-stats").Child(UserManager.user.UserId).SetValueAsync(bestStats);
-            Debug.Log("Wrote stats: " + bestStats);
+            db.Child(location).Child(UserManager.user.UserId).SetValueAsync(data);
+            Debug.Log("Wrote data to " + location);
         }
 
         else
         {
-            Debug.Log("Best stats not written as user not signed in");
+            Debug.Log("Data not written in *" + location + "* as user not signed in");
         }
+    }
+
+    public static void WriteNewHiScore(int score)
+    {
+        Firebase.Auth.FirebaseUser user = UserManager.user;
+
+        if (user == null) return;
+
+        Dictionary<string, object> data = new Dictionary<string, object>
+        {
+            { "userID", user.UserId.ToString() },
+            { "profilePicture", user.PhotoUrl.ToString() },
+            { "score", score },
+            { "name", user.DisplayName }
+        };
+
+        SaveToDatabase("scores", data);
     }
 }

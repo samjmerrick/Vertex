@@ -4,7 +4,6 @@ using Facebook.Unity;
 
 public class FacebookLoginButton : MonoBehaviour {
 
-    
     public Text buttonText;
 
     private void OnEnable()
@@ -17,13 +16,5 @@ public class FacebookLoginButton : MonoBehaviour {
             else
                 buttonText.text = "FB/FBASE Mismatch";
         }
-    }
-
-    public void DoButtonAction()
-    {
-        
-
-        gameObject.SetActive(false);
-        gameObject.SetActive(true);
     }
 }
