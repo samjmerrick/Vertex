@@ -71,11 +71,14 @@ public class FirebaseDatabaseController : MonoBehaviour {
         Firebase.Auth.FirebaseUser user = UserManager.user;
 
         if (user == null) return;
+	
+
+		string profileImage = "http://graph.facebook.com/" + Facebook.Unity.AccessToken.CurrentAccessToken.UserId + "/picture";
 
         Dictionary<string, object> data = new Dictionary<string, object>
         {
             { "userID", user.UserId.ToString() },
-            { "profilePicture", user.PhotoUrl.ToString() },
+			{ "profilePicture", profileImage },
             { "score", score },
             { "name", user.DisplayName }
         };
