@@ -52,8 +52,9 @@ public class Leaderboard : MonoBehaviour
     }
 
 	void OnDisable(){
-		foreach (Transform child in transform) {
-			if (child.name.Contains("entry")){
+		foreach (Transform child in transform) 
+		{
+			if (child.name.Contains("Entry")){
 				Destroy (child.gameObject);
 			}
 				
