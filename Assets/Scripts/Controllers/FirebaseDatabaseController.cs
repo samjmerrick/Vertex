@@ -20,7 +20,7 @@ public class FirebaseDatabaseController : MonoBehaviour {
 
     public static Dictionary<string, object> GetBestStats()
     {
-        if (FirebaseUser.user == null)
+        if (UserManager.user == null)
         {
             Debug.Log("User not signed in");
             return new Dictionary<string, object>();
@@ -30,7 +30,7 @@ public class FirebaseDatabaseController : MonoBehaviour {
 
         FirebaseDatabase.DefaultInstance
            .GetReference("stats")
-           .Child(FirebaseUser.user.UserId)
+           .Child(UserManager.user.UserId)
            .GetValueAsync().ContinueWith(task => {
                if (task.IsFaulted)
                {
@@ -54,9 +54,9 @@ public class FirebaseDatabaseController : MonoBehaviour {
 
     public static void SaveBestStats(Dictionary<string, object> bestStats)
     {
-        if (FirebaseUser.user != null)
+        if (UserManager.user != null)
         {
-            db.Child("best-stats").Child(FirebaseUser.user.UserId).SetValueAsync(bestStats);
+            db.Child("best-stats").Child(UserManager.user.UserId).SetValueAsync(bestStats);
             Debug.Log("Wrote stats: " + bestStats);
         }
 

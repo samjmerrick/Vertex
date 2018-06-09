@@ -4,7 +4,7 @@ public class WriteToDatabase {
 
     public static void NewHiScore(int _score)
     {
-        Firebase.Auth.FirebaseUser user = FirebaseUser.user;
+        Firebase.Auth.FirebaseUser user = UserManager.user;
 
         if (user == null) {
             Debug.Log("There is no signed in user");

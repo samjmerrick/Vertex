@@ -42,7 +42,7 @@ public class Leaderboard : MonoBehaviour
             });
 
         string user = "null";
-        if (FirebaseUser.user != null) user = FirebaseUser.user.DisplayName;
+        if (UserManager.user != null) user = UserManager.user.DisplayName;
 
         if (info != null)
             info.text = "Your hi-score is: " + Stats.bestStats["Destroyed"] + ".    Signed in as: " + user;
