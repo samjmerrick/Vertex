@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Facebook.Unity;
@@ -6,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class UserManager : MonoBehaviour {
 
-    public static Firebase.Auth.FirebaseUser user;
+    private static Firebase.Auth.FirebaseUser user;
     private List<string> perms = new List<string>() { "public_profile", "email" };
 
     private bool allDependenciesMet = false;
@@ -73,7 +74,7 @@ public class UserManager : MonoBehaviour {
 
             user = auth.CurrentUser;
 
-			Stats.bestStats = FirebaseDatabaseController.GetBestStats();
+			Stats.bestStats = FirebaseDatabaseController.GetFromDatabase("best-stats");
 
             Debug.LogFormat("User signed in successfully: {0} ({1})",
                 newUser.DisplayName, newUser.UserId);
@@ -172,6 +173,12 @@ public class UserManager : MonoBehaviour {
             Debug.Log("Not logged in");
         }
 
+    }
+
+    public static Firebase.Auth.FirebaseUser GetUser()
+    {
+        if (user != null) return user;
+        else throw new Exception("User not signed in!");
     }
 
     #endregion

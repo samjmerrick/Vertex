@@ -9,7 +9,7 @@ public class Save
     public int coins;
     public List<Mission> missions = new List<Mission>();
     public Dictionary<string, int> upgrades = new Dictionary<string, int>();
-    public Dictionary<string, object> bestStats = new Dictionary<string, object>();
+    public Dictionary<string, int> bestStats = new Dictionary<string, int>();
 }
 
 public class SaveManager

@@ -42,7 +42,7 @@ public class Leaderboard : MonoBehaviour
             });
 
         string user = "null";
-        if (UserManager.user != null) user = UserManager.user.DisplayName;
+        if (UserManager.GetUser() != null) user = UserManager.GetUser().DisplayName;
 
 		object score = 0;
 		if (Stats.bestStats.ContainsKey ("Destroyed")) score = Stats.bestStats ["Destroyed"];

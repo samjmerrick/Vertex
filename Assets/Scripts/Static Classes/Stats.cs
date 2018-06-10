@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class Stats : MonoBehaviour
 {
     public static Dictionary<string, int> gameStats = new Dictionary<string, int>();
-    public static Dictionary<string, object> bestStats = new Dictionary<string, object>();
+    public static Dictionary<string, int> bestStats = new Dictionary<string, int>();
 
     void OnEnable()
     {
@@ -39,7 +39,7 @@ public class Stats : MonoBehaviour
         {
             if (bestStats.ContainsKey(stat.Key))
 			{
-				if (Convert.ToInt32(bestStats[stat.Key]) < stat.Value)
+				if (bestStats[stat.Key] < stat.Value)
                 {
                     bestStats[stat.Key] = stat.Value;
                     UIStats.newBest.Add(stat.Key);                       

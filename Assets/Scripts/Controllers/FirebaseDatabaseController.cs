@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using Firebase;
@@ -18,19 +19,15 @@ public class FirebaseDatabaseController : MonoBehaviour {
         db = FirebaseDatabase.DefaultInstance.RootReference;
     }
 
-    public static Dictionary<string, object> GetBestStats()
+    public static Dictionary<string, int> GetFromDatabase(string location)
     {
-        if (UserManager.user == null)
-        {
-            Debug.Log("User not signed in");
-            return new Dictionary<string, object>();
-        }
+        Firebase.Auth.FirebaseUser user = UserManager.GetUser();
 
-        Dictionary<string, object> bestStats = new Dictionary<string, object>();
+        Dictionary<string, int> bestStats = new Dictionary<string, int>();
 
         FirebaseDatabase.DefaultInstance
            .GetReference("best-stats")
-           .Child(UserManager.user.UserId)
+           .Child(user.UserId)
            .GetValueAsync().ContinueWith(task => {
                if (task.IsFaulted)
                {
@@ -42,12 +39,12 @@ public class FirebaseDatabaseController : MonoBehaviour {
 
                    foreach (var ChildSnapshot in snapshot.Children)
                    {
-                       bestStats.Add(ChildSnapshot.Key, ChildSnapshot.Value);
+                       bestStats.Add(ChildSnapshot.Key, Convert.ToInt32(ChildSnapshot.Value));
                    }
 
                    Debug.Log("Retrieved stats: " + bestStats);
 				
-					foreach (KeyValuePair<string, object> entry in Stats.bestStats){
+					foreach (KeyValuePair<string, int> entry in Stats.bestStats){
 						Debug.Log (entry.Key + ": " + entry.Value);
 					}
                }
@@ -56,28 +53,28 @@ public class FirebaseDatabaseController : MonoBehaviour {
         return bestStats;
     }
 
+    // Save info to database
     public static void SaveToDatabase(string location, Dictionary<string, object> data)
     {
-        if (UserManager.user != null)
-        {
-            db.Child(location).Child(UserManager.user.UserId).SetValueAsync(data);
-            Debug.Log("Wrote data to " + location);
-        }
+        Firebase.Auth.FirebaseUser user = UserManager.GetUser();
 
-        else
-        {
-            Debug.Log("Data not written in *" + location + "* as user not signed in");
-        }
+        // Get location / UserID and set values
+        db.Child(location).Child(user.UserId).SetValueAsync(data);
+        Debug.Log("Wrote data to " + location);
     }
 
-	public static void WriteNewHiScore(object score)
+    // Extension class to handle <string, int> conversion to <string, object>
+    public static void SaveToDatabase(string location, Dictionary<string, int> data)
     {
-        Firebase.Auth.FirebaseUser user = UserManager.user;
+        SaveToDatabase(location, data.ToDictionary(kvp => kvp.Key, kvp => (object)kvp.Value));
+    }
 
-        if (user == null) return;
-	
+    // Handle int entry at end of game
+    public static void WriteNewHiScore(int score)
+    {
+        Firebase.Auth.FirebaseUser user = UserManager.GetUser();
 
-		string profileImage = "http://graph.facebook.com/" + Facebook.Unity.AccessToken.CurrentAccessToken.UserId + "/picture";
+        string profileImage = "http://graph.facebook.com/" + Facebook.Unity.AccessToken.CurrentAccessToken.UserId + "/picture";
 
         Dictionary<string, object> data = new Dictionary<string, object>
         {

@@ -10,14 +10,16 @@ public class FacebookLoginButton : MonoBehaviour {
     {
         if (FB.IsLoggedIn)
         {
-			if (UserManager.user != null) {
-				buttonText.text = "Signed in as " + UserManager.user.DisplayName;
+            if (UserManager.GetUser() != null)
+            {
+				buttonText.text = "Signed in as " + UserManager.GetUser().DisplayName;
 				GetComponent<Button> ().enabled = false;
 			}
-                
 
             else
+            {
                 buttonText.text = "FB/FBASE Mismatch";
+            }        
         }
     }
 }
