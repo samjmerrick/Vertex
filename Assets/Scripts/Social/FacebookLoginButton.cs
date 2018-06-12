@@ -18,7 +18,7 @@ public class FacebookLoginButton : MonoBehaviour {
 
             else
             {
-                buttonText.text = "FB/FBASE Mismatch";
+                buttonText.text = "Loading info";
             }        
         }
     }

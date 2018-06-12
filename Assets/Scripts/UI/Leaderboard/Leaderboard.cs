@@ -5,27 +5,34 @@ using UnityEngine.UI;
 
 public class Leaderboard : MonoBehaviour
 {
+
     public GameObject LeaderboardEntry;
+    public GameObject LoadingSymbol;
+
 
     public Text info;
 
     void OnEnable()
     {
+        GameObject loadingSymbol = Instantiate(LoadingSymbol, transform);
+
         FirebaseDatabase.DefaultInstance
             .GetReference("scores")
             .OrderByChild("score")
-            .GetValueAsync().ContinueWith(task => {
+            .GetValueAsync().ContinueWith(task =>
+            {
                 if (task.IsFaulted)
                 {
                     // Handle the error...
                 }
+
                 else if (task.IsCompleted)
                 {
                     DataSnapshot snapshot = task.Result;
 
                     int i = 1;
 
-                    foreach(var ChildSnapshot in snapshot.Children.Reverse())
+                    foreach (var ChildSnapshot in snapshot.Children.Reverse())
                     {
                         LeaderboardEntry entry = Instantiate(LeaderboardEntry, transform).GetComponent<LeaderboardEntry>();
 
@@ -38,6 +45,8 @@ public class Leaderboard : MonoBehaviour
 
                         i++;
                     }
+
+                    Destroy(loadingSymbol);
                 }
             });
 
@@ -51,10 +60,11 @@ public class Leaderboard : MonoBehaviour
             info.text = "Your hi-score is: " + score + ".    Signed in as: " + user;
     }
 
-	void OnDisable(){
+	void OnDisable()
+    {
 		foreach (Transform child in transform) 
 		{
-			if (child.name.Contains("Entry")){
+			if (!child.name.Contains("hi-score")){
 				Destroy (child.gameObject);
 			}
 				

@@ -138,6 +138,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LeaderboardEntry: {fileID: 1145535880082218, guid: 85eccb6888d09ea4788ff4e6e734d722,
     type: 2}
+  LoadingSymbol: {fileID: 1298136696379636, guid: 69fab84db3ec05343926490595d06137,
+    type: 2}
   info: {fileID: 114303915372861780}
 --- !u!114 &114565512343032604
 MonoBehaviour:
