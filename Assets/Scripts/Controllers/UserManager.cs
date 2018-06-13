@@ -8,6 +8,8 @@ using UnityEngine.SceneManagement;
 public class UserManager : MonoBehaviour {
 
     private static Firebase.Auth.FirebaseUser user;
+    public static Firebase.Auth.FirebaseUser GetUser() { return user; }
+
     private List<string> perms = new List<string>() { "public_profile", "email" };
 
     private bool allDependenciesMet = false;
@@ -22,16 +24,18 @@ public class UserManager : MonoBehaviour {
         CheckDependencies();
         yield return new WaitUntil(() => allDependenciesMet);
 
+        
+
         if (FB.IsLoggedIn)
         {
             SignInWithFacebook(AccessToken.CurrentAccessToken.TokenString);
         }
         else
         {
-            Debug.Log("User is not logged in with Facebook");
+            Debug.Log("Can't sign into firebase as user is not logged in with Facebook");
         }
-	}
-	
+    }
+
     private void CheckDependencies()
     {
         // Code to check for Google play services - required for Android
@@ -53,10 +57,11 @@ public class UserManager : MonoBehaviour {
 
     private void SignInWithFacebook(string accessToken)
     {
+        Firebase.Auth.FirebaseAuth auth = Firebase.Auth.FirebaseAuth.DefaultInstance;
+
         Firebase.Auth.Credential credential =
                 Firebase.Auth.FacebookAuthProvider.GetCredential(accessToken);
 
-        Firebase.Auth.FirebaseAuth auth = Firebase.Auth.FirebaseAuth.DefaultInstance;
 
         auth.SignInWithCredentialAsync(credential).ContinueWith(task => {
             if (task.IsCanceled)
@@ -70,14 +75,12 @@ public class UserManager : MonoBehaviour {
                 return;
             }
 
-            Firebase.Auth.FirebaseUser newUser = task.Result;
+            user = task.Result;
 
-            user = auth.CurrentUser;
-
-			Stats.bestStats = FirebaseDatabaseController.GetFromDatabase("best-stats");
+            SaveManager.LoadFromDatabase();
 
             Debug.LogFormat("User signed in successfully: {0} ({1})",
-                newUser.DisplayName, newUser.UserId);
+                user.DisplayName, user.UserId);
         });
     }
 
@@ -173,12 +176,6 @@ public class UserManager : MonoBehaviour {
             Debug.Log("Not logged in");
         }
 
-    }
-
-    public static Firebase.Auth.FirebaseUser GetUser()
-    {
-        if (user != null) return user;
-        else throw new Exception("User not signed in!");
     }
 
     #endregion

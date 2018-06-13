@@ -52,8 +52,13 @@ public class Stats : MonoBehaviour
             }
         }
 
-		FirebaseDatabaseController.WriteNewHiScore(bestStats["Destroyed"]);
-        FirebaseDatabaseController.SaveToDatabase("best-stats", bestStats);
+
+        if (UserManager.GetUser() != null)
+        {
+            FirebaseDatabaseController.WriteNewHiScore(bestStats["Destroyed"]);
+            FirebaseDatabaseController.SaveToDatabase("best-stats", bestStats);
+        }
+		
 
         Coins.Add(gameStats["Destroyed"]);
     }
