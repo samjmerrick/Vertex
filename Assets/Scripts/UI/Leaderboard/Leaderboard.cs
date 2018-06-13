@@ -23,7 +23,7 @@ public class Leaderboard : MonoBehaviour
             {
                 if (task.IsFaulted)
                 {
-                    // Handle the error...
+                    loadingSymbol.GetComponent<Image>().color = new Color(1, 0, 0);
                 }
 
                 else if (task.IsCompleted)
@@ -66,8 +66,7 @@ public class Leaderboard : MonoBehaviour
 		{
 			if (!child.name.Contains("hi-score")){
 				Destroy (child.gameObject);
-			}
-				
+			}	
 		}
 	}
 }
