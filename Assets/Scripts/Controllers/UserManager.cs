@@ -10,8 +10,6 @@ public class UserManager : MonoBehaviour {
     private static Firebase.Auth.FirebaseUser user;
     public static Firebase.Auth.FirebaseUser GetUser() { return user; }
 
-    private List<string> perms = new List<string>() { "public_profile", "email" };
-
     private bool allDependenciesMet = false;
 
     #region Init Methods
@@ -24,11 +22,9 @@ public class UserManager : MonoBehaviour {
         CheckDependencies();
         yield return new WaitUntil(() => allDependenciesMet);
 
-        
-
         if (FB.IsLoggedIn)
         {
-            SignInWithFacebook(AccessToken.CurrentAccessToken.TokenString);
+            SignIntoFirebaseWithFacebook(AccessToken.CurrentAccessToken.TokenString);
         }
         else
         {
@@ -36,26 +32,7 @@ public class UserManager : MonoBehaviour {
         }
     }
 
-    private void CheckDependencies()
-    {
-        // Code to check for Google play services - required for Android
-        Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
-            var dependencyStatus = task.Result;
-            if (dependencyStatus == Firebase.DependencyStatus.Available)
-            {
-                allDependenciesMet = true;
-            }
-            else
-            {
-                UnityEngine.Debug.LogError(System.String.Format(
-                  "Could not resolve all Firebase dependencies: {0}", dependencyStatus));
-                Debug.Log(System.String.Format(
-                  "Could not resolve all Firebase dependencies: {0}", dependencyStatus));
-            }
-        });
-    }
-
-    private void SignInWithFacebook(string accessToken)
+    private void SignIntoFirebaseWithFacebook(string accessToken)
     {
         Firebase.Auth.FirebaseAuth auth = Firebase.Auth.FirebaseAuth.DefaultInstance;
 
@@ -86,7 +63,7 @@ public class UserManager : MonoBehaviour {
 
     #endregion
 
-    #region Facebook Init Methods
+    #region Init Methods
 
     private void StartFacebookSDK()
     {
@@ -115,68 +92,26 @@ public class UserManager : MonoBehaviour {
         }
     }
 
-    #endregion
-
-    #region Public Methods
-
-    public void LogIn()
+    private void CheckDependencies()
     {
-        FB.LogInWithReadPermissions(perms, AuthCallback);
-    }
-
-    private void AuthCallback(ILoginResult result)
-    {
-        if (FB.IsLoggedIn)
-        {
-            // AccessToken class will have session details
-            var aToken = AccessToken.CurrentAccessToken;
-
-            // Print current access token's User ID
-            Debug.Log(aToken.UserId);
-
-            // Print current access token's granted permissions
-            foreach (string perm in aToken.Permissions)
+        // Code to check for Google play services - required for Android
+        Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
+            var dependencyStatus = task.Result;
+            if (dependencyStatus == Firebase.DependencyStatus.Available)
             {
-                Debug.Log(perm);
+                allDependenciesMet = true;
             }
-
-            SignInWithFacebook(aToken.TokenString);
-
-            // Restart the scene
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
-
-        else
-        {
-            Debug.Log("User cancelled login");
-        }
-    }
-
-    public void LogOut()
-    {
-        FB.LogOut();
-    }
-
-    public void FeedShare()
-    {
-        if (FB.IsLoggedIn)
-        {
-            FB.FeedShare(
-              link: new System.Uri("https://www.spaceygame.co.uk/"),
-              linkName: "Spacey Game",
-              linkCaption: "I destroyed " + Stats.gameStats["Destroyed"] + " aliens! Can you beat it?",
-              linkDescription: "Spacey Game is a free mobile game",
-              mediaSource: Application.persistentDataPath + "record.gif"
-            );
-
-            Debug.Log(Application.persistentDataPath + "record.gif");
-        }
-        else
-        {
-            Debug.Log("Not logged in");
-        }
-
+            else
+            {
+                UnityEngine.Debug.LogError(System.String.Format(
+                  "Could not resolve all Firebase dependencies: {0}", dependencyStatus));
+                Debug.Log(System.String.Format(
+                  "Could not resolve all Firebase dependencies: {0}", dependencyStatus));
+            }
+        });
     }
 
     #endregion
+
+
 }

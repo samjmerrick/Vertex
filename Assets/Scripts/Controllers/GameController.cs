@@ -68,7 +68,7 @@ public class GameController : MonoBehaviour
         Upgrades.Reset();
         Coins.Set(10000);
         SaveManager.ClearSave();
-		FindObjectOfType<UserManager> ().LogOut ();
+		FindObjectOfType<FacebookPublicMethods>().LogOut ();
 		RestartScene ();
     }
 
