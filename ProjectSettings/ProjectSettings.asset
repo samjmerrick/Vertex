@@ -148,8 +148,8 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.SamJMerrick.SpaceyGame
-    iOS: com.SamJMerrick.UFO-AST
+    Android: com.samjm.stardefender
+    iOS: com.samjm.stardefender
   buildNumber: {}
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 16
@@ -525,11 +525,14 @@ PlayerSettings:
   platformArchitecture:
     iOS: 0
   scriptingBackend:
+    Android: 0
     iOS: 1
   incrementalIl2cppBuild: {}
   additionalIl2CppArgs: 
   scriptingRuntimeVersion: 0
-  apiCompatibilityLevelPerPlatform: {}
+  apiCompatibilityLevelPerPlatform:
+    Android: 1
+    iOS: 1
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
   metroPackageName: Asteroids

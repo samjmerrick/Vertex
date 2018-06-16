@@ -1,0 +1,37 @@
+{
+  "client": [
+    {
+      "services": {
+        "appinvite_service": {
+          "status": 0
+        }, 
+        "analytics_service": {
+          "status": 0
+        }
+      }, 
+      "oauth_client": [
+        {
+          "client_id": "362584346528-p87th9a2s0lo6pmju151df0ctl4s7ec2.apps.googleusercontent.com"
+        }
+      ], 
+      "api_key": [
+        {
+          "current_key": "AIzaSyAntUb2TQWayHk1lY8AjpPq-aVlyLlGSHE"
+        }
+      ], 
+      "client_info": {
+        "mobilesdk_app_id": "1:362584346528:ios:6051a31dc54e9522", 
+        "android_client_info": {
+          "package_name": "com.samjm.stardefender"
+        }
+      }
+    }
+  ], 
+  "configuration_version": "1", 
+  "project_info": {
+    "storage_bucket": "star-defender.appspot.com", 
+    "project_id": "star-defender", 
+    "firebase_url": "https://star-defender.firebaseio.com", 
+    "project_number": "362584346528"
+  }
+}

@@ -13,15 +13,14 @@ public class StartingShip : MonoBehaviour {
 
             if (diff < 2.5f)
                 StartGame();
-
         }
     }
 
     void StartGame()
     {
-        if (!GameController.instance.GameRunning && panelManager.CurrentPanel.name == "Start Menu")
+        if (!GameController.GameRunning && panelManager.CurrentPanel.name == "Start Menu")
         {
-            GameController.instance.BeginGame();
+            FindObjectOfType<GameController>().BeginGame();
 
             GetComponent<ShipMove>().enabled = true;
             enabled = false;

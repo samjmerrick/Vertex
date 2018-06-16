@@ -26,7 +26,7 @@ public class ShipShoot : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-        if (GameController.instance.GameRunning)
+        if (GameController.GameRunning)
             CheckIfShooting();
     }
 
@@ -49,12 +49,13 @@ public class ShipShoot : MonoBehaviour {
         {
             if (Time.time - lastClickTime < catchTime && !transform.Find("Laser(Clone)"))
             {
-                if (Upgrades.Get()["Lasers"] > 0)
+                if (Upgrades.Get()["Laser"] > 0)
                 {
                     Instantiate(laser, transform);
                     shooting = false;
                     StartCoroutine(buffs.removeBuff("Laser", 5));
-                    Upgrades.Amend("Lasers", -1);
+                    StartCoroutine(shootAgain(5));
+                    Upgrades.Amend("Laser", -1);
                     UIControl.instance.Laser.text = Upgrades.Get("Laser").ToString();
                 }
                 else
@@ -66,6 +67,12 @@ public class ShipShoot : MonoBehaviour {
             }
             lastClickTime = Time.time;
         }
+    }
+
+    IEnumerator shootAgain(int time)
+    {
+        yield return new WaitForSeconds(time);
+        shooting = true;
     }
 
     void Shoot()
