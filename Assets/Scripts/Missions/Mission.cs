@@ -8,8 +8,8 @@ public abstract class Mission {
     public int toComplete, progress, reward = 0;
     public bool perGame;
 
-    public delegate void Complete(Mission mission);
-    public static event Complete MissionComplete;
+    public delegate void MissionCompleteDelegate(Mission mission);
+    public static event MissionCompleteDelegate MissionComplete;
 
     public abstract void StartListener();
     public abstract void StopListener();
