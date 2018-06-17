@@ -17,13 +17,20 @@ public class UIMissionPrefab : MonoBehaviour {
 
     void OnEnable()
     {
-        anim = GetComponent<Animator>();
+        GameController.GameEnd += CheckIfComplete;
+    }
+
+    private void OnDisable()
+    {
+        GameController.GameEnd -= CheckIfComplete;
     }
 
     private void Start()
     {
+        anim = GetComponent<Animator>();
         SetMission();
     }
+
 
     void SetMission()
     {
@@ -50,13 +57,15 @@ public class UIMissionPrefab : MonoBehaviour {
         {
             // Update progress
             objective.text = mission.objective + " (" + mission.progress + "/" + mission.toComplete + ")";
-
-            // If completed mission and game is not running, get new mission
-            if (mission.progress >= mission.toComplete && !GameController.GameRunning)
-            {
-                StartCoroutine(SetNewMission());
-            }
         }  
+    }
+
+    void CheckIfComplete()
+    {
+        if (mission.progress >= mission.toComplete)
+        {
+            StartCoroutine(SetNewMission());
+        }
     }
 
     public IEnumerator SetNewMission()
