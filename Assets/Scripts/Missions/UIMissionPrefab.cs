@@ -18,7 +18,6 @@ public class UIMissionPrefab : MonoBehaviour {
     void OnEnable()
     {
         anim = GetComponent<Animator>();
-        
     }
 
     private void Start()
@@ -31,11 +30,7 @@ public class UIMissionPrefab : MonoBehaviour {
         mission = Missions.missionList[transform.GetSiblingIndex()];
 
         if (mission != null)
-        {
-            int progress = mission.progress;
-            int toComplete = mission.toComplete;
-
-            objective.text = mission.objective + " (" + progress + "/" + toComplete + ")";
+        {   
             reward.text = mission.reward.ToString();
 
             if (Resources.Load("Missions/" + mission.NameOfObject) != null)
@@ -46,13 +41,22 @@ public class UIMissionPrefab : MonoBehaviour {
             {
                 image.sprite = (Sprite)Resources.Load("Missions/Question_mark", typeof(Sprite));
             }
-                
+        }
+    }
 
-            if (progress >= toComplete && !GameController.GameRunning)
+    private void Update()
+    {
+        if (mission != null)
+        {
+            // Update progress
+            objective.text = mission.objective + " (" + mission.progress + "/" + mission.toComplete + ")";
+
+            // If completed mission and game is not running, get new mission
+            if (mission.progress >= mission.toComplete && !GameController.GameRunning)
             {
                 StartCoroutine(SetNewMission());
             }
-        }
+        }  
     }
 
     public IEnumerator SetNewMission()

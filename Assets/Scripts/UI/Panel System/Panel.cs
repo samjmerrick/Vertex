@@ -40,20 +40,11 @@ public class Panel : MonoBehaviour {
         if (panel == this)
         {
             _canvasGroup.blocksRaycasts = _canvasGroup.interactable = true;
-            SetChildActiveState(true);
         }
 
         else
         {
             _canvasGroup.blocksRaycasts = _canvasGroup.interactable = false;
-            SetChildActiveState(false);
         }   
     }
-
-    void SetChildActiveState(bool isActive)
-    {
-        foreach (Transform child in transform)
-            child.gameObject.SetActive(isActive);
-    }
-
 }
