@@ -21,7 +21,19 @@ public class ContinuePanel : MonoBehaviour {
 
     void StartCountDown()
     {
-        StartCoroutine(CountDown());
+        // Only show continue memu if some buttons are interactable
+        DisableButtonAfterUse[] buttons = GetComponentsInChildren<DisableButtonAfterUse>();
+
+        foreach (DisableButtonAfterUse button in buttons)
+        {
+            if (button.GetComponent<Button>().interactable)
+            {
+                StartCoroutine(CountDown());
+                return;
+            }
+        }
+              
+        EndGame();
     }
 
     IEnumerator CountDown()
