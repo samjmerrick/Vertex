@@ -6,8 +6,8 @@ public class Pickup : MonoBehaviour {
 
     private string thisName;
 
-    public delegate void PickupGot (string name, int time);
-    public static event PickupGot Got;
+    public delegate void GotDelegate (string name, int time);
+    public static event GotDelegate Got;
 
     public int Time = 3;
  

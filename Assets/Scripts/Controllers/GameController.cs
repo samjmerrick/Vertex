@@ -1,18 +1,16 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    public delegate void gameBegin();
-    public static event gameBegin GameBegin;
+    public static event Action GameBegin;
+    public static event Action GameEnd;
 
-    public delegate void gameEnd();
-    public static event gameEnd GameEnd;
-
-    public delegate void distance(int dist);
-    public static event distance Distance;
+    public delegate void IntDelegate (int dist);
+    public static event IntDelegate Distance;
 
     public static bool GameRunning = false;
     public bool isQuitting = false;

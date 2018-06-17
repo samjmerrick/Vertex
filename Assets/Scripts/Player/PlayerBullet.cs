@@ -9,8 +9,8 @@ public class PlayerBullet : MonoBehaviour
 
     private Vector3 firePos;
 
-    public delegate void collided(float distance);
-    public static event collided Collided;
+    public delegate void CollidedDelegate(float distance);
+    public static event CollidedDelegate Collided;
 
     void Start()
     {

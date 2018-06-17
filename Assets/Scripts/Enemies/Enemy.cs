@@ -14,8 +14,8 @@ public class Enemy : MonoBehaviour {
 
     private bool collided = false;
 
-    public delegate void EnemyDied(string name, Vector3 transform );
-    public static event EnemyDied Death;
+    public delegate void DeathDelegate(string name, Vector3 transform );
+    public static event DeathDelegate Death;
 
     private void Awake()
     {
