@@ -21,9 +21,9 @@ GameObject:
   - component: {fileID: 4215268628155270}
   - component: {fileID: 212949065323553098}
   - component: {fileID: 50327620345982616}
-  - component: {fileID: 114131479846396722}
   - component: {fileID: 60066674156151092}
-  - component: {fileID: 114582245844420454}
+  - component: {fileID: 114864541570873294}
+  - component: {fileID: 114100830684458746}
   m_Layer: 0
   m_Name: Enemy Ship (Green)
   m_TagString: Enemy
@@ -67,7 +67,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1018871003086724}
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 6, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
@@ -75,7 +75,7 @@ Transform:
   - {fileID: 4934861465210416}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4921777563850870
 Transform:
   m_ObjectHideFlags: 1
@@ -154,7 +154,7 @@ PolygonCollider2D:
       - {x: 0.24, y: -0.14}
       - {x: 0.24, y: -0.049999997}
       - {x: 0.06, y: 0.19999999}
---- !u!114 &114131479846396722
+--- !u!114 &114100830684458746
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -162,15 +162,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1018871003086724}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51e78e3bbc72eb547ab0477f7a217eaf, type: 3}
+  m_Script: {fileID: 11500000, guid: 9281520876d85024db88be26f56e77d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 3
-  RotSpeed: 400
-  Health: 2
+  Speed: 4
+  RotSpeed: 200
   MyPath: {fileID: 114585677159066710, guid: 04832348b6c304d43b957229f4f584b0, type: 2}
-  MaxDistanceToGoal: 0.1
---- !u!114 &114582245844420454
+  MaxDistanceToGoal: 0.5
+--- !u!114 &114864541570873294
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -178,17 +177,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1018871003086724}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 516a9f5648c55d642a5faab32588b86c, type: 3}
+  m_Script: {fileID: 11500000, guid: dbaf2ae5309f48b44a4fd823c90a3228, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bullet: {fileID: 1640968606894348, guid: 96d4c8d43cfe7a94da3b276822a04207, type: 2}
-  shootType: 0
-  shootPoints:
-  - {fileID: 4921777563850870}
-  - {fileID: 4934861465210416}
-  ShootSpeed: 225
-  cooldown: 1
-  chanceToShoot: 3
+  Health: 2
 --- !u!212 &212949065323553098
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4197277242048154}
   - component: {fileID: 212100955101569774}
   - component: {fileID: 50161069198297038}
+  - component: {fileID: 114598879531681572}
   - component: {fileID: 114765853939838842}
   - component: {fileID: 60873334975622164}
   m_Layer: 8
@@ -150,6 +151,18 @@ PolygonCollider2D:
       - {x: 0.42999998, y: -0.715}
       - {x: 0.32999998, y: -0.815}
       - {x: 0.21, y: -0.945}
+--- !u!114 &114598879531681572
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1056368737187912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbaf2ae5309f48b44a4fd823c90a3228, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 1
 --- !u!114 &114765853939838842
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -161,9 +174,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a66961c1d4becd4e9cc317079bbe800, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 4
-  RotSpeed: 200
-  Health: 1
   isSplit: 0
   SplittableObjects: []
 --- !u!212 &212100955101569774

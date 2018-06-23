@@ -52,8 +52,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbaf2ae5309f48b44a4fd823c90a3228, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 4
-  RotSpeed: 200
   Health: 0
 --- !u!114 &114439975826970344
 MonoBehaviour:
@@ -67,5 +65,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemy: {fileID: 1018871003086724, guid: 120eb026160603d4ebfcf5580aea571d, type: 2}
-  GroupSize: 3
-  spacing: 1.5
+  GroupSize: 5
+  spacing: 1.25

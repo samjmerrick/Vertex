@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyShip : Enemy {
+public class EnemyMoveOnPath : MonoBehaviour {
+
+    public float Speed = 4;
+    public float RotSpeed = 200;
 
     public MovementPath MyPath;
     public float MaxDistanceToGoal = .1f;
@@ -54,12 +57,12 @@ public class EnemyShip : Enemy {
             //If you are at the begining of the path
             if (movingTo <= 0)
             {
-                movementDirection = 1; 
+                movementDirection = 1;
             }
             //Else if you are at the end of your path
             else if (movingTo >= MyPath.PathSequence.Length - 1)
             {
-                movementDirection = -1; 
+                movementDirection = -1;
             }
         }
 
@@ -71,5 +74,3 @@ public class EnemyShip : Enemy {
         // Override Enemy class (Do nothing).
     }
 }
-
-

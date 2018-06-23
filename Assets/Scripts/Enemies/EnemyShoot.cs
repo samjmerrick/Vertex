@@ -31,7 +31,7 @@ public class EnemyShoot : MonoBehaviour
                 foreach (Transform point in shootPoints)
                 {
                     GameObject go = Instantiate(Bullet, point.position, point.rotation);
-                    go.GetComponent<Rigidbody2D>().AddForce(go.transform.up * ShootSpeed);
+                    go.GetComponent<Rigidbody2D>().AddForce(-go.transform.up * ShootSpeed);
                 }
             }
 
@@ -48,7 +48,7 @@ public class EnemyShoot : MonoBehaviour
         foreach (Transform point in shootPoints)
         {
             GameObject go = Instantiate(Bullet, point.position, point.rotation);
-            go.GetComponent<Rigidbody2D>().AddForce(go.transform.up * ShootSpeed);
+            go.GetComponent<Rigidbody2D>().AddForce(-go.transform.up * ShootSpeed);
             yield return new WaitForSeconds(0.5f);
         }
     }

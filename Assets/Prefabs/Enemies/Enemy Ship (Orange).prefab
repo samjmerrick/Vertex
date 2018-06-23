@@ -22,7 +22,8 @@ GameObject:
   - component: {fileID: 212949065323553098}
   - component: {fileID: 50327620345982616}
   - component: {fileID: 60066674156151092}
-  - component: {fileID: 114131479846396722}
+  - component: {fileID: 114625504130218224}
+  - component: {fileID: 114662563532830034}
   - component: {fileID: 114582245844420454}
   m_Layer: 0
   m_Name: Enemy Ship (Orange)
@@ -67,7 +68,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1018871003086724}
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 3.3, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
@@ -75,33 +76,33 @@ Transform:
   - {fileID: 4934861465210416}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4921777563850870
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1928723587841976}
-  m_LocalRotation: {x: 0, y: 0, z: -0.30070576, w: 0.953717}
-  m_LocalPosition: {x: 0.15, y: 0.074, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: -0.043619405, w: 0.9990483}
+  m_LocalPosition: {x: -0.203, y: -0.001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4215268628155270}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -35}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -5}
 --- !u!4 &4934861465210416
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1678670445258036}
-  m_LocalRotation: {x: 0, y: 0, z: 0.30070576, w: 0.953717}
-  m_LocalPosition: {x: -0.155, y: 0.083, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0.043619405, w: 0.9990483}
+  m_LocalPosition: {x: 0.198, y: -0.002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4215268628155270}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 35}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 5}
 --- !u!50 &50327620345982616
 Rigidbody2D:
   serializedVersion: 4
@@ -154,22 +155,6 @@ PolygonCollider2D:
       - {x: 0.24, y: -0.14}
       - {x: 0.24, y: -0.049999997}
       - {x: 0.06, y: 0.19999999}
---- !u!114 &114131479846396722
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1018871003086724}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51e78e3bbc72eb547ab0477f7a217eaf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Speed: 1.5
-  RotSpeed: 400
-  Health: 10
-  MyPath: {fileID: 114080234687512028, guid: 04832348b6c304d43b957229f4f584b0, type: 2}
-  MaxDistanceToGoal: 0.1
 --- !u!114 &114582245844420454
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -189,6 +174,30 @@ MonoBehaviour:
   ShootSpeed: 100
   cooldown: 1
   chanceToShoot: 3
+--- !u!114 &114625504130218224
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1018871003086724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbaf2ae5309f48b44a4fd823c90a3228, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 7
+--- !u!114 &114662563532830034
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1018871003086724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fd7fa6592db2364484ac73aae4405d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 3
 --- !u!212 &212949065323553098
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -226,7 +235,7 @@ SpriteRenderer:
   m_Sprite: {fileID: 21300222, guid: 39bc31404c3d02942b8b012b438f33d1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
-  m_FlipY: 0
+  m_FlipY: 1
   m_DrawMode: 0
   m_Size: {x: 1.28, y: 1.28}
   m_AdaptiveModeThreshold: 0.5

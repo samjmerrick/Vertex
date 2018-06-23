@@ -4,8 +4,6 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour {
 
-    public float Speed = 4;
-    public float RotSpeed = 200;
     public int Health;
 
     private Canvas healthBar;

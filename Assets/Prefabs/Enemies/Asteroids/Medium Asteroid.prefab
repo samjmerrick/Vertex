@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212417878138492884}
   - component: {fileID: 50295127899101990}
   - component: {fileID: 60552725046364180}
+  - component: {fileID: 114547104926491064}
   - component: {fileID: 114692343215691522}
   m_Layer: 8
   m_Name: Medium Asteroid
@@ -191,6 +192,18 @@ PolygonCollider2D:
       - {x: 0.59999996, y: -1.4549999}
       - {x: 0.32, y: -1.745}
       - {x: 0.25, y: -1.735}
+--- !u!114 &114547104926491064
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1088714843249752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbaf2ae5309f48b44a4fd823c90a3228, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 1
 --- !u!114 &114692343215691522
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -202,9 +215,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a66961c1d4becd4e9cc317079bbe800, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 4
-  RotSpeed: 200
-  Health: 1
   isSplit: 0
   SplittableObjects:
   - {fileID: 1056368737187912, guid: 1cda2af5229c470449f519c7335d3862, type: 2}
