@@ -203,6 +203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 1
+  RotSpeed: 200
   Health: 10000000
   isSplit: 0
   SplittableObjects: []

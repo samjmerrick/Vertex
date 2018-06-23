@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 114439975826970344}
   - component: {fileID: 114238594162788772}
   m_Layer: 0
-  m_Name: Enemy Group - Ship
+  m_Name: Enemy Group
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

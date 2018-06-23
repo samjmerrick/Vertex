@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114806056527205468}
   - component: {fileID: 60909250973392732}
   m_Layer: 0
-  m_Name: EnemyFire_2
+  m_Name: EnemyFire_2 (Blue long)
   m_TagString: EnemyFire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
