@@ -171,9 +171,9 @@ MonoBehaviour:
   shootPoints:
   - {fileID: 4921777563850870}
   - {fileID: 4934861465210416}
-  ShootSpeed: 100
+  ShootSpeed: 150
   cooldown: 1
-  chanceToShoot: 3
+  chanceToShoot: 5
 --- !u!114 &114625504130218224
 MonoBehaviour:
   m_ObjectHideFlags: 1
