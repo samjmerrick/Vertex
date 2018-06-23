@@ -109,11 +109,8 @@ MonoBehaviour:
   Speed: 4
   RotSpeed: 400
   Health: 2
-  randMovement: 1
-  wayPoints:
-  - {fileID: 4513112206385254, guid: 898d770c5db211b4c9f82bb0029bbec4, type: 2}
-  - {fileID: 4101066704789254, guid: 898d770c5db211b4c9f82bb0029bbec4, type: 2}
-  - {fileID: 4799432332706898, guid: 898d770c5db211b4c9f82bb0029bbec4, type: 2}
+  MyPath: {fileID: 114585677159066710, guid: 04832348b6c304d43b957229f4f584b0, type: 2}
+  MaxDistanceToGoal: 0.1
 --- !u!212 &212949065323553098
 SpriteRenderer:
   m_ObjectHideFlags: 1
