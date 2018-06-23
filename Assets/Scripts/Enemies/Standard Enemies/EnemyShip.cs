@@ -6,43 +6,21 @@ public class EnemyShip : Enemy {
 
     public MovementPath MyPath;
     public float MaxDistanceToGoal = .1f;
-
-    private IEnumerator<Transform> pointInPath; //Used to reference points returned from MyPath.GetNextPathPoint
     private Rigidbody2D rb;
+
+    private Transform target;
+    private int movingTo = 0;
+    private int movementDirection = 1;
 
     public void Start()
     {
-        if (MyPath == null)
-        {
-            Debug.LogError("Movement Path cannot be null, I must have a path to follow.", gameObject);
-            return;
-        }
-
-        //Sets up a reference to an instance of the coroutine GetNextPathPoint
-        pointInPath = MyPath.GetNextPathPoint();
-
-        //Get the next point in the path to move to (Gets the Default 1st value)
-        pointInPath.MoveNext();
-
-        //Make sure there is a point to move to
-        if (pointInPath.Current == null)
-        {
-            Debug.LogError("A path must have points in it to follow", gameObject);
-            return; //Exit Start() if there is no point to move to
-        }
-
-        //Set the position of this object to the position of our starting point
-        transform.position = pointInPath.Current.position;
-
+        target = MyPath.PathSequence[0];
         rb = GetComponent<Rigidbody2D>();
     }
 
     public void Update()
     {
-        //Validate there is a path with a point in it
-        if (pointInPath == null || pointInPath.Current == null) return; //Exit if no path is found
-
-        Vector2 direction = (Vector2)pointInPath.Current.position - rb.position;
+        Vector2 direction = (Vector2)target.position - rb.position;
         direction.Normalize();
 
         float rotateAmount = Vector3.Cross(direction, transform.up).z;
@@ -52,22 +30,40 @@ public class EnemyShip : Enemy {
 
 
         //Check to see if you are close enough to the next point to start moving to the following one
-        //Using Pythagorean Theorem
-        //per unity suaring a number is faster than the square root of a number
-        //Using .sqrMagnitude 
-        var distanceSquared = (transform.position - pointInPath.Current.position).sqrMagnitude;
+        var distanceSquared = (transform.position - target.position).sqrMagnitude;
         if (distanceSquared < MaxDistanceToGoal * MaxDistanceToGoal) //If you are close enough
         {
-            pointInPath.MoveNext(); //Get next point in MovementPath
+            GetNextPoint();
         }
-        //The version below uses Vector3.Distance same as Vector3.Magnitude which includes (square root)
-        /*
-        var distanceSquared = Vector3.Distance(transform.position, pointInPath.Current.position);
-        if (distanceSquared < MaxDistanceToGoal) //If you are close enough
+    }
+
+    void GetNextPoint()
+    {
+        movingTo += movementDirection;
+
+        if (MyPath.PathType == MovementPath.PathTypes.loop)
         {
-            pointInPath.MoveNext(); //Get next point in MovementPath
+            if (MyPath.PathSequence.Length <= movingTo)
+            {
+                movingTo = 0;
+            }
         }
-        */
+
+        else if (MyPath.PathType == MovementPath.PathTypes.linear)
+        {
+            //If you are at the begining of the path
+            if (movingTo <= 0)
+            {
+                movementDirection = 1; 
+            }
+            //Else if you are at the end of your path
+            else if (movingTo >= MyPath.PathSequence.Length - 1)
+            {
+                movementDirection = -1; 
+            }
+        }
+
+        target = MyPath.PathSequence[movingTo];
     }
 
     private void OnBecameInvisible()

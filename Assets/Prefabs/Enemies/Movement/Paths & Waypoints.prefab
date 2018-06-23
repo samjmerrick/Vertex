@@ -285,8 +285,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PathType: 1
-  movementDirection: 1
-  movingTo: 0
   PathSequence:
   - {fileID: 4878611151538174}
   - {fileID: 4121430235899642}
@@ -302,9 +300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d53afc6effb7f024c8570a2ad8ccd367, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PathType: 1
-  movementDirection: 1
-  movingTo: 0
+  PathType: 0
   PathSequence:
   - {fileID: 4878611151538174}
   - {fileID: 4933425847099584}
