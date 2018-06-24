@@ -167,8 +167,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 4
-  RotSpeed: 400
-  MyPath: {fileID: 114585677159066710, guid: 04832348b6c304d43b957229f4f584b0, type: 2}
+  RotSpeed: 200
+  EntryPoint: {fileID: 4984978573625570, guid: 8383edb8a22831a448a5182ba88dc1cc, type: 2}
+  MyPath: {fileID: 114080234687512028, guid: 04832348b6c304d43b957229f4f584b0, type: 2}
   MaxDistanceToGoal: 0.1
 --- !u!114 &114127382709368088
 MonoBehaviour:
@@ -182,7 +183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GroupSize: 4
-  spacing: 1.5
+  spacing: 0.3
 --- !u!114 &114864541570873294
 MonoBehaviour:
   m_ObjectHideFlags: 1

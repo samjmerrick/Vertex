@@ -7,6 +7,7 @@ public class EnemyMoveOnPath : MonoBehaviour {
     public float Speed = 4;
     public float RotSpeed = 200;
 
+    public Transform EntryPoint;
     public MovementPath MyPath;
     public float MaxDistanceToGoal = .1f;
     private Rigidbody2D rb;
@@ -15,11 +16,18 @@ public class EnemyMoveOnPath : MonoBehaviour {
     private int movingTo = 0;
     private int movementDirection = 1;
 
-    public void Awake()
+    public void Start()
     { 
         rb = GetComponent<Rigidbody2D>();
 
+        transform.position = EntryPoint.position;
+
         target = MyPath.PathSequence[0];
+
+        // Snap Rotation towards target
+        Vector3 difference = target.position - transform.position;
+        float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotationZ);
     }
 
     public void Update()
@@ -67,10 +75,5 @@ public class EnemyMoveOnPath : MonoBehaviour {
         }
 
         target = MyPath.PathSequence[movingTo];
-    }
-
-    private void OnBecameInvisible()
-    {
-        // Override Enemy class (Do nothing).
     }
 }

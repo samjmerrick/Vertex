@@ -7,15 +7,17 @@ public class EnemyGroup : MonoBehaviour
     public int GroupSize;
     public float spacing;
 
-    private void Start()
+    private IEnumerator Start()
     {
         enabled = false; // Disable this component so that new instantiations do not also create new objects
 
         for (int i = 0; i < GroupSize; i++)
         {
-            Vector2 pos = (transform.position - transform.forward * spacing) + new Vector3(0, i);
+            //Vector2 pos = (transform.position - transform.forward * spacing) + new Vector3(0, i);
         
-            Instantiate(this.gameObject, pos, transform.rotation);
+            Instantiate(this.gameObject, transform.position, transform.rotation);
+
+            yield return new WaitForSeconds(spacing);
         }
     }
 }

@@ -9,11 +9,11 @@ public class SpawnController : MonoBehaviour {
     public Vector2 BossTime, SpawnTime;
     public int PickupChance;
     [HideInInspector]
-    public int toSpawn = 3;
+    public int toSpawn = 5;
 
     private Vector2 bounds;
     private int spawnChoice;
-    private int availableEnemies = 0;
+    private int availableEnemies = 1;
 
     // Enemies
     public GameObject[] Enemies, Bosses, Pickups;

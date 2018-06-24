@@ -2026,10 +2026,11 @@ MonoBehaviour:
   SwitchTime: 0.5
   NewEnemyTime: 5
   BossTime: {x: 60, y: 90}
-  SpawnTime: {x: 0.4, y: 0.8}
+  SpawnTime: {x: 0.2, y: 0.5}
   PickupChance: 50
   toSpawn: 3
   Enemies:
+  - {fileID: 1018871003086724, guid: 120eb026160603d4ebfcf5580aea571d, type: 2}
   - {fileID: 1018871003086724, guid: 120eb026160603d4ebfcf5580aea571d, type: 2}
   Bosses:
   - {fileID: 1568084031844398, guid: 7ebf0e97f6739704eaab523292c79d75, type: 2}

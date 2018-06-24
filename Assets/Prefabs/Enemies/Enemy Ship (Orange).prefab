@@ -173,7 +173,7 @@ MonoBehaviour:
   - {fileID: 4934861465210416}
   ShootSpeed: 150
   cooldown: 1
-  chanceToShoot: 5
+  chanceToShoot: 3
 --- !u!114 &114625504130218224
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbaf2ae5309f48b44a4fd823c90a3228, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 7
+  Health: 2
 --- !u!114 &114662563532830034
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -197,7 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fd7fa6592db2364484ac73aae4405d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 3
+  Speed: 4
 --- !u!212 &212949065323553098
 SpriteRenderer:
   m_ObjectHideFlags: 1
