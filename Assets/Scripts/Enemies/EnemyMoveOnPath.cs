@@ -7,8 +7,8 @@ public class EnemyMoveOnPath : MonoBehaviour {
     public float Speed = 4;
     public float RotSpeed = 200;
 
-    public Transform EntryPoint;
-    public MovementPath MyPath;
+    public MovementPath[] PathOptions;
+    private MovementPath MyPath;
     public float MaxDistanceToGoal = .1f;
     private Rigidbody2D rb;
 
@@ -17,12 +17,12 @@ public class EnemyMoveOnPath : MonoBehaviour {
     private int movementDirection = 1;
 
     public void Start()
-    { 
+    {
         rb = GetComponent<Rigidbody2D>();
 
-        transform.position = EntryPoint.position;
-
-        target = MyPath.PathSequence[0];
+        MyPath = PathOptions[Random.Range(0, PathOptions.Length)]; // Choose a path
+        transform.position = MyPath.EntryPoint.position; // Jump to entry point
+        target = MyPath.PathSequence[0]; // Set first position
 
         // Snap Rotation towards target
         Vector3 difference = target.position - transform.position;

@@ -13,7 +13,7 @@ public class SpawnController : MonoBehaviour {
 
     private Vector2 bounds;
     private int spawnChoice;
-    private int availableEnemies = 1;
+    private int availableEnemies = 2;
 
     // Enemies
     public GameObject[] Enemies, Bosses, Pickups;

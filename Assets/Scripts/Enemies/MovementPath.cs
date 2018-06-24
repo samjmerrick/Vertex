@@ -14,7 +14,8 @@ public class MovementPath : MonoBehaviour
     #endregion //Enums
     
     public PathTypes PathType; //Indicates type of path (Linear or Looping)
-  
+
+    public Transform EntryPoint;
     public Transform[] PathSequence; //Array of all points in the path
 
     //OnDrawGizmos will draw lines between our points in the Unity Editor
@@ -31,8 +32,13 @@ public class MovementPath : MonoBehaviour
             return; //Exits OnDrawGizmos if no line is needed
         }
 
+        // Draw a line for the entry point
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(EntryPoint.position, PathSequence[0].position); 
+
         //Loop through all of the points in the sequence of points
-        for(var i=1; i < PathSequence.Length; i++)
+        Gizmos.color = Color.white;
+        for (var i=1; i < PathSequence.Length; i++)
         {
             //Draw a line between the points
             Gizmos.DrawLine(PathSequence[i - 1].position, PathSequence[i].position);
