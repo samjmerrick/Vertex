@@ -19,7 +19,9 @@ public class MovementPath : MonoBehaviour
 
     //OnDrawGizmos will draw lines between our points in the Unity Editor
     public void OnDrawGizmos()
-    {
+	{
+		#if UNITY_EDITOR
+
         if (UnityEditor.Selection.activeGameObject != this.gameObject) return;
 
         //Make sure that your sequence has points in it
@@ -42,6 +44,8 @@ public class MovementPath : MonoBehaviour
             //Draw a line from the last point to the first point in the sequence
             Gizmos.DrawLine(PathSequence[0].position, PathSequence[PathSequence.Length-1].position);
         }
+
+		#endif
     }
   
 }
