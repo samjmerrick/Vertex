@@ -4,8 +4,7 @@ public class ShipMove : MonoBehaviour
 {
     // public
     public int speed;
-    public float exSpace = 0.5f;
-
+  
     private Vector3 target;
     private Vector3 moveStartInput;
     private Vector3 moveStartPos;
@@ -18,8 +17,7 @@ public class ShipMove : MonoBehaviour
 
     void Start()
     {
-        bounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height));
-        bounds.x += exSpace;
+        bounds = Bounds.Get();
 
         target = transform.position;
         gamecamera = FindObjectOfType<Camera>();

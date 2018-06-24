@@ -11,7 +11,7 @@ public class SpawnController : MonoBehaviour {
     [HideInInspector]
     public int toSpawn = 3;
 
-    private Vector3 bounds;
+    private Vector2 bounds;
     private int spawnChoice;
     private int availableEnemies = 2;
 
@@ -24,8 +24,7 @@ public class SpawnController : MonoBehaviour {
         GameController.GameEnd += EndGame;
         Enemy.Death += EnemyDied;
 
-        bounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height));
-        bounds.x += .5f;
+        bounds = Bounds.Get();
     }
 
     void OnDisable()
