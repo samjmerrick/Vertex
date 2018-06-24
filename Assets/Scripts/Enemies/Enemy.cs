@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour {
 
     private void OnBecameInvisible()
     {
-        if (transform.position.y < -3)
+        //if (transform.position.y < -3)
             Destroy(gameObject);
     }
 
