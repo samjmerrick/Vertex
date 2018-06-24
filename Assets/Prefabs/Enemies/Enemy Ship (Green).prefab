@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 60066674156151092}
   - component: {fileID: 114864541570873294}
   - component: {fileID: 114100830684458746}
+  - component: {fileID: 114127382709368088}
   m_Layer: 0
   m_Name: Enemy Ship (Green)
   m_TagString: Enemy
@@ -67,15 +68,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1018871003086724}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 6, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 4921777563850870}
   - {fileID: 4934861465210416}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!4 &4921777563850870
 Transform:
   m_ObjectHideFlags: 1
@@ -166,9 +167,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 4
-  RotSpeed: 200
+  RotSpeed: 400
   MyPath: {fileID: 114585677159066710, guid: 04832348b6c304d43b957229f4f584b0, type: 2}
-  MaxDistanceToGoal: 0.5
+  MaxDistanceToGoal: 0.1
+--- !u!114 &114127382709368088
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1018871003086724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f0b28c717aef6846b304ae62537e39b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GroupSize: 4
+  spacing: 1.5
 --- !u!114 &114864541570873294
 MonoBehaviour:
   m_ObjectHideFlags: 1

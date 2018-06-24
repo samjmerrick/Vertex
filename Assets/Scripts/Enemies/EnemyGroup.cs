@@ -4,27 +4,18 @@ using UnityEngine;
 
 public class EnemyGroup : MonoBehaviour
 {
-    public GameObject Enemy;
     public int GroupSize;
     public float spacing;
 
     private void Start()
     {
+        enabled = false; // Disable this component so that new instantiations do not also create new objects
+
         for (int i = 0; i < GroupSize; i++)
         {
-            Instantiate(Enemy,
-                        transform.position + new Vector3(0, (i + 1) * spacing),
-                        transform.rotation,
-                        transform);
+            Vector2 pos = (transform.position - transform.forward * spacing) + new Vector3(0, i);
+        
+            Instantiate(this.gameObject, pos, transform.rotation);
         }
     }
-
-    private void Update()
-    {
-        if (transform.childCount == 0)
-        {
-            Destroy(gameObject);
-        }
-    }
-
 }

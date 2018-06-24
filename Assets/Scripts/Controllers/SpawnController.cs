@@ -13,7 +13,7 @@ public class SpawnController : MonoBehaviour {
 
     private Vector2 bounds;
     private int spawnChoice;
-    private int availableEnemies = 2;
+    private int availableEnemies = 0;
 
     // Enemies
     public GameObject[] Enemies, Bosses, Pickups;
@@ -67,7 +67,7 @@ public class SpawnController : MonoBehaviour {
                     x: Random.Range(-bounds.x, bounds.x),
                     y: bounds.y);
 
-                Instantiate(Enemies[spawnChoice], location, Quaternion.identity);
+                Instantiate(Enemies[spawnChoice], location, Enemies[spawnChoice].transform.rotation);
             }
         }
     }

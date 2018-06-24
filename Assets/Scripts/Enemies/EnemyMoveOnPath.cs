@@ -15,10 +15,11 @@ public class EnemyMoveOnPath : MonoBehaviour {
     private int movingTo = 0;
     private int movementDirection = 1;
 
-    public void Start()
-    {
-        target = MyPath.PathSequence[0];
+    public void Awake()
+    { 
         rb = GetComponent<Rigidbody2D>();
+
+        target = MyPath.PathSequence[0];
     }
 
     public void Update()
@@ -30,7 +31,6 @@ public class EnemyMoveOnPath : MonoBehaviour {
         rb.angularVelocity = -rotateAmount * RotSpeed;
 
         rb.velocity = transform.up * Speed;
-
 
         //Check to see if you are close enough to the next point to start moving to the following one
         var distanceSquared = (transform.position - target.position).sqrMagnitude;
