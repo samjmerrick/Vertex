@@ -2471,7 +2471,7 @@ MonoBehaviour:
   bullet: {fileID: 1242718240314216, guid: 18b9f064c42571a478f4420c1d5256b9, type: 2}
   bigBullet: {fileID: 1436040500835166, guid: 40cfc583d4d8adc4e86c5d7a7b444379, type: 2}
   laser: {fileID: 1990526946275252, guid: 0f745a71080b2744b85c2a39afd52253, type: 2}
-  FireRate: 0.3
+  FireRate: 0.2
 --- !u!114 &349337802
 MonoBehaviour:
   m_ObjectHideFlags: 0
