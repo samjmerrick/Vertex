@@ -520,9 +520,9 @@ MonoBehaviour:
   PathType: 1
   EntryPoint: {fileID: 4271857938926048}
   PathSequence:
-  - {fileID: 4933425847099584}
-  - {fileID: 4121430235899642}
   - {fileID: 4878611151538174}
+  - {fileID: 4121430235899642}
+  - {fileID: 4933425847099584}
 --- !u!114 &114585677159066710
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -535,7 +535,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PathType: 0
-  EntryPoint: {fileID: 0}
+  EntryPoint: {fileID: 4167625978909256}
   PathSequence:
   - {fileID: 4878611151538174}
   - {fileID: 4206619679111930}
@@ -555,6 +555,6 @@ MonoBehaviour:
   PathType: 1
   EntryPoint: {fileID: 4274573090882416}
   PathSequence:
-  - {fileID: 4933425847099584}
-  - {fileID: 4878611151538174}
   - {fileID: 4121430235899642}
+  - {fileID: 4878611151538174}
+  - {fileID: 4933425847099584}
