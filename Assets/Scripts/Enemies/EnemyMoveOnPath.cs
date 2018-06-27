@@ -6,12 +6,13 @@ public class EnemyMoveOnPath : MonoBehaviour {
 
     public float Speed = 4;
     public float RotSpeed = 200;
-
     public MovementPath[] PathOptions;
-    private MovementPath MyPath;
     public float MaxDistanceToGoal = .1f;
-    private Rigidbody2D rb;
 
+    [HideInInspector] public MovementPath MyPath;
+    [HideInInspector] public GameObject leader; // Gets set in EnemyGroup
+
+    private Rigidbody2D rb;
     private Transform target;
     private int movingTo = 0;
     private int movementDirection = 1;
@@ -20,7 +21,16 @@ public class EnemyMoveOnPath : MonoBehaviour {
     {
         rb = GetComponent<Rigidbody2D>();
 
-        MyPath = PathOptions[Random.Range(0, PathOptions.Length)]; // Choose a path
+        if (leader == null)
+        {
+            MyPath = PathOptions[Random.Range(0, PathOptions.Length)]; // Choose a random path
+        }
+
+        else
+        {
+            MyPath = leader.GetComponent<EnemyMoveOnPath>().MyPath;
+        }
+
         transform.position = MyPath.EntryPoint.position; // Jump to entry point
         target = MyPath.PathSequence[0]; // Set first position
 
