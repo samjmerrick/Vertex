@@ -47,7 +47,11 @@ public class ShipBuffs : MonoBehaviour
         Active.Clear();
 
         foreach (Transform child in transform)
-            Destroy(child.gameObject);
+        {
+            if (child.name.Contains("Shield") || child.name.Contains("Laser"))
+                Destroy(child.gameObject);
+        }
+            
     }
 }
 
