@@ -2290,12 +2290,12 @@ GameObject:
   - component: {fileID: 349337800}
   - component: {fileID: 349337799}
   - component: {fileID: 349337798}
+  - component: {fileID: 349337796}
   - component: {fileID: 349337795}
   - component: {fileID: 349337797}
   - component: {fileID: 349337802}
   - component: {fileID: 349337801}
   - component: {fileID: 349337803}
-  - component: {fileID: 349337796}
   m_Layer: 8
   m_Name: ship
   m_TagString: Player
@@ -2324,7 +2324,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -13262,7 +13262,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -693790096
+  randomSeed: -67788195
   InitialModule:
     serializedVersion: 3
     enabled: 1
