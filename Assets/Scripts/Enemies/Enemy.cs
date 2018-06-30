@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class Enemy : MonoBehaviour {
 
     public int Health;
+    public bool ShowHeathBar;
 
     private Canvas healthBar;
     private Slider healthBarSlider;
@@ -46,7 +47,7 @@ public class Enemy : MonoBehaviour {
     {
         Health -= 1;
 
-        if (!transform.Find("Health Bar(Clone)") && Health >= 2 && !name.Contains("_"))
+        if (!transform.Find("Health Bar(Clone)") && ShowHeathBar)
         {
             healthBar = Instantiate((Canvas)Resources.Load("Enemies/Health Bar", typeof(Canvas)), transform);
             healthBarSlider = healthBar.GetComponentInChildren<Slider>();

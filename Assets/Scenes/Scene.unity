@@ -2034,6 +2034,7 @@ MonoBehaviour:
   - {fileID: 1088714843249752, guid: 381f173d4fefc424588c09564dce9d22, type: 2}
   - {fileID: 1018871003086724, guid: 120eb026160603d4ebfcf5580aea571d, type: 2}
   - {fileID: 1018871003086724, guid: 8c0e36ed3eb8c6f488baaf55ac5ee4e7, type: 2}
+  - {fileID: 1540556546061044, guid: 4a01d20b6b917e840930571bc7e9b568, type: 2}
   Bosses:
   - {fileID: 1568084031844398, guid: 7ebf0e97f6739704eaab523292c79d75, type: 2}
   Pickups:
@@ -13262,7 +13263,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -67788195
+  randomSeed: 1900201459
   InitialModule:
     serializedVersion: 3
     enabled: 1
