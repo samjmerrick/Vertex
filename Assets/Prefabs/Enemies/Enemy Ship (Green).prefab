@@ -190,7 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f0b28c717aef6846b304ae62537e39b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GroupSize: 4
+  GroupSize: {x: 4, y: 8}
   spacing: 0.1
 --- !u!114 &114864541570873294
 MonoBehaviour:
