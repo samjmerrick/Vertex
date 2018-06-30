@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour {
 
     public int Health;
     public bool ShowHeathBar;
+    public GameObject DestroyEffect;
 
     private Canvas healthBar;
     private Slider healthBarSlider;
@@ -66,6 +67,9 @@ public class Enemy : MonoBehaviour {
 
             if (Death != null)
                 Death(gameObject.name, transform.position);
+
+            GameObject effect = Instantiate(DestroyEffect, transform.position, transform.rotation);
+            Destroy(effect, 0.5f);
 
             Destroy(gameObject, 0.05f);
         }

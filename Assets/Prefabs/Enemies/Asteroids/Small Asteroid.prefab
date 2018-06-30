@@ -163,6 +163,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 1
+  ShowHeathBar: 0
+  DestroyEffect: {fileID: 1000010355441670, guid: 02a509a7fa70ed740ba4197e20c5d32d,
+    type: 2}
 --- !u!114 &114765853939838842
 MonoBehaviour:
   m_ObjectHideFlags: 1

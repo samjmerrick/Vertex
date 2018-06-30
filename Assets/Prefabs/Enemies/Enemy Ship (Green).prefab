@@ -204,6 +204,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 2
+  ShowHeathBar: 0
+  DestroyEffect: {fileID: 1000010355441670, guid: 02a509a7fa70ed740ba4197e20c5d32d,
+    type: 2}
 --- !u!212 &212949065323553098
 SpriteRenderer:
   m_ObjectHideFlags: 1

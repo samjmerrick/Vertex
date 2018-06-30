@@ -3,7 +3,6 @@ using System.Collections;
 
 public class PlayerBullet : MonoBehaviour
 {
-    public GameObject DestroyEffect;
     public int MoveSpeed;
     public bool bigShot = false;
 
@@ -41,10 +40,7 @@ public class PlayerBullet : MonoBehaviour
             if (!bigShot)
             {
                 Destroy(gameObject);
-                GameObject effect = Instantiate(DestroyEffect, transform.position, transform.rotation);
-                Destroy(effect, 0.5f);
             }
-           
         }
     }        
 
