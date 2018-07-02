@@ -261,8 +261,8 @@ MonoBehaviour:
   - {fileID: 4587646766593182}
   - {fileID: 4117312484621436}
   ShootSpeed: 250
-  cooldown: 0.4
-  chanceToShoot: 6
+  cooldown: 1
+  chanceToShoot: 4
 --- !u!114 &114953762181092398
 MonoBehaviour:
   m_ObjectHideFlags: 1
