@@ -69,6 +69,7 @@ public class Enemy : MonoBehaviour {
                 Death(gameObject.name, transform.position);
 
             GameObject effect = Instantiate(DestroyEffect, transform.position, transform.rotation);
+            effect.AddComponent<ParticleColor>().color = GetComponent<SpriteRenderer>().color;
             Destroy(effect, 0.5f);
 
             Destroy(gameObject, 0.05f);
