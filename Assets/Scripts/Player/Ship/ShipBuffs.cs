@@ -17,22 +17,22 @@ public class ShipBuffs : MonoBehaviour
     {
         if (c.gameObject.tag == "Pickup")
         {
-            string buffName = c.name.Replace("(Clone)", "");
-            int buffTime = c.GetComponent<Pickup>().Time;
-            Active.Add(buffName);
-            StartCoroutine(removeBuff(buffName, buffTime));
-
-            if (buffName == "Shield" && !transform.Find("Shield(Clone)"))
-                Instantiate(shield, transform);
+            Pickup pickup = c.GetComponent<Pickup>();
+            StartCoroutine(removeBuff(pickup.Name, pickup.Time));
         }
     }
 
     public IEnumerator removeBuff(string buff, int time)
     {
+        Active.Add(buff);
+
+        if (buff == "Shield" && !transform.Find("Shield(Clone)"))
+            Instantiate(shield, transform);
+
         // Wait x seconds then remove the buff
         UIControl.instance.PickupTimer(buff, time);
-
         yield return new WaitForSeconds(time);
+
         Active.Remove(buff);
 
         if (buff == "Laser" || buff == "Shield")
