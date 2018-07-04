@@ -8,6 +8,7 @@ public class BuffRadialSlider: MonoBehaviour
 
     private float angle;
     private float timeRemaining;
+    private Image image;
 
     private void OnEnable()
     {
@@ -21,6 +22,7 @@ public class BuffRadialSlider: MonoBehaviour
 
     private void Start()
     {
+        image = GetComponent<Image>();
         timeRemaining = Time.time + time;
         transform.GetChild(0).GetComponent<Image>().sprite = (Sprite)Resources.Load("Buff_NoGlow/" + buff, typeof(Sprite));
     }
@@ -28,8 +30,8 @@ public class BuffRadialSlider: MonoBehaviour
     void Update()
 	{
         angle = (timeRemaining - Time.time) / time;
-		GetComponent<Image>().fillAmount = angle;
-		GetComponent<Image>().color = Color.Lerp(Color.red, Color.green, angle);
+		image.fillAmount = angle;
+		image.color = Color.Lerp(Color.red, Color.green, angle);
 
         if (angle <= 0 || !GameController.GameRunning) {
             Destroy();
