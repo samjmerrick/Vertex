@@ -53,17 +53,20 @@ public class ShipBuffs : MonoBehaviour
 
     private void Update()
     {
+
+
         foreach (Buff buff in Active.ToList())
         {
-            
-            buff.Tick(Time.deltaTime);
-
-            if (buff.IsFinished)
+            if (!Contains("Laser") || buff.GetName() == "Laser")
             {
-                RemoveBuff(buff.GetName());
-                Active.Remove(buff);
+                buff.Tick(Time.deltaTime);
+
+                if (buff.IsFinished)
+                {
+                    RemoveBuff(buff.GetName());
+                    Active.Remove(buff);
+                }
             }
-            
         }      
     }
 
