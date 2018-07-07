@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212255417009612002}
   - component: {fileID: 50899850553835654}
   - component: {fileID: 114925413979605308}
+  - component: {fileID: 114278523226212536}
   - component: {fileID: 60656701521402542}
   m_Layer: 0
   m_Name: EnemyFire (Red)
@@ -91,6 +92,17 @@ PolygonCollider2D:
       - {x: -0.185, y: -0.17999999}
       - {x: 0.185, y: -0.17999999}
       - {x: 0.185, y: 0.17999999}
+--- !u!114 &114278523226212536
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1379781562596922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc7c1cf320050e549bbe910be901bcad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114925413979605308
 MonoBehaviour:
   m_ObjectHideFlags: 1

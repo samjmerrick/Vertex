@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212076768776365014}
   - component: {fileID: 50073507679902710}
   - component: {fileID: 114806056527205468}
+  - component: {fileID: 114415737098997020}
   - component: {fileID: 60909250973392732}
   m_Layer: 0
   m_Name: EnemyFire_3 (Green)
@@ -96,6 +97,17 @@ PolygonCollider2D:
       - {x: 0.044999998, y: -0.095}
       - {x: 0.044999998, y: 0.085}
       - {x: 0.005, y: 0.114999995}
+--- !u!114 &114415737098997020
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1640968606894348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc7c1cf320050e549bbe910be901bcad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114806056527205468
 MonoBehaviour:
   m_ObjectHideFlags: 1
