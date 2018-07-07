@@ -55,13 +55,15 @@ public class ShipBuffs : MonoBehaviour
     {
         foreach (Buff buff in Active.ToList())
         {
+            
             buff.Tick(Time.deltaTime);
 
             if (buff.IsFinished)
-            { 
+            {
                 RemoveBuff(buff.GetName());
                 Active.Remove(buff);
             }
+            
         }      
     }
 
@@ -73,7 +75,6 @@ public class ShipBuffs : MonoBehaviour
             //shooting = true;
         }
     }
-
 }
 
 public class Buff
@@ -98,8 +99,6 @@ public class Buff
     public void Tick(float Delta)
     {
         timeRemaining -= Delta;
-        Debug.Log("duration: " + duration + " remaining: " + timeRemaining);
-
         slider.UpdateAngle(timeRemaining / duration);
     }
 }

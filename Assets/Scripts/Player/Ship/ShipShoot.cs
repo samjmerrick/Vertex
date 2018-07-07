@@ -57,7 +57,7 @@ public class ShipShoot : MonoBehaviour {
                 {
                     Instantiate(laser, transform);
                     shooting = false;
-                    buffs.AddBuff("Laser", 4);
+                    buffs.AddBuff("Laser", 5);
                     StartCoroutine(shootAgain(5));
                     Upgrades.Amend("Laser", -1);
                     UIControl.instance.Laser.text = Upgrades.Get("Laser").ToString();
