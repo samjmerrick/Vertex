@@ -38,7 +38,7 @@ public class ShipShoot : MonoBehaviour {
     {
         if (shooting)
         {
-            if (buffs.Active.Contains("Rapid"))
+            if (buffs.Contains("Rapid"))
             {
                 if (Time.time - lastFired > (FireRate / 2))
                     Shoot();
@@ -57,7 +57,7 @@ public class ShipShoot : MonoBehaviour {
                 {
                     Instantiate(laser, transform);
                     shooting = false;
-                    StartCoroutine(buffs.removeBuff("Laser", 5));
+                    buffs.AddBuff("Laser", 4);
                     StartCoroutine(shootAgain(5));
                     Upgrades.Amend("Laser", -1);
                     UIControl.instance.Laser.text = Upgrades.Get("Laser").ToString();
@@ -83,11 +83,11 @@ public class ShipShoot : MonoBehaviour {
     {
         GameObject toShoot = bullet;
 
-        if (buffs.Active.Contains("Big"))
+        if (buffs.Contains("Big"))
             toShoot = bigBullet;
 
 
-        if (buffs.Active.Contains("Triple"))
+        if (buffs.Contains("Triple"))
         {
             Spread = 3;
         }

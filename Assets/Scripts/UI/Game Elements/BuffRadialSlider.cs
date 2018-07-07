@@ -3,11 +3,9 @@ using UnityEngine.UI;
 
 public class BuffRadialSlider: MonoBehaviour
 {
-    public int time;
     public string buff;
 
     private float angle;
-    private float timeRemaining;
     private Image image;
 
     private void OnEnable()
@@ -23,16 +21,19 @@ public class BuffRadialSlider: MonoBehaviour
     private void Start()
     {
         image = GetComponent<Image>();
-        timeRemaining = Time.time + time;
         transform.GetChild(0).GetComponent<Image>().sprite = (Sprite)Resources.Load("Buff_NoGlow/" + buff, typeof(Sprite));
     }
 
-    void Update()
+    public void UpdateAngle(float amount)
 	{
-        angle = (timeRemaining - Time.time) / time;
+        // Update angle
+        angle = amount;
+
+        // Fillamount + color
 		image.fillAmount = angle;
 		image.color = Color.Lerp(Color.red, Color.green, angle);
 
+        // Check if should be destroyed
         if (angle <= 0 || !GameController.GameRunning) {
             Destroy();
         }

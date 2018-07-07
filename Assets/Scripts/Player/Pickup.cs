@@ -5,6 +5,7 @@ using UnityEngine;
 public class Pickup : MonoBehaviour {
 
     [HideInInspector]
+
     public string Name;
 
     public delegate void GotDelegate (string name, int time);
@@ -17,7 +18,7 @@ public class Pickup : MonoBehaviour {
         Name = name.Replace("(Clone)", "");
 
         ShipBuffs shipBuffs = FindObjectOfType<ShipBuffs>();
-        if (shipBuffs.Active.Contains(Name))
+        if (shipBuffs.Contains(Name))
             Destroy(gameObject);
 
         int level = Upgrades.Get(Name);
