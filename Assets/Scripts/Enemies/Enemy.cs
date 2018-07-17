@@ -4,9 +4,9 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour {
 
-    public float Speed = 4;
-    public float RotSpeed = 200;
     public int Health;
+    public bool ShowHeathBar;
+    public GameObject DestroyEffect;
 
     private Canvas healthBar;
     private Slider healthBarSlider;
@@ -14,8 +14,8 @@ public class Enemy : MonoBehaviour {
 
     private bool collided = false;
 
-    public delegate void EnemyDied(string name, Vector3 transform );
-    public static event EnemyDied Death;
+    public delegate void DeathDelegate(string name, Vector3 transform );
+    public static event DeathDelegate Death;
 
     private void Awake()
     {
@@ -31,7 +31,8 @@ public class Enemy : MonoBehaviour {
 
     private void OnBecameInvisible()
     {
-        Destroy(gameObject);
+        //if (transform.position.y < -3)
+            Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D c)
@@ -47,7 +48,7 @@ public class Enemy : MonoBehaviour {
     {
         Health -= 1;
 
-        if (!transform.Find("Health Bar(Clone)") && Health >= 2 && !name.Contains("_"))
+        if (!transform.Find("Health Bar(Clone)") && ShowHeathBar)
         {
             healthBar = Instantiate((Canvas)Resources.Load("Enemies/Health Bar", typeof(Canvas)), transform);
             healthBarSlider = healthBar.GetComponentInChildren<Slider>();
@@ -66,6 +67,10 @@ public class Enemy : MonoBehaviour {
 
             if (Death != null)
                 Death(gameObject.name, transform.position);
+
+            GameObject effect = Instantiate(DestroyEffect, transform.position, transform.rotation);
+            effect.AddComponent<ParticleColor>().color = GetComponent<SpriteRenderer>().color;
+            Destroy(effect, 0.5f);
 
             Destroy(gameObject, 0.05f);
         }

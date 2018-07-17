@@ -5,69 +5,64 @@ using UnityEngine.UI;
 
 public class Leaderboard : MonoBehaviour
 {
-
     public GameObject LeaderboardEntry;
     public GameObject LoadingSymbol;
 
-
     public Text info;
 
-    void OnEnable()
+    private void Start()
     {
-        GameObject loadingSymbol = Instantiate(LoadingSymbol, transform);
-
         FirebaseDatabase.DefaultInstance
-            .GetReference("scores")
-            .OrderByChild("score")
-            .GetValueAsync().ContinueWith(task =>
-            {
-                if (task.IsFaulted)
-                {
-                    loadingSymbol.GetComponent<Image>().color = new Color(1, 0, 0);
-                }
-
-                else if (task.IsCompleted)
-                {
-                    DataSnapshot snapshot = task.Result;
-
-                    int i = 1;
-
-                    foreach (var ChildSnapshot in snapshot.Children.Reverse())
-                    {
-                        LeaderboardEntry entry = Instantiate(LeaderboardEntry, transform).GetComponent<LeaderboardEntry>();
-
-                        entry.Init(
-                            rank: i,
-                            imageUrl: ChildSnapshot.Child("profilePicture").Value.ToString(),
-                            displayName: ChildSnapshot.Child("name").Value.ToString(),
-                            score: ChildSnapshot.Child("score").Value.ToString()
-                            );
-
-                        i++;
-                    }
-
-                    Destroy(loadingSymbol);
-                }
-            });
-
-        string user = "null";
-        if (UserManager.GetUser() != null) user = UserManager.GetUser().DisplayName;
-
-		object score = 0;
-		if (Stats.bestStats.ContainsKey ("Destroyed")) score = Stats.bestStats ["Destroyed"];
-
-        if (info != null)
-            info.text = "Your hi-score is: " + score + ".    Signed in as: " + user;
+        .GetReference("scores")
+        .OrderByChild("score")
+        .ValueChanged += HandleValueChanged;
     }
 
-	void OnDisable()
+    void HandleValueChanged(object sender, ValueChangedEventArgs args)
     {
-		foreach (Transform child in transform) 
-		{
-			if (!child.name.Contains("hi-score")){
-				Destroy (child.gameObject);
-			}	
-		}
-	}
+        if (args.DatabaseError != null)
+        {
+            Debug.LogError(args.DatabaseError.Message);
+            return;
+        }
+
+        GameObject loadingSymbol = Instantiate(LoadingSymbol, transform);
+
+        DataSnapshot snapshot = args.Snapshot;
+
+        DestroyChildren();
+
+        int i = 1;
+
+        foreach (var ChildSnapshot in snapshot.Children.Reverse())
+        {
+            LeaderboardEntry entry = Instantiate(LeaderboardEntry, transform).GetComponent<LeaderboardEntry>();
+
+            entry.Init(
+                rank: i,
+                imageUrl: ChildSnapshot.Child("profilePicture").Value.ToString(),
+                displayName: ChildSnapshot.Child("name").Value.ToString(),
+                score: ChildSnapshot.Child("score").Value.ToString()
+                );
+
+            i++;
+        }
+
+        Destroy(loadingSymbol);
+    }
+
+    void DestroyChildren()
+    {
+        foreach (Transform child in transform)
+        {
+            if (!child.name.Contains("hi-score"))
+            {
+                Destroy(child.gameObject);
+            }
+        }
+    }
 }
+
+   
+
 

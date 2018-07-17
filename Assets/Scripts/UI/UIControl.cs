@@ -86,10 +86,8 @@ public class UIControl : MonoBehaviour {
         uiMessage.GetComponent<Animation>().Play("textAnimation");
     }
 
-    public void PickupTimer (string buff, int secs)
+    public BuffRadialSlider PickupTimer ()
     {
-        GameObject go = Instantiate(RadialSlider, transform.Find("BuffTimers"));
-        go.GetComponent<BuffRadialSlider>().time = secs;
-        go.GetComponent<BuffRadialSlider>().buff = buff;
+        return Instantiate(RadialSlider, transform.Find("BuffTimers")).GetComponent<BuffRadialSlider>();
     }
 }

@@ -4,22 +4,24 @@ using UnityEngine;
 
 public class Pickup : MonoBehaviour {
 
-    private string thisName;
+    [HideInInspector]
 
-    public delegate void PickupGot (string name, int time);
-    public static event PickupGot Got;
+    public string Name;
+
+    public delegate void GotDelegate (string name, int time);
+    public static event GotDelegate Got;
 
     public int Time = 3;
  
     private void Awake()
     {
-        thisName = name.Replace("(Clone)", "");
+        Name = name.Replace("(Clone)", "");
 
         ShipBuffs shipBuffs = FindObjectOfType<ShipBuffs>();
-        if (shipBuffs.Active.Contains(thisName))
+        if (shipBuffs.Contains(Name))
             Destroy(gameObject);
 
-        int level = Upgrades.Get(thisName);
+        int level = Upgrades.Get(Name);
         
         Time += (level * 2);
     }
@@ -32,7 +34,7 @@ public class Pickup : MonoBehaviour {
 
             // Error check delegate subscriptions
             if (Got != null)
-                Got(thisName, Time);
+                Got(Name, Time);
         }
     }
 }

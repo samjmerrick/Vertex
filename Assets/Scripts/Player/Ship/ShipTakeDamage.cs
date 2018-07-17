@@ -1,5 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class ShipTakeDamage : MonoBehaviour {
@@ -8,8 +8,7 @@ public class ShipTakeDamage : MonoBehaviour {
     public int invincibleTime;
     public GameObject explosion;
 
-    public delegate void Died();
-    public static event Died Death;
+    public static event Action Death;
 
     private void OnEnable()
     {

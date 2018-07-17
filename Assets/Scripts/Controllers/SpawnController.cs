@@ -9,10 +9,11 @@ public class SpawnController : MonoBehaviour {
     public Vector2 BossTime, SpawnTime;
     public int PickupChance;
     [HideInInspector]
-    public int toSpawn = 3;
+    public int toSpawn = 5;
 
-    private Vector3 bounds;
-    private int spawnChoice, availableEnemies;
+    private Vector2 bounds;
+    private int spawnChoice;
+    private int availableEnemies = 3;
 
     // Enemies
     public GameObject[] Enemies, Bosses, Pickups;
@@ -23,8 +24,7 @@ public class SpawnController : MonoBehaviour {
         GameController.GameEnd += EndGame;
         Enemy.Death += EnemyDied;
 
-        bounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height));
-        bounds.x += .5f;
+        bounds = Bounds.Get();
     }
 
     void OnDisable()
@@ -67,7 +67,7 @@ public class SpawnController : MonoBehaviour {
                     x: Random.Range(-bounds.x, bounds.x),
                     y: bounds.y);
 
-                Instantiate(Enemies[spawnChoice], location, Quaternion.identity);
+                Instantiate(Enemies[spawnChoice], location, Enemies[spawnChoice].transform.rotation);
             }
         }
     }

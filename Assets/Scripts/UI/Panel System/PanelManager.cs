@@ -9,8 +9,8 @@ public class PanelManager : MonoBehaviour {
 
     private bool sequenceRunning;
 
-    public delegate void PanelChange(Panel panel);
-    public static event PanelChange ChangePanel;
+    public delegate void ChangePanelDelegate(Panel panel);
+    public static event ChangePanelDelegate ChangePanel;
 
     private void OnEnable()
     {

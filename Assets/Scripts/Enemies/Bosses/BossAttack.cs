@@ -8,7 +8,7 @@ public class BossAttack {
     public GameObject Bullet;
 
     public float ShootFrequency;
-    public int ShootSpeed;
+    public int ShootSpeed = 200;
     public int clipSize;
 
     private int numberShot;

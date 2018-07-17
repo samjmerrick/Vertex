@@ -4,27 +4,27 @@ using UnityEngine;
 
 public class EnemyGroup : MonoBehaviour
 {
-    public GameObject Enemy;
-    public int GroupSize;
+    public Vector2 GroupSize;
     public float spacing;
 
-    private void Start()
+    private Vector2 LeaderPosition;
+
+    private IEnumerator Start()
     {
-        for (int i = 0; i < GroupSize; i++)
-        {
-            Instantiate(Enemy,
-                        transform.position + new Vector3(0, (i + 1) * spacing),
-                        transform.rotation,
-                        transform);
+        enabled = false; // Disable this component so that new instantiations do not also create new objects
+
+        int groupSize = (int)Random.Range(GroupSize.x, GroupSize.y + 1);
+
+        LeaderPosition = transform.position;
+
+        for (int i = 0; i < groupSize; i++)
+        {        
+            GameObject go = Instantiate(this.gameObject, LeaderPosition, transform.rotation);
+
+            if (GetComponent<EnemyMoveOnPath>() != null)
+                go.GetComponent<EnemyMoveOnPath>().leader = this.gameObject;
+
+            yield return new WaitForSeconds(spacing);
         }
     }
-
-    private void Update()
-    {
-        if (transform.childCount == 0)
-        {
-            Destroy(gameObject);
-        }
-    }
-
 }

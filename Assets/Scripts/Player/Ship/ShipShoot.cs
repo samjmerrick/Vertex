@@ -11,6 +11,8 @@ public class ShipShoot : MonoBehaviour {
 
     // Shooting Variables
     public float FireRate;
+    public float Spread = 1;
+
     private float lastFired;
     private float lastClickTime;
     private float catchTime = .25f;
@@ -30,11 +32,13 @@ public class ShipShoot : MonoBehaviour {
             CheckIfShooting();
     }
 
+   
+
     void CheckIfShooting()
     {
         if (shooting)
         {
-            if (buffs.Active.Contains("Rapid"))
+            if (buffs.Contains("Rapid"))
             {
                 if (Time.time - lastFired > (FireRate / 2))
                     Shoot();
@@ -53,7 +57,7 @@ public class ShipShoot : MonoBehaviour {
                 {
                     Instantiate(laser, transform);
                     shooting = false;
-                    StartCoroutine(buffs.removeBuff("Laser", 5));
+                    buffs.AddBuff("Laser", 5);
                     StartCoroutine(shootAgain(5));
                     Upgrades.Amend("Laser", -1);
                     UIControl.instance.Laser.text = Upgrades.Get("Laser").ToString();
@@ -79,15 +83,31 @@ public class ShipShoot : MonoBehaviour {
     {
         GameObject toShoot = bullet;
 
-        if (buffs.Active.Contains("Big"))
+        if (buffs.Contains("Big"))
             toShoot = bigBullet;
 
-        Instantiate(toShoot, new Vector3(transform.position.x, transform.position.y + 0.6f, 0), transform.rotation);
 
-        if (buffs.Active.Contains("Triple"))
+        if (buffs.Contains("Triple"))
         {
-            Instantiate(toShoot, new Vector3(transform.position.x + 0.2f, transform.position.y + 0.6f), Quaternion.Euler(0, 0, -5));
-            Instantiate(toShoot, new Vector3(transform.position.x - 0.2f, transform.position.y + 0.6f), Quaternion.Euler(0, 0, 5));
+            Spread = 3;
+        }
+        else
+        {
+            Spread = 1;
+        }
+            
+
+
+        // Loop through the bullets to spawn
+        for (int i = 0; i < Spread; i++)
+        {
+            // Calculate the position of this bullet, returns whole integer. Multiply this to spread out or bring in
+            float pos = ((-Spread + 1) + (i * 2));
+
+            Instantiate(toShoot, new Vector3(
+                transform.position.x + pos * 0.05f,
+                transform.position.y + 0.6f, 0), 
+                Quaternion.Euler(0, 0, -pos * 5f));
         }
 
         lastFired = Time.time;

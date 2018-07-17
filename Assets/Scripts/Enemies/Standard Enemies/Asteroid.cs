@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Asteroid : Enemy
+[RequireComponent(typeof(Enemy))]
+public class Asteroid : MonoBehaviour
 {
-    [HideInInspector] public bool isSplit = false;
+    [HideInInspector]public bool isSplit = false;
     public GameObject[] SplittableObjects;
 
     void Start()
@@ -52,25 +53,30 @@ public class Asteroid : Enemy
             Destroy(gameObject);
 
         if (c.gameObject.tag == "PlayerFire")
-            DecreaseHealth();
-
-        if (Health == 0 && SplittableObjects.Length > 0)
         {
-            float angle = 180 / SplittableObjects.Length;
-            int ran = 0;
+            GetComponent<Enemy>().DecreaseHealth();
 
-            foreach (GameObject ToSpawn in SplittableObjects)
+            if (SplittableObjects.Length > 0)
             {
-                GameObject go = Instantiate(ToSpawn, transform.position, transform.rotation);
-                go.GetComponent<Asteroid>().isSplit = true;
 
-                go.transform.rotation = Quaternion.Euler(0, 0, go.transform.rotation.z + (angle * ran));
+                float angle = 180 / SplittableObjects.Length;
+                int ran = 0;
 
-                go.GetComponent<Rigidbody2D>().velocity = GetComponent<Rigidbody2D>().velocity + ((Vector2)go.transform.up); 
-                
-                ran++;
+                foreach (GameObject ToSpawn in SplittableObjects)
+                {
+                    GameObject go = Instantiate(ToSpawn, transform.position, transform.rotation);
+                    go.GetComponent<Asteroid>().isSplit = true;
+
+                    go.transform.rotation = Quaternion.Euler(0, 0, go.transform.rotation.z + (angle * ran));
+
+                    go.GetComponent<Rigidbody2D>().velocity = GetComponent<Rigidbody2D>().velocity + ((Vector2)go.transform.up);
+
+                    ran++;
+                }
             }
         }
+
+        
     }
 }
 
