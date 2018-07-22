@@ -177,8 +177,8 @@ MonoBehaviour:
   - {fileID: 4921777563850870}
   - {fileID: 4934861465210416}
   ShootSpeed: 250
-  cooldown: 0.4
-  chanceToShoot: 6
+  cooldown: 0.6
+  chanceToShoot: 4
 --- !u!114 &114625504130218224
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -205,7 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fd7fa6592db2364484ac73aae4405d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 4
+  Speed: 4.5
 --- !u!212 &212949065323553098
 SpriteRenderer:
   m_ObjectHideFlags: 1
