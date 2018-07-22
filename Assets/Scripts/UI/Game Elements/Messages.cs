@@ -21,6 +21,7 @@ public class Messages : MonoBehaviour {
     {
         Text newMessage = Instantiate(MessageText, transform);
         newMessage.text = message;
+        newMessage.transform.SetAsFirstSibling();
 
         // Destroy when animation finishes
         Destroy(newMessage.gameObject, newMessage.gameObject.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
