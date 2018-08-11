@@ -10,21 +10,12 @@ public class Panel : MonoBehaviour {
     private Animator _animator;
     private CanvasGroup _canvasGroup;
 
-    private void OnEnable()
-    {
-        PanelManager.ChangePanel += CheckIfOpen;
-    }
-
-    private void OnDisable()
-    {
-        PanelManager.ChangePanel -= CheckIfOpen;
-    }
-
-    public bool isOpen
+    bool isOpen
     {
         get { return _animator.GetBool("IsOpen"); }
         set { _animator.SetBool("IsOpen", value); }
     }
+
 
     public void Awake()
     {
@@ -33,18 +24,15 @@ public class Panel : MonoBehaviour {
 
         var rect = GetComponent<RectTransform>();
         rect.offsetMax = rect.offsetMin = new Vector2(0, 0);
+
+        gameObject.SetActive(false);
     }
 
-    void CheckIfOpen(Panel panel)
-    {
-        if (panel == this)
-        {
-            _canvasGroup.blocksRaycasts = _canvasGroup.interactable = true;
-        }
 
-        else
-        {
-            _canvasGroup.blocksRaycasts = _canvasGroup.interactable = false;
-        }   
+    public void SetActive(bool isActive)
+    {
+        _canvasGroup.blocksRaycasts = _canvasGroup.interactable = isActive;
+        gameObject.SetActive(isActive);
+        isOpen = isActive;
     }
 }

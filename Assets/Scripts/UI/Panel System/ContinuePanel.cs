@@ -9,17 +9,7 @@ public class ContinuePanel : MonoBehaviour {
     public Text CountText;
     public int CountTime;
 
-    private void OnEnable()
-    {
-        ShipTakeDamage.Death += StartCountDown;
-    }
-
-    private void OnDisable()
-    {
-        ShipTakeDamage.Death -= StartCountDown;
-    }
-
-    void StartCountDown()
+    public void StartCountDown()
     {
         // Only show continue memu if some buttons are interactable
         DisableButtonAfterUse[] buttons = GetComponentsInChildren<DisableButtonAfterUse>();
