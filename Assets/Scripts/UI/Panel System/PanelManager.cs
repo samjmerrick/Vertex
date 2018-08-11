@@ -7,8 +7,6 @@ public class PanelManager : MonoBehaviour {
     public Panel GameMenu;
     public Panel DeathMenu;
 
-    private bool sequenceRunning;
-
     public delegate void ChangePanelDelegate(Panel panel);
     public static event ChangePanelDelegate ChangePanel;
 
