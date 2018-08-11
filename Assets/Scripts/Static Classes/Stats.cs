@@ -59,8 +59,6 @@ public class Stats : MonoBehaviour
             FirebaseDatabaseController.SaveToDatabase("best-stats", bestStats);
         }
 		
-
-        Coins.Add(gameStats["Destroyed"]);
     }
 
     private void CountDestroys(string name, Vector3 pos)
