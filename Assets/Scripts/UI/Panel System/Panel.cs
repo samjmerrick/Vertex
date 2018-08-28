@@ -29,10 +29,12 @@ public class Panel : MonoBehaviour {
     }
 
 
-    public void SetActive(bool isActive)
+    public void SetActive(bool value)
     {
-        _canvasGroup.blocksRaycasts = _canvasGroup.interactable = isActive;
-        gameObject.SetActive(isActive);
-        isOpen = isActive;
+        _canvasGroup.blocksRaycasts = _canvasGroup.interactable = value;
+        gameObject.SetActive(value);
+
+        if (value == true)
+            isOpen = value;
     }
 }
