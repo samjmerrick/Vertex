@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 60588406878344402}
   - component: {fileID: 114984226055718314}
   - component: {fileID: 114513666629949628}
+  - component: {fileID: 114334370436690358}
   m_Layer: 0
   m_Name: Enemy Ship (Red Circle)
   m_TagString: Enemy
@@ -169,6 +170,19 @@ PolygonCollider2D:
       - {x: 0.285, y: 0.055}
       - {x: 0.24499999, y: -0.16499999}
       - {x: 0.065, y: -0.285}
+--- !u!114 &114334370436690358
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1056133498744532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6df32a0421e34a4d8c1e1d6a530b347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 2
+  MinMax: {x: 0.8, y: 1.2}
 --- !u!114 &114513666629949628
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -192,7 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbaf2ae5309f48b44a4fd823c90a3228, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 10
+  Health: 15
   ShowHeathBar: 0
   DestroyEffect: {fileID: 1000010355441670, guid: 02a509a7fa70ed740ba4197e20c5d32d,
     type: 2}
