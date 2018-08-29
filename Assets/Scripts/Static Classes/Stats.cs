@@ -28,7 +28,6 @@ public class Stats : MonoBehaviour
     {
         gameStats.Clear();
         gameStats.Add("Destroyed", 0);
-        gameStats.Add("Bosses", 0);
         gameStats.Add("Pickups", 0);
         gameStats.Add("Distance", 0);
     }
@@ -63,11 +62,7 @@ public class Stats : MonoBehaviour
 
     private void CountDestroys(string name, Vector3 pos)
     {
-        if (name.Contains("Boss"))
-            gameStats["Bosses"] += 1;
-
-        else
-            gameStats["Destroyed"] += 1;
+        gameStats["Destroyed"] += 1;
 
         UIControl.instance.Destroyed.text = gameStats["Destroyed"].ToString();
 

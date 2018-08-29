@@ -6,7 +6,7 @@ public class SpawnController : MonoBehaviour {
 
     public static int EnemiesRemaining;
     public float SwitchTime, NewEnemyTime;
-    public Vector2 BossTime, SpawnTime;
+    public Vector2 SpawnTime;
     public int PickupChance;
     [HideInInspector]
     public int toSpawn = 5;
@@ -16,7 +16,7 @@ public class SpawnController : MonoBehaviour {
     private int availableEnemies = 3;
 
     // Enemies
-    public GameObject[] Enemies, Bosses, Pickups;
+    public GameObject[] Enemies, Pickups;
 
     void OnEnable()
     {
@@ -40,7 +40,6 @@ public class SpawnController : MonoBehaviour {
         InvokeRepeating("ChangeSpawn", 0, SwitchTime);
         InvokeRepeating("AddNewEnemy", NewEnemyTime, NewEnemyTime);
         StartCoroutine(Spawn());
-        StartCoroutine(SpawnBoss());
     }
 
     void EndGame()
@@ -72,15 +71,6 @@ public class SpawnController : MonoBehaviour {
         }
     }
 
-    IEnumerator SpawnBoss()
-    {
-        float WaitTime = Random.Range(BossTime.x, BossTime.y);
-        yield return new WaitForSeconds(WaitTime);
-
-        int choice = Random.Range(0, Bosses.Length);
-        Instantiate(Bosses[choice], new Vector2(0, bounds.y), Quaternion.identity);
-    }
-
     void ChangeSpawn()
     {
         spawnChoice = Random.Range(0, availableEnemies);
@@ -107,8 +97,5 @@ public class SpawnController : MonoBehaviour {
 
             pickup.GetComponent<Rigidbody2D>().velocity = new Vector3(0, -2, 0);
         }
-
-        if (name.Contains("Boss"))
-            StartCoroutine(SpawnBoss());   
     }
 }
