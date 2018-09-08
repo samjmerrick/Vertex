@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour {
     public int Health;
     public bool ShowHeathBar;
     public GameObject DestroyEffect;
+    public bool DestroyOnInvisible = true;
 
     private Canvas healthBar;
     private Slider healthBarSlider;
@@ -31,7 +32,7 @@ public class Enemy : MonoBehaviour {
 
     private void OnBecameInvisible()
     {
-        //if (transform.position.y < -3)
+        if (DestroyOnInvisible)
             Destroy(gameObject);
     }
 

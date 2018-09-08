@@ -185,6 +185,7 @@ MonoBehaviour:
   ShowHeathBar: 0
   DestroyEffect: {fileID: 1000010355441670, guid: 02a509a7fa70ed740ba4197e20c5d32d,
     type: 2}
+  DestroyOnInvisible: 0
 --- !u!114 &114564845598476102
 MonoBehaviour:
   m_ObjectHideFlags: 1
