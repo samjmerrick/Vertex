@@ -2036,6 +2036,7 @@ MonoBehaviour:
   - {fileID: 1018871003086724, guid: 120eb026160603d4ebfcf5580aea571d, type: 2}
   - {fileID: 1056133498744532, guid: 883391f11dced284cb1a3bd5979b75c1, type: 2}
   - {fileID: 1540556546061044, guid: 4a01d20b6b917e840930571bc7e9b568, type: 2}
+  - {fileID: 1434588339426262, guid: 828bf8a39e2217e40b3a74426efff73a, type: 2}
   Pickups:
   - {fileID: 1872577680506486, guid: f5daccb349568fc4b9b3ea2a3c72c428, type: 2}
   - {fileID: 1325272548664274, guid: 263d3c32ff629d04786dcb8c460a2b59, type: 2}

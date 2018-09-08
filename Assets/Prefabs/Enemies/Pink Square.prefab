@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 114921460513741102}
   - component: {fileID: 114439923517386728}
   m_Layer: 0
-  m_Name: Enemy Ship (Pink Square)
+  m_Name: Pink Square
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

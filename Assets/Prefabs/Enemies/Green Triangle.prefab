@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114100830684458746}
   - component: {fileID: 114127382709368088}
   m_Layer: 0
-  m_Name: Enemy Ship (Green)
+  m_Name: Green Triangle
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

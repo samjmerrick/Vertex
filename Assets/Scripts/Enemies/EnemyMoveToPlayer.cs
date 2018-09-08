@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Missile : MonoBehaviour {
+public class EnemyMoveToPlayer : MonoBehaviour {
 
     private Transform target;
 
