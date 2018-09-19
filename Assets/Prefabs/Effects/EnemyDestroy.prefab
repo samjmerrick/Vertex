@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 199000011528143168}
   - component: {fileID: 114672108705133496}
   m_Layer: 0
-  m_Name: BulletImpactMetalEffect
+  m_Name: EnemyDestroy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
