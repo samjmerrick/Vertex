@@ -69,10 +69,16 @@ public class Enemy : MonoBehaviour {
             if (Death != null)
                 Death(gameObject.name, transform.position);
 
+            // Spawn particle effect
             GameObject effect = Instantiate(DestroyEffect, transform.position, transform.rotation);
-            effect.AddComponent<ParticleColor>().color = GetComponent<SpriteRenderer>().color;
-            Destroy(effect, 0.5f);
+ 
+            // Set particle color to this color
+            ParticleSystem ps = effect.GetComponent<ParticleSystem>();
+            ParticleSystem.MainModule psmain = ps.main;
+            psmain.startColor = GetComponent<SpriteRenderer>().color;
 
+            // Destroy effect + this after a certain time
+            Destroy(effect, 0.5f);
             Destroy(gameObject, 0.05f);
         }
     }
