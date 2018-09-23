@@ -2034,9 +2034,8 @@ MonoBehaviour:
   - {fileID: 1056368737187912, guid: 1cda2af5229c470449f519c7335d3862, type: 2}
   - {fileID: 1088714843249752, guid: 381f173d4fefc424588c09564dce9d22, type: 2}
   - {fileID: 1018871003086724, guid: 120eb026160603d4ebfcf5580aea571d, type: 2}
-  - {fileID: 1056133498744532, guid: 883391f11dced284cb1a3bd5979b75c1, type: 2}
-  - {fileID: 1540556546061044, guid: 4a01d20b6b917e840930571bc7e9b568, type: 2}
   - {fileID: 1434588339426262, guid: 828bf8a39e2217e40b3a74426efff73a, type: 2}
+  - {fileID: 1540556546061044, guid: 4a01d20b6b917e840930571bc7e9b568, type: 2}
   Pickups:
   - {fileID: 1872577680506486, guid: f5daccb349568fc4b9b3ea2a3c72c428, type: 2}
   - {fileID: 1325272548664274, guid: 263d3c32ff629d04786dcb8c460a2b59, type: 2}
@@ -4812,7 +4811,7 @@ Prefab:
     - target: {fileID: 224260293963308824, guid: f61d8621c5b057d4181a578d8d0c1341,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 50
+      value: 3489.0405
       objectReference: {fileID: 0}
     - target: {fileID: 224723267458859642, guid: f61d8621c5b057d4181a578d8d0c1341,
         type: 2}
@@ -16260,7 +16259,7 @@ Prefab:
     - target: {fileID: 224260293963308824, guid: f61d8621c5b057d4181a578d8d0c1341,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 40.288452
+      value: 3479.329
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f61d8621c5b057d4181a578d8d0c1341, type: 2}
