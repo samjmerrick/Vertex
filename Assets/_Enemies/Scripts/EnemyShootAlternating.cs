@@ -2,20 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyShoot : MonoBehaviour
+public class EnemyShootAlternating : EnemyShoot
 {
-    public GameObject Bullet;
-    public Transform[] shootPoints;
-    public float ShootSpeed;
-    public float cooldown = 2;
-    public int chanceToShoot;
-    
     private void Start()
     {
         InvokeRepeating("Shoot", cooldown, cooldown);
     }
 
-    void Shoot()
+    IEnumerator Shoot()
     {
         if (Random.Range(0, 10) < chanceToShoot)
         {
@@ -23,8 +17,10 @@ public class EnemyShoot : MonoBehaviour
             {
                 GameObject go = Instantiate(Bullet, point.position, point.rotation);
                 go.GetComponent<Rigidbody2D>().AddForce(-go.transform.up * ShootSpeed);
+
+                // Waits until next shot
+                yield return new WaitForSeconds(0.5f);
             }
         }
     }
 }
-
