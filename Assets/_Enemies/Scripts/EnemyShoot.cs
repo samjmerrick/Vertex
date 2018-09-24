@@ -10,17 +10,15 @@ public class EnemyShoot : MonoBehaviour
     public float cooldown = 2;
     public int chanceToShoot;
 
-    private bool isShrinking;
-    private float targetShrink;
-    private float shrinkSpeed = 0.8f;
+    private float shrinkAmount = .2f;
+    private float shrinkSpeed = 0.6f;
 
     private void Start()
     {
-        InvokeRepeating("Shoot", cooldown, cooldown);
-        targetShrink = transform.localScale.x - .1f;
+        InvokeRepeating("CheckIfShooting", cooldown, cooldown);
     }
 
-    void Shoot()
+    void CheckIfShooting()
     {
         if (Random.Range(0, 10) < chanceToShoot)
         {
@@ -30,31 +28,27 @@ public class EnemyShoot : MonoBehaviour
 
     IEnumerator ShrinkAndShoot()
     {
-        isShrinking = true;
-        yield return new WaitUntil(() => !isShrinking);
+        float shrinkTarget = transform.localScale.x - shrinkAmount;
 
+        // Shrink
+        while (transform.localScale.x > shrinkTarget)
+        {
+            transform.localScale -= Vector3.one * Time.deltaTime * shrinkSpeed;
+            yield return new WaitForFixedUpdate();
+        }
+
+        // Back to full size
+        transform.localScale = new Vector3(shrinkTarget + shrinkAmount, shrinkTarget + shrinkAmount);
+        Shoot();
+    }
+
+    void Shoot()
+    {
         foreach (Transform point in shootPoints)
         {
             GameObject go = Instantiate(Bullet, point.position, point.rotation);
             go.GetComponent<Rigidbody2D>().AddForce(-go.transform.up * ShootSpeed);
         }
-    }
-
-    private void Update()
-    {
-        if (isShrinking)
-        {
-            transform.localScale -= Vector3.one * Time.deltaTime * shrinkSpeed;
-     
-
-            if (transform.localScale.x < targetShrink)
-            {
-                transform.localScale = new Vector3(targetShrink + .1f, targetShrink + .1f);
-                isShrinking = false;
-            
-            }
-        }
-            
     }
 }
 
