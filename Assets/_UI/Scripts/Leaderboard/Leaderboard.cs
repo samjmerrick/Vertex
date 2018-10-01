@@ -1,14 +1,11 @@
 ﻿using UnityEngine;
 using Firebase.Database;
 using System.Linq;
-using UnityEngine.UI;
 
 public class Leaderboard : MonoBehaviour
 {
     public GameObject LeaderboardEntry;
     public GameObject LoadingSymbol;
-
-    public Text info;
 
     private void Start()
     {
