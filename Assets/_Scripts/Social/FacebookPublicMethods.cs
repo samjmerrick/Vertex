@@ -4,16 +4,21 @@ using UnityEngine;
 using Facebook.Unity;
 using UnityEngine.SceneManagement;
 
-public class FacebookPublicMethods : MonoBehaviour {
+public static class FacebookPublicMethods {
 
-    private List<string> perms = new List<string>() { "public_profile", "email" };
+    private static List<string> perms = new List<string>() { "public_profile", "email" };
 
-    public void LogIn()
+    public static void LogIn()
     {
         FB.LogInWithReadPermissions(perms, AuthCallback);
     }
 
-    private void AuthCallback(ILoginResult result)
+    public static void LogOut()
+    {
+        FB.LogOut();
+    }
+
+    private static void AuthCallback(ILoginResult result)
     {
         if (FB.IsLoggedIn)
         {
@@ -29,8 +34,8 @@ public class FacebookPublicMethods : MonoBehaviour {
                 Debug.Log(perm);
             }
 
-            // Restart the scene - Usermanager will pick up newly signed in user and attempt firebase sign-in
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            // Initialise UserManager, this will sign the facebook user into firebase auth
+            GameObject.FindObjectOfType<UserManager>().Init();
         }
 
         else
@@ -39,12 +44,7 @@ public class FacebookPublicMethods : MonoBehaviour {
         }
     }
 
-    public void LogOut()
-    {
-        FB.LogOut();
-    }
-
-    public void FeedShare()
+    public static void FeedShare()
     {
         if (FB.IsLoggedIn)
         {
@@ -62,6 +62,5 @@ public class FacebookPublicMethods : MonoBehaviour {
         {
             Debug.Log("Not logged in");
         }
-
     }
 }

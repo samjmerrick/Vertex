@@ -32,6 +32,11 @@ public class UserManager : MonoBehaviour {
         }
     }
 
+    public void Init()
+    {
+        StartCoroutine(Start());
+    }
+
     private void SignIntoFirebaseWithFacebook(string accessToken)
     {
         Firebase.Auth.FirebaseAuth auth = Firebase.Auth.FirebaseAuth.DefaultInstance;
