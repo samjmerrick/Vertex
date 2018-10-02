@@ -7,21 +7,21 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>362584346528-p87th9a2s0lo6pmju151df0ctl4s7ec2.apps.googleusercontent.com</string>
+	<string>37949844387-jvbc7is009m3l6dbe8a9n9qurbd9cpdi.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.362584346528-p87th9a2s0lo6pmju151df0ctl4s7ec2</string>
+	<string>com.googleusercontent.apps.37949844387-jvbc7is009m3l6dbe8a9n9qurbd9cpdi</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAntUb2TQWayHk1lY8AjpPq-aVlyLlGSHE</string>
+	<string>AIzaSyDW5q1BfTQwgg_UjbpLtRdMcomeNVvLVlw</string>
 	<key>GCM_SENDER_ID</key>
-	<string>362584346528</string>
+	<string>37949844387</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.samjm.stardefender</string>
+	<string>com.samjm.vertex</string>
 	<key>PROJECT_ID</key>
-	<string>star-defender</string>
+	<string>vertex-game</string>
 	<key>STORAGE_BUCKET</key>
-	<string>star-defender.appspot.com</string>
+	<string>vertex-game.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true></true>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -33,8 +33,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:362584346528:ios:6051a31dc54e9522</string>
+	<string>1:37949844387:ios:6b7c65727adfdaab</string>
 	<key>DATABASE_URL</key>
-	<string>https://star-defender.firebaseio.com</string>
+	<string>https://vertex-game.firebaseio.com</string>
 </dict>
 </plist>
