@@ -1,12 +1,37 @@
-﻿using System.Collections;
+﻿using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine;
 using Facebook.Unity;
-using UnityEngine.SceneManagement;
 
-public static class FacebookPublicMethods {
+public static class FacebookManager {
 
     private static List<string> perms = new List<string>() { "public_profile", "email" };
+
+    public static void Init()
+    {
+        if (!FB.IsInitialized)
+        {
+            // Initialize the Facebook SDK
+            FB.Init(InitCallback);
+        }
+        else
+        {
+            // Already initialized, signal an app activation App Event
+            FB.ActivateApp();
+        }
+    }
+
+    private static void InitCallback()
+    {
+        if (FB.IsInitialized)
+        {
+            // Signal an app activation App Event
+            FB.ActivateApp();
+        }
+        else
+        {
+            Debug.Log("Failed to Initialize the Facebook SDK");
+        }
+    }
 
     public static void LogIn()
     {
@@ -15,7 +40,8 @@ public static class FacebookPublicMethods {
 
     public static void LogOut()
     {
-        FB.LogOut();
+        if(FB.IsLoggedIn)
+            FB.LogOut();
     }
 
     private static void AuthCallback(ILoginResult result)
