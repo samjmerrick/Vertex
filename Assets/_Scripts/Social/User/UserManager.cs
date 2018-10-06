@@ -48,7 +48,7 @@ public class UserManager : MonoBehaviour {
                 Debug.Log("Signed out " + user.UserId);
               
             }
-            user = auth.CurrentUser;s
+            user = auth.CurrentUser;
 
             if (signedIn)
             {
