@@ -11,15 +11,20 @@ public class FacebookLoginButton : MonoBehaviour {
     {
         if (FB.IsLoggedIn)
         {
-            if (FirebaseAuthManager.GetUser() != null)
+            if (UserManager.GetUser() != null)
             {
-				buttonText.text = "Signed in as " + FirebaseAuthManager.GetUser().DisplayName;
+				buttonText.text = "Signed in as " + UserManager.GetUser().DisplayName;
 			}
 
             else
             {
                 buttonText.text = "Loading info";
             }        
+        }
+
+        else
+        {
+            buttonText.text = "Connect with Facebook";
         }
     }
 
@@ -37,7 +42,7 @@ public class FacebookLoginButton : MonoBehaviour {
             Firebase.Auth.FirebaseAuth auth = Firebase.Auth.FirebaseAuth.DefaultInstance;
             auth.SignOut();
 
-            Debug.Log("User already logged in"); //TODO - replace this with log out function
+            Debug.Log("Logged out"); //TODO - replace this with log out function
         }
     }
 }

@@ -52,7 +52,7 @@ public class Stats : MonoBehaviour
         }
 
 
-        if (FirebaseAuthManager.GetUser() != null)
+        if (UserManager.GetUser() != null)
         {
             FirebaseDatabaseController.WriteNewHiScore(bestStats["Destroyed"]);
             FirebaseDatabaseController.SaveToDatabase("best-stats", bestStats);

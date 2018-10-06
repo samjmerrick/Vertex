@@ -21,7 +21,7 @@ public class FirebaseDatabaseController : MonoBehaviour {
 
     public static Dictionary<string, int> GetFromDatabase(string location)
     {
-        Firebase.Auth.FirebaseUser user = FirebaseAuthManager.GetUser();
+        Firebase.Auth.FirebaseUser user = UserManager.GetUser();
 
         Dictionary<string, int> bestStats = new Dictionary<string, int>();
 
@@ -56,7 +56,7 @@ public class FirebaseDatabaseController : MonoBehaviour {
     // Save info to database
     public static void SaveToDatabase(string location, Dictionary<string, object> data)
     {
-        Firebase.Auth.FirebaseUser user = FirebaseAuthManager.GetUser();
+        Firebase.Auth.FirebaseUser user = UserManager.GetUser();
 
         // Get location / UserID and set values
         db.Child(location).Child(user.UserId).SetValueAsync(data);
@@ -72,7 +72,7 @@ public class FirebaseDatabaseController : MonoBehaviour {
     // Handle int entry at end of game
     public static void WriteNewHiScore(int score)
     {
-        Firebase.Auth.FirebaseUser user = FirebaseAuthManager.GetUser();
+        Firebase.Auth.FirebaseUser user = UserManager.GetUser();
 
         string profileImage = "http://graph.facebook.com/" + Facebook.Unity.AccessToken.CurrentAccessToken.UserId + "/picture";
 

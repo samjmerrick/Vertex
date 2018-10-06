@@ -3,9 +3,6 @@ using Firebase.Auth;
 
 public static class FirebaseAuthManager {
 
-    private static FirebaseUser user;
-    public static FirebaseUser GetUser() { return user; }
-
     public static bool DependenciesMet;
 
     public static void Init()
@@ -47,7 +44,7 @@ public static class FirebaseAuthManager {
                 return;
             }
 
-            user = task.Result;
+            Firebase.Auth.FirebaseUser user = task.Result;
 
             SaveManager.LoadFromDatabase(); // TODO - create event to trigger this
 
