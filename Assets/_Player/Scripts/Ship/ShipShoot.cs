@@ -63,11 +63,15 @@ public class ShipShoot : MonoBehaviour {
                     UIControl.instance.Laser.text = Upgrades.Get("Laser").ToString();
                 }
                 else
+                {
                     UIControl.instance.UIMessage("Not enough lasers");
+                    Debug.Log("not enough lasers");
+                }
+                   
             }
             else
             {
-                //normal click  
+                // Single click
             }
             lastClickTime = Time.time;
         }

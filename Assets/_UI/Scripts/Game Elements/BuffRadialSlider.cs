@@ -30,8 +30,12 @@ public class BuffRadialSlider: MonoBehaviour
         angle = amount;
 
         // Fillamount + color
-		image.fillAmount = angle;
-		image.color = Color.Lerp(Color.red, Color.green, angle);
+        if (image != null)
+        {
+            image.fillAmount = angle;
+            image.color = Color.Lerp(Color.red, Color.green, angle);
+
+        }
 
         // Check if should be destroyed
         if (angle <= 0 || !GameController.GameRunning) {

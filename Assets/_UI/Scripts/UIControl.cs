@@ -41,21 +41,13 @@ public class UIControl : MonoBehaviour {
     public Text Laser;
     public Text CoinsText;
 
-    private void OnEnable()
-    {
-        GameController.GameBegin += BeginGame;
-    }
 
-    private void OnDisable()
-    {
-        GameController.GameBegin -= BeginGame;
-    }
-
-    public void BeginGame()
+    public void OnEnable()
     {
         Distance.text = "0";
         Destroyed.text = "0";
         Laser.text = Upgrades.Get("Laser").ToString();
+        Debug.Log(Upgrades.Get("Laser").ToString());
 
 
         CoinsText.text = Coins.Get().ToString();
