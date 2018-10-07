@@ -31,7 +31,7 @@ public abstract class ShopItem : MonoBehaviour {
     }
 
 
-    private void OnMouseDown()
+    public void OnMouseDown()
     {
         if (shopController.active != this)
             shopController.ChangeActive(this);
