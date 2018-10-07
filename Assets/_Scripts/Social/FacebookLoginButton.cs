@@ -4,6 +4,7 @@ using Facebook.Unity;
 
 public class FacebookLoginButton : MonoBehaviour {
 
+    public string NotSignedInMessage;
     public GameObject WarningMessage;
     public Text buttonText;
 
@@ -24,7 +25,7 @@ public class FacebookLoginButton : MonoBehaviour {
 
         else
         {
-            buttonText.text = "Connect with Facebook";
+            buttonText.text = NotSignedInMessage;
         }
     }
 

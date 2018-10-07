@@ -8,11 +8,12 @@ public class Leaderboard : MonoBehaviour
     public GameObject LoadingSymbol;
 
     private void Start()
-    {
+    { 
         FirebaseDatabase.DefaultInstance
         .GetReference("scores")
         .OrderByChild("score")
         .ValueChanged += HandleValueChanged;
+
     }
 
     void HandleValueChanged(object sender, ValueChangedEventArgs args)
@@ -52,7 +53,7 @@ public class Leaderboard : MonoBehaviour
     {
         foreach (Transform child in transform)
         {
-            if (!child.name.Contains("hi-score"))
+            if (!child.name.Contains("_"))
             {
                 Destroy(child.gameObject);
             }
