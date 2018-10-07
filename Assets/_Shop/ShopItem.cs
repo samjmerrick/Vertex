@@ -53,8 +53,8 @@ public abstract class ShopItem : MonoBehaviour {
     public void SetActive(bool active) 
     {
         if (active)
-            GetComponent<Image>().color += new Color32(0, 0, 0, 200);
+            GetComponent<Image>().color += new Color32(0, 0, 0, 255);
         else
-            GetComponent<Image>().color -= new Color32(0, 0, 0, 200);
+            GetComponent<Image>().color -= new Color32(0, 0, 0, 255);
     }
 }
