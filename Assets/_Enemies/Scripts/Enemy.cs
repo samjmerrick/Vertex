@@ -77,9 +77,8 @@ public class Enemy : MonoBehaviour {
             ParticleSystem.MainModule psmain = ps.main;
             psmain.startColor = GetComponent<SpriteRenderer>().color;
 
-            // Destroy effect + this after a certain time
-            Destroy(effect, 0.5f);
-            Destroy(gameObject, 0.05f);
+            // Destroy self
+            Destroy(gameObject);
         }
     }
 
