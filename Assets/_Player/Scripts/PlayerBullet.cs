@@ -5,6 +5,7 @@ public class PlayerBullet : MonoBehaviour
 {
     public int MoveSpeed;
     public bool bigShot = false;
+    public GameObject DestroyEffect;
 
     private Vector3 firePos;
 
@@ -39,6 +40,9 @@ public class PlayerBullet : MonoBehaviour
             
             if (!bigShot)
             {
+                if (DestroyEffect != null)
+                    Instantiate(DestroyEffect, transform.position, transform.rotation);
+
                 Destroy(gameObject);
             }
         }
