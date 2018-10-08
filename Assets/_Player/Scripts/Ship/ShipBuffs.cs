@@ -53,8 +53,6 @@ public class ShipBuffs : MonoBehaviour
 
     private void Update()
     {
-
-
         foreach (Buff buff in Active.ToList())
         {
             if (!Contains("Laser") || buff.GetName() == "Laser")
@@ -74,8 +72,8 @@ public class ShipBuffs : MonoBehaviour
     {
         if (buff == "Laser" || buff == "Shield")
         {
-            Destroy(transform.Find(buff + "(Clone)").gameObject);
-            //shooting = true;
+            if (transform.Find(buff + "(Clone)") != null)
+                Destroy(transform.Find(buff + "(Clone)").gameObject);
         }
     }
 }

@@ -47,8 +47,6 @@ public class UIControl : MonoBehaviour {
         Distance.text = "0";
         Destroyed.text = "0";
         Laser.text = Upgrades.Get("Laser").ToString();
-        Debug.Log(Upgrades.Get("Laser").ToString());
-
 
         CoinsText.text = Coins.Get().ToString();
      
