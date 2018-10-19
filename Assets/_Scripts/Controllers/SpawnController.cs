@@ -5,11 +5,11 @@ using UnityEngine;
 public class SpawnController : MonoBehaviour {
 
     public static int EnemiesRemaining;
-    public float SwitchTime, NewEnemyTime;
+    public float NewEnemyTime;
     public Vector2 SpawnTime;
     public int PickupChance;
-    [HideInInspector]
-    public int toSpawn = 5;
+    public int EnemyQuantityToSpawn = 5;
+    public int TimeToAddQuantity = 10;
 
     private Vector2 bounds;
     private int spawnChoice;
@@ -37,9 +37,45 @@ public class SpawnController : MonoBehaviour {
     void StartGame()
     {
         EnemiesRemaining = 0;
-        InvokeRepeating("ChangeSpawn", 0, SwitchTime);
         InvokeRepeating("AddNewEnemy", NewEnemyTime, NewEnemyTime);
+        InvokeRepeating("AddToEnemyQuantityToSpawn", TimeToAddQuantity, TimeToAddQuantity);
         StartCoroutine(Spawn());
+    }
+
+    void AddToEnemyQuantityToSpawn()
+    {
+        EnemyQuantityToSpawn++;
+    }
+
+    void ChooseEnemyToSpawn()
+    {
+        spawnChoice = Random.Range(0, availableEnemies);
+    }
+
+    void AddNewEnemy()
+    {
+        availableEnemies++;
+
+        if (availableEnemies == Enemies.Length)
+            CancelInvoke("AddNewEnemy");
+    }
+
+    IEnumerator Spawn()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(Random.Range(SpawnTime.x, SpawnTime.y));
+
+            if (EnemiesRemaining < EnemyQuantityToSpawn)
+            {
+                Vector3 location = new Vector3(
+                    x: Random.Range(-bounds.x, bounds.x),
+                    y: bounds.y);
+
+                Instantiate(Enemies[spawnChoice], location, Enemies[spawnChoice].transform.rotation);
+                ChooseEnemyToSpawn();
+            }
+        }
     }
 
     void EndGame()
@@ -54,35 +90,6 @@ public class SpawnController : MonoBehaviour {
         StopAllCoroutines();
     }
 
-    IEnumerator Spawn()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(Random.Range(SpawnTime.x, SpawnTime.y));
-
-            if (EnemiesRemaining < toSpawn)
-            {
-                Vector3 location = new Vector3(
-                    x: Random.Range(-bounds.x, bounds.x),
-                    y: bounds.y);
-
-                Instantiate(Enemies[spawnChoice], location, Enemies[spawnChoice].transform.rotation);
-            }
-        }
-    }
-
-    void ChangeSpawn()
-    {
-        spawnChoice = Random.Range(0, availableEnemies);
-    }
-
-    void AddNewEnemy()
-    {
-        availableEnemies++;
-
-        if (availableEnemies == Enemies.Length)
-            CancelInvoke("AddNewEnemy");
-    }
 
     void EnemyDied(string name, Vector3 pos)
     {
