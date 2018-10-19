@@ -254,7 +254,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Bullet: {fileID: 1974600054867500, guid: 429c7a381e4292d4084bd4c896dccbad, type: 2}
-  shootType: 0
   shootPoints:
   - {fileID: 4105915744285026}
   - {fileID: 4814194123371116}
@@ -274,10 +273,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbaf2ae5309f48b44a4fd823c90a3228, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 4
+  Health: 3
   ShowHeathBar: 0
   DestroyEffect: {fileID: 1000010355441670, guid: 02a509a7fa70ed740ba4197e20c5d32d,
     type: 2}
+  DestroyOnInvisible: 1
 --- !u!212 &212689962589909250
 SpriteRenderer:
   m_ObjectHideFlags: 1
