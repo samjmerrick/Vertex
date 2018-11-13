@@ -5,6 +5,7 @@ using UnityEngine;
 using Firebase;
 using Firebase.Database;
 using Firebase.Unity.Editor;
+using Firebase.Auth;
 
 public class FirebaseDatabaseController : MonoBehaviour {
 
@@ -21,7 +22,8 @@ public class FirebaseDatabaseController : MonoBehaviour {
 
     public static Dictionary<string, int> GetFromDatabase(string location)
     {
-        Firebase.Auth.FirebaseUser user = UserManager.GetUser();
+        FirebaseUser user = UserManager.GetUser();
+        if (user == null) return null; // Check user is signed in
 
         Dictionary<string, int> bestStats = new Dictionary<string, int>();
 
@@ -56,7 +58,8 @@ public class FirebaseDatabaseController : MonoBehaviour {
     // Save info to database
     public static void SaveToDatabase(string location, Dictionary<string, object> data)
     {
-        Firebase.Auth.FirebaseUser user = UserManager.GetUser();
+        FirebaseUser user = UserManager.GetUser();
+        if (user == null) return; // Check user is signed in
 
         // Get location / UserID and set values
         db.Child(location).Child(user.UserId).SetValueAsync(data);
@@ -72,7 +75,8 @@ public class FirebaseDatabaseController : MonoBehaviour {
     // Handle int entry at end of game
     public static void WriteNewHiScore(int score)
     {
-        Firebase.Auth.FirebaseUser user = UserManager.GetUser();
+        FirebaseUser user = UserManager.GetUser();
+        if (user == null) return; // Check user is signed in
 
         string profileImage = "http://graph.facebook.com/" + Facebook.Unity.AccessToken.CurrentAccessToken.UserId + "/picture";
 
