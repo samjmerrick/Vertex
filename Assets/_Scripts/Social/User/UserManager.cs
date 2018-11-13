@@ -10,16 +10,16 @@ public class UserManager : MonoBehaviour {
     private static FirebaseUser user;
     public static FirebaseUser GetUser() { return user; }
 
-    public void Init()
+    public void Start()
     {
         auth = FirebaseAuth.DefaultInstance;
         auth.StateChanged += AuthStateChanged;
         AuthStateChanged(this, null);
 
-        StartCoroutine(Start());
+        StartCoroutine(Init());
     }
 
-    public IEnumerator Start()
+    public IEnumerator Init()
     {
         FacebookManager.Init();
         yield return new WaitUntil(() => FB.IsInitialized);
