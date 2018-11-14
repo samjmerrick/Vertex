@@ -18,8 +18,8 @@ public class LeaderboardEntry : MonoBehaviour
         Score.text = score.ToString();
         DisplayName.text = displayName;
 
-        if (imageUrl != null)
-            StartCoroutine(DisplayImage(imageUrl));
+        //if (imageUrl != null)
+        //    StartCoroutine(DisplayImage(imageUrl));
     }
 
     IEnumerator DisplayImage(string url)
