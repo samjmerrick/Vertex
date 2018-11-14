@@ -61,7 +61,7 @@ public static class FacebookManager {
             }
 
             // Initialise UserManager, this will sign the facebook user into firebase auth
-            GameObject.FindObjectOfType<UserManager>().Init();
+            GameObject.FindObjectOfType<UserManager>().SignIn();
         }
 
         else

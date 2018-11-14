@@ -10,32 +10,38 @@ public class UserManager : MonoBehaviour {
     private static FirebaseUser user;
     public static FirebaseUser GetUser() { return user; }
 
-    public void Start()
+    public void Awake()
     {
+        FacebookManager.Init();
+        FirebaseAuthManager.Init();
+
         auth = FirebaseAuth.DefaultInstance;
         auth.StateChanged += AuthStateChanged;
         AuthStateChanged(this, null);
-
-        StartCoroutine(Init());
     }
 
-    public IEnumerator Init()
+    public IEnumerator Start()
     {
-        FacebookManager.Init();
-        yield return new WaitUntil(() => FB.IsInitialized);
+        yield return new WaitUntil(() => FB.IsInitialized && FirebaseAuthManager.DependenciesMet);
+        SignIn();
+    }
 
-        FirebaseAuthManager.Init();
-        yield return new WaitUntil(() => FirebaseAuthManager.DependenciesMet);
-
-        if (FB.IsLoggedIn)
+    public void SignIn()
+    {
+        if (!FB.IsInitialized || !FirebaseAuthManager.DependenciesMet)
         {
-            FirebaseAuthManager.SignIntoFirebaseWithFacebook(AccessToken.CurrentAccessToken.TokenString);
+            Debug.Log("Tried to sign in but some dependencies were not met");
+            return;
+        }
+           
+
+        if (!FB.IsLoggedIn)
+        {
+            Debug.Log("Tried to sign in but user is not signed in with Facebook");
+            return;
         }
 
-        else
-        {
-            Debug.Log("Can't sign into firebase as user is not logged in with Facebook");
-        }
+        FirebaseAuthManager.SignIntoFirebaseWithFacebook(AccessToken.CurrentAccessToken.TokenString);
     }
 
     void AuthStateChanged(object sender, System.EventArgs eventArgs)
