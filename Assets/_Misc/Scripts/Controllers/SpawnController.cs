@@ -9,7 +9,7 @@ public class SpawnController : MonoBehaviour {
     public Vector2 SpawnTime;
     public int PickupChance;
     public int EnemyQuantityToSpawn = 5;
-    public int TimeToAddQuantity = 10;
+    public int TimeToAddDifficulty = 10;
 
     private Vector2 bounds;
     private int spawnChoice;
@@ -38,13 +38,14 @@ public class SpawnController : MonoBehaviour {
     {
         EnemiesRemaining = 0;
         InvokeRepeating("AddNewEnemy", NewEnemyTime, NewEnemyTime);
-        InvokeRepeating("AddToEnemyQuantityToSpawn", TimeToAddQuantity, TimeToAddQuantity);
+        InvokeRepeating("AddToDifficulty", TimeToAddDifficulty, TimeToAddDifficulty);
         StartCoroutine(Spawn());
     }
 
-    void AddToEnemyQuantityToSpawn()
+    void AddToDifficulty()
     {
         EnemyQuantityToSpawn++;
+        SpawnTime.y -= 0.1f;
     }
 
     void ChooseEnemyToSpawn()
