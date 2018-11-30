@@ -22,7 +22,7 @@ public class UIStats : MonoBehaviour {
 
                 if (newBest.Contains(entry.Key))
                 {
-                    go.transform.Find("Best").GetComponent<Text>().color = new Color32(50, 205, 50, 255);
+                    //go.transform.Find("Best").GetComponent<Text>().color = new Color32(50, 205, 50, 255);
                     Instantiate(hiScoreBadge, go.transform);
                 }
             }
