@@ -138,7 +138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 1
   ShowHeathBar: 0
-  DestroyEffect: {fileID: 1000010355441670, guid: 02a509a7fa70ed740ba4197e20c5d32d,
+  DestroyEffect: {fileID: 1513490466205228, guid: 406c6307f700d5f41841999bfdb7985e,
     type: 2}
   DestroyOnInvisible: 1
 --- !u!212 &212689962589909250
