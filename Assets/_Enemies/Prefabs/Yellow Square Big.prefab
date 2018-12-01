@@ -141,10 +141,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 148d853862fdd6746bffcbb8ad48184c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thingsToSpawn:
-  - {fileID: 1540556546061044, guid: 213f242f2c9f4b347a1c0c1886d94fcb, type: 2}
-  - {fileID: 1540556546061044, guid: 213f242f2c9f4b347a1c0c1886d94fcb, type: 2}
-  - {fileID: 1540556546061044, guid: 213f242f2c9f4b347a1c0c1886d94fcb, type: 2}
+  objectToSpawn: {fileID: 1540556546061044, guid: 213f242f2c9f4b347a1c0c1886d94fcb,
+    type: 2}
+  numberToSpawn: 5
 --- !u!114 &114729202287313742
 MonoBehaviour:
   m_ObjectHideFlags: 1

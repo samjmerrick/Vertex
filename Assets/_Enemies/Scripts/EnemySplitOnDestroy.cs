@@ -4,25 +4,35 @@ using UnityEngine;
 
 public class EnemySplitOnDestroy : MonoBehaviour {
 
-    public GameObject[] thingsToSpawn;
+    public GameObject objectToSpawn;
+    public int numberToSpawn;
+
+    private Vector2 bounds;
+    private bool isQuitting = false;
 
     private void OnDestroy()
     {
-        if (thingsToSpawn.Length > 0 && GameController.GameRunning)
+        // Check there is an object to spawn, and the game is running
+        if (objectToSpawn != null && GameController.GameRunning && !isQuitting)
         {
-            float angle = 180 / thingsToSpawn.Length;
-            int ran = 0;
-
-            foreach (GameObject toSpawn in thingsToSpawn)
+            // Check we're above the bottom of the screen + 1
+            bounds = Bounds.Get();
+            if (transform.position.y > -bounds.y + 1)
             {
-                Instantiate(
-                    original: toSpawn,
-                    position: transform.position,
-                    rotation: Quaternion.Euler(0, 0, Random.Range(0, 360))
-                    );
-
-                ran++;
+                for (int i = 0; i < numberToSpawn; i++)
+                {
+                    Instantiate(
+                        original: objectToSpawn,
+                        position: transform.position,
+                        rotation: Quaternion.Euler(0, 0, Random.Range(0, 360))
+                        );
+                }
             }
         }
+    }
+
+    private void OnApplicationQuit()
+    {
+        isQuitting = true;
     }
 }
