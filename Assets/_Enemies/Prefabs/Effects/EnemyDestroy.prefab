@@ -21,8 +21,7 @@ GameObject:
   - component: {fileID: 4000011450163336}
   - component: {fileID: 198000013440722320}
   - component: {fileID: 199000011528143168}
-  - component: {fileID: 114783323237678562}
-  - component: {fileID: 114813589229827630}
+  - component: {fileID: 114538016055757210}
   m_Layer: 0
   m_Name: EnemyDestroy
   m_TagString: Untagged
@@ -43,7 +42,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &114783323237678562
+--- !u!114 &114538016055757210
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -51,29 +50,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000010355441670}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8001c0b333b214cf6819aa35fc6da60a, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b224fe36eaeaaa44be2eb5124d08613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_VectorGrid: {fileID: 0}
   m_ForceScale: 1
-  m_Directional: 0
-  m_ForceDirection: {x: 0, y: 0, z: 0}
   m_Radius: 1
-  m_Color: {r: 1, g: 0, b: 0.9145675, a: 1}
-  m_HasColor: 1
-  m_findVectorGrid: 1
---- !u!114 &114813589229827630
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010355441670}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d3e703b8ef7315409c82d3f8703ac15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeToStop: 0.3
+  duration: 0.1
 --- !u!198 &198000013440722320
 ParticleSystem:
   m_ObjectHideFlags: 1
