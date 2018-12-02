@@ -11,8 +11,16 @@ public class VectorGridForce : MonoBehaviour
 	public Color m_Color = Color.white;
 	public bool m_HasColor;
 
-	// Update is called once per frame
-	void Update () 
+    public bool m_findVectorGrid;
+
+    private void Start()
+    {
+        if (m_findVectorGrid)
+            m_VectorGrid = FindObjectOfType<VectorGrid>();
+    }
+
+    // Update is called once per frame
+    void Update () 
 	{
 		if(m_VectorGrid)
 		{

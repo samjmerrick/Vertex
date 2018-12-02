@@ -703,8 +703,8 @@ public class VectorGrid : MonoBehaviour
 						{
                             Color newColor = gridPoint.m_TargetColor;
                             //float alpha = gridPoint.m_TargetColor.a;
-							
-							// Grid forces should only affect RGB, not alpha channel
+
+                            // Grid forces should only affect RGB, not alpha channel
                             newColor = gridPoint.m_TargetColor + ((color - gridPoint.m_TargetColor) * distanceFactor);
 							//newColor.a = alpha;
 
@@ -744,11 +744,11 @@ public class VectorGrid : MonoBehaviour
 						if(hasColor)
 						{
                             Color newColor = gridPoint.m_TargetColor;
-                            float alpha = gridPoint.m_TargetColor.a;
+                            //float alpha = gridPoint.m_TargetColor.a;
 							
 							// Grid forces should only affect RGB, not alpha channel
                             newColor = gridPoint.m_TargetColor + ((color - gridPoint.m_TargetColor) * distanceFactor);
-							newColor.a = alpha;
+							//newColor.a = alpha;
 
                             gridPoint.m_TargetColor = newColor;
 						}
