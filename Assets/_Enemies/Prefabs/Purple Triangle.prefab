@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114100830684458746}
   - component: {fileID: 114127382709368088}
   m_Layer: 0
-  m_Name: Green Triangle
+  m_Name: Purple Triangle
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -244,7 +244,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9a330da6af511fb429ce3c05265b30ce, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.46206903, a: 1}
+  m_Color: {r: 0.7866421, g: 0, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
