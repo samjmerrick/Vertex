@@ -15,22 +15,12 @@ public class UIMissionPrefab : MonoBehaviour {
 
     private Animator anim;
 
-    void OnEnable()
-    {
-        GameController.GameEnd += CheckIfComplete;
-    }
-
-    private void OnDisable()
-    {
-        GameController.GameEnd -= CheckIfComplete;
-    }
-
     private void Start()
     {
         anim = GetComponent<Animator>();
         SetMission();
+        CheckIfComplete();
     }
-
 
     void SetMission()
     {
