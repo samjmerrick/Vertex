@@ -69,11 +69,22 @@ public class SpawnController : MonoBehaviour {
 
             if (EnemiesRemaining < EnemyQuantityToSpawn)
             {
-                Vector3 location = new Vector3(
-                    x: Random.Range(-bounds.x, bounds.x),
-                    y: bounds.y);
+                GameObject EnemyToSpawn = Enemies[spawnChoice];
+                Vector3 Position;
 
-                Instantiate(Enemies[spawnChoice], location, Enemies[spawnChoice].transform.rotation);
+                if (!EnemyToSpawn.name.Contains("Group"))
+                {
+                    Position = new Vector3(
+                        x: Random.Range(-bounds.x, bounds.x),
+                        y: bounds.y);
+                }
+
+                else
+                {
+                    Position = EnemyToSpawn.transform.position;
+                }
+
+                Instantiate(Enemies[spawnChoice], Position, Enemies[spawnChoice].transform.rotation);
                 ChooseEnemyToSpawn();
             }
         }
