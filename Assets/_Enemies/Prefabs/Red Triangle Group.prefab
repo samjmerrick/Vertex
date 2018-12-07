@@ -1094,6 +1094,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 15
+  RandomSpeed: 0
 --- !u!114 &114154062212062948
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1106,6 +1107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 15
+  RandomSpeed: 0
 --- !u!114 &114181422058508246
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1134,6 +1136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 15
+  RandomSpeed: 0
 --- !u!114 &114291372217316072
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1162,6 +1165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 15
+  RandomSpeed: 0
 --- !u!114 &114462764459534970
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1206,6 +1210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 15
+  RandomSpeed: 0
 --- !u!114 &114544849650264082
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1234,6 +1239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 15
+  RandomSpeed: 0
 --- !u!114 &114810500681020418
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1278,6 +1284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 15
+  RandomSpeed: 0
 --- !u!212 &212306931504814608
 SpriteRenderer:
   m_ObjectHideFlags: 1
