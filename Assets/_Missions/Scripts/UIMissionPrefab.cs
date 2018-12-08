@@ -54,24 +54,20 @@ public class UIMissionPrefab : MonoBehaviour {
     {
         if (mission.progress >= mission.toComplete)
         {
-            StartCoroutine(SetNewMission());
+            SetNewMission();
         }
     }
 
-    public IEnumerator SetNewMission()
+    public void SetNewMission()
     {
         anim.SetTrigger("NewMission");
 
         RandomMissionGiver randMissionGiver = FindObjectOfType<RandomMissionGiver>();
         randMissionGiver.ReplaceMission(mission);
-
-        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
-
-        SetMission();        
     }
 
     public void SkipMission()
     {
-        StartCoroutine(SetNewMission());
+        SetNewMission();
     }
 }
