@@ -16,6 +16,7 @@ public static class Missions
         foreach (Mission mission in missionList)
         {
             mission.StartListener();
+            mission.cacheProgress = mission.progress; // Cache the progress at the start of the game
 
             // If this is a Per-Game Mission, progress = 0
             if (mission.perGame)
