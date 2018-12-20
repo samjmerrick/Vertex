@@ -12,6 +12,7 @@ public class UIMissionPrefab : MonoBehaviour {
     public Text objective;
     public Text reward;
     public Image image;
+    public Slider ProgressBar;
 
     private Animator anim;
 
@@ -28,7 +29,16 @@ public class UIMissionPrefab : MonoBehaviour {
 
         if (mission != null)
         {   
+            // Text
             reward.text = mission.reward.ToString();
+
+            // Progress bar
+            ProgressBar.maxValue = mission.toComplete;
+            ProgressBar.value = mission.cacheProgress;
+
+            if (mission.progress > mission.cacheProgress)
+                StartCoroutine(MissionProgress());
+
 
             if (Resources.Load("Missions/" + mission.NameOfObject) != null)
             {
@@ -38,6 +48,16 @@ public class UIMissionPrefab : MonoBehaviour {
             {
                 image.sprite = (Sprite)Resources.Load("Missions/Question_mark", typeof(Sprite));
             }
+        }
+    }
+
+    IEnumerator MissionProgress()
+    {
+        while(ProgressBar.value <= mission.progress)
+        {
+            ProgressBar.value += 0.1f;
+            yield return new WaitForFixedUpdate();
+
         }
     }
 
