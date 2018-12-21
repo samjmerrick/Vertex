@@ -33,8 +33,8 @@ public class UIMissionPrefab : MonoBehaviour {
             reward.text = mission.reward.ToString();
 
             // Progress bar
-            ProgressBar.maxValue = mission.toComplete;
-            ProgressBar.value = mission.cacheProgress;
+            float progress = (float)mission.cacheProgress / (float)mission.toComplete; // Normalised value
+            ProgressBar.value = progress; 
 
             if (mission.progress > mission.cacheProgress)
                 StartCoroutine(MissionProgress());
@@ -53,11 +53,12 @@ public class UIMissionPrefab : MonoBehaviour {
 
     IEnumerator MissionProgress()
     {
-        while(ProgressBar.value <= mission.progress)
-        {
-            ProgressBar.value += 0.1f;
-            yield return new WaitForFixedUpdate();
+        float progress = (float)mission.progress / (float)mission.toComplete; // Normalised value
 
+        while (ProgressBar.value < progress)
+        {
+            ProgressBar.value += 0.025f;
+            yield return new WaitForFixedUpdate();
         }
     }
 
