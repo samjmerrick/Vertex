@@ -39,7 +39,23 @@ public class UIMissionPrefab : MonoBehaviour {
             if (mission.progress > mission.cacheProgress)
                 StartCoroutine(MissionProgress());
 
+            // Image
+            SetImage();
+        }
+    }
 
+    void SetImage()
+    {
+        if (mission.GetType() == typeof(KillMission))
+        {
+            SpriteRenderer enemySprite = FindObjectOfType<SpawnController>().ReturnEnemy(mission.NameOfObject).GetComponent<SpriteRenderer>();
+
+            image.sprite = enemySprite.sprite;
+            image.color = enemySprite.color;
+        }
+
+        else
+        {
             if (Resources.Load("Missions/" + mission.NameOfObject) != null)
             {
                 image.sprite = (Sprite)Resources.Load("Missions/" + mission.NameOfObject, typeof(Sprite));

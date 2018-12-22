@@ -18,6 +18,16 @@ public class SpawnController : MonoBehaviour {
     // Enemies
     public GameObject[] Enemies, Pickups;
 
+    public GameObject ReturnEnemy(string enemyToReturn)
+    {
+        foreach (GameObject enemy in Enemies)
+        {
+            if (enemy.name == enemyToReturn)
+                return enemy;
+        }
+        return null;
+    }
+
     void OnEnable()
     {
         GameController.GameBegin += StartGame;
