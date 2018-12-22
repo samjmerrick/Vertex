@@ -56,6 +56,7 @@ public class UIMissionPrefab : MonoBehaviour {
 
         else
         {
+            image.color = Color.white;
             if (Resources.Load("Missions/" + mission.NameOfObject) != null)
             {
                 image.sprite = (Sprite)Resources.Load("Missions/" + mission.NameOfObject, typeof(Sprite));
