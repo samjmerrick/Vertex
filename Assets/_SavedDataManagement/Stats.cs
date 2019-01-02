@@ -65,9 +65,6 @@ public class Stats : MonoBehaviour
         gameStats["Destroyed"] += 1;
 
         UIControl.instance.Destroyed.text = gameStats["Destroyed"].ToString();
-
-        if (gameStats["Destroyed"] % 25 == 0)
-            GetComponent<SpawnController>().EnemyQuantityToSpawn++;
     }
 
     private void CountPickups(string name, int time)

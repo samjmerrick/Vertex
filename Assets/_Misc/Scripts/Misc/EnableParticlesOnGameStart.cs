@@ -1,20 +1,25 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class EnableOnGameStart : MonoBehaviour {
+public class EnableParticlesOnGameStart : MonoBehaviour {
 
     private void OnEnable()
     {
         GameController.GameBegin += Enable;
+        GameController.GameEnd += Disable;
     }
 
-    private void OnDisable()
+    private void OnApplicationQuit()
     {
         GameController.GameBegin -= Enable;
+        GameController.GameEnd -= Disable;
     }
 
     private void Start()
+    {
+        Disable();
+    }
+
+    private void Disable()
     {
         var emission = GetComponent<ParticleSystem>().emission;
         emission.enabled = false;

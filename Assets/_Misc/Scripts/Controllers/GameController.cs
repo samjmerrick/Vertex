@@ -37,6 +37,7 @@ public class GameController : MonoBehaviour
     public void EndGame()
     {
         GameRunning = false;
+        SaveManager.Save();
      
         if (!isQuitting)
         {

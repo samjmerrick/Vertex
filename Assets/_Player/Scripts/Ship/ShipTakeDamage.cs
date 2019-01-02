@@ -69,6 +69,6 @@ public class ShipTakeDamage : MonoBehaviour {
 
     private void Destroy()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

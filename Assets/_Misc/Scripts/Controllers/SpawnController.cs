@@ -6,14 +6,15 @@ public class SpawnController : MonoBehaviour {
 
     public static int EnemiesRemaining;
     public float NewEnemyTime;
-    public Vector2 SpawnTime;
     public int PickupChance;
-    public int EnemyQuantityToSpawn = 5;
+    
     public int TimeToAddDifficulty = 10;
 
+    private Vector2 SpawnTime;
+    private int EnemyQuantityToSpawn;
     private Vector2 bounds;
     private int spawnChoice;
-    private int availableEnemies = 3;
+    private int availableEnemies;
 
     // Enemies
     public GameObject[] Enemies, Pickups;
@@ -46,7 +47,13 @@ public class SpawnController : MonoBehaviour {
 
     void StartGame()
     {
+        // Init values
         EnemiesRemaining = 0;
+        availableEnemies = 3;
+        EnemyQuantityToSpawn = 5;
+        SpawnTime = new Vector2(0.1f, 1);
+
+        // Start Coroutines
         InvokeRepeating("AddNewEnemy", NewEnemyTime, NewEnemyTime);
         InvokeRepeating("AddToDifficulty", TimeToAddDifficulty, TimeToAddDifficulty);
         StartCoroutine(Spawn());
