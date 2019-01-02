@@ -7,6 +7,7 @@ public class PanelManager : MonoBehaviour {
     public Panel GameMenu;
     public Panel DeathMenu;
     public Panel ContinueMenu;
+    public GameObject MissionsPrefab;
 
    
     private void OnEnable()
@@ -53,6 +54,35 @@ public class PanelManager : MonoBehaviour {
 
     void EndGame()
     {
+        // Count the total of ToComplete among missions, only show mission list if progress has been made
+        int totalProgress = 0, totalCacheProgress = 0;
+
+        foreach (Mission mission in Missions.GetMissions())
+        {
+            totalProgress += mission.progress;
+            totalCacheProgress += mission.cacheProgress;
+        }
+
+        if (totalProgress != totalCacheProgress)
+        {
+            StartCoroutine(ShowMissionProgress()); // We've made progress, show missions
+        }
+        
+        else
+        {
+            ShowMenu(DeathMenu); // No progress, go straight to death menu
+        }
+    }
+
+    IEnumerator ShowMissionProgress()
+    {
+        CurrentPanel.SetActive(false);
+        GameObject ml = Instantiate(MissionsPrefab, transform);
+
+        yield return new WaitForSeconds(3);
+
+        Destroy(ml.gameObject);
         ShowMenu(DeathMenu);
     }
+
 }
