@@ -16,11 +16,16 @@ public class UIMissionPrefab : MonoBehaviour {
 
     private Animator anim;
 
+    private void OnEnable()
+    {
+        if (Missions.missionList.Count == 0) return; // Missions are not loaded yet
+        SetMission();
+        CheckIfComplete();
+    }
+
     private void Start()
     {
         anim = GetComponent<Animator>();
-        SetMission();
-        CheckIfComplete();
     }
 
     void SetMission()
@@ -71,10 +76,13 @@ public class UIMissionPrefab : MonoBehaviour {
     IEnumerator MissionProgress()
     {
         float progress = (float)mission.progress / (float)mission.toComplete; // Normalised value
+        float amountToIncrease = progress - ProgressBar.value;
+
+        Debug.Log(amountToIncrease);
 
         while (ProgressBar.value < progress)
         {
-            ProgressBar.value += 0.025f;
+            ProgressBar.value += (amountToIncrease * 0.025f);
             yield return new WaitForFixedUpdate();
         }
     }
