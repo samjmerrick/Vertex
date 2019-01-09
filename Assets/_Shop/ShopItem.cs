@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public abstract class ShopItem : MonoBehaviour {
 
     public string upgradeName;
+    public Text Name;
 
     [HideInInspector]
     protected int upgradeLevel = 0;
@@ -20,7 +21,7 @@ public abstract class ShopItem : MonoBehaviour {
 
     void OnEnable()
     {
-        transform.Find("Header").GetComponent<Text>().text = upgradeName;
+        Name.text = upgradeName;
         transform.Find("Image").GetComponent<Image>().sprite = (Sprite)Resources.Load("Buff_NoGlow/" + upgradeName, typeof(Sprite));
 
         upgradeLevel = Upgrades.Get(upgradeName);
