@@ -21,13 +21,11 @@ public class EnableParticlesOnGameStart : MonoBehaviour {
 
     private void Disable()
     {
-        var emission = GetComponent<ParticleSystem>().emission;
-        emission.enabled = false;
+        GetComponent<ParticleSystem>().Stop();
     }
 
     void Enable()
     {
-        var emission = GetComponent<ParticleSystem>().emission;
-        emission.enabled = true;
+        GetComponent<ParticleSystem>().Play();
     }
 }
