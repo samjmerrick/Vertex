@@ -17,7 +17,7 @@ public class EnemySplitOnDestroy : MonoBehaviour {
                 Instantiate(
                     original: objectToSpawn,
                     position: transform.position,
-                    rotation: Quaternion.Euler(0, 0, Random.Range(0, 360))
+                    rotation: Quaternion.Euler(0, 0, Random.Range(-90, 90))
                     );
             } 
         }
