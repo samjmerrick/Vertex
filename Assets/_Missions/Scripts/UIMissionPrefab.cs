@@ -75,8 +75,6 @@ public class UIMissionPrefab : MonoBehaviour {
         float progress = (float)mission.progress / (float)mission.toComplete; // Normalised value
         float amountToIncrease = progress - ProgressBar.value;
 
-        Debug.Log(amountToIncrease);
-
         while (ProgressBar.value < progress)
         {
             ProgressBar.value += (amountToIncrease * 0.025f);
