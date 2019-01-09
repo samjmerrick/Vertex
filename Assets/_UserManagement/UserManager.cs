@@ -12,9 +12,6 @@ public class UserManager : MonoBehaviour {
 
     public void Awake()
     {
-        FacebookManager.Init();
-        FirebaseAuthManager.Init();
-
         auth = FirebaseAuth.DefaultInstance;
         auth.StateChanged += AuthStateChanged;
         AuthStateChanged(this, null);
@@ -22,6 +19,8 @@ public class UserManager : MonoBehaviour {
 
     public IEnumerator Start()
     {
+        FacebookManager.Init();
+        FirebaseAuthManager.Init();
         yield return new WaitUntil(() => FB.IsInitialized && FirebaseAuthManager.DependenciesMet);
         SignIn();
     }
