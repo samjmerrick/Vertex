@@ -18,14 +18,11 @@ public class UIMissionPrefab : MonoBehaviour {
 
     private void OnEnable()
     {
+        anim = GetComponent<Animator>();
+
         if (Missions.missionList.Count == 0) return; // Missions are not loaded yet
         SetMission();
         CheckIfComplete();
-    }
-
-    private void Start()
-    {
-        anim = GetComponent<Animator>();
     }
 
     void SetMission()
