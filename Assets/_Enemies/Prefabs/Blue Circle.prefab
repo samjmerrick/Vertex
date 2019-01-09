@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 50544376978523094}
   - component: {fileID: 60869136730737738}
   - component: {fileID: 114139096112435966}
-  - component: {fileID: 114104052850673460}
+  - component: {fileID: 114345367155027960}
   m_Layer: 0
   m_Name: Blue Circle
   m_TagString: Enemy
@@ -68,7 +68,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1657365809082958}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: -0.09, y: 1.02, z: 0}
+  m_LocalPosition: {x: -1.88, y: 3.64, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children:
   - {fileID: 4702964231568198}
@@ -169,20 +169,6 @@ PolygonCollider2D:
       - {x: 0.285, y: 0.055}
       - {x: 0.24499999, y: -0.16499999}
       - {x: 0.065, y: -0.285}
---- !u!114 &114104052850673460
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1657365809082958}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 265e4ff7a7768bf47bb10a8e7cea52da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Speed: 7.5
-  maxDistance: 2.5
-  WaitTime: 0.8
 --- !u!114 &114139096112435966
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -199,6 +185,20 @@ MonoBehaviour:
   DestroyEffect: {fileID: 1000010355441670, guid: 02a509a7fa70ed740ba4197e20c5d32d,
     type: 2}
   DestroyOnInvisible: 1
+--- !u!114 &114345367155027960
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1657365809082958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 991bff6e61165437da9ad09fd8bd5b6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MoveSpeed: 4
+  frequency: 5
+  magnitude: 0.5
 --- !u!212 &212501564844694770
 SpriteRenderer:
   m_ObjectHideFlags: 1
