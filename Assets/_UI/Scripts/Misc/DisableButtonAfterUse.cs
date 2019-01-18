@@ -3,8 +3,30 @@ using UnityEngine.UI;
 
 public class DisableButtonAfterUse : MonoBehaviour {
 
-	public void Disable()
+    private Button button;
+
+    public void OnEnable()
     {
-        GetComponent<Button>().interactable = false;
+        GameController.GameEnd += Enable;
+    }
+
+    public void OnDisable()
+    {
+        GameController.GameEnd -= Enable;
+    }
+
+    private void Start()
+    {
+        button = GetComponent<Button>();
+    }
+
+    public void Enable()
+    {
+        button.interactable = true;
+    }
+
+    public void Disable()
+    {
+        button.interactable = false;
     }
 }
