@@ -8,7 +8,9 @@ public class Leaderboard : MonoBehaviour
     public GameObject LoadingSymbol;
 
     private void Start()
-    { 
+    {
+        Instantiate(LoadingSymbol, transform.parent);
+
         FirebaseDatabase.DefaultInstance
         .GetReference("scores")
         .OrderByChild("score")
