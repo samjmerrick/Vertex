@@ -21,11 +21,11 @@ public class StartingShip : MonoBehaviour {
                 StartGame();
         }
 
-        if(panelManager.CurrentPanel.name != "Start Menu"){
-            spriteRenderer.enabled = false;
+        if(panelManager.CurrentPanel.name == "Start Menu" || panelManager.CurrentPanel.name == "Game Menu"){
+            spriteRenderer.enabled = true;
         }
         else{
-            spriteRenderer.enabled = true;
+            spriteRenderer.enabled = false;
         }
             
     }
