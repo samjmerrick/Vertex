@@ -7,9 +7,11 @@ public class Leaderboard : MonoBehaviour
     public GameObject LeaderboardEntry;
     public GameObject LoadingSymbol;
 
+    private GameObject _LoadingSymbol;
+
     private void Start()
     {
-        Instantiate(LoadingSymbol, transform.parent);
+        _LoadingSymbol = Instantiate(LoadingSymbol, transform.parent);
 
         FirebaseDatabase.DefaultInstance
         .GetReference("scores")
@@ -48,7 +50,7 @@ public class Leaderboard : MonoBehaviour
             i++;
         }
 
-        Destroy(loadingSymbol);
+        Destroy(_LoadingSymbol);
     }
 
     void DestroyChildren()
