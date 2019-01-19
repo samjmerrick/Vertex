@@ -3,6 +3,12 @@
 public class StartingShip : MonoBehaviour {
 
     public PanelManager panelManager;
+    private SpriteRenderer spriteRenderer;
+
+    private void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
 
     private void Update()
     {
@@ -14,6 +20,14 @@ public class StartingShip : MonoBehaviour {
             if (diff < 2.5f)
                 StartGame();
         }
+
+        if(panelManager.CurrentPanel.name != "Start Menu"){
+            spriteRenderer.enabled = false;
+        }
+        else{
+            spriteRenderer.enabled = true;
+        }
+            
     }
 
     void StartGame()
