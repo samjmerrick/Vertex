@@ -5,9 +5,10 @@ using UnityEngine;
 public class EnemyMoveSin : MonoBehaviour {
 
     public float MoveSpeed = 3.0f;
-
     public float frequency = 10.0f;  // Speed of sine movement
     public float magnitude = 0.5f;   // Size of sine movement
+    public bool RandomiseDirection = false;
+
     private Vector3 axis;
 
     private Vector3 pos;
@@ -15,8 +16,10 @@ public class EnemyMoveSin : MonoBehaviour {
     void Start()
     {
         pos = transform.position;
-        axis = transform.right;  // May or may not be the axis you want
+        axis = transform.right;
 
+        if (RandomiseDirection && Random.Range(0f, 1f) < 0.5f)
+            magnitude = -magnitude;
     }
 
     void Update()
