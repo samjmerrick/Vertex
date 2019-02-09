@@ -7,6 +7,7 @@ public class Leaderboard : MonoBehaviour
 {
     public GameObject LeaderboardEntry;
     public GameObject LoadingSymbol;
+    public GameObject LeaderboardContent;
 
     public Text Score;
     public Text Rank;
@@ -15,18 +16,16 @@ public class Leaderboard : MonoBehaviour
 
     private void OnEnable()
     {
-        // Instantiate the loading Symbol
-        //_LoadingSymbol = Instantiate(LoadingSymbol, transform.parent);
-
         // Start a listener for changes to the scores table in Realtime database
         FirebaseDatabase.DefaultInstance.GetReference("scores").OrderByChild("score").ValueChanged += HandleValueChanged;
     }
 
     private void OnDisable()
     {
-        DestroyChildren();
-        // Start a listener for changes to the scores table in Realtime database
+        // Stop listener
         FirebaseDatabase.DefaultInstance.GetReference("scores").OrderByChild("score").ValueChanged -= HandleValueChanged;
+
+        DestroyChildren();
     }
 
     void HandleValueChanged(object sender, ValueChangedEventArgs args)
@@ -37,6 +36,9 @@ public class Leaderboard : MonoBehaviour
             Debug.LogError(args.DatabaseError.Message);
             return;
         }
+
+        // Instantiate the loading Symbol
+        _LoadingSymbol = Instantiate(LoadingSymbol, LeaderboardContent.transform.parent);
 
         // Get a snapshot of the current data
         DataSnapshot Snapshot = args.Snapshot;
@@ -50,7 +52,7 @@ public class Leaderboard : MonoBehaviour
         // Reverse loop gives descending order
         foreach (var ChildSnapshot in Snapshot.Children.Reverse())
         {
-            LeaderboardEntry entry = Instantiate(LeaderboardEntry, transform).GetComponent<LeaderboardEntry>();
+            LeaderboardEntry entry = Instantiate(LeaderboardEntry, LeaderboardContent.transform).GetComponent<LeaderboardEntry>();
 
             entry.Init(
                 rank: i,
@@ -78,7 +80,7 @@ public class Leaderboard : MonoBehaviour
 
     void DestroyChildren()
     {
-        foreach (Transform child in transform)
+        foreach (Transform child in LeaderboardContent.transform)
         {
             if (!child.name.Contains("_"))
             {
