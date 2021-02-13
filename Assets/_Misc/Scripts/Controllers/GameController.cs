@@ -9,16 +9,39 @@ public class GameController : MonoBehaviour
     public static event Action GameBegin;
     public static event Action GameEnd;
 
-    public delegate void IntDelegate (int dist);
+    public delegate void IntDelegate(int dist);
     public static event IntDelegate Distance;
 
     public static bool GameRunning = false;
     public bool isQuitting = false;
 
+    public Firebase.FirebaseApp app;
+
     void OnEnable()
     {
         Application.targetFrameRate = 60;
         SaveManager.Load();
+
+
+        Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
+        {
+            var dependencyStatus = task.Result;
+            if (dependencyStatus == Firebase.DependencyStatus.Available)
+            {
+                // Create and hold a reference to your FirebaseApp,
+                // where app is a Firebase.FirebaseApp property of your application class.
+                app = Firebase.FirebaseApp.DefaultInstance;
+
+                Debug.Log("Firebase is ready and being used");
+                Firebase.Analytics.FirebaseAnalytics.LogEvent(Firebase.Analytics.FirebaseAnalytics.EventLogin);
+            }
+            else
+            {
+                UnityEngine.Debug.LogError(System.String.Format(
+                  "Could not resolve all Firebase dependencies: {0}", dependencyStatus));
+                // Firebase Unity SDK is not safe to use here.
+            }
+        });
     }
 
     void OnDisable()
@@ -38,7 +61,7 @@ public class GameController : MonoBehaviour
     {
         GameRunning = false;
         SaveManager.Save();
-     
+
         if (!isQuitting)
         {
             CancelInvoke();
@@ -67,7 +90,7 @@ public class GameController : MonoBehaviour
         Upgrades.Reset();
         Coins.Set(10000);
         SaveManager.ClearSave();
-		RestartScene ();
+        RestartScene();
     }
 
     public void Pause()
