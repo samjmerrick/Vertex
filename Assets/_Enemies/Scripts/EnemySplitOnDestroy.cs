@@ -4,25 +4,22 @@ using UnityEngine;
 
 public class EnemySplitOnDestroy : MonoBehaviour {
 
-    public GameObject[] thingsToSpawn;
+    public GameObject objectToSpawn;
+    public int numberToSpawn;
 
-    private void OnDestroy()
+    private void OnTriggerEnter2D(Collider2D c)
     {
-        if (thingsToSpawn.Length > 0 && GameController.GameRunning)
+        // Check collision is with PlayerFire and our health is 0
+        if (c.gameObject.tag == "PlayerFire" && GetComponent<Enemy>().Health == 0)
         {
-            float angle = 180 / thingsToSpawn.Length;
-            int ran = 0;
-
-            foreach (GameObject toSpawn in thingsToSpawn)
+            for (int i = 0; i < numberToSpawn; i++)
             {
                 Instantiate(
-                    original: toSpawn,
+                    original: objectToSpawn,
                     position: transform.position,
-                    rotation: Quaternion.Euler(0, 0, Random.Range(0, 360))
+                    rotation: Quaternion.Euler(0, 0, Random.Range(-90, 90))
                     );
-
-                ran++;
-            }
+            } 
         }
     }
 }

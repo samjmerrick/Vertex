@@ -37,6 +37,7 @@ public class GameController : MonoBehaviour
     public void EndGame()
     {
         GameRunning = false;
+        SaveManager.Save();
      
         if (!isQuitting)
         {
@@ -83,6 +84,12 @@ public class GameController : MonoBehaviour
     public void RestartScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void RefreshSaveData()
+    {
+        SaveManager.Save();
+        SaveManager.Load();
     }
 
     private void OnApplicationQuit()

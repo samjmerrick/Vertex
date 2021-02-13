@@ -6,17 +6,28 @@ public class SpawnController : MonoBehaviour {
 
     public static int EnemiesRemaining;
     public float NewEnemyTime;
-    public Vector2 SpawnTime;
     public int PickupChance;
-    public int EnemyQuantityToSpawn = 5;
+    
     public int TimeToAddDifficulty = 10;
 
+    private Vector2 SpawnTime;
+    private int EnemyQuantityToSpawn;
     private Vector2 bounds;
     private int spawnChoice;
-    private int availableEnemies = 3;
+    private int availableEnemies;
 
     // Enemies
     public GameObject[] Enemies, Pickups;
+
+    public GameObject ReturnEnemy(string enemyToReturn)
+    {
+        foreach (GameObject enemy in Enemies)
+        {
+            if (enemy.name == enemyToReturn)
+                return enemy;
+        }
+        return null;
+    }
 
     void OnEnable()
     {
@@ -36,7 +47,13 @@ public class SpawnController : MonoBehaviour {
 
     void StartGame()
     {
+        // Init values
         EnemiesRemaining = 0;
+        availableEnemies = 3;
+        EnemyQuantityToSpawn = 5;
+        SpawnTime = new Vector2(0.1f, 1);
+
+        // Start Coroutines
         InvokeRepeating("AddNewEnemy", NewEnemyTime, NewEnemyTime);
         InvokeRepeating("AddToDifficulty", TimeToAddDifficulty, TimeToAddDifficulty);
         StartCoroutine(Spawn());
@@ -69,11 +86,22 @@ public class SpawnController : MonoBehaviour {
 
             if (EnemiesRemaining < EnemyQuantityToSpawn)
             {
-                Vector3 location = new Vector3(
-                    x: Random.Range(-bounds.x, bounds.x),
-                    y: bounds.y);
+                GameObject EnemyToSpawn = Enemies[spawnChoice];
+                Vector3 Position;
 
-                Instantiate(Enemies[spawnChoice], location, Enemies[spawnChoice].transform.rotation);
+                if (!EnemyToSpawn.name.Contains("Group"))
+                {
+                    Position = new Vector3(
+                        x: Random.Range(-bounds.x, bounds.x),
+                        y: bounds.y);
+                }
+
+                else
+                {
+                    Position = EnemyToSpawn.transform.position;
+                }
+
+                Instantiate(Enemies[spawnChoice], Position, Enemies[spawnChoice].transform.rotation);
                 ChooseEnemyToSpawn();
             }
         }

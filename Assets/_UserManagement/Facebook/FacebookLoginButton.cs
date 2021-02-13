@@ -38,12 +38,16 @@ public class FacebookLoginButton : MonoBehaviour {
 
         if(FB.IsLoggedIn)
         {
-            FacebookManager.LogOut();
-
-            Firebase.Auth.FirebaseAuth auth = Firebase.Auth.FirebaseAuth.DefaultInstance;
-            auth.SignOut();
-
-            Debug.Log("Logged out"); //TODO - replace this with log out function
+            transform.parent.gameObject.SetActive(false);
+            WarningMessage.SetActive(true);  
         }
+    }
+
+    public void SignOut()
+    {
+        FacebookManager.LogOut();
+
+        Firebase.Auth.FirebaseAuth auth = Firebase.Auth.FirebaseAuth.DefaultInstance;
+        auth.SignOut();
     }
 }

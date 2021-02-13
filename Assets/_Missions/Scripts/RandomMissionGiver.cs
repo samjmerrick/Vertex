@@ -21,11 +21,9 @@ public class RandomMissionGiver : MonoBehaviour {
                     case 0:
                         newMission = new DistanceMission();
                         break;
-
                     case 1:
                         newMission = new KillMission();
                         break;
-
                     case 2:
                         newMission = new PickupMission();
                         break;

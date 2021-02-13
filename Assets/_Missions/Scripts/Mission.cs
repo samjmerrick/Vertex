@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class Mission {
 
     public string NameOfObject, objective;
-    public int toComplete, progress, reward = 0;
+    public int toComplete, progress, cacheProgress, reward = 0;
     public bool perGame;
 
     public delegate void MissionCompleteDelegate(Mission mission);

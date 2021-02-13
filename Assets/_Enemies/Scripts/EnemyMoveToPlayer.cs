@@ -11,12 +11,20 @@ public class EnemyMoveToPlayer : MonoBehaviour {
 
     private Rigidbody2D rb;
 
-    void Start () {
+    void Start ()
+    {
         rb = GetComponent<Rigidbody2D>();
-        target = GameObject.FindGameObjectWithTag("Player").transform;
 
-        if (target == null)
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+        if (player != null)
+        {
+            target = player.transform;
+        }
+        else
+        {
             Destroy(gameObject);
+        }
 	}
 	
 	void FixedUpdate ()
@@ -32,6 +40,10 @@ public class EnemyMoveToPlayer : MonoBehaviour {
             rb.angularVelocity = -rotateAmount * rotateSpeed;
 
             rb.velocity = transform.up * speed;
+        }
+        else
+        {
+            Destroy(gameObject);
         }
         
 	}

@@ -15,13 +15,21 @@ public class ShipMove : MonoBehaviour
     private Vector3 bounds;
     private Camera gamecamera;
 
+    private void OnEnable()
+    {
+        transform.position = new Vector3(0, -1);
+
+        // Reset game camera position if game camera has been set
+        if (gamecamera != null)
+            gamecamera.transform.position = new Vector3(0, 0, -10);
+    }
+
     void Start()
     {
         bounds = Bounds.Get();
 
         target = transform.position;
         gamecamera = FindObjectOfType<Camera>();
-
     }
 
     void Update()

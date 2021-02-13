@@ -12,25 +12,18 @@ public class UIMissionPrefab : MonoBehaviour {
     public Text objective;
     public Text reward;
     public Image image;
+    public Slider ProgressBar;
 
     private Animator anim;
 
-    void OnEnable()
-    {
-        GameController.GameEnd += CheckIfComplete;
-    }
-
-    private void OnDisable()
-    {
-        GameController.GameEnd -= CheckIfComplete;
-    }
-
-    private void Start()
+    private void OnEnable()
     {
         anim = GetComponent<Animator>();
-        SetMission();
-    }
 
+        if (Missions.missionList.Count == 0) return; // Missions are not loaded yet
+        SetMission();
+        CheckIfComplete();
+    }
 
     void SetMission()
     {
@@ -38,8 +31,34 @@ public class UIMissionPrefab : MonoBehaviour {
 
         if (mission != null)
         {   
+            // Text
             reward.text = mission.reward.ToString();
 
+            // Progress bar
+            float progress = (float)mission.cacheProgress / (float)mission.toComplete; // Normalised value
+            ProgressBar.value = progress; 
+
+            if (mission.progress > mission.cacheProgress)
+                StartCoroutine(MissionProgress());
+
+            // Image
+            SetImage();
+        }
+    }
+
+    void SetImage()
+    {
+        if (mission.GetType() == typeof(KillMission))
+        {
+            SpriteRenderer enemySprite = FindObjectOfType<SpawnController>().ReturnEnemy(mission.NameOfObject).GetComponent<SpriteRenderer>();
+
+            image.sprite = enemySprite.sprite;
+            image.color = enemySprite.color;
+        }
+
+        else
+        {
+            image.color = Color.white;
             if (Resources.Load("Missions/" + mission.NameOfObject) != null)
             {
                 image.sprite = (Sprite)Resources.Load("Missions/" + mission.NameOfObject, typeof(Sprite));
@@ -48,6 +67,18 @@ public class UIMissionPrefab : MonoBehaviour {
             {
                 image.sprite = (Sprite)Resources.Load("Missions/Question_mark", typeof(Sprite));
             }
+        }
+    }
+
+    IEnumerator MissionProgress()
+    {
+        float progress = (float)mission.progress / (float)mission.toComplete; // Normalised value
+        float amountToIncrease = progress - ProgressBar.value;
+
+        while (ProgressBar.value < progress)
+        {
+            ProgressBar.value += (amountToIncrease * 0.025f);
+            yield return new WaitForFixedUpdate();
         }
     }
 
@@ -64,24 +95,20 @@ public class UIMissionPrefab : MonoBehaviour {
     {
         if (mission.progress >= mission.toComplete)
         {
-            StartCoroutine(SetNewMission());
+            SetNewMission();
         }
     }
 
-    public IEnumerator SetNewMission()
+    public void SetNewMission()
     {
         anim.SetTrigger("NewMission");
 
         RandomMissionGiver randMissionGiver = FindObjectOfType<RandomMissionGiver>();
         randMissionGiver.ReplaceMission(mission);
-
-        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
-
-        SetMission();        
     }
 
     public void SkipMission()
     {
-        StartCoroutine(SetNewMission());
+        SetNewMission();
     }
 }

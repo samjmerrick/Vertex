@@ -61,8 +61,8 @@ public class ShipBuffs : MonoBehaviour
 
                 if (buff.IsFinished)
                 {
-                    RemoveBuff(buff.GetName());
                     Active.Remove(buff);
+                    RemoveBuff(buff.GetName());
                 }
             }
         }      
@@ -72,7 +72,8 @@ public class ShipBuffs : MonoBehaviour
     {
         if (buff == "Laser" || buff == "Shield")
         {
-            if (transform.Find(buff + "(Clone)") != null)
+            // Check either a laser or shield exists, and there isn't another instance of this buff active
+            if (transform.Find(buff + "(Clone)") != null && !Contains(buff)) 
                 Destroy(transform.Find(buff + "(Clone)").gameObject);
         }
     }
