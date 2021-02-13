@@ -61,15 +61,15 @@ public class Leaderboard : MonoBehaviour
                 score: ChildSnapshot.Child("score").Value.ToString()
                 );
 
-            if (UserManager.GetUser() != null)
-            {
-                if (ChildSnapshot.Key.Equals(UserManager.GetUser().UserId))
-                {
-                    Score.text = "Your score is " + ChildSnapshot.Child("score").Value.ToString();
-                    Rank.text = "Your rank is " + i;
+            // if (UserManager.GetUser() != null)
+            // {
+            //     if (ChildSnapshot.Key.Equals(UserManager.GetUser().UserId))
+            //     {
+            //         Score.text = "Your score is " + ChildSnapshot.Child("score").Value.ToString();
+            //         Rank.text = "Your rank is " + i;
 
-                }
-            }
+            //     }
+            // }
          
 
             i++;

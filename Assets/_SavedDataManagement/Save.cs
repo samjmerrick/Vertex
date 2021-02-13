@@ -57,11 +57,6 @@ public class SaveManager
         }
     }
 
-    public static void LoadFromDatabase()
-    {
-        Stats.bestStats = FirebaseDatabaseController.GetFromDatabase("best-stats");
-    }
-
     public static void ClearSave()
     {
         if (File.Exists(SavePath() + "save.binary")){

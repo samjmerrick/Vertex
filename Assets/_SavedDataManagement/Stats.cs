@@ -50,14 +50,6 @@ public class Stats : MonoBehaviour
                 UIStats.newBest.Add(stat.Key);
             }
         }
-
-
-        if (UserManager.GetUser() != null)
-        {
-            FirebaseDatabaseController.WriteNewHiScore(bestStats["Destroyed"]);
-            FirebaseDatabaseController.SaveToDatabase("best-stats", bestStats);
-        }
-		
     }
 
     private void CountDestroys(string name, Vector3 pos)
