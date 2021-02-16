@@ -34,8 +34,6 @@ public class Stats : MonoBehaviour
 
     void EndGame()
     {
-        FirebaseDatabaseController.WriteNewHiScore("Sam", gameStats["Destroyed"]);
-
         foreach (KeyValuePair<string, int> stat in gameStats)
         {
             if (bestStats.ContainsKey(stat.Key))
