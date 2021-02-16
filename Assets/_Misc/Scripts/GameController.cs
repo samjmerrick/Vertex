@@ -17,7 +17,7 @@ public class GameController : MonoBehaviour
 
     public Firebase.FirebaseApp app;
 
-    void OnEnable()
+    void Awake()
     {
         Application.targetFrameRate = 60;
         SaveManager.Load();

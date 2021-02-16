@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 public class DatabaseManager : MonoBehaviour
 {
-    private static string id = "replace-with-id";
     private static string databaseLocation = "scores";
 
     void OnEnable()
@@ -40,6 +39,7 @@ public class DatabaseManager : MonoBehaviour
         string playerName = PlayerPrefs.GetString("playerName", null);
         if(playerName == null) return;
 
+        string id = AuthController.UID;
         int score = PlayerPrefs.GetInt("hiScore");
 
         Dictionary<string, object> data = new Dictionary<string, object>
