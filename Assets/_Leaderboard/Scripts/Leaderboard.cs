@@ -9,9 +9,6 @@ public class Leaderboard : MonoBehaviour
     public GameObject LoadingSymbol;
     public GameObject LeaderboardContent;
 
-    public Text Score;
-    public Text Rank;
-
     private GameObject _LoadingSymbol;
 
     private void OnEnable()
@@ -59,18 +56,6 @@ public class Leaderboard : MonoBehaviour
                 displayName: ChildSnapshot.Child("name").Value.ToString(),
                 score: ChildSnapshot.Child("score").Value.ToString()
                 );
-
-            // if (UserManager.GetUser() != null)
-            // {
-            //     if (ChildSnapshot.Key.Equals(UserManager.GetUser().UserId))
-            //     {
-            //         Score.text = "Your score is " + ChildSnapshot.Child("score").Value.ToString();
-            //         Rank.text = "Your rank is " + i;
-
-            //     }
-            // }
-         
-
             i++;
         }
 
