@@ -7,7 +7,7 @@ public class AuthController : MonoBehaviour
 {
     public static string UID;
 
-    void Start()
+    public static void AnonymousLogin()
     {
         FirebaseAuth auth = Firebase.Auth.FirebaseAuth.DefaultInstance;
 

@@ -34,6 +34,7 @@ public class GameController : MonoBehaviour
 
                 Debug.Log("Firebase is ready and being used");
                 Firebase.Analytics.FirebaseAnalytics.LogEvent(Firebase.Analytics.FirebaseAnalytics.EventLogin);
+                AuthController.AnonymousLogin();
             }
             else
             {
