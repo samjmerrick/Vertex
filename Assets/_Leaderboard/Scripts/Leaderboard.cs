@@ -10,11 +10,15 @@ public class Leaderboard : MonoBehaviour
     public GameObject LeaderboardContent;
 
     private GameObject _LoadingSymbol;
+    private RectTransform userScore;
 
     private void OnEnable()
     {
         // Start a listener for changes to the scores table in Realtime database
         FirebaseDatabase.DefaultInstance.GetReference("scores").OrderByChild("score").ValueChanged += HandleValueChanged;
+
+        // Reset to the top of the board when enabled
+        GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
     }
 
     private void OnDisable()
@@ -27,7 +31,6 @@ public class Leaderboard : MonoBehaviour
 
     void HandleValueChanged(object sender, ValueChangedEventArgs args)
     {
-        // Error check
         if (args.DatabaseError != null)
         {
             Debug.LogError(args.DatabaseError.Message);
@@ -52,11 +55,23 @@ public class Leaderboard : MonoBehaviour
             LeaderboardEntry entry = Instantiate(LeaderboardEntry, LeaderboardContent.transform).GetComponent<LeaderboardEntry>();
 
             entry.Init(
+                id: ChildSnapshot.Key,
                 rank: i,
                 displayName: ChildSnapshot.Child("name").Value.ToString(),
                 score: ChildSnapshot.Child("score").Value.ToString()
                 );
+
+            if (ChildSnapshot.Key == AuthController.UID)
+            {
+                userScore = entry.GetComponent<RectTransform>();
+            }
+
             i++;
+        }
+
+        if (userScore != null)
+        {
+            SnapTo(userScore);
         }
 
         Destroy(_LoadingSymbol);
@@ -66,14 +81,27 @@ public class Leaderboard : MonoBehaviour
     {
         foreach (Transform child in LeaderboardContent.transform)
         {
-            if (!child.name.Contains("_"))
-            {
-                Destroy(child.gameObject);
-            }
+            Destroy(child.gameObject);
         }
     }
-}
 
-   
+    public void SnapTo(RectTransform target)
+    {
+
+        RectTransform contentPanel = GetComponent<RectTransform>();
+        ScrollRect scrollRect = GetComponent<ScrollRect>();
+
+        Canvas.ForceUpdateCanvases();
+
+        Vector2 anchoredPosition =
+            (Vector2)scrollRect.transform.InverseTransformPoint(contentPanel.position)
+            - (Vector2)scrollRect.transform.InverseTransformPoint(target.position);
+
+        Debug.Log(anchoredPosition);
+
+        contentPanel.anchoredPosition = anchoredPosition;
+
+    }
+}
 
 

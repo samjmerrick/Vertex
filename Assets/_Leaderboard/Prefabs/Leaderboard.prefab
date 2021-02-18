@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 114244357700832886}
   - component: {fileID: 114943928294230498}
   - component: {fileID: 8645235562890119832}
+  - component: {fileID: 5896759386072127236}
   m_Layer: 0
   m_Name: LeaderboardContent
   m_TagString: Untagged
@@ -33,11 +34,11 @@ RectTransform:
   m_Father: {fileID: 224624900154591556}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.44000244, y: -0.000061035156}
-  m_SizeDelta: {x: -11.59, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 988.41003, y: 0}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &114244357700832886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,6 +108,23 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5896759386072127236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1153914440701022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 236cd90cadf7d8f42a3f3539d4f339f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LeaderboardEntry: {fileID: 1145535880082218, guid: 85eccb6888d09ea4788ff4e6e734d722,
+    type: 3}
+  LoadingSymbol: {fileID: 1298136696379636, guid: 69fab84db3ec05343926490595d06137,
+    type: 3}
+  LeaderboardContent: {fileID: 1153914440701022}
 --- !u!1 &1169519889813438
 GameObject:
   m_ObjectHideFlags: 0
@@ -205,7 +223,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 224456199236192498}
-  - component: {fileID: 114698061937172816}
   m_Layer: 0
   m_Name: Leaderboard
   m_TagString: Untagged
@@ -234,23 +251,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1000, y: 1500}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &114698061937172816
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1995832452964642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 236cd90cadf7d8f42a3f3539d4f339f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LeaderboardEntry: {fileID: 1145535880082218, guid: 85eccb6888d09ea4788ff4e6e734d722,
-    type: 3}
-  LoadingSymbol: {fileID: 1298136696379636, guid: 69fab84db3ec05343926490595d06137,
-    type: 3}
-  LeaderboardContent: {fileID: 1153914440701022}
 --- !u!1 &211539778377792882
 GameObject:
   m_ObjectHideFlags: 0
