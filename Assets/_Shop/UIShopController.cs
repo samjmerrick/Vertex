@@ -40,7 +40,7 @@ public class UIShopController : MonoBehaviour {
         {
             if (active.NextLevelCost > Coins.Get())
             {
-                cost.text = "Not enough coins";
+                cost.text = "Not enough credits";
                 upgradeButton.enabled = false;
                 return;
             }
