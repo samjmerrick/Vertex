@@ -97,6 +97,9 @@ public class Leaderboard : MonoBehaviour
             (Vector2)scrollRect.transform.InverseTransformPoint(contentPanel.position)
             - (Vector2)scrollRect.transform.InverseTransformPoint(target.position);
 
+        // Scroll down a little bit to bring score into full view
+        anchoredPosition.y = anchoredPosition.y - 200;
+
         Debug.Log(anchoredPosition);
 
         contentPanel.anchoredPosition = anchoredPosition;
