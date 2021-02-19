@@ -6,6 +6,7 @@ using Firebase.Database;
 public class Leaderboard : MonoBehaviour
 {
     public GameObject LeaderboardEntry;
+    public GameObject MyLeaderboardEntry;
     public GameObject LoadingSymbol;
     public GameObject LeaderboardContent;
 
@@ -52,7 +53,17 @@ public class Leaderboard : MonoBehaviour
         // Reverse loop gives descending order
         foreach (var ChildSnapshot in Snapshot.Children.Reverse())
         {
-            LeaderboardEntry entry = Instantiate(LeaderboardEntry, LeaderboardContent.transform).GetComponent<LeaderboardEntry>();
+            LeaderboardEntry entry;
+
+            if (ChildSnapshot.Key == AuthController.UID)
+            {
+                entry = Instantiate(MyLeaderboardEntry, LeaderboardContent.transform).GetComponent<LeaderboardEntry>();
+                userScore = entry.GetComponent<RectTransform>();
+            }
+            else
+            {
+                 entry = Instantiate(LeaderboardEntry, LeaderboardContent.transform).GetComponent<LeaderboardEntry>();
+            }
 
             entry.Init(
                 id: ChildSnapshot.Key,
@@ -60,11 +71,6 @@ public class Leaderboard : MonoBehaviour
                 displayName: ChildSnapshot.Child("name").Value.ToString(),
                 score: ChildSnapshot.Child("score").Value.ToString()
                 );
-
-            if (ChildSnapshot.Key == AuthController.UID)
-            {
-                userScore = entry.GetComponent<RectTransform>();
-            }
 
             i++;
         }
