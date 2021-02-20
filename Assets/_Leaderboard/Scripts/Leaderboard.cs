@@ -15,43 +15,31 @@ public class Leaderboard : MonoBehaviour
 
     private void OnEnable()
     {
-        // Start a listener for changes to the scores table in Realtime database
-        FirebaseDatabase.DefaultInstance.GetReference("scores").OrderByChild("score").ValueChanged += HandleValueChanged;
-
         // Reset to the top of the board when enabled
         GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
+
+        ReadOnceFromDatabase();
     }
 
     private void OnDisable()
     {
-        // Stop listener
-        FirebaseDatabase.DefaultInstance.GetReference("scores").OrderByChild("score").ValueChanged -= HandleValueChanged;
-
         DestroyChildren();
     }
 
-    void HandleValueChanged(object sender, ValueChangedEventArgs args)
+    private async void ReadOnceFromDatabase()
     {
-        if (args.DatabaseError != null)
-        {
-            Debug.LogError(args.DatabaseError.Message);
-            return;
-        }
-
         // Instantiate the loading Symbol
         _LoadingSymbol = Instantiate(LoadingSymbol, LeaderboardContent.transform.parent);
 
-        // Get a snapshot of the current data
-        DataSnapshot Snapshot = args.Snapshot;
+        DataSnapshot snapshot = await FirebaseDatabase.DefaultInstance.GetReference("scores").OrderByChild("score").GetValueAsync();
 
-        // Clear existing UI entries
-        DestroyChildren();
+        if (snapshot == null) return;
 
         // i is used as Rank
         int i = 1;
 
         // Reverse loop gives descending order
-        foreach (var ChildSnapshot in Snapshot.Children.Reverse())
+        foreach (var ChildSnapshot in snapshot.Children.Reverse())
         {
             LeaderboardEntry entry;
 
@@ -62,7 +50,7 @@ public class Leaderboard : MonoBehaviour
             }
             else
             {
-                 entry = Instantiate(LeaderboardEntry, LeaderboardContent.transform).GetComponent<LeaderboardEntry>();
+                entry = Instantiate(LeaderboardEntry, LeaderboardContent.transform).GetComponent<LeaderboardEntry>();
             }
 
             entry.Init(
@@ -93,7 +81,6 @@ public class Leaderboard : MonoBehaviour
 
     public void SnapTo(RectTransform target)
     {
-
         RectTransform contentPanel = GetComponent<RectTransform>();
         ScrollRect scrollRect = GetComponent<ScrollRect>();
 
@@ -109,7 +96,6 @@ public class Leaderboard : MonoBehaviour
         Debug.Log(anchoredPosition);
 
         contentPanel.anchoredPosition = anchoredPosition;
-
     }
 }
 
