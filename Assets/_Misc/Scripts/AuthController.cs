@@ -29,6 +29,8 @@ public class AuthController : MonoBehaviour
                 newUser.DisplayName, newUser.UserId);
             
             UID = newUser.UserId;
+
+            AnalyticsController.LoggedIn();
         });
     }
 }
