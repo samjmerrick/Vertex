@@ -41,8 +41,17 @@ public class UIControl : MonoBehaviour {
     public Text Laser;
     public Text CoinsText;
 
+    void OnEnable()
+    {
+        GameController.GameBegin += InitGame;
+    }
 
-    public void OnEnable()
+    void OnDisable()
+    {
+        GameController.GameBegin -= InitGame;
+    }
+
+    void InitGame()
     {
         Distance.text = "0";
         Destroyed.text = "0";
@@ -50,7 +59,6 @@ public class UIControl : MonoBehaviour {
 
         CoinsText.text = Coins.Get().ToString();
      
-
         StartCoroutine(CreateMissionText());
     }
 
