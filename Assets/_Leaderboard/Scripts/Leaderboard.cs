@@ -24,6 +24,11 @@ public class Leaderboard : MonoBehaviour
     private void OnDisable()
     {
         DestroyChildren();
+        
+        if(_LoadingSymbol != null)
+        {   
+            Destroy(_LoadingSymbol);
+        } 
     }
 
     private async void ReadOnceFromDatabase()
