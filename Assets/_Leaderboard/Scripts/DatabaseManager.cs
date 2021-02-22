@@ -36,8 +36,7 @@ public class DatabaseManager : MonoBehaviour
 
     public static void SaveScoreToDatabase()
     {
-        string playerName = PlayerPrefs.GetString("playerName", null);
-        if(playerName == null) return;
+        string playerName = PlayerPrefs.GetString("playerName", "Anonymous");
 
         string id = AuthController.UID;
         int score = PlayerPrefs.GetInt("hiScore");

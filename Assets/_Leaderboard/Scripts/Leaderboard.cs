@@ -24,11 +24,11 @@ public class Leaderboard : MonoBehaviour
     private void OnDisable()
     {
         DestroyChildren();
-        
-        if(_LoadingSymbol != null)
-        {   
+
+        if (_LoadingSymbol != null)
+        {
             Destroy(_LoadingSymbol);
-        } 
+        }
     }
 
     private async void ReadOnceFromDatabase()
@@ -47,12 +47,22 @@ public class Leaderboard : MonoBehaviour
         foreach (var ChildSnapshot in snapshot.Children.Reverse())
         {
             LeaderboardEntry entry;
+            string entryName = ChildSnapshot.Child("name").Value.ToString();
 
+            // Instantiate editable entry if it is this user
             if (ChildSnapshot.Key == AuthController.UID)
             {
                 entry = Instantiate(MyLeaderboardEntry, LeaderboardContent.transform).GetComponent<LeaderboardEntry>();
                 userScore = entry.GetComponent<RectTransform>();
             }
+
+            // Skip other entries without a name
+            else if (entryName == "Your name" || entryName == "Anonymous" || entryName == "")
+            {
+                continue;
+            }
+
+            // Everyone else
             else
             {
                 entry = Instantiate(LeaderboardEntry, LeaderboardContent.transform).GetComponent<LeaderboardEntry>();
