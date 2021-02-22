@@ -12,34 +12,45 @@ public class Leaderboard : MonoBehaviour
 
     private GameObject _LoadingSymbol;
     private RectTransform userScore;
+    private bool firstRunAfterEnable = false; // This helps determine whether we should snap user to their score
 
-    private void OnEnable()
+    void OnEnable()
     {
+        firstRunAfterEnable = true;
+
         // Reset to the top of the board when enabled
         GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
 
-        ReadOnceFromDatabase();
+        FirebaseDatabase.DefaultInstance.GetReference("scores").OrderByChild("score").ValueChanged += HandleValueChanged;
     }
 
-    private void OnDisable()
+    void OnDisable()
     {
-        DestroyChildren();
-
         if (_LoadingSymbol != null)
         {
             Destroy(_LoadingSymbol);
         }
+
+        FirebaseDatabase.DefaultInstance.GetReference("scores").OrderByChild("score").ValueChanged -= HandleValueChanged;
     }
 
-    private async void ReadOnceFromDatabase()
+    void HandleValueChanged(object sender, ValueChangedEventArgs args)
     {
+        DestroyChildren();
+
         // Instantiate the loading Symbol
         _LoadingSymbol = Instantiate(LoadingSymbol, LeaderboardContent.transform.parent);
 
-        DataSnapshot snapshot = await FirebaseDatabase.DefaultInstance.GetReference("scores").OrderByChild("score").GetValueAsync();
+        if (args.DatabaseError != null)
+        {
+            Debug.LogError(args.DatabaseError.Message);
+            return;
+        }
+        GenerateLeaderboard(args.Snapshot);
+    }
 
-        if (snapshot == null) return;
-
+    void GenerateLeaderboard(DataSnapshot snapshot)
+    {
         // i is used as Rank
         int i = 1;
 
@@ -78,11 +89,12 @@ public class Leaderboard : MonoBehaviour
             i++;
         }
 
-        if (userScore != null)
+        if (userScore != null && firstRunAfterEnable)
         {
             SnapTo(userScore);
         }
 
+        firstRunAfterEnable = false;
         Destroy(_LoadingSymbol);
     }
 
@@ -113,5 +125,3 @@ public class Leaderboard : MonoBehaviour
         contentPanel.anchoredPosition = anchoredPosition;
     }
 }
-
-
