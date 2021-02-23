@@ -33,6 +33,7 @@ public class UIControl : MonoBehaviour {
 
     public GameObject uiMessage;
     public GameObject RadialSlider;
+    public Transform BuffTimers;
 
     public Messages messages;
 
@@ -86,6 +87,7 @@ public class UIControl : MonoBehaviour {
 
     public BuffRadialSlider PickupTimer ()
     {
-        return Instantiate(RadialSlider, transform.Find("BuffTimers")).GetComponent<BuffRadialSlider>();
+        GameObject timer = Instantiate(RadialSlider, BuffTimers);
+        return timer.GetComponent<BuffRadialSlider>();
     }
 }
