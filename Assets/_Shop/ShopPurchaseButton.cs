@@ -29,8 +29,17 @@ public class ShopPurchaseButton : MonoBehaviour
         upgradeLevel = Upgrades.Get(Item.ToString());
 
         if(Type == ShopItemType.Upgrade) 
-        {
-            priceOfUpgrade = (upgradeLevel + 1) * ((upgradeLevel + 1) * 500);    
+        {   
+            if(upgradeLevel >= 6) 
+            {
+                gameObject.SetActive(false);
+                return;
+            }
+            else 
+            {
+                priceOfUpgrade = (upgradeLevel + 1) * ((upgradeLevel + 1) * 500);    
+            }
+            
         }
         else if (Type == ShopItemType.Onetime)
         {
@@ -42,7 +51,7 @@ public class ShopPurchaseButton : MonoBehaviour
         // Check how much the 
         currentCoins = Coins.Get();
         
-        if (currentCoins < priceOfUpgrade) 
+        if (currentCoins < priceOfUpgrade || priceOfUpgrade == 0) 
         {
             button.interactable = false;
         }
