@@ -84,16 +84,6 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void DeleteHighScore()
-    {
-        Missions.LoadMissions(new List<Mission>()); // Loads 0 Missions
-        Stats.bestStats.Clear();
-        Upgrades.Reset();
-        Coins.Set(10000);
-        SaveManager.ClearSave();
-        RestartScene();
-    }
-
     public void Pause()
     {
         Time.timeScale = 0;
@@ -102,11 +92,6 @@ public class GameController : MonoBehaviour
     public void Resume()
     {
         Time.timeScale = 1;
-    }
-
-    public void RestartScene()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void RefreshSaveData()

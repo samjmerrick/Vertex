@@ -52,5 +52,14 @@ public class DatabaseManager : MonoBehaviour
         // Get location / UserID and set values
         db.Child(databaseLocation).Child(id).SetValueAsync(data);
     }
+
+    public static void RemoveScoreFromDatabase()
+    {
+        string id = AuthController.UID;
+
+        DatabaseReference db = FirebaseDatabase.DefaultInstance.RootReference;
+
+        db.Child(databaseLocation).Child(id).RemoveValueAsync();
+    }
 }
 
