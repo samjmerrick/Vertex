@@ -31,6 +31,7 @@ public class Leaderboard : MonoBehaviour
             Destroy(_LoadingSymbol);
         }
 
+        DestroyChildren();
         FirebaseDatabase.DefaultInstance.GetReference("scores").OrderByChild("score").ValueChanged -= HandleValueChanged;
     }
 
@@ -49,7 +50,7 @@ public class Leaderboard : MonoBehaviour
         GenerateLeaderboard(args.Snapshot);
     }
 
-    void GenerateLeaderboard(DataSnapshot snapshot)
+    void GenerateLeaderboard(DataSnapshot snapshot) 
     {
         // i is used as Rank
         int i = 1;
