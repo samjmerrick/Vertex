@@ -32,7 +32,8 @@ public class ShopPurchaseButton : MonoBehaviour
         {   
             if(upgradeLevel >= 6) 
             {
-                gameObject.SetActive(false);
+                priceOfUpgrade = 0;
+                button.interactable = false;
                 return;
             }
             else 

@@ -10,8 +10,6 @@ public class ShopItemInfo : MonoBehaviour
     public Text ItemDescription;
     public Slider LevelSlider;
     public ShopPurchaseButton PurchaseButton;
-    
-    public Text ShopDescription;
 
     private int upgradeLevel;
 
@@ -38,17 +36,17 @@ public class ShopItemInfo : MonoBehaviour
         }
     }
 
-    public void UpdateShopDescriptionToThis()
-    {
-        if(Type == ShopItemType.Onetime) 
-        {
-            ShopDescription.text = "Buy one " + Item.ToString();
-        }
-        else if (Type == ShopItemType.Upgrade) 
-        {
-            ShopDescription.text = "Increase the " + Item.ToString() + " duration";
-        }
-    }
+    // public void UpdateShopDescriptionToThis()
+    // {
+    //     if(Type == ShopItemType.Onetime) 
+    //     {
+    //         ShopDescription.text = "Buy one " + Item.ToString();
+    //     }
+    //     else if (Type == ShopItemType.Upgrade) 
+    //     {
+    //         ShopDescription.text = "Increase the " + Item.ToString() + " duration";
+    //     }
+    // }
 }
 
 public enum ShopItemType {Upgrade, Onetime};
