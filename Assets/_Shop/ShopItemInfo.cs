@@ -17,7 +17,10 @@ public class ShopItemInfo : MonoBehaviour
     {
         PurchaseButton.Type = Type;
         PurchaseButton.Item = Item;
+    }
 
+    void OnEnable()
+    {
         UpdateItem();
     }
 
@@ -35,18 +38,6 @@ public class ShopItemInfo : MonoBehaviour
             LevelSlider.value = upgradeLevel;
         }
     }
-
-    // public void UpdateShopDescriptionToThis()
-    // {
-    //     if(Type == ShopItemType.Onetime) 
-    //     {
-    //         ShopDescription.text = "Buy one " + Item.ToString();
-    //     }
-    //     else if (Type == ShopItemType.Upgrade) 
-    //     {
-    //         ShopDescription.text = "Increase the " + Item.ToString() + " duration";
-    //     }
-    // }
 }
 
 public enum ShopItemType {Upgrade, Onetime};
