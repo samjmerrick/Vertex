@@ -64,7 +64,7 @@ public class ShipShoot : MonoBehaviour {
                 }
                 else
                 {
-                    UIControl.instance.UIMessage("Not enough lasers");
+                    UIControl.instance.GameMessage("You don't have any lasers");
                     Debug.Log("not enough lasers");
                 }
                    
