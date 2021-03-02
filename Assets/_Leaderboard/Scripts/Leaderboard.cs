@@ -1,80 +1,101 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using Firebase.Database;
 using System.Linq;
+using Firebase.Database;
 
 public class Leaderboard : MonoBehaviour
 {
     public GameObject LeaderboardEntry;
+    public GameObject MyLeaderboardEntry;
     public GameObject LoadingSymbol;
     public GameObject LeaderboardContent;
 
-    public Text Score;
-    public Text Rank;
-
     private GameObject _LoadingSymbol;
+    private RectTransform userScore;
+    private bool firstRunAfterEnable = false; // This helps determine whether we should snap user to their score
 
-    private void OnEnable()
+    void OnEnable()
     {
-        // Start a listener for changes to the scores table in Realtime database
+        firstRunAfterEnable = true;
+
+        // Reset to the top of the board when enabled
+        GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
+
         FirebaseDatabase.DefaultInstance.GetReference("scores").OrderByChild("score").ValueChanged += HandleValueChanged;
     }
 
-    private void OnDisable()
+    void OnDisable()
     {
-        // Stop listener
-        FirebaseDatabase.DefaultInstance.GetReference("scores").OrderByChild("score").ValueChanged -= HandleValueChanged;
+        if (_LoadingSymbol != null)
+        {
+            Destroy(_LoadingSymbol);
+        }
 
         DestroyChildren();
+        FirebaseDatabase.DefaultInstance.GetReference("scores").OrderByChild("score").ValueChanged -= HandleValueChanged;
     }
 
     void HandleValueChanged(object sender, ValueChangedEventArgs args)
     {
-        // Error check
+        DestroyChildren();
+
+        // Instantiate the loading Symbol
+        _LoadingSymbol = Instantiate(LoadingSymbol, LeaderboardContent.transform.parent);
+
         if (args.DatabaseError != null)
         {
             Debug.LogError(args.DatabaseError.Message);
             return;
         }
+        GenerateLeaderboard(args.Snapshot);
+    }
 
-        // Instantiate the loading Symbol
-        _LoadingSymbol = Instantiate(LoadingSymbol, LeaderboardContent.transform.parent);
-
-        // Get a snapshot of the current data
-        DataSnapshot Snapshot = args.Snapshot;
-
-        // Clear existing UI entries
-        DestroyChildren();
-
+    void GenerateLeaderboard(DataSnapshot snapshot) 
+    {
         // i is used as Rank
         int i = 1;
 
         // Reverse loop gives descending order
-        foreach (var ChildSnapshot in Snapshot.Children.Reverse())
+        foreach (var ChildSnapshot in snapshot.Children.Reverse())
         {
-            LeaderboardEntry entry = Instantiate(LeaderboardEntry, LeaderboardContent.transform).GetComponent<LeaderboardEntry>();
+            LeaderboardEntry entry;
+            string entryName = ChildSnapshot.Child("name").Value.ToString();
+
+            // Instantiate editable entry if it is this user
+            if (ChildSnapshot.Key == AuthController.UID)
+            {
+                entry = Instantiate(MyLeaderboardEntry, LeaderboardContent.transform).GetComponent<LeaderboardEntry>();
+                userScore = entry.GetComponent<RectTransform>();
+            }
+
+            // Skip other entries without a name
+            else if (entryName == "Your name" || entryName == "Anonymous" || entryName == "")
+            {
+                continue;
+            }
+
+            // Everyone else
+            else
+            {
+                entry = Instantiate(LeaderboardEntry, LeaderboardContent.transform).GetComponent<LeaderboardEntry>();
+            }
 
             entry.Init(
+                id: ChildSnapshot.Key,
                 rank: i,
-                imageUrl: ChildSnapshot.Child("profilePicture").Value.ToString(),
                 displayName: ChildSnapshot.Child("name").Value.ToString(),
                 score: ChildSnapshot.Child("score").Value.ToString()
                 );
 
-            if (UserManager.GetUser() != null)
-            {
-                if (ChildSnapshot.Key.Equals(UserManager.GetUser().UserId))
-                {
-                    Score.text = "Your score is " + ChildSnapshot.Child("score").Value.ToString();
-                    Rank.text = "Your rank is " + i;
-
-                }
-            }
-         
-
             i++;
         }
 
+        if (userScore != null && firstRunAfterEnable)
+        {
+            SnapTo(userScore);
+        }
+
+        firstRunAfterEnable = false;
         Destroy(_LoadingSymbol);
     }
 
@@ -82,14 +103,26 @@ public class Leaderboard : MonoBehaviour
     {
         foreach (Transform child in LeaderboardContent.transform)
         {
-            if (!child.name.Contains("_"))
-            {
-                Destroy(child.gameObject);
-            }
+            Destroy(child.gameObject);
         }
     }
+
+    public void SnapTo(RectTransform target)
+    {
+        RectTransform contentPanel = GetComponent<RectTransform>();
+        ScrollRect scrollRect = GetComponent<ScrollRect>();
+
+        Canvas.ForceUpdateCanvases();
+
+        Vector2 anchoredPosition =
+            (Vector2)scrollRect.transform.InverseTransformPoint(contentPanel.position)
+            - (Vector2)scrollRect.transform.InverseTransformPoint(target.position);
+
+        // Scroll down a little bit to bring score into full view
+        anchoredPosition.y = anchoredPosition.y - 200;
+
+        Debug.Log(anchoredPosition);
+
+        contentPanel.anchoredPosition = anchoredPosition;
+    }
 }
-
-   
-
-

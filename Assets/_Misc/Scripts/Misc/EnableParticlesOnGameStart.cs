@@ -8,7 +8,7 @@ public class EnableParticlesOnGameStart : MonoBehaviour {
         GameController.GameEnd += Disable;
     }
 
-    private void OnApplicationQuit()
+    private void OnDisable()
     {
         GameController.GameBegin -= Enable;
         GameController.GameEnd -= Disable;

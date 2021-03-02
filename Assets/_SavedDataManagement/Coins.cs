@@ -19,6 +19,7 @@
         if (amt < coins)
         {
             coins -= amt;
+            AnalyticsController.LogSpendCurrency();
             return true;
         }
         else { return false; }

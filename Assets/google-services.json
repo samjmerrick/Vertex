@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "37949844387",
+    "firebase_url": "https://vertex-game.firebaseio.com",
+    "project_id": "vertex-game",
+    "storage_bucket": "vertex-game.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:37949844387:android:6b7c65727adfdaab",
+        "android_client_info": {
+          "package_name": "com.samjm.vertex"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "37949844387-9t94tj51jifk0av9vodtf9778uq743h8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBaOVK70YQHBo6vtF-ZqXRwEdOOF6br_LY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "37949844387-9t94tj51jifk0av9vodtf9778uq743h8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "37949844387-jvbc7is009m3l6dbe8a9n9qurbd9cpdi.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.samjm.vertex"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

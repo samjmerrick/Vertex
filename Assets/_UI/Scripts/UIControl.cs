@@ -33,6 +33,7 @@ public class UIControl : MonoBehaviour {
 
     public GameObject uiMessage;
     public GameObject RadialSlider;
+    public Transform BuffTimers;
 
     public Messages messages;
 
@@ -41,8 +42,17 @@ public class UIControl : MonoBehaviour {
     public Text Laser;
     public Text CoinsText;
 
+    void OnEnable()
+    {
+        GameController.GameBegin += InitGame;
+    }
 
-    public void OnEnable()
+    void OnDisable()
+    {
+        GameController.GameBegin -= InitGame;
+    }
+
+    void InitGame()
     {
         Distance.text = "0";
         Destroyed.text = "0";
@@ -50,7 +60,6 @@ public class UIControl : MonoBehaviour {
 
         CoinsText.text = Coins.Get().ToString();
      
-
         StartCoroutine(CreateMissionText());
     }
 
@@ -78,6 +87,7 @@ public class UIControl : MonoBehaviour {
 
     public BuffRadialSlider PickupTimer ()
     {
-        return Instantiate(RadialSlider, transform.Find("BuffTimers")).GetComponent<BuffRadialSlider>();
+        GameObject timer = Instantiate(RadialSlider, BuffTimers);
+        return timer.GetComponent<BuffRadialSlider>();
     }
 }

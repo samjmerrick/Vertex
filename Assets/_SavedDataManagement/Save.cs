@@ -57,11 +57,6 @@ public class SaveManager
         }
     }
 
-    public static void LoadFromDatabase()
-    {
-        Stats.bestStats = FirebaseDatabaseController.GetFromDatabase("best-stats");
-    }
-
     public static void ClearSave()
     {
         if (File.Exists(SavePath() + "save.binary")){
@@ -74,7 +69,7 @@ public class SaveManager
     public static string SavePath()
     {
         // Choose the output path according to the build target.
-        string outputPath = Path.Combine(GetPathBasedOnOS(), "UFOAST");
+        string outputPath = Path.Combine(GetPathBasedOnOS(), "Vertex");
 
         if (!Directory.Exists(outputPath))
             Directory.CreateDirectory(outputPath);

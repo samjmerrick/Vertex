@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Pickup : MonoBehaviour {
 
+    public GameObject PickupEffect;
+
     [HideInInspector]
-
     public string Name;
-
+    
     public delegate void GotDelegate (string name, int time);
     public static event GotDelegate Got;
 
@@ -31,6 +32,8 @@ public class Pickup : MonoBehaviour {
         if (c.gameObject.tag == "Player" && c.gameObject.name != ("Shield(Clone)"))
         {
             Destroy(gameObject);
+
+            Instantiate(PickupEffect, transform.position, transform.rotation);
 
             // Error check delegate subscriptions
             if (Got != null)
